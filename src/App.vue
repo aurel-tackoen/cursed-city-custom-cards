@@ -1,85 +1,43 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { reactive } from 'vue';
+const state = reactive({
+  count: 0,
+  heroPicture:
+    // 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Red_Color.jpg/450px-Red_Color.jpg?20170319170936',
+    'https://www.games-workshop.com/resources/catalog/product/920x950/99120205036_GotrekGurnisson01.jpg',
+});
 </script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+  <div class="relative">
+    <div id="hero-background-normal">
+      <img
+        class=""
+        src="@/assets/pictures/hero-background-normal.png"
+        width="915"
+        alt="Hero Background"
+      />
     </div>
-  </header>
-
-  <RouterView />
+    <div
+      id="hero-picture"
+      class="absolute rounded-full overflow-hidden flex items-center"
+      style="top: -26px; left: -20px; width: 292px; height: 292px"
+    >
+      <img
+        :src="state.heroPicture"
+        alt="Hero Picture"
+        class="max-w-max"
+        style="margin-top: 120px; margin-left: -50px; height: 500px"
+      />
+    </div>
+    <div
+      id="hero-stats"
+      class="absolute text-black w-12 grid grid-cols-2 text-2xl"
+      style="top: 310px; left: 86px; width: 100px; height: 106px"
+    >
+      <div class="col-span-2 text-center">3/4</div>
+      <div class="text-left">A</div>
+      <div class="text-right">B</div>
+      <div class="col-span-2 text-center">C</div>
+    </div>
+  </div>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
-</style>
