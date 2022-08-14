@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       fontFamily: {
         Cardo: ['Cardo', 'serif'],
+        Cormorant: ['Cormorant', 'serif'],
       },
       backgroundImage: (theme) => ({
         'multiselect-caret': `url("${svgToDataUri(

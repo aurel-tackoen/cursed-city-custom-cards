@@ -1,0 +1,10 @@
+<template>
+  <!DOCTYPE html>
+  <svg viewBox="0 0 110 110" width="100" height="100">
+    <path
+      d="M 53 3 L 103.001 41.197 L 83.902 103.001 L 22.098 103.001 L 2.999 41.197 Z"
+      data-bx-shape="n-gon 53 58.279 52.574 55.279 5 0 1@7e0eec94"
+      style="fill: rgb(255, 0, 0); stroke: rgb(0, 0, 0); stroke-width: 4px"
+    ></path>
+  </svg>
+</template>
