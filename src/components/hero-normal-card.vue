@@ -34,18 +34,35 @@ defineProps({
     <div
       id="hero-stats"
       class="absolute text-black w-12 grid grid-cols-2 text-2xl"
-      style="top: 310px; left: 86px; width: 100px; height: 106px"
+      style="top: 305px; left: 83px; width: 104px; height: 106px"
     >
-      <div class="col-span-2 text-center">
+      <div class="col-span-2 flex justify-center font-semibold mb-1">
         {{ hero.stats.move }}/{{ hero.stats.run }}
       </div>
-      <div class="text-left">
-        <DiceD6 v-if="hero.stats.agility == 'd6'" class="w-6 h-6 mt-1 mb-2" />
-        <DiceD8 v-if="hero.stats.agility == 'd8'" class="w-6 h-6 mt-1 mb-2" />
-        <DiceD12 v-if="hero.stats.agility == 'd12'" class="w-6 h-6 mt-1 mb-2" />
+      <div class="flex justify-start">
+        <DiceD6 v-if="hero.stats.agility === 'd6'" class="w-6 h-6 mt-2 mb-2" />
+        <DiceD8 v-if="hero.stats.agility === 'd8'" class="w-6 h-6 mt-2 mb-2" />
+        <DiceD12
+          v-if="hero.stats.agility === 'd12'"
+          class="w-6 h-6 mt-2 mb-2"
+        />
       </div>
-      <div class="text-right">{{ hero.stats.vitality }}</div>
-      <div class="col-span-2 text-center">{{ hero.stats.defence }}</div>
+      <div class="flex justify-end">
+        <DiceD6 v-if="hero.stats.vitality === 'd6'" class="w-6 h-6 mt-2 mb-2" />
+        <DiceD8 v-if="hero.stats.vitality === 'd8'" class="w-6 h-6 mt-2 mb-2" />
+        <DiceD12
+          v-if="hero.stats.vitality === 'd12'"
+          class="w-6 h-6 mt-2 mb-2"
+        />
+      </div>
+      <div class="col-span-2 flex justify-center">
+        <DiceD6 v-if="hero.stats.defence === 'd6'" class="w-6 h-6 mt-2 mb-2" />
+        <DiceD8 v-if="hero.stats.defence === 'd8'" class="w-6 h-6 mt-2 mb-2" />
+        <DiceD12
+          v-if="hero.stats.defence === 'd12'"
+          class="w-6 h-6 mt-2 mb-2"
+        />
+      </div>
     </div>
     <div
       id="hero-name"

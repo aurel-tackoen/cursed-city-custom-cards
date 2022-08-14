@@ -65,11 +65,19 @@ const hero = computed({
       </div>
       <div class="grid grid-cols-4">
         <span>Vitality: </span>
-        <input v-model="hero.stats.vitality" type="text" class="col-span-3" />
+        <select v-model="hero.stats.vitality" class="col-span-3">
+          <option value="d6">D6 (Square)</option>
+          <option value="d8">D8 (Triangle)</option>
+          <option value="d12">D12 (Pentagone)</option>
+        </select>
       </div>
       <div class="grid grid-cols-4">
         <span>Defence: </span>
-        <input v-model="hero.stats.defence" type="text" class="col-span-3" />
+        <select v-model="hero.stats.defence" class="col-span-3">
+          <option value="d6">D6 (Square)</option>
+          <option value="d8">D8 (Triangle)</option>
+          <option value="d12">D12 (Pentagone)</option>
+        </select>
       </div>
     </div>
     <hr class="my-4" />
