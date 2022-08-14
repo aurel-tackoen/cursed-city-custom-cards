@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { padding-left: 2px; top: 0.1rem; vertical-align: super;}
+sub { bottom: -0.25em; vertical-align: sub;}
