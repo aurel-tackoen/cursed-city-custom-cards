@@ -3,7 +3,7 @@ import { reactive } from 'vue';
 import heroes from '@/assets/data/heroes.js';
 import HeroNormalCard from '@/components/hero-normal-card.vue';
 import HeroNormalForm from '@/components/hero-normal-form.vue';
-const index = 0;
+const index = 1;
 const hero = reactive(heroes[index]);
 </script>
 <template>

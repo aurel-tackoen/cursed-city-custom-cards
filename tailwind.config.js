@@ -4,6 +4,9 @@ module.exports = {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      fontSize: {
+        xs: ['0.8125rem', '1rem'],
+      },
       fontFamily: {
         Cardo: ['Cardo', 'serif'],
         Cormorant: ['Cormorant', 'serif'],

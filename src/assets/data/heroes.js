@@ -1,7 +1,19 @@
 const heroes = [
   {
-    picture:
-      'https://www.games-workshop.com/resources/catalog/product/920x950/99120205036_GotrekGurnisson01.jpg',
+    stats: {},
+    tags: [],
+    weapons: [],
+    notes: [],
+    abilities: [],
+    path: {},
+  },
+  {
+    // 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Solid_red.svg/512px-Solid_red.svg.png?20150316143248',
+    picture: {
+      url: 'https://www.games-workshop.com/resources/catalog/product/920x950/99120205036_GotrekGurnisson01.jpg',
+      offsetY: 120,
+      offsetX: -70,
+    },
     name: 'Gotrek Gurnisson',
     stats: {
       move: 3,
@@ -21,7 +33,8 @@ const heroes = [
         activation: 1,
         notes: [1],
         type: 'melee',
-        dices: 'A',
+        dice1: 'd6',
+        dice2: 'd6',
         damages: {
           normal: 1,
           critical: 2,
@@ -32,7 +45,8 @@ const heroes = [
         activation: 6,
         notes: [2, 3],
         type: 'melee',
-        dices: 'BB',
+        dice1: 'd8',
+        dice2: 'd12',
         damages: {
           normal: 2,
           critical: 3,
