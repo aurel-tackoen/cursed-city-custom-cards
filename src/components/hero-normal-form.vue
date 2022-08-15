@@ -47,6 +47,15 @@ const hero = computed({
         />
       </div>
       <div class="grid grid-cols-4">
+        <span class="flex items-center">Picture Zoom: </span>
+        <input
+          step="0.01"
+          v-model="hero.picture.zoom"
+          type="number"
+          class="col-span-3 border border-gray-300 rounded bg-white outline-none"
+        />
+      </div>
+      <div class="grid grid-cols-4">
         <span class="flex items-center">Tags: </span>
         <div class="col-span-3">
           <Multiselect

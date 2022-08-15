@@ -28,13 +28,7 @@ defineProps({
         :src="hero.picture.url"
         alt="Hero Picture"
         class="max-w-max"
-        :style="
-          'margin-top: ' +
-          hero.picture.offsetY +
-          'px; margin-left: ' +
-          hero.picture.offsetX +
-          'px; height: 500px'
-        "
+        :style="`transform: scale(${hero.picture.zoom});margin-top: ${hero.picture.offsetY}px; margin-left: ${hero.picture.offsetX}px; height: 500px`"
       />
     </div>
     <div
@@ -73,7 +67,7 @@ defineProps({
     <div
       id="hero-tags"
       class="absolute text-center text-lg italic leading-none font-semibold"
-      style="top: 76px; left: 294px; width: 520px; height: 20px"
+      style="top: 78px; left: 294px; width: 520px; height: 20px"
     >
       <div>
         <span v-for="(tag, index) in hero.tags" :key="tag.name">
@@ -93,7 +87,7 @@ defineProps({
     <div
       id="hero-weapons"
       class="absolute"
-      style="top: 270px; left: 292px; width: 560px"
+      style="top: 265px; left: 292px; width: 560px"
     >
       <div>
         <div
@@ -123,7 +117,7 @@ defineProps({
             {{ weapon.damages.normal }}/{{ weapon.damages.critical }}
           </div>
         </div>
-        <div class="mt-1 text-xs">
+        <div class="mt-1 text-xs leading-snug">
           <div v-for="(note, index) in hero.notes" :key="index">
             <sup class="mr-0.5">{{ index + 1 }}</sup>
             <span v-if="note.name" class="font-semibold">{{ note.name }}: </span
@@ -133,11 +127,11 @@ defineProps({
       </div>
       <div
         v-if="hero.abilities.length > 0"
-        class="mt-2 w-full text-center text-lg uppercase leading-none"
+        class="mt-3 mb-px w-full text-center text-lg uppercase leading-none"
       >
         Unique Abilities
       </div>
-      <div class="text-sm">
+      <div class="text-sm space-y-0.5">
         <div v-for="ability in hero.abilities" :key="ability.name">
           <strong v-if="ability.name">{{ ability.name }}: </strong
           >{{ ability.rule }}

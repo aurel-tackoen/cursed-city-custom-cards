@@ -1,6 +1,14 @@
 const heroes = [
   {
-    stats: {},
+    picture: {
+      offsetY: 100,
+      offsetX: -50,
+      zoom: 1,
+    },
+    stats: {
+      move: 3,
+      run: 4,
+    },
     tags: [],
     weapons: [],
     notes: [],
@@ -11,8 +19,9 @@ const heroes = [
     // 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Solid_red.svg/512px-Solid_red.svg.png?20150316143248',
     picture: {
       url: 'https://www.games-workshop.com/resources/catalog/product/920x950/99120205036_GotrekGurnisson01.jpg',
-      offsetY: 120,
-      offsetX: -70,
+      offsetY: 160,
+      offsetX: -80,
+      zoom: 0.9,
     },
     name: 'Gotrek Gurnisson',
     stats: {
@@ -84,6 +93,132 @@ const heroes = [
     path: {
       name: 'Avatar of Grimnir',
       rule: 'Gotrek has survived countless battles and trials over the years, to become an almost unstoppable avatar of the duardin warrior-god Grimnir.',
+    },
+  },
+  {
+    picture: {
+      url: 'https://www.games-workshop.com/resources/catalog/product/threeSixty/6010799015_WHUHarrowdeepOTT1360/01-01.jpg',
+      offsetY: 140,
+      offsetX: -80,
+      zoom: 0.8,
+    },
+    name: 'Calthia Xandire',
+    stats: {
+      move: 3,
+      run: 4,
+      agility: 'd8',
+      vitality: 'd12',
+      defence: 'd6',
+    },
+    tags: [
+      { label: 'Blade', value: 'blade' },
+      { label: 'Stormcast Eternal', value: 'stormcast' },
+      { label: 'Truthseeker', value: 'stormcast' },
+    ],
+    size: 'large',
+    weapons: [
+      {
+        name: 'Broadsword',
+        activation: 1,
+        notes: [],
+        type: 'melee',
+        dice1: 'd8',
+        dice2: 'd8',
+        damages: {
+          normal: 1,
+          critical: 3,
+        },
+      },
+      {
+        name: 'Lantern Astrala',
+        activation: 6,
+        notes: [],
+        type: 'area',
+        dice1: 'd8',
+        dice2: null,
+        damages: {
+          normal: 1,
+          critical: 1,
+        },
+      },
+    ],
+    notes: [],
+    abilities: [
+      {
+        name: 'Light of Azyr',
+        rule: 'Critical Success = Stunned',
+      },
+      {
+        name: 'Healing Light',
+        rule: 'Heal 1 Wound Ally in Area',
+      },
+    ],
+    path: {
+      name: 'Sigmar Radiance',
+      rule: 'Gain 1 inspiration point when 2 Lantern Stun',
+    },
+  },
+  {
+    picture: {
+      url: 'https://www.games-workshop.com/resources/catalog/product/threeSixty/60120702001_WHUHexbanesHuntersOTT1360/01-01.jpg',
+      offsetY: 100,
+      offsetX: -110,
+      zoom: 0.85,
+    },
+    name: 'Haskel Hexbane',
+    stats: {
+      move: 3,
+      run: 4,
+      agility: 'd8',
+      vitality: 'd12',
+      defence: 'd6',
+    },
+    tags: [
+      { label: 'Blade', value: 'blade' },
+      { label: 'Stormcast Eternal', value: 'stormcast' },
+      { label: 'Truthseeker', value: 'stormcast' },
+    ],
+    size: 'large',
+    weapons: [
+      {
+        name: 'Broadsword',
+        activation: 1,
+        notes: [],
+        type: 'melee',
+        dice1: 'd8',
+        dice2: 'd8',
+        damages: {
+          normal: 1,
+          critical: 3,
+        },
+      },
+      {
+        name: 'Lantern Astrala',
+        activation: 6,
+        notes: [],
+        type: 'area',
+        dice1: 'd8',
+        dice2: null,
+        damages: {
+          normal: 1,
+          critical: 1,
+        },
+      },
+    ],
+    notes: [],
+    abilities: [
+      {
+        name: 'Light of Azyr',
+        rule: 'Critical Success = Stunned',
+      },
+      {
+        name: 'Healing Light',
+        rule: 'Heal 1 Wound Ally in Area',
+      },
+    ],
+    path: {
+      name: 'Sigmar Radiance',
+      rule: 'Gain 1 inspiration point when 2 Lantern Stun',
     },
   },
 ];
