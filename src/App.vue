@@ -2,17 +2,47 @@
 import { reactive } from 'vue';
 import heroes from '@/assets/data/heroes.js';
 import generatePDF from '@/services/generate-pdf';
+import HeroNav from '@/components/layout/hero-nav.vue';
 import HeroNormalCard from '@/components/hero-normal-card.vue';
+import HeroInspiredCard from '@/components/hero-inspired-card.vue';
 import HeroNormalForm from '@/components/hero-normal-form.vue';
+import HeroInspiredForm from '@/components/hero-inspired-form.vue';
 const index = 1;
 const hero = reactive(heroes[index]);
+const tabs = reactive([
+  { name: 'Normal', current: true },
+  { name: 'Inspired', current: false },
+]);
 </script>
 <template>
-  <HeroNormalCard v-model:hero="hero" class="mt-4" />
-  <HeroNormalForm v-model:hero="hero" class="mt-4" />
+  <HeroNormalCard
+    v-if="tabs[0].current"
+    v-model:hero="hero"
+    class="mt-4"
+    style="width: 881px; height: 645px"
+  />
+  <HeroInspiredCard
+    v-if="tabs[1].current"
+    v-model:hero="hero"
+    class="mt-4"
+    style="width: 881px; height: 645px"
+  />
+  <HeroNav v-model:tabs="tabs" class="mt-4" style="width: 915px" />
+  <HeroNormalForm
+    v-if="tabs[0].current"
+    v-model:hero="hero"
+    class="mt-4"
+    style="width: 915px"
+  />
+  <HeroInspiredForm
+    v-if="tabs[1].current"
+    v-model:hero="hero"
+    class="mt-4"
+    style="width: 915px"
+  />
   <div class="w-full flex items-center justify-center mt-4 mb-8">
     <button
-      class="inline-flex items-center px-8 py-2 text-lg font-semibold text-white border border-indigo-700 shadow-sm rounded-md bg-indigo-600 hover:bg-indigo-700"
+      class="inline-flex items-center px-8 py-2 text-lg font-semibold text-red-700 border-2 border-red-700 shadow-sm rounded-md bg-white hover:bg-red-100"
       @click="generatePDF(hero)"
     >
       Generate PDF

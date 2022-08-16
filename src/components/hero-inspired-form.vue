@@ -88,59 +88,69 @@ const hero = computed({
       </div>
     </FormCard>
     <FormCard id="user-hero-stats" title="Hero Stats">
-      <div class="grid grid-cols-4">
-        <span class="flex items-center">Move: </span>
-        <input
-          v-model="hero.normal.stats.move"
-          type="number"
-          class="col-span-3 border border-gray-300 rounded bg-white outline-none"
-        />
+      <div class="pb-2 mb-2 border-b-2 border-dashed space-y-3">
+        <div class="grid grid-cols-4">
+          <span class="flex items-center">Move: </span>
+          <input
+            v-model="hero.inspired.stats.move"
+            type="number"
+            class="col-span-3 border border-gray-300 rounded bg-white outline-none"
+          />
+        </div>
+        <div class="grid grid-cols-4">
+          <span class="flex items-center">Run: </span>
+          <input
+            v-model="hero.inspired.stats.run"
+            type="number"
+            class="col-span-3 border border-gray-300 rounded bg-white outline-none"
+          />
+        </div>
+        <div class="grid grid-cols-4">
+          <span class="flex items-center">Agility: </span>
+          <select
+            v-model="hero.inspired.stats.agility"
+            class="col-span-3 border border-gray-300 rounded bg-white outline-none"
+          >
+            <option value="d6">D6 (Square)</option>
+            <option value="d8">D8 (Triangle)</option>
+            <option value="d12">D12 (Pentagone)</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-4">
+          <span class="flex items-center">Vitality: </span>
+          <select
+            v-model="hero.inspired.stats.vitality"
+            class="col-span-3 border border-gray-300 rounded bg-white outline-none"
+          >
+            <option value="d6">D6 (Square)</option>
+            <option value="d8">D8 (Triangle)</option>
+            <option value="d12">D12 (Pentagone)</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-4">
+          <span class="flex items-center">Defence: </span>
+          <select
+            v-model="hero.inspired.stats.defence"
+            class="col-span-3 border border-gray-300 rounded bg-white outline-none"
+          >
+            <option value="d6">D6 (Square)</option>
+            <option value="d8">D8 (Triangle)</option>
+            <option value="d12">D12 (Pentagone)</option>
+          </select>
+        </div>
       </div>
-      <div class="grid grid-cols-4">
-        <span class="flex items-center">Run: </span>
-        <input
-          v-model="hero.normal.stats.run"
-          type="number"
-          class="col-span-3 border border-gray-300 rounded bg-white outline-none"
-        />
-      </div>
-      <div class="grid grid-cols-4">
-        <span class="flex items-center">Agility: </span>
-        <select
-          v-model="hero.normal.stats.agility"
-          class="col-span-3 border border-gray-300 rounded bg-white outline-none"
+      <div class="space-x-2">
+        <button
+          class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm rounded-md bg-white hover:bg-gray-50"
+          @click="hero.inspired.stats = hero.normal.stats"
         >
-          <option value="d6">D6 (Square)</option>
-          <option value="d8">D8 (Triangle)</option>
-          <option value="d12">D12 (Pentagone)</option>
-        </select>
-      </div>
-      <div class="grid grid-cols-4">
-        <span class="flex items-center">Vitality: </span>
-        <select
-          v-model="hero.normal.stats.vitality"
-          class="col-span-3 border border-gray-300 rounded bg-white outline-none"
-        >
-          <option value="d6">D6 (Square)</option>
-          <option value="d8">D8 (Triangle)</option>
-          <option value="d12">D12 (Pentagone)</option>
-        </select>
-      </div>
-      <div class="grid grid-cols-4">
-        <span class="flex items-center">Defence: </span>
-        <select
-          v-model="hero.normal.stats.defence"
-          class="col-span-3 border border-gray-300 rounded bg-white outline-none"
-        >
-          <option value="d6">D6 (Square)</option>
-          <option value="d8">D8 (Triangle)</option>
-          <option value="d12">D12 (Pentagone)</option>
-        </select>
+          Copy from normal
+        </button>
       </div>
     </FormCard>
     <FormCard id="user-weapons" title="Weapons">
       <div
-        v-for="weapon in hero.normal.weapons"
+        v-for="weapon in hero.inspired.weapons"
         :key="weapon.name"
         class="pb-2 mb-2 border-b-2 border-dashed space-y-3"
       >
@@ -168,7 +178,7 @@ const hero = computed({
             v-model="weapon.notes"
           >
             <option
-              v-for="(note, index) in hero.normal.notes"
+              v-for="(note, index) in hero.inspired.notes"
               :key="index"
               :value="index + 1"
             >
@@ -214,14 +224,14 @@ const hero = computed({
       <div class="space-x-2">
         <button
           class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm rounded-md bg-white hover:bg-gray-50"
-          @click="hero.normal.weapons = []"
+          @click="hero.inspired.weapons = hero.normal.weapons"
         >
-          Clear all weapons
+          Copy from normal
         </button>
         <button
           class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm rounded-md bg-white hover:bg-gray-50"
           @click="
-            hero.normal.weapons.push({
+            hero.inspired.weapons.push({
               name: '',
               activation: 1,
               type: 'melee',
@@ -239,7 +249,7 @@ const hero = computed({
     </FormCard>
     <FormCard id="user-weapons-notes" title="Weapons Notes">
       <div
-        v-for="(note, index) in hero.normal.notes"
+        v-for="(note, index) in hero.inspired.notes"
         :key="note.name"
         class="pb-2 mb-2 border-b-2 border-dashed space-y-3"
       >
@@ -267,8 +277,14 @@ const hero = computed({
       <div class="space-x-2">
         <button
           class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm rounded-md bg-white hover:bg-gray-50"
+          @click="hero.inspired.notes = hero.normal.notes"
+        >
+          Copy from normal
+        </button>
+        <button
+          class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm rounded-md bg-white hover:bg-gray-50"
           @click="
-            hero.normal.notes.push({
+            hero.inspired.notes.push({
               name: '',
               rule: '',
             })
@@ -280,7 +296,7 @@ const hero = computed({
     </FormCard>
     <FormCard id="user-abilities" title="Abilities">
       <div
-        v-for="ability in hero.normal.abilities"
+        v-for="ability in hero.inspired.abilities"
         :key="ability.name"
         class="pb-2 mb-2 border-b-2 border-dashed space-y-3"
       >
@@ -304,8 +320,14 @@ const hero = computed({
       <div class="space-x-2">
         <button
           class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm rounded-md bg-white hover:bg-gray-50"
+          @click="hero.inspired.abilities = hero.normal.abilities"
+        >
+          Copy from normal
+        </button>
+        <button
+          class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm rounded-md bg-white hover:bg-gray-50"
           @click="
-            hero.normal.abilities.push({
+            hero.inspired.abilities.push({
               name: '',
               rule: '',
             })
@@ -313,24 +335,6 @@ const hero = computed({
         >
           Add an ability
         </button>
-      </div>
-    </FormCard>
-    <FormCard id="user-path" title="Path to Glory">
-      <div class="grid grid-cols-4">
-        <span class="flex items-center">Name: </span>
-        <input
-          v-model="hero.normal.path.name"
-          type="text"
-          class="col-span-3 border border-gray-300 rounded bg-white outline-none"
-        />
-      </div>
-      <div class="grid grid-cols-4">
-        <span class="flex items-center">Rule: </span>
-        <textarea
-          v-model="hero.normal.path.rule"
-          type="text"
-          class="col-span-3 border border-gray-300 rounded bg-white outline-none"
-        />
       </div>
     </FormCard>
   </div>
