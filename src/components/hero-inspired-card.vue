@@ -17,7 +17,7 @@ defineProps({
       />
     </div>
     <div
-      class="absolute top-0 z-40 h-full w-full border-2 border-gray-400 rounded-3xl"
+      class="absolute pointer-events-none top-0 z-40 h-full w-full border-2 border-gray-400 rounded-3xl"
     ></div>
     <div
       id="hero-picture"
@@ -96,10 +96,10 @@ defineProps({
         <div
           v-for="(weapon, index) in hero.inspired.weapons"
           :key="weapon.name"
-          class="text-base font-semibold flex justify-center items-center h-7 -ml-4 pl-4"
+          class="text-base font-semibold flex justify-start items-center h-7 -ml-4"
           :class="{ 'bg-gray-100': index % 2 !== 0 }"
         >
-          <div class="w-64 pl-1">
+          <div class="pl-4" style="width: 310px">
             {{ weapon.name }} ({{ weapon.activation }}+)<sup
               v-for="note in weapon.notes"
               :key="note"
@@ -107,8 +107,10 @@ defineProps({
               >{{ note }}</sup
             >
           </div>
-          <div class="w-24 text-center capitalize">{{ weapon.type }}</div>
-          <div class="w-20 flex justify-center pr-3">
+          <div style="width: 90px" class="capitalize">
+            {{ weapon.type }}
+          </div>
+          <div style="width: 80px" class="flex justify-start">
             <DiceD6 v-if="weapon.dice1 === 'd6'" class="w-4 h-4" />
             <DiceD8 v-if="weapon.dice1 === 'd8'" class="w-4 h-4" />
             <DiceD12 v-if="weapon.dice1 === 'd12'" class="w-4 h-4" />
@@ -116,11 +118,11 @@ defineProps({
             <DiceD8 v-if="weapon.dice2 === 'd8'" class="w-4 h-4 ml-1" />
             <DiceD12 v-if="weapon.dice2 === 'd12'" class="w-4 h-4 ml-1" />
           </div>
-          <div class="w-28 text-center">
+          <div style="width: 80px" class="">
             {{ weapon.damages.base }}/{{ weapon.damages.critical }}
           </div>
         </div>
-        <div class="mt-1 text-xs leading-snug">
+        <div class="mt-2 text-xs leading-snug">
           <div v-for="(note, index) in hero.inspired.notes" :key="index">
             <sup class="mr-0.5">{{ index + 1 }}</sup>
             <span v-if="note.name" class="font-semibold">{{ note.name }}: </span
