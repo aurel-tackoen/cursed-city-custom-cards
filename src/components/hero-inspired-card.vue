@@ -132,12 +132,16 @@ defineProps({
       </div>
       <div
         v-if="hero.inspired.abilities.length > 0"
-        class="mt-2 mb-px w-full text-center text-lg uppercase leading-none"
+        class="mt-3 mb-px w-full text-center text-lg uppercase leading-none"
       >
         Unique Abilities
       </div>
       <div class="text-sm space-y-0.5">
-        <div v-for="ability in hero.inspired.abilities" :key="ability.name">
+        <div
+          v-for="ability in hero.inspired.abilities"
+          :key="ability.name"
+          class="leading-tight"
+        >
           <strong v-if="ability.name">{{ ability.name }}: </strong
           >{{ ability.rule }}
         </div>
