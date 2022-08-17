@@ -231,7 +231,7 @@ const defaultAbilities = {
                 <span class="flex items-center">Notes: </span>
                 <select
                   multiple
-                  class="col-span-4 border border-gray-300 rounded bg-white outline-none"
+                  class="col-span-4 border h-14 border-gray-300 rounded bg-white outline-none"
                   v-model="weapon.notes"
                 >
                   <option

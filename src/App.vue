@@ -10,7 +10,7 @@ import HeroInspiredForm from '@/components/hero-inspired-form.vue';
 const index = 1;
 const hero = reactive(heroes[index]);
 const tabs = reactive([
-  { name: 'Normal', current: true },
+  { name: 'Path to Glory', current: true },
   { name: 'Inspired', current: false },
 ]);
 </script>
