@@ -52,7 +52,7 @@ const tabs = reactive([
 .hero-card-display {
   width: 233mm;
   height: 170mm;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 @media print {
   .hero-card-display {
