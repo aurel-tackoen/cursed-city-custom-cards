@@ -8,7 +8,7 @@ defineProps({
 </script>
 <template>
   <div
-    class="drop-shadow-lg border relative font-Cardo rounded-3xl mx-auto overflow-hidden"
+    class="drop-shadow-lg border relative font-Cardo rounded-3xl mx-auto overflow-hidden bg-white"
   >
     <div id="hero-background-normal" class="-mt-6 -mb-4 -my-4">
       <img
@@ -20,7 +20,7 @@ defineProps({
     </div>
     <div
       id="hero-picture"
-      class="absolute rounded-tr-full rounded-bl-full rounded-br-full overflow-hidden flex items-center"
+      class="absolute rounded-full overflow-hidden flex items-center"
       style="top: -48px; left: -18px; width: 280px; height: 290px"
     >
       <img
@@ -59,14 +59,14 @@ defineProps({
     <div
       id="hero-name"
       class="absolute text-center text-4xl leading-none font-semibold"
-      style="top: 40px; left: 294px; width: 520px; height: 34px"
+      style="top: 38px; left: 294px; width: 520px; height: 34px"
     >
       <div>{{ hero.name }}</div>
     </div>
     <div
       id="hero-tags"
       class="absolute text-center text-lg italic leading-none font-semibold"
-      style="top: 78px; left: 294px; width: 520px; height: 20px"
+      style="top: 76px; left: 294px; width: 520px; height: 20px"
     >
       <div>
         <span v-for="(tag, index) in hero.tags" :key="tag.name">
@@ -113,7 +113,7 @@ defineProps({
             <DiceD12 v-if="weapon.dice2 === 'd12'" class="w-4 h-4 ml-1" />
           </div>
           <div class="w-28 text-center">
-            {{ weapon.damages.normal }}/{{ weapon.damages.critical }}
+            {{ weapon.damages.base }}/{{ weapon.damages.critical }}
           </div>
         </div>
         <div class="mt-1 text-xs leading-snug">
@@ -139,8 +139,8 @@ defineProps({
     </div>
     <div
       id="hero-path"
-      class="absolute text-sm leading-4 text-center"
-      style="top: 550px; left: 292px; width: 522px; height: 40px"
+      class="absolute text-sm text-center leading-none"
+      style="top: 548px; left: 292px; width: 522px; height: 40px"
     >
       <strong v-if="hero.normal.path.name">{{ hero.normal.path.name }}: </strong
       >{{ hero.normal.path.rule }}

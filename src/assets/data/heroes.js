@@ -45,7 +45,7 @@ const heroes = [
           dice1: 'd6',
           dice2: 'd6',
           damages: {
-            normal: 1,
+            base: 1,
             critical: 2,
           },
         },
@@ -57,7 +57,7 @@ const heroes = [
           dice1: 'd8',
           dice2: 'd12',
           damages: {
-            normal: 2,
+            base: 2,
             critical: 3,
           },
         },
@@ -132,7 +132,7 @@ const heroes = [
         dice1: 'd8',
         dice2: 'd8',
         damages: {
-          normal: 1,
+          base: 1,
           critical: 3,
         },
       },
@@ -144,7 +144,7 @@ const heroes = [
         dice1: 'd8',
         dice2: null,
         damages: {
-          normal: 1,
+          base: 1,
           critical: 1,
         },
       },
@@ -195,7 +195,7 @@ const heroes = [
         dice1: 'd8',
         dice2: 'd8',
         damages: {
-          normal: 1,
+          base: 1,
           critical: 3,
         },
       },
@@ -207,7 +207,7 @@ const heroes = [
         dice1: 'd8',
         dice2: null,
         damages: {
-          normal: 1,
+          base: 1,
           critical: 1,
         },
       },

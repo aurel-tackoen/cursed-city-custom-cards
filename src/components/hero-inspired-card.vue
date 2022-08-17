@@ -63,14 +63,14 @@ defineProps({
     <div
       id="hero-name"
       class="absolute text-center text-4xl leading-none font-semibold"
-      style="top: 40px; left: 294px; width: 520px; height: 34px"
+      style="top: 38px; left: 294px; width: 520px; height: 34px"
     >
       <div>{{ hero.name }}</div>
     </div>
     <div
       id="hero-tags"
       class="absolute text-center text-lg italic leading-none font-semibold"
-      style="top: 78px; left: 294px; width: 520px; height: 20px"
+      style="top: 76px; left: 294px; width: 520px; height: 20px"
     >
       <div>
         <span v-for="tag in hero.tags" :key="tag.name"> {{ tag.label }}, </span>
@@ -116,7 +116,7 @@ defineProps({
             <DiceD12 v-if="weapon.dice2 === 'd12'" class="w-4 h-4 ml-1" />
           </div>
           <div class="w-28 text-center">
-            {{ weapon.damages.normal }}/{{ weapon.damages.critical }}
+            {{ weapon.damages.base }}/{{ weapon.damages.critical }}
           </div>
         </div>
         <div class="mt-1 text-xs leading-snug">
