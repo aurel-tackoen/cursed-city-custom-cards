@@ -7,21 +7,22 @@ defineProps({
 });
 </script>
 <template>
-  <div
-    class="drop-shadow-lg border relative font-Cardo rounded-3xl mx-auto overflow-hidden"
-  >
-    <div id="hero-background-inspired" class="-mt-6 -mb-4 -my-4">
+  <div class="drop-shadow-lg border relative font-Cardo rounded-3xl mx-auto">
+    <div id="hero-background-inspired" class="-mt-6 -mb-4 -mx-4">
       <img
         class=""
         src="@/assets/pictures/hero-background-inspired.png"
         alt="Hero Background"
-        style="width: 913px; height: 680px"
+        style="width: 241mm; height: 178mm"
       />
     </div>
     <div
+      class="absolute top-0 z-40 h-full w-full border-2 border-gray-400 rounded-3xl"
+    ></div>
+    <div
       id="hero-picture"
-      class="absolute rounded-tr-full rounded-bl-full rounded-br-full overflow-hidden flex items-center"
-      style="top: -48px; left: -18px; width: 280px; height: 290px"
+      class="absolute rounded-full overflow-hidden flex items-center"
+      style="top: -50px; left: -35px; width: 290px; height: 290px"
     >
       <img
         :src="hero.picture.url"
@@ -33,7 +34,7 @@ defineProps({
     <div
       id="hero-stats"
       class="absolute text-black w-12 grid grid-cols-2 text-2xl"
-      style="top: 285px; left: 80px; width: 100px"
+      style="top: 285px; left: 70px; width: 100px"
     >
       <div class="col-span-2 flex justify-center font-semibold mt-px mb-px">
         {{ hero.inspired.stats.move
@@ -70,7 +71,7 @@ defineProps({
     <div
       id="hero-tags"
       class="absolute text-center text-lg italic leading-none font-semibold"
-      style="top: 76px; left: 294px; width: 520px; height: 20px"
+      style="top: 74px; left: 294px; width: 520px; height: 20px"
     >
       <div>
         <span v-for="tag in hero.tags" :key="tag.name"> {{ tag.label }}, </span>
@@ -80,7 +81,7 @@ defineProps({
     <div
       id="hero-tags"
       class="absolute text-center text-base italic text-red-800 leading-none"
-      style="top: 98px; left: 294px; width: 520px; height: 16px"
+      style="top: 96px; left: 294px; width: 520px; height: 16px"
     >
       <div v-if="hero.size">
         Size: <span class="capitalize">{{ hero.size }}</span>
@@ -129,7 +130,7 @@ defineProps({
       </div>
       <div
         v-if="hero.inspired.abilities.length > 0"
-        class="mt-3 mb-px w-full text-center text-lg uppercase leading-none"
+        class="mt-2 mb-px w-full text-center text-lg uppercase leading-none"
       >
         Unique Abilities
       </div>

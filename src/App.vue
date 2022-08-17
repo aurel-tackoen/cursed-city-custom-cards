@@ -18,14 +18,12 @@ const tabs = reactive([
   <HeroNormalCard
     v-if="tabs[0].current"
     v-model:hero="hero"
-    class="mt-4"
-    style="width: 881px; height: 645px"
+    class="hero-card-display mt-4"
   />
   <HeroInspiredCard
     v-if="tabs[1].current"
     v-model:hero="hero"
-    class="mt-4"
-    style="width: 881px; height: 645px"
+    class="hero-card-display mt-4"
   />
   <HeroNav v-model:tabs="tabs" class="mt-4" style="width: 915px" />
   <HeroNormalForm
@@ -49,3 +47,17 @@ const tabs = reactive([
     </button>
   </div>
 </template>
+
+<style scoped>
+.hero-card-display {
+  width: 233mm;
+  height: 170mm;
+  /* overflow: hidden; */
+}
+@media print {
+  .hero-card-display {
+    transform: scale(0.64);
+    overflow: visible;
+  }
+}
+</style>
