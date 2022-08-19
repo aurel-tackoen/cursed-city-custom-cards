@@ -1,13 +1,21 @@
 <script setup>
 import { reactive } from 'vue';
-import heroes from '@/assets/data/heroes.js';
+import { useRoute } from 'vue-router';
 import HeroNav from '@/components/layout/hero-nav.vue';
 import HeroNormalCard from '@/components/cards/hero-normal-card.vue';
 import HeroInspiredCard from '@/components/cards/hero-inspired-card.vue';
 import HeroNormalForm from '@/components/cards/hero-normal-form.vue';
 import HeroInspiredForm from '@/components/cards/hero-inspired-form.vue';
-const index = 1;
-const hero = reactive(heroes[index]);
+const route = useRoute();
+const responseMyHeroes = await fetch('/.netlify/functions/heroes-findone', {
+  method: 'POST',
+  body: JSON.stringify({
+    _id: route.params.id,
+  }),
+});
+const Hero = await responseMyHeroes.json();
+
+const hero = reactive(Hero);
 const tabs = reactive([
   { name: 'Path to Glory', current: true },
   { name: 'Inspired', current: false },
@@ -26,18 +34,20 @@ const tabs = reactive([
       v-model:hero="hero"
       class="hero-card-display mt-4"
     />
-    <HeroNav v-model:tabs="tabs" class="mt-4" style="width: 915px" />
-    <HeroNormalForm
-      v-if="tabs[0].current"
-      v-model:hero="hero"
-      class="mt-4"
-      style="width: 915px"
-    />
-    <HeroInspiredForm
-      v-if="tabs[1].current"
-      v-model:hero="hero"
-      class="mt-4"
-      style="width: 915px"
-    />
+    <div class="flex justify-center items-center mt-4">
+      <router-link
+        target="_blank"
+        :to="{
+          name: 'heroes-print',
+          params: { id: hero._id },
+        }"
+        class="border-2 border-white shadow rounded-lg px-8 py-2 bg-red-500 hover:bg-red-600 text-white uppercase font-bold text-lg"
+      >
+        Print it
+      </router-link>
+    </div>
+    <HeroNav v-model:tabs="tabs" class="mt-4" />
+    <HeroNormalForm v-if="tabs[0].current" v-model:hero="hero" class="mt-4" />
+    <HeroInspiredForm v-if="tabs[1].current" v-model:hero="hero" class="mt-4" />
   </div>
 </template>

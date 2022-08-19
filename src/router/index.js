@@ -13,11 +13,16 @@ const router = createRouter({
     },
     {
       path: '/heroes',
-      name: 'heroes',
+      name: 'heroes-list',
       component: HeroFormPage,
     },
     {
-      path: '/heroes/print',
+      path: '/heroes/:id',
+      name: 'heroes-form',
+      component: HeroFormPage,
+    },
+    {
+      path: '/heroes/:id/print',
       name: 'heroes-print',
       component: HeroPrintPage,
     },

@@ -4,6 +4,10 @@ import TopNav from '@/components/layout/top-nav.vue';
 <template>
   <div class="antialiased">
     <TopNav class="hidden-print" />
-    <router-view></router-view>
+    <Suspense>
+      <div class="container mx-auto">
+        <router-view></router-view>
+      </div>
+    </Suspense>
   </div>
 </template>

@@ -10,9 +10,9 @@ sup { top: 0.1rem; vertical-align: super;}
 sub { bottom: -0.25em; vertical-align: sub;}
 
 .hero-card-display {
-    width: 233mm;
-    height: 170mm;
-    overflow: hidden;
+  width: 233mm;
+  height: 170mm;
+  overflow: hidden;
 }
 @media print {
   .hero-card-display {
