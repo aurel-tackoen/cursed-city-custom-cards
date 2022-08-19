@@ -21,7 +21,6 @@
     "@fortawesome/pro-thin-svg-icons": "^6.1.2",
     "@fortawesome/vue-fontawesome": "^3.0.1",
     "@vueform/multiselect": "^2.5.2",
-    "jspdf": "^2.5.1",
     "mongodb": "^4.9.0",
     "netlify-identity-widget": "^1.9.2",
     "vue": "^3.2.37",
