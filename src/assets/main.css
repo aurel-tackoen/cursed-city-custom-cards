@@ -8,3 +8,19 @@
 sub, sup { font-weight: bold; font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
 sup { top: 0.1rem; vertical-align: super;}
 sub { bottom: -0.25em; vertical-align: sub;}
+
+.hero-card-display {
+    width: 233mm;
+    height: 170mm;
+    overflow: hidden;
+}
+@media print {
+  .hero-card-display {
+    transform: scale(0.64);
+    overflow: visible;
+    page-break-after: always;
+  }
+  .hidden-print {
+    display: none;
+  }
+}

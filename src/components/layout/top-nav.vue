@@ -30,7 +30,7 @@ const { userAuthAction, User } = userAuth();
         <div class="ml-8 flex space-x-8">
           <!-- Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
           <router-link
-            to="/"
+            to="/heroes"
             class="border-red-700 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-base"
           >
             Heroes
