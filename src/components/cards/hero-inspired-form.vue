@@ -364,6 +364,14 @@ const defaultAbilities = {
                 />
               </div>
               <div class="grid grid-cols-5">
+                <span class="flex items-center">Activation</span>
+                <input
+                  v-model="ability.activation"
+                  type="number"
+                  class="col-span-4 border border-gray-300 rounded bg-white outline-none"
+                />
+              </div>
+              <div class="grid grid-cols-5">
                 <span class="flex items-center">Rule: </span>
                 <textarea
                   v-model="ability.rule"

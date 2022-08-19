@@ -27,9 +27,9 @@ const heroes = [
     name: 'Gotrek Gurnisson',
     picture: {
       url: 'https://www.games-workshop.com/resources/catalog/product/920x950/99120205036_GotrekGurnisson01.jpg',
-      offsetY: 160,
-      offsetX: -80,
-      zoom: 0.9,
+      offsetY: 200,
+      offsetX: -60,
+      zoom: 1.05,
     },
     tags: [
       { label: 'Monster Slayer', value: 'monster-slayer' },
@@ -86,12 +86,14 @@ const heroes = [
       ],
       abilities: [
         {
-          name: 'Krag Blackhammer’s Rune',
-          rule: 'Once per turn, Gotrek lorem ipsum dolore sit amens, felix and gotrek in a balad.',
+          name: 'Unstoppable Battle Fury',
+          activation: 4,
+          rule: 'When a reaction occur, lorem ipsum dolore sit amens.',
         },
         {
-          name: 'Unstoppable Battle Fury',
-          rule: 'When a reaction occur, lorem ipsum dolore sit amens.',
+          name: 'Krag Blackhammer’s Rune',
+          activation: 6,
+          rule: 'Once per turn, Gotrek lorem ipsum dolore sit amens, felix and gotrek in a balad.',
         },
         {
           name: 'Shoulder Plate of Edassa',
@@ -166,6 +168,7 @@ const heroes = [
         },
         {
           name: 'Healing Light',
+          activation: 6,
           rule: 'Heal 1 Wound Ally in Area',
         },
       ],

@@ -78,8 +78,8 @@ defineProps({
       </div>
     </div>
     <div
-      id="hero-tags"
-      class="absolute text-center text-base italic text-red-800 leading-none"
+      id="hero-size"
+      class="absolute text-center text-sm italic text-red-800 leading-none font-semibold"
       style="top: 96px; left: 294px; width: 520px; height: 16px"
     >
       <div v-if="hero.size">
@@ -141,7 +141,10 @@ defineProps({
           :key="ability.name"
           class="leading-tight"
         >
-          <strong v-if="ability.name">{{ ability.name }}: </strong
+          <strong v-if="ability.name"
+            >{{ ability.name }}
+            <span v-if="ability.activation">(+{{ ability.activation }})</span
+            >: </strong
           >{{ ability.rule }}
         </div>
       </div>
