@@ -1,42 +1,15 @@
 <script setup>
 import { reactive } from 'vue';
-import netlifyIdentity from 'netlify-identity-widget';
-netlifyIdentity.init();
 import heroes from '@/assets/data/heroes.js';
 
 import generatePDF from '@/services/generate-pdf';
 
+import TopNav from '@/components/layout/top-nav.vue';
 import HeroNav from '@/components/layout/hero-nav.vue';
-import HeroNormalCard from '@/components/hero-normal-card.vue';
-import HeroInspiredCard from '@/components/hero-inspired-card.vue';
-import HeroNormalForm from '@/components/hero-normal-form.vue';
-import HeroInspiredForm from '@/components/hero-inspired-form.vue';
-function triggerNetlifyIdentityAction(action) {
-  if (action == 'login' || action == 'signup') {
-    netlifyIdentity.open(action);
-    netlifyIdentity.on(action, (user) => {
-      this.currentUser = {
-        username: user.user_metadata.full_name,
-        email: user.email,
-        access_token: user.token.access_token,
-        expires_at: user.token.expires_at,
-        refresh_token: user.token.refresh_token,
-        token_type: user.token.token_type,
-      };
-      this.updateUser({
-        currentUser: this.currentUser,
-      });
-      netlifyIdentity.close();
-    });
-  } else if (action == 'logout') {
-    this.currentUser = null;
-    this.updateUser({
-      currentUser: this.currentUser,
-    });
-    netlifyIdentity.logout();
-    this.$router.push({ name: 'Home' });
-  }
-}
+import HeroNormalCard from '@/components/cards/hero-normal-card.vue';
+import HeroInspiredCard from '@/components/cards/hero-inspired-card.vue';
+import HeroNormalForm from '@/components/cards/hero-normal-form.vue';
+import HeroInspiredForm from '@/components/cards/hero-inspired-form.vue';
 const index = 1;
 const hero = reactive(heroes[index]);
 const tabs = reactive([
@@ -45,11 +18,7 @@ const tabs = reactive([
 ]);
 </script>
 <template>
-  <p>
-    <button @click="triggerNetlifyIdentityAction('login')">Log In</button>
-    <button @click="triggerNetlifyIdentityAction('signup')">Sign Up</button>
-    <button @click="triggerNetlifyIdentityAction('logout')">Log Out</button>
-  </p>
+  <TopNav class="" />
   <HeroNormalCard
     v-if="tabs[0].current"
     v-model:hero="hero"
