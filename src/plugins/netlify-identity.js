@@ -1,31 +1,40 @@
+import { ref } from 'vue';
 import netlifyIdentity from 'netlify-identity-widget';
+
 netlifyIdentity.init();
 
-function triggerNetlifyIdentityAction(action) {
-  if (action == 'login' || action == 'signup') {
-    netlifyIdentity.open(action);
-    netlifyIdentity.on(action, (user) => {
-      this.currentUser = {
-        username: user.user_metadata.full_name,
-        email: user.email,
-        access_token: user.token.access_token,
-        expires_at: user.token.expires_at,
-        refresh_token: user.token.refresh_token,
-        token_type: user.token.token_type,
-      };
-      this.updateUser({
-        currentUser: this.currentUser,
-      });
-      netlifyIdentity.close();
-    });
-  } else if (action == 'logout') {
-    this.currentUser = null;
-    this.updateUser({
-      currentUser: this.currentUser,
-    });
-    netlifyIdentity.logout();
-    this.$router.push({ name: 'Home' });
-  }
+function setUser(netlifyUser) {
+  const user = {
+    username: netlifyUser.user_metadata.full_name,
+    email: netlifyUser.email,
+    access_token: netlifyUser.token.access_token,
+    expires_at: netlifyUser.token.expires_at,
+    refresh_token: netlifyUser.token.refresh_token,
+    token_type: netlifyUser.token.token_type,
+  };
+  return user;
 }
 
-export { triggerNetlifyIdentityAction };
+function userAuth() {
+  const currentUser = netlifyIdentity.currentUser();
+  console.log(currentUser);
+  const User = ref(currentUser ? setUser(currentUser) : {});
+  function userAuthAction(action) {
+    if (action == 'login' || action == 'signup') {
+      netlifyIdentity.open(action);
+      netlifyIdentity.on(action, (netlifyUser) => {
+        this.User = setUser(netlifyUser);
+        netlifyIdentity.close();
+      });
+    } else if (action == 'logout') {
+      this.User = {};
+      netlifyIdentity.logout();
+    }
+  }
+  return {
+    userAuthAction,
+    User,
+  };
+}
+
+export { userAuth };

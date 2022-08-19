@@ -1,5 +1,6 @@
 <script setup>
-import { triggerNetlifyIdentityAction } from '@/plugins/netlify-identity';
+import { userAuth } from '@/plugins/netlify-identity';
+const { userAuthAction, User } = userAuth();
 </script>
 
 <template>
@@ -29,9 +30,16 @@ import { triggerNetlifyIdentityAction } from '@/plugins/netlify-identity';
         </div>
       </div>
       <div class="space-x-2 text-sm flex items-center mr-6">
-        <button @click="triggerNetlifyIdentityAction('login')">Log In</button>
+        <button v-if="!User.email" @click="userAuthAction('login')">
+          Log In
+        </button>
         <!-- <button @click="triggerNetlifyIdentityAction('signup')">Sign Up</button> -->
-        <!-- <button @click="triggerNetlifyIdentityAction('logout')">Log Out</button> -->
+        <button v-if="User.email" @click="userAuthAction('logout')">
+          Log Out
+        </button>
+        <span v-if="User.email" class="">
+          {{ User.username }}
+        </span>
       </div>
     </div>
   </nav>
