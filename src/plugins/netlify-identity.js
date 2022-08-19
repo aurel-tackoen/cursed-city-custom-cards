@@ -17,17 +17,16 @@ function setUser(netlifyUser) {
 
 function userAuth() {
   const currentUser = netlifyIdentity.currentUser();
-  console.log(currentUser);
   const User = ref(currentUser ? setUser(currentUser) : {});
   function userAuthAction(action) {
     if (action == 'login' || action == 'signup') {
       netlifyIdentity.open(action);
       netlifyIdentity.on(action, (netlifyUser) => {
-        this.User = setUser(netlifyUser);
+        User.value = setUser(netlifyUser);
         netlifyIdentity.close();
       });
     } else if (action == 'logout') {
-      this.User = {};
+      User.value = {};
       netlifyIdentity.logout();
     }
   }

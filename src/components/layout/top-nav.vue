@@ -1,5 +1,16 @@
 <script setup>
 import { userAuth } from '@/plugins/netlify-identity';
+import { createAvatar } from '@dicebear/avatars';
+import * as style from '@dicebear/adventurer';
+
+function getAvatar(username) {
+  const avatar = createAvatar(style, {
+    seed: username,
+  });
+  console.log(avatar);
+  return avatar;
+}
+
 const { userAuthAction, User } = userAuth();
 </script>
 
@@ -12,6 +23,9 @@ const { userAuthAction, User } = userAuth();
             :icon="['fad', 'dice-d8']"
             class="fa-2xl text-red-700 ml-6"
           />
+          <div class="ml-2 tracking-tighter text-xl">
+            Cursed City Custom Cards
+          </div>
         </div>
         <div class="ml-8 flex space-x-8">
           <!-- Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
@@ -30,16 +44,37 @@ const { userAuthAction, User } = userAuth();
         </div>
       </div>
       <div class="space-x-2 text-sm flex items-center mr-6">
-        <button v-if="!User.email" @click="userAuthAction('login')">
+        <button
+          class="border-b border-red-700 px-1 hover:text-red-800"
+          v-if="!User.email"
+          @click="userAuthAction('login')"
+        >
           Log In
         </button>
-        <!-- <button @click="triggerNetlifyIdentityAction('signup')">Sign Up</button> -->
-        <button v-if="User.email" @click="userAuthAction('logout')">
+        &nbsp;or
+        <button
+          class="border-b border-red-700 px-1 hover:text-red-800"
+          v-if="!User.email"
+          @click="userAuthAction('signup')"
+        >
+          Sign Up
+        </button>
+        <button
+          class="text-gray-400"
+          v-if="User.email"
+          @click="userAuthAction('logout')"
+        >
           Log Out
         </button>
         <span v-if="User.email" class="">
           {{ User.username }}
         </span>
+        <div
+          v-if="User.email"
+          class="rounded-full bg-gray-50 h-9 w-9 p-0.5 border border-gray-400"
+        >
+          <div class="mt-0.5" v-html="getAvatar(User.username)"></div>
+        </div>
       </div>
     </div>
   </nav>
