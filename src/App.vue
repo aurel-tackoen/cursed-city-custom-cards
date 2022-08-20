@@ -1,5 +1,5 @@
 <script setup>
-import { useAuthStore } from '@/stores/use-auth-store.js';
+import { useAuthStore } from '@/stores/auth-store.js';
 import TopNav from '@/components/layout/top-nav.vue';
 const authStore = useAuthStore();
 authStore.init();

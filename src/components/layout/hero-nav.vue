@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 const props = defineProps({
+  hero: Object,
   tabs: Array,
   save: Boolean,
 });
@@ -21,10 +22,35 @@ function setTabs(index) {
     class="sticky top-0 mx-auto z-50 flex justify-between items-center w-full bg-white shadow rounded overflow-hidden"
     aria-label="Tabs"
   >
-    <div>
+    <div class="flex items-center">
+      <div class="p-1">
+        <div
+          id="hero-picture"
+          class="rounded-full border-2 border-gray-100 shadow overflow-hidden flex items-center"
+          style="width: 58px; height: 58px"
+        >
+          <img
+            :src="hero.picture.url"
+            alt="Hero Picture"
+            class="max-w-max"
+            :style="`transform: scale(${hero.picture.zoom});margin-top: calc(${hero.picture.offsetY}px / 5); margin-left: calc(${hero.picture.offsetX}px / 5); height: calc(500px / 5)`"
+          />
+        </div>
+      </div>
+      <div class="grow flex flex-col px-4 space-y-1">
+        <div class="text-lg leading-4 font-bold text-gray-900">
+          {{ hero.name }}
+        </div>
+        <div class="text-sm leading-4 text-gray-600">
+          Created by <span class="font-bold">{{ hero.user.username }}</span>
+          {{ $dayjs(hero.date * 1000).fromNow() }}
+        </div>
+      </div>
+    </div>
+    <div class="self-stretch">
       <button
         v-for="(tab, tabIdx) in tabs"
-        class="group relative min-w-0 flex-0 overflow-hidden bg-white py-4 px-4 text-lg text-center hover:bg-gray-50 focus:z-10"
+        class="relative overflow-hidden bg-white h-full px-3 text-center hover:bg-gray-50 focus:z-10"
         :key="tab.name"
         :class="[
           tab.current ? 'text-gray-900' : 'text-gray-500 hover:text-gray-700',

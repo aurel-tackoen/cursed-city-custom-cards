@@ -2,7 +2,7 @@
 import { reactive } from 'vue';
 import { useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { useAuthStore } from '@/stores/use-auth-store.js';
+import { useAuthStore } from '@/stores/auth-store.js';
 import HeroNav from '@/components/layout/hero-nav.vue';
 import HeroCard from '@/components/cards/hero-card.vue';
 import HeroNormalForm from '@/components/cards/hero-normal-form.vue';
@@ -35,7 +35,7 @@ const tabs = reactive([
     >
       You are not allowed to update this Hero.
     </div>
-    <HeroNav v-model:tabs="tabs" :save="true" class="mt-4" />
+    <HeroNav :hero="hero" v-model:tabs="tabs" :save="true" class="mt-4" />
     <HeroCard
       v-if="tabs[0].current"
       status="normal"

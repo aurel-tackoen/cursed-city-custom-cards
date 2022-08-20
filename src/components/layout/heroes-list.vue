@@ -38,7 +38,7 @@ defineProps({
             >
               {{ hero.name }}
             </router-link>
-            <div class="text-sm leading-4 text-gray-600">
+            <div class="text-sm leading-4 text-gray-600 italic">
               <span v-for="(tag, index) in hero.tags" :key="tag.name">
                 {{ tag.label
                 }}<span v-if="index < hero.tags.length - 1">, </span>

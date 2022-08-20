@@ -1,6 +1,6 @@
 <script setup>
 import { storeToRefs } from 'pinia';
-import { useAuthStore } from '@/stores/use-auth-store.js';
+import { useAuthStore } from '@/stores/auth-store.js';
 import { createAvatar } from '@dicebear/avatars';
 import * as style from '@dicebear/avatars-initials-sprites';
 function getAvatar(username) {

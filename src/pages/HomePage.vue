@@ -1,6 +1,6 @@
 <script setup>
 import { storeToRefs } from 'pinia';
-import { useAuthStore } from '@/stores/use-auth-store.js';
+import { useAuthStore } from '@/stores/uth-store.js';
 import HeroesList from '@/components/layout/heroes-list.vue';
 
 const authStore = useAuthStore();
