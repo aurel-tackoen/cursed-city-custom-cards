@@ -115,11 +115,11 @@ defineProps({
               >{{ note }}</sup
             >
           </div>
-          <div style="width: 80px" class="capitalize">
+          <div style="width: 75px" class="capitalize">
             {{ weapon.type }}
           </div>
           <div
-            style="width: 60px; margin-right: 30px"
+            style="width: 70px; margin-right: 25px"
             class="flex justify-center"
           >
             <DiceD6 v-if="weapon.dice1 === 'd6'" class="w-4 h-4" />
@@ -129,7 +129,7 @@ defineProps({
             <DiceD8 v-if="weapon.dice2 === 'd8'" class="w-4 h-4 ml-1" />
             <DiceD12 v-if="weapon.dice2 === 'd12'" class="w-4 h-4 ml-1" />
           </div>
-          <div style="width: 80px" class="">
+          <div style="width: 70px" class="text-center">
             {{ weapon.damages.base }}/{{ weapon.damages.critical }}
           </div>
         </div>
