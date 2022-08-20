@@ -35,7 +35,7 @@ const tabs = reactive([
     >
       You are not allowed to update this Hero.
     </div>
-    <HeroNav v-model:tabs="tabs" class="mt-4" />
+    <HeroNav v-model:tabs="tabs" :save="true" class="mt-4" />
     <HeroCard
       v-if="tabs[0].current"
       status="normal"

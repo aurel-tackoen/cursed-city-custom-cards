@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 const props = defineProps({
   tabs: Array,
+  save: Boolean,
 });
 const emit = defineEmits(['update:tabs']);
 const tabs = computed({
@@ -41,7 +42,7 @@ function setTabs(index) {
         />
       </button>
     </div>
-    <div class="pr-4">
+    <div v-if="save === true" class="pr-4">
       <button
         class="px-4 py-2 border-2 border-white shadow text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700"
       >

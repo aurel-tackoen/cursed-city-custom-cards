@@ -15,6 +15,7 @@ const tabs = reactive([
 
 <template>
   <div>
+    <HeroNav v-model:tabs="tabs" :save="true" class="mt-4" />
     <HeroCard
       v-if="tabs[0].current"
       status="normal"
@@ -27,7 +28,6 @@ const tabs = reactive([
       v-model:hero="hero"
       class="hero-card-display mt-4"
     />
-    <HeroNav v-model:tabs="tabs" class="mt-4" />
     <HeroNormalForm v-if="tabs[0].current" v-model:hero="hero" class="mt-4" />
     <HeroInspiredForm v-if="tabs[1].current" v-model:hero="hero" class="mt-4" />
   </div>
