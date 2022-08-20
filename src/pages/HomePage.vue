@@ -17,67 +17,60 @@ const Heroes = await responseHeroes.json();
 </script>
 
 <template>
-  <div class="">
-    <div class="mt-8 flex flex-col">
+  <div class="shadow bg-white rounded">
+    <div class="mt-8">
+      <div class="flex items-center justify-between h-16 px-4">
+        <div class="">
+          <h3 class="text-lg leading-6 font-medium text-gray-900">
+            All Heroes
+          </h3>
+        </div>
+        <div class="flex-shrink-0">
+          <router-link
+            :to="{
+              name: 'heroes-create',
+            }"
+            class="px-4 py-2 border-2 border-white shadow text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700"
+          >
+            Create a new Hero
+          </router-link>
+        </div>
+      </div>
       <div class="overflow-x-auto">
         <div class="inline-block min-w-full">
-          <div class="overflow-hidden shadow rounded-lg border">
-            <table class="min-w-full divide-y divide-gray-300">
-              <thead class="bg-gray-50">
-                <tr>
-                  <th
-                    scope="col"
-                    class="py-2 text-left pl-4 font-normal text-gray-700"
-                  >
+          <div class="overflow-hidden border-t">
+            <table class="min-w-full divide-y">
+              <thead class="bg-gray-50 text-sm text-gray-500">
+                <tr class="divide-x divide-gray-100">
+                  <th scope="col" class="py-2 text-left px-4 font-normal">
                     Picture
                   </th>
-                  <th
-                    scope="col"
-                    class="py-2 text-left pl-4 font-normal text-gray-700"
-                  >
+                  <th scope="col" class="py-2 text-left px-4 font-normal">
                     Name
                   </th>
-                  <th
-                    scope="col"
-                    class="py-2 text-left pl-4 font-normal text-gray-700"
-                  >
+                  <th scope="col" class="py-2 text-left px-4 font-normal">
                     Author
                   </th>
-                  <th
-                    scope="col"
-                    class="py-2 text-left pl-4 font-normal text-gray-700"
-                  >
+                  <th scope="col" class="py-2 text-left px-4 font-normal">
                     Move
                   </th>
-                  <th
-                    scope="col"
-                    class="py-2 text-left pl-4 font-normal text-gray-700"
-                  >
+                  <th scope="col" class="py-2 text-left px-4 font-normal">
                     Agility
                   </th>
-                  <th
-                    scope="col"
-                    class="py-2 text-left pl-4 font-normal text-gray-700"
-                  >
+                  <th scope="col" class="py-2 text-left px-4 font-normal">
                     Vitality
                   </th>
-                  <th
-                    scope="col"
-                    class="py-2 text-left pl-4 font-normal text-gray-700"
-                  >
+                  <th scope="col" class="py-2 text-left px-4 font-normal">
                     Defence
                   </th>
-                  <th
-                    scope="col"
-                    class="py-2 text-left pl-4 font-normal text-gray-700"
-                  >
+                  <th scope="col" class="py-2 text-left px-4 font-normal">
                     Tags
                   </th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-gray-200 bg-white">
                 <tr v-for="hero in Heroes" :key="hero._id">
-                  <td class="whitespace-nowrap py-1 pl-4 text-sm">
+                  <td class="whitespace-nowrap py-1 px-4 text-sm">
                     <div
                       id="hero-picture"
                       class="rounded-full border-2 border-gray-100 shadow-sm overflow-hidden flex items-center"
@@ -91,10 +84,10 @@ const Heroes = await responseHeroes.json();
                       />
                     </div>
                   </td>
-                  <td class="whitespace-nowrap py-1 pl-4 text-lg">
+                  <td class="whitespace-nowrap py-1 px-4 text-lg">
                     <router-link
                       :to="{
-                        name: 'heroes-form',
+                        name: 'heroes-update',
                         params: { id: hero._id },
                       }"
                       class="font-bold text-gray-900 hover:text-red-900"
@@ -102,55 +95,55 @@ const Heroes = await responseHeroes.json();
                       {{ hero.name }}
                     </router-link>
                   </td>
-                  <td class="whitespace-nowrap py-1 pl-4">
+                  <td class="whitespace-nowrap py-1 px-4">
                     {{ hero.user.username }}
                   </td>
-                  <td class="whitespace-nowrap py-1 pl-4">
+                  <td class="whitespace-nowrap py-1 px-4 text-center">
                     {{ hero.normal.stats.move }} / {{ hero.normal.stats.run }}
                   </td>
-                  <td class="whitespace-nowrap py-1 pl-4">
+                  <td class="whitespace-nowrap py-1 px-4">
                     <DiceD6
                       v-if="hero.normal.stats.agility === 'd6'"
-                      class="w-6 h-6"
+                      class="w-6 h-6 mx-auto"
                     />
                     <DiceD8
                       v-if="hero.normal.stats.agility === 'd8'"
-                      class="w-6 h-6"
+                      class="w-6 h-6 mx-auto"
                     />
                     <DiceD12
                       v-if="hero.normal.stats.agility === 'd12'"
-                      class="w-6 h-6"
+                      class="w-6 h-6 mx-auto"
                     />
                   </td>
-                  <td class="whitespace-nowrap py-1 pl-4">
+                  <td class="whitespace-nowrap py-1 px-4">
                     <DiceD6
                       v-if="hero.normal.stats.vitality === 'd6'"
-                      class="w-6 h-6"
+                      class="w-6 h-6 mx-auto"
                     />
                     <DiceD8
                       v-if="hero.normal.stats.vitality === 'd8'"
-                      class="w-6 h-6"
+                      class="w-6 h-6 mx-auto"
                     />
                     <DiceD12
                       v-if="hero.normal.stats.vitality === 'd12'"
-                      class="w-6 h-6"
+                      class="w-6 h-6 mx-auto"
                     />
                   </td>
-                  <td class="whitespace-nowrap py-1 pl-4">
+                  <td class="whitespace-nowrap py-1 px-4">
                     <DiceD6
                       v-if="hero.normal.stats.defence === 'd6'"
-                      class="w-6 h-6"
+                      class="w-6 h-6 mx-auto"
                     />
                     <DiceD8
                       v-if="hero.normal.stats.defence === 'd8'"
-                      class="w-6 h-6"
+                      class="w-6 h-6 mx-auto"
                     />
                     <DiceD12
                       v-if="hero.normal.stats.defence === 'd12'"
-                      class="w-6 h-6"
+                      class="w-6 h-6 mx-auto"
                     />
                   </td>
-                  <td class="whitespace-nowrap py-1 pl-4">
+                  <td class="whitespace-nowrap py-1 px-4">
                     <span v-for="(tag, index) in hero.tags" :key="tag.name">
                       {{ tag.label
                       }}<span v-if="index < hero.tags.length - 1">, </span>

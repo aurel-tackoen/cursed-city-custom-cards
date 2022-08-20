@@ -17,10 +17,7 @@ const { userAuthAction, User } = userAuth();
       <div class="flex">
         <div class="flex-shrink-0 flex items-center">
           <router-link to="/">
-            <fa-icon
-              :icon="['fad', 'dice-d8']"
-              class="fa-2xl text-red-700 ml-6"
-            />
+            <fa-icon :icon="['fad', 'dice-d8']" class="fa-2xl text-red-700" />
           </router-link>
           <router-link to="/">
             <div class="ml-2 tracking-tighter text-xl">
@@ -44,17 +41,17 @@ const { userAuthAction, User } = userAuth();
           </div>
         </div>
       </div>
-      <div class="space-x-2 text-sm flex items-center mr-6">
+      <div class="text-sm flex items-center">
         <button
-          class="border-b border-red-700 px-1 hover:text-red-800"
+          class="border-b border-transparent hover:border-red-700 px-1 hover:text-red-800"
           v-if="!User.email"
           @click="userAuthAction('login')"
         >
           Log In
         </button>
-        <span v-if="!User.email">or</span>
+        <div class="px-1" v-if="!User.email">or</div>
         <button
-          class="border-b border-red-700 px-1 hover:text-red-800"
+          class="border-b border-transparent hover:border-red-700 px-1 hover:text-red-800"
           v-if="!User.email"
           @click="userAuthAction('signup')"
         >

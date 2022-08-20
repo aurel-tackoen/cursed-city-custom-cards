@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from '@/pages/HomePage.vue';
-import HeroFormPage from '@/pages/HeroFormPage.vue';
+import HeroCreatePage from '@/pages/HeroCreatePage.vue';
+import HeroUpdatePage from '@/pages/HeroUpdatePage.vue';
 import HeroPrintPage from '@/pages/HeroPrintPage.vue';
 
 const router = createRouter({
@@ -13,13 +14,18 @@ const router = createRouter({
     },
     {
       path: '/heroes',
-      name: 'heroes-list',
-      component: HeroFormPage,
+      name: 'heroes',
+      component: HomePage,
+    },
+    {
+      path: '/heroes/create',
+      name: 'heroes-create',
+      component: HeroCreatePage,
     },
     {
       path: '/heroes/:id',
-      name: 'heroes-form',
-      component: HeroFormPage,
+      name: 'heroes-update',
+      component: HeroUpdatePage,
     },
     {
       path: '/heroes/:id/print',

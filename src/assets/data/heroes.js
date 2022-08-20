@@ -257,4 +257,29 @@ const heroes = [
   },
 ];
 
-export default heroes;
+const defaultHero = {
+  picture: {
+    offsetY: 100,
+    offsetX: -50,
+    zoom: 1,
+  },
+  tags: [],
+  normal: {
+    stats: {
+      move: 3,
+      run: 4,
+    },
+    weapons: [],
+    notes: [],
+    abilities: [],
+    path: {},
+  },
+  inspired: {
+    stats: {},
+    weapons: [],
+    notes: [],
+    abilities: [],
+  },
+};
+
+export { defaultHero };
