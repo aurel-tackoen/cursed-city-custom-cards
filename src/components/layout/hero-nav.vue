@@ -22,7 +22,7 @@ function setTabs(index) {
     class="sticky top-0 h-20 px-2 mx-auto z-50 flex items-center w-full bg-gradient-to-t from-gray-50 to-white shadow rounded overflow-hidden"
     aria-label="Tabs"
   >
-    <div class="w-3/12 flex items-center">
+    <div class="w-1/3 flex items-center">
       <div class="">
         <div
           id="hero-picture"
@@ -37,17 +37,17 @@ function setTabs(index) {
           />
         </div>
       </div>
-      <div class="grow flex flex-col px-4 space-y-1">
+      <div class="grow hidden sm:flex flex-col px-4 space-y-1">
         <div class="text-lg leading-4 font-bold text-gray-900">
           {{ hero.name }}
         </div>
-        <div class="text-sm leading-4 text-gray-600 italic">
+        <div class="text-xs leading-4 text-gray-600 italic">
           Created by <span class="font-bold">{{ hero.user.username }}</span>
           {{ $dayjs(hero.date * 1000).fromNow() }}
         </div>
       </div>
     </div>
-    <div class="w-6/12 flex justify-center self-stretch">
+    <div class="w-1/3 flex justify-center self-stretch">
       <button
         v-for="(tab, tabIdx) in tabs"
         class="relative overflow-hidden h-full px-3 text-center"
@@ -70,7 +70,7 @@ function setTabs(index) {
         />
       </button>
     </div>
-    <div class="w-3/12 flex justify-end items-center">
+    <div class="w-1/3 flex justify-end items-center">
       <button
         v-if="save === true"
         class="px-4 py-2 border-2 border-white shadow text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700"
