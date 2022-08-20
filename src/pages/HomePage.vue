@@ -1,17 +1,22 @@
 <script setup>
+import { storeToRefs } from 'pinia';
 import { useAuthStore } from '@/stores/use-auth-store.js';
 import DiceD6 from '@/components/dices/dice-d6.vue';
 import DiceD8 from '@/components/dices/dice-d8.vue';
 import DiceD12 from '@/components/dices/dice-d12.vue';
 
 const authStore = useAuthStore();
-const User = authStore.getUser;
+const { User } = storeToRefs(authStore);
+
+console.log(User.value.email);
 
 let MyHeroes = [];
-if (User.email) {
+if (User.value.authenticated) {
   const responseMyHeroes = await fetch('/.netlify/functions/heroes-find', {
     method: 'POST',
-    body: JSON.stringify({ params: { 'user.email': User.email } }),
+    body: JSON.stringify({
+      params: { 'user.email': User.value.email },
+    }),
   });
   MyHeroes = await responseMyHeroes.json();
 }
@@ -51,19 +56,19 @@ console.log(MyHeroes);
             You don't have any heroes yet.
           </div>
           <div
-            v-if="!User.email"
+            v-if="!User.authenticated"
             class="text-gray-400 flex justify-center w-full mt-2"
           >
             Please
             <button
               class="border-b border-grey-200 hover:border-red-700 px-1 hover:text-red-800"
-              @click="userAuthAction('login')"
+              @click="authStore.login('login')"
             >
               log In
             </button>
             before creating a new Hero.
           </div>
-          <div v-if="User.email" class="flex-shrink-0">
+          <div v-if="User.authenticated" class="mt-4 flex-shrink-0">
             <router-link
               :to="{
                 name: 'heroes-create',

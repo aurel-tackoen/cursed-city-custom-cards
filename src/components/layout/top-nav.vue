@@ -1,4 +1,5 @@
 <script setup>
+import { storeToRefs } from 'pinia';
 import { useAuthStore } from '@/stores/use-auth-store.js';
 import { createAvatar } from '@dicebear/avatars';
 import * as style from '@dicebear/avatars-initials-sprites';
@@ -9,7 +10,7 @@ function getAvatar(username) {
   return avatar;
 }
 const authStore = useAuthStore();
-const User = authStore.getUser;
+const { User } = storeToRefs(authStore);
 </script>
 
 <template>
@@ -45,31 +46,31 @@ const User = authStore.getUser;
       <div class="text-sm flex items-center">
         <button
           class="border-b border-transparent hover:border-red-700 px-1 hover:text-red-800"
-          v-if="!User.email"
-          @click="userAuthAction('login')"
+          v-if="!User.authenticated"
+          @click="authStore.login('login')"
         >
           Log In
         </button>
-        <div class="px-1" v-if="!User.email">or</div>
+        <div class="px-1" v-if="!User.authenticated">or</div>
         <button
           class="border-b border-transparent hover:border-red-700 px-1 hover:text-red-800"
-          v-if="!User.email"
-          @click="userAuthAction('signup')"
+          v-if="!User.authenticated"
+          @click="authStore.login('signup')"
         >
           Sign Up
         </button>
         <button
           class="text-gray-500 border-b border-transparent hover:border-red-700 px-1 hover:text-red-800"
-          v-if="User.email"
-          @click="userAuthAction('logout')"
+          v-if="User.authenticated"
+          @click="authStore.logout()"
         >
           Log Out
         </button>
-        <span v-if="User.email" class="border-b border-transparent">
+        <span v-if="User.authenticated" class="border-b border-transparent">
           {{ User.username }}
         </span>
         <div
-          v-if="User.email"
+          v-if="User.authenticated"
           class="rounded-full overflow-hidden h-9 w-9 border border-white shadow mx-1"
           v-html="getAvatar(User.username)"
         ></div>

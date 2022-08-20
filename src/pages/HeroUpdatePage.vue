@@ -1,6 +1,7 @@
 <script setup>
 import { reactive } from 'vue';
 import { useRoute } from 'vue-router';
+import { storeToRefs } from 'pinia';
 import { useAuthStore } from '@/stores/use-auth-store.js';
 import HeroNav from '@/components/layout/hero-nav.vue';
 import HeroCard from '@/components/cards/hero-card.vue';
@@ -9,7 +10,7 @@ import HeroInspiredForm from '@/components/cards/hero-inspired-form.vue';
 const route = useRoute();
 
 const authStore = useAuthStore();
-const User = authStore.getUser;
+const { User } = storeToRefs(authStore);
 
 const responseMyHeroes = await fetch('/.netlify/functions/heroes-findone', {
   method: 'POST',
@@ -18,12 +19,6 @@ const responseMyHeroes = await fetch('/.netlify/functions/heroes-findone', {
   }),
 });
 const Hero = await responseMyHeroes.json();
-
-if (User.value.email !== Hero.user.email) {
-  console.log('not authorized');
-} else {
-  console.log('authorized');
-}
 
 const hero = reactive(Hero);
 const tabs = reactive([

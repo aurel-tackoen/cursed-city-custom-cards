@@ -5,9 +5,6 @@ export const useAuthStore = defineStore('auth', {
   state: () => ({
     User: {},
   }),
-  getters: {
-    getUser: (state) => state.User,
-  },
   actions: {
     login(action) {
       netlifyIdentity.open(action);
