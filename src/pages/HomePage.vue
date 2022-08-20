@@ -10,9 +10,9 @@ const heroesStore = useHeroesStore();
 const { UserHeroes, Heroes } = storeToRefs(heroesStore);
 
 if (User.value.authenticated) {
-  heroesStore.fetchUserHeroes();
+  await heroesStore.fetchUserHeroes();
 }
-heroesStore.fetchHeroes();
+await heroesStore.fetchHeroes();
 </script>
 
 <template>

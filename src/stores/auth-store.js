@@ -28,9 +28,13 @@ export const useAuthStore = defineStore('auth', {
       netlifyIdentity.logout();
     },
     init() {
+      const heroesStore = useHeroesStore();
       netlifyIdentity.init();
       const response = netlifyIdentity.currentUser();
-      if (response) this.setUser(response);
+      if (response) {
+        this.setUser(response);
+        heroesStore.fetchUserHeroes();
+      }
     },
     setUser(response) {
       const user = {
