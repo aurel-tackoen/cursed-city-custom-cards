@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from '@/pages/HomePage.vue';
+import HeroSinglePage from '@/pages/HeroSinglePage.vue';
 import HeroCreatePage from '@/pages/HeroCreatePage.vue';
 import HeroUpdatePage from '@/pages/HeroUpdatePage.vue';
-import HeroPrintPage from '@/pages/HeroPrintPage.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -24,13 +24,13 @@ const router = createRouter({
     },
     {
       path: '/heroes/:id',
-      name: 'heroes-update',
-      component: HeroUpdatePage,
+      name: 'heroes-single',
+      component: HeroSinglePage,
     },
     {
-      path: '/heroes/:id/print',
-      name: 'heroes-print',
-      component: HeroPrintPage,
+      path: '/heroes/:id/update',
+      name: 'heroes-update',
+      component: HeroUpdatePage,
     },
   ],
 });

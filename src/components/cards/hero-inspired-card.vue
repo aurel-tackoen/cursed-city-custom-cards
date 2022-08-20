@@ -34,7 +34,7 @@ defineProps({
     <div
       id="hero-stats"
       class="absolute text-black w-12 grid grid-cols-2 text-2xl"
-      style="top: 285px; left: 70px; width: 100px"
+      style="top: 282px; left: 70px; width: 100px"
     >
       <div class="col-span-2 flex justify-center font-semibold mt-px mb-px">
         {{ hero.inspired.stats.move

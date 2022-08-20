@@ -11,19 +11,23 @@ const responseMyHeroes = await fetch('/.netlify/functions/heroes-findone', {
   }),
 });
 const Hero = await responseMyHeroes.json();
-
 const hero = reactive(Hero);
-// print();
+function printHero() {
+  window.print();
+}
 </script>
 
 <template>
   <div>
-    <div
-      class="rounded-md border-2 border-dashed border-red-700 bg-red-50 px-4 py-2 w-[915px] mx-auto mt-4 hidden-print text-red-900"
-    >
-      Use ctrl+p (windows) or cmd+p (mac) to print this page as a pdf.
-    </div>
     <HeroNormalCard v-model:hero="hero" class="hero-card-display mt-4" />
     <HeroInspiredCard v-model:hero="hero" class="hero-card-display mt-4" />
+    <div class="flex justify-center items-center mt-4 hidden-print">
+      <button
+        @click="printHero()"
+        class="border-2 border-white shadow rounded-lg px-8 py-2 bg-red-500 hover:bg-red-600 text-white uppercase font-bold text-lg"
+      >
+        Print it
+      </button>
+    </div>
   </div>
 </template>

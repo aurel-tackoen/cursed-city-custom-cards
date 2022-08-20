@@ -58,18 +58,18 @@ const { userAuthAction, User } = userAuth();
           Sign Up
         </button>
         <button
-          class="text-gray-400"
+          class="text-gray-500 border-b border-transparent hover:border-red-700 px-1 hover:text-red-800"
           v-if="User.email"
           @click="userAuthAction('logout')"
         >
           Log Out
         </button>
-        <span v-if="User.email" class="">
+        <span v-if="User.email" class="border-b border-transparent">
           {{ User.username }}
         </span>
         <div
           v-if="User.email"
-          class="rounded-full overflow-hidden h-9 w-9 border border-white shadow"
+          class="rounded-full overflow-hidden h-9 w-9 border border-white shadow mx-1"
           v-html="getAvatar(User.username)"
         ></div>
       </div>
