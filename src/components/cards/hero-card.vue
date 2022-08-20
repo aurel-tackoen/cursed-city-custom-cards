@@ -4,13 +4,22 @@ import DiceD8 from '@/components/dices/dice-d8.vue';
 import DiceD12 from '@/components/dices/dice-d12.vue';
 defineProps({
   hero: Object,
+  status: String,
 });
 </script>
 <template>
-  <div class="drop-shadow-lg border relative font-Cardo rounded-3xl mx-auto">
-    <div id="hero-background-inspired" class="-mt-6 -mb-4 -mx-4">
+  <div
+    class="drop-shadow-lg border relative font-Cardo rounded-3xl mx-auto bg-white"
+  >
+    <div class="-mt-6 -mb-4 -mx-4">
       <img
-        class=""
+        v-if="status === 'normal'"
+        src="@/assets/pictures/hero-background-normal.png"
+        alt="Hero Background"
+        style="width: 241mm; height: 178mm"
+      />
+      <img
+        v-if="status === 'inspired'"
         src="@/assets/pictures/hero-background-inspired.png"
         alt="Hero Background"
         style="width: 241mm; height: 178mm"
@@ -20,7 +29,6 @@ defineProps({
       class="absolute pointer-events-none top-0 z-40 h-full w-full border-2 border-gray-400 rounded-3xl"
     ></div>
     <div
-      id="hero-picture"
       class="absolute rounded-full overflow-hidden flex items-center"
       style="top: -50px; left: -35px; width: 290px; height: 290px"
     >
@@ -37,28 +45,24 @@ defineProps({
       style="top: 282px; left: 70px; width: 100px"
     >
       <div class="col-span-2 flex justify-center font-semibold mt-px mb-px">
-        {{ hero.inspired.stats.move
-        }}<span v-if="hero.inspired.stats.move && hero.inspired.stats.run"
-          >/</span
-        >{{ hero.inspired.stats.run }}
+        {{ hero[status].stats.move
+        }}<span v-if="hero[status].stats.move && hero[status].stats.run">/</span
+        >{{ hero[status].stats.run }}
       </div>
       <div class="flex justify-start mt-2">
-        <DiceD6 v-if="hero.inspired.stats.agility === 'd6'" class="w-6 h-6" />
-        <DiceD8 v-if="hero.inspired.stats.agility === 'd8'" class="w-6 h-6" />
-        <DiceD12 v-if="hero.inspired.stats.agility === 'd12'" class="w-6 h-6" />
+        <DiceD6 v-if="hero[status].stats.agility === 'd6'" class="w-6 h-6" />
+        <DiceD8 v-if="hero[status].stats.agility === 'd8'" class="w-6 h-6" />
+        <DiceD12 v-if="hero[status].stats.agility === 'd12'" class="w-6 h-6" />
       </div>
       <div class="flex justify-end mt-2">
-        <DiceD6 v-if="hero.inspired.stats.vitality === 'd6'" class="w-6 h-6" />
-        <DiceD8 v-if="hero.inspired.stats.vitality === 'd8'" class="w-6 h-6" />
-        <DiceD12
-          v-if="hero.inspired.stats.vitality === 'd12'"
-          class="w-6 h-6"
-        />
+        <DiceD6 v-if="hero[status].stats.vitality === 'd6'" class="w-6 h-6" />
+        <DiceD8 v-if="hero[status].stats.vitality === 'd8'" class="w-6 h-6" />
+        <DiceD12 v-if="hero[status].stats.vitality === 'd12'" class="w-6 h-6" />
       </div>
       <div class="col-span-2 flex justify-center mt-3">
-        <DiceD6 v-if="hero.inspired.stats.defence === 'd6'" class="w-6 h-6" />
-        <DiceD8 v-if="hero.inspired.stats.defence === 'd8'" class="w-6 h-6" />
-        <DiceD12 v-if="hero.inspired.stats.defence === 'd12'" class="w-6 h-6" />
+        <DiceD6 v-if="hero[status].stats.defence === 'd6'" class="w-6 h-6" />
+        <DiceD8 v-if="hero[status].stats.defence === 'd8'" class="w-6 h-6" />
+        <DiceD12 v-if="hero[status].stats.defence === 'd12'" class="w-6 h-6" />
       </div>
     </div>
     <div
@@ -74,8 +78,9 @@ defineProps({
       style="top: 74px; left: 294px; width: 520px; height: 20px"
     >
       <div>
-        <span v-for="tag in hero.tags" :key="tag.name"> {{ tag.label }}, </span>
-        <span> Inspired </span>
+        <span v-for="(tag, index) in hero.tags" :key="tag.name">
+          {{ tag.label }}<span v-if="index < hero.tags.length - 1">, </span>
+        </span>
       </div>
     </div>
     <div
@@ -94,7 +99,7 @@ defineProps({
     >
       <div>
         <div
-          v-for="(weapon, index) in hero.inspired.weapons"
+          v-for="(weapon, index) in hero[status].weapons"
           :key="weapon.name"
           class="text-base font-semibold flex justify-start items-center h-7 -ml-4"
           :class="{ 'bg-gray-100': index % 2 !== 0 }"
@@ -123,7 +128,7 @@ defineProps({
           </div>
         </div>
         <div class="mt-2 text-xs leading-snug">
-          <div v-for="(note, index) in hero.inspired.notes" :key="index">
+          <div v-for="(note, index) in hero[status].notes" :key="index">
             <sup class="mr-0.5">{{ index + 1 }}</sup>
             <span v-if="note.name" class="font-semibold">{{ note.name }}: </span
             >{{ note.rule }}
@@ -131,14 +136,14 @@ defineProps({
         </div>
       </div>
       <div
-        v-if="hero.inspired.abilities.length > 0"
+        v-if="hero[status].abilities.length > 0"
         class="mt-3 mb-px w-full text-center text-lg uppercase leading-none"
       >
         Unique Abilities
       </div>
       <div class="text-sm space-y-0.5">
         <div
-          v-for="ability in hero.inspired.abilities"
+          v-for="ability in hero[status].abilities"
           :key="ability.name"
           class="leading-tight"
         >
@@ -149,6 +154,14 @@ defineProps({
           >{{ ability.rule }}
         </div>
       </div>
+    </div>
+    <div
+      v-if="status === 'normal'"
+      class="absolute text-sm text-center leading-none"
+      style="top: 544px; left: 292px; width: 522px; height: 40px"
+    >
+      <strong v-if="hero.normal.path.name">{{ hero.normal.path.name }}: </strong
+      >{{ hero.normal.path.rule }}
     </div>
   </div>
 </template>

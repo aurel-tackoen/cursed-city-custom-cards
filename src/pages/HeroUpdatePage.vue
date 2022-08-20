@@ -2,8 +2,7 @@
 import { reactive } from 'vue';
 import { useRoute } from 'vue-router';
 import HeroNav from '@/components/layout/hero-nav.vue';
-import HeroNormalCard from '@/components/cards/hero-normal-card.vue';
-import HeroInspiredCard from '@/components/cards/hero-inspired-card.vue';
+import HeroCard from '@/components/cards/hero-card.vue';
 import HeroNormalForm from '@/components/cards/hero-normal-form.vue';
 import HeroInspiredForm from '@/components/cards/hero-inspired-form.vue';
 const route = useRoute();
@@ -24,13 +23,15 @@ const tabs = reactive([
 
 <template>
   <div>
-    <HeroNormalCard
+    <HeroCard
       v-if="tabs[0].current"
+      status="normal"
       v-model:hero="hero"
       class="hero-card-display mt-4"
     />
-    <HeroInspiredCard
+    <HeroIoCard
       v-if="tabs[1].current"
+      status="inspired"
       v-model:hero="hero"
       class="hero-card-display mt-4"
     />
