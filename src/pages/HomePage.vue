@@ -4,7 +4,7 @@ import DiceD6 from '@/components/dices/dice-d6.vue';
 import DiceD8 from '@/components/dices/dice-d8.vue';
 import DiceD12 from '@/components/dices/dice-d12.vue';
 
-const { User } = userAuth();
+const { User, userAuthAction } = userAuth();
 console.log(User.value.email);
 let MyHeroes = [];
 if (User.value.email) {
@@ -27,12 +27,54 @@ console.log(MyHeroes);
     <div class="mt-8">
       <div class="flex items-center justify-between h-16 px-4">
         <div class="">
-          <h3 class="text-lg leading-6 font-medium text-gray-900">
-            All Heroes
-          </h3>
+          <h3 class="text-lg leading-6 font-medium text-gray-900">My Heroes</h3>
+        </div>
+        <div v-if="MyHeroes.length > 0" class="flex-shrink-0">
+          <router-link
+            :to="{
+              name: 'heroes-create',
+            }"
+            class="px-4 py-2 border-2 border-white shadow text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700"
+          >
+            Create a new Hero
+          </router-link>
         </div>
       </div>
-      <div class="overflow-x-auto">
+      <div v-if="MyHeroes.length === 0" class="overflow-x-auto">
+        <div class="py-8 text-center border-t">
+          <fa-icon
+            class="fa-fw fa-3x mb-3 text-red-700"
+            :icon="['fad', 'book-skull']"
+          />
+          <div class="text-xl text-gray-400">
+            You don't have any heroes yet.
+          </div>
+          <div
+            v-if="!User.email"
+            class="text-gray-400 flex justify-center w-full mt-2"
+          >
+            Please
+            <button
+              class="border-b border-grey-200 hover:border-red-700 px-1 hover:text-red-800"
+              @click="userAuthAction('login')"
+            >
+              log In
+            </button>
+            before creating a new Hero.
+          </div>
+          <div v-if="User.email" class="flex-shrink-0">
+            <router-link
+              :to="{
+                name: 'heroes-create',
+              }"
+              class="px-4 py-2 border-2 border-white shadow text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700"
+            >
+              Create a new Hero
+            </router-link>
+          </div>
+        </div>
+      </div>
+      <div v-if="MyHeroes.length > 0" class="overflow-x-auto">
         <div class="inline-block min-w-full">
           <div class="overflow-hidden border-t">
             <table class="min-w-full divide-y">
@@ -65,7 +107,7 @@ console.log(MyHeroes);
                 </tr>
               </thead>
               <tbody class="divide-y divide-gray-200 bg-white">
-                <tr v-for="hero in Heroes" :key="hero._id">
+                <tr v-for="hero in MyHeroes" :key="hero._id">
                   <td class="whitespace-nowrap py-1 px-4 text-sm">
                     <div
                       id="hero-picture"
@@ -83,7 +125,7 @@ console.log(MyHeroes);
                   <td class="whitespace-nowrap py-1 px-4 text-lg">
                     <router-link
                       :to="{
-                        name: 'heroes-single',
+                        name: 'heroes-update',
                         params: { id: hero._id },
                       }"
                       class="font-bold text-gray-900 hover:text-red-900"
@@ -157,55 +199,12 @@ console.log(MyHeroes);
     <div class="mt-8">
       <div class="flex items-center justify-between h-16 px-4">
         <div class="">
-          <h3 class="text-lg leading-6 font-medium text-gray-900">My Heroes</h3>
-        </div>
-        <div v-if="MyHeroes.length > 0" class="flex-shrink-0">
-          <router-link
-            :to="{
-              name: 'heroes-create',
-            }"
-            class="px-4 py-2 border-2 border-white shadow text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700"
-          >
-            Create a new Hero
-          </router-link>
+          <h3 class="text-lg leading-6 font-medium text-gray-900">
+            All Heroes
+          </h3>
         </div>
       </div>
-      <div v-if="MyHeroes.length === 0" class="overflow-x-auto">
-        <div class="py-8 text-center border-t">
-          <div class="text-xl text-gray-400">
-            You don't have any heroes yet.
-          </div>
-          <div
-            v-if="!User.email"
-            class="text-gray-400 flex justify-center w-full mt-2"
-          >
-            <button
-              class="border-b border-transparent hover:border-red-700 px-1 hover:text-red-800"
-              @click="userAuthAction('login')"
-            >
-              Log In
-            </button>
-            <div class="px-1">or</div>
-            <button
-              class="border-b border-transparent hover:border-red-700 px-1 hover:text-red-800"
-              @click="userAuthAction('signup')"
-            >
-              Sign Up
-            </button>
-          </div>
-          <div v-if="User.email" class="flex-shrink-0">
-            <router-link
-              :to="{
-                name: 'heroes-create',
-              }"
-              class="px-4 py-2 border-2 border-white shadow text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700"
-            >
-              Create a new Hero
-            </router-link>
-          </div>
-        </div>
-      </div>
-      <div v-if="MyHeroes.length > 0" class="overflow-x-auto">
+      <div class="overflow-x-auto">
         <div class="inline-block min-w-full">
           <div class="overflow-hidden border-t">
             <table class="min-w-full divide-y">
@@ -238,7 +237,7 @@ console.log(MyHeroes);
                 </tr>
               </thead>
               <tbody class="divide-y divide-gray-200 bg-white">
-                <tr v-for="hero in MyHeroes" :key="hero._id">
+                <tr v-for="hero in Heroes" :key="hero._id">
                   <td class="whitespace-nowrap py-1 px-4 text-sm">
                     <div
                       id="hero-picture"

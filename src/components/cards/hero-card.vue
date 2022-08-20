@@ -9,7 +9,7 @@ defineProps({
 </script>
 <template>
   <div
-    class="drop-shadow-lg border relative font-Cardo rounded-3xl mx-auto bg-white"
+    class="drop-shadow-lg border relative font-Cardo rounded-2xl mx-auto bg-white"
   >
     <div class="-mt-6 -mb-4 -mx-4">
       <img
@@ -26,7 +26,7 @@ defineProps({
       />
     </div>
     <div
-      class="absolute pointer-events-none top-0 z-40 h-full w-full border-2 border-gray-400 rounded-3xl"
+      class="absolute pointer-events-none top-0 z-40 h-full w-full border-2 border-gray-400 rounded-2xl"
     ></div>
     <div
       class="absolute rounded-full overflow-hidden flex items-center"

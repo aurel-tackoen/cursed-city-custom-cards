@@ -1,6 +1,8 @@
 <script setup>
 import { reactive } from 'vue';
 import { useRoute } from 'vue-router';
+import { userAuth } from '@/plugins/netlify-identity';
+const { User } = userAuth();
 import HeroNav from '@/components/layout/hero-nav.vue';
 import HeroCard from '@/components/cards/hero-card.vue';
 import HeroNormalForm from '@/components/cards/hero-normal-form.vue';
@@ -14,6 +16,12 @@ const responseMyHeroes = await fetch('/.netlify/functions/heroes-findone', {
 });
 const Hero = await responseMyHeroes.json();
 
+if (User.value.email !== Hero.user.email) {
+  console.log('not authorized');
+} else {
+  console.log('authorized');
+}
+
 const hero = reactive(Hero);
 const tabs = reactive([
   { name: 'Path to Glory', current: true },
@@ -23,20 +31,34 @@ const tabs = reactive([
 
 <template>
   <div>
+    <div
+      v-if="User.email !== Hero.user.email"
+      class="bg-red-50 border-2 border-red-700 rounded border-dashed text-red-800 px-4 py-3 mt-4"
+    >
+      You are not allowed to update this Hero.
+    </div>
     <HeroCard
       v-if="tabs[0].current"
       status="normal"
       v-model:hero="hero"
       class="hero-card-display mt-4"
     />
-    <HeroIoCard
+    <HeroCard
       v-if="tabs[1].current"
       status="inspired"
       v-model:hero="hero"
       class="hero-card-display mt-4"
     />
     <HeroNav v-model:tabs="tabs" class="mt-4" />
-    <HeroNormalForm v-if="tabs[0].current" v-model:hero="hero" class="mt-4" />
-    <HeroInspiredForm v-if="tabs[1].current" v-model:hero="hero" class="mt-4" />
+    <HeroNormalForm
+      v-if="User.email === Hero.user.email && tabs[0].current"
+      v-model:hero="hero"
+      class="mt-4"
+    />
+    <HeroInspiredForm
+      v-if="User.email === Hero.user.email && tabs[1].current"
+      v-model:hero="hero"
+      class="mt-4"
+    />
   </div>
 </template>
