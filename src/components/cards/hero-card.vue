@@ -41,10 +41,12 @@ defineProps({
     </div>
     <div
       id="hero-stats"
-      class="absolute text-black w-12 grid grid-cols-2 text-2xl"
-      style="top: 282px; left: 70px; width: 100px"
+      class="absolute text-black w-12 grid grid-cols-2"
+      style="top: 280px; left: 70px; width: 100px"
     >
-      <div class="col-span-2 flex justify-center font-semibold mt-px mb-px">
+      <div
+        class="col-span-2 flex justify-center text-[28px] leading-[32px] font-bold mt-px mb-px"
+      >
         {{ hero[status].stats.move
         }}<span v-if="hero[status].stats.move && hero[status].stats.run">/</span
         >{{ hero[status].stats.run }}
@@ -81,6 +83,7 @@ defineProps({
         <span v-for="(tag, index) in hero.tags" :key="tag.name">
           {{ tag.label }}<span v-if="index < hero.tags.length - 1">, </span>
         </span>
+        <span v-if="status === 'inspired'">, Inspired </span>
       </div>
     </div>
     <div
@@ -112,10 +115,13 @@ defineProps({
               >{{ note }}</sup
             >
           </div>
-          <div style="width: 90px" class="capitalize">
+          <div style="width: 80px" class="capitalize">
             {{ weapon.type }}
           </div>
-          <div style="width: 80px" class="flex justify-start">
+          <div
+            style="width: 60px; margin-right: 30px"
+            class="flex justify-center"
+          >
             <DiceD6 v-if="weapon.dice1 === 'd6'" class="w-4 h-4" />
             <DiceD8 v-if="weapon.dice1 === 'd8'" class="w-4 h-4" />
             <DiceD12 v-if="weapon.dice1 === 'd12'" class="w-4 h-4" />
