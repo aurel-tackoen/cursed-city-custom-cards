@@ -19,14 +19,14 @@ function setTabs(index) {
 </script>
 <template>
   <nav
-    class="sticky top-0 mx-auto z-50 flex justify-between items-center w-full bg-white shadow rounded overflow-hidden"
+    class="sticky top-0 h-20 px-2 mx-auto z-50 flex items-center w-full bg-gradient-to-t from-gray-50 to-white shadow rounded overflow-hidden"
     aria-label="Tabs"
   >
-    <div class="flex items-center">
-      <div class="p-1">
+    <div class="w-3/12 flex items-center">
+      <div class="">
         <div
           id="hero-picture"
-          class="rounded-full border-2 border-gray-100 shadow overflow-hidden flex items-center"
+          class="rounded-full border border-gray-100 shadow overflow-hidden flex items-center"
           style="width: 58px; height: 58px"
         >
           <img
@@ -41,19 +41,21 @@ function setTabs(index) {
         <div class="text-lg leading-4 font-bold text-gray-900">
           {{ hero.name }}
         </div>
-        <div class="text-sm leading-4 text-gray-600">
+        <div class="text-sm leading-4 text-gray-600 italic">
           Created by <span class="font-bold">{{ hero.user.username }}</span>
           {{ $dayjs(hero.date * 1000).fromNow() }}
         </div>
       </div>
     </div>
-    <div class="self-stretch">
+    <div class="w-6/12 flex justify-center self-stretch">
       <button
         v-for="(tab, tabIdx) in tabs"
-        class="relative overflow-hidden bg-white h-full px-3 text-center hover:bg-gray-50 focus:z-10"
+        class="relative overflow-hidden h-full px-3 text-center"
         :key="tab.name"
         :class="[
-          tab.current ? 'text-gray-900' : 'text-gray-500 hover:text-gray-700',
+          tab.current
+            ? 'text-gray-900 cursor-default'
+            : 'text-gray-500 hover:text-red-700',
         ]"
         :aria-current="tab.current ? 'page' : undefined"
         @click="setTabs(tabIdx)"
@@ -68,8 +70,9 @@ function setTabs(index) {
         />
       </button>
     </div>
-    <div v-if="save === true" class="pr-4">
+    <div class="w-3/12 flex justify-end items-center">
       <button
+        v-if="save === true"
         class="px-4 py-2 border-2 border-white shadow text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700"
       >
         Save
