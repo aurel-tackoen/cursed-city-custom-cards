@@ -1,13 +1,16 @@
 <script setup>
 import { reactive } from 'vue';
 import { useRoute } from 'vue-router';
-import { userAuth } from '@/plugins/netlify-identity';
-const { User } = userAuth();
+import { useAuthStore } from '@/stores/use-auth-store.js';
 import HeroNav from '@/components/layout/hero-nav.vue';
 import HeroCard from '@/components/cards/hero-card.vue';
 import HeroNormalForm from '@/components/cards/hero-normal-form.vue';
 import HeroInspiredForm from '@/components/cards/hero-inspired-form.vue';
 const route = useRoute();
+
+const authStore = useAuthStore();
+const User = authStore.getUser;
+
 const responseMyHeroes = await fetch('/.netlify/functions/heroes-findone', {
   method: 'POST',
   body: JSON.stringify({

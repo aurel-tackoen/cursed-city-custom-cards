@@ -1,5 +1,5 @@
 <script setup>
-import { userAuth } from '@/plugins/netlify-identity';
+import { useAuthStore } from '@/stores/use-auth-store.js';
 import { createAvatar } from '@dicebear/avatars';
 import * as style from '@dicebear/avatars-initials-sprites';
 function getAvatar(username) {
@@ -8,7 +8,8 @@ function getAvatar(username) {
   });
   return avatar;
 }
-const { userAuthAction, User } = userAuth();
+const authStore = useAuthStore();
+const User = authStore.getUser;
 </script>
 
 <template>

@@ -1,16 +1,17 @@
 <script setup>
-import { userAuth } from '@/plugins/netlify-identity';
+import { useAuthStore } from '@/stores/use-auth-store.js';
 import DiceD6 from '@/components/dices/dice-d6.vue';
 import DiceD8 from '@/components/dices/dice-d8.vue';
 import DiceD12 from '@/components/dices/dice-d12.vue';
 
-const { User, userAuthAction } = userAuth();
-console.log(User.value.email);
+const authStore = useAuthStore();
+const User = authStore.getUser;
+
 let MyHeroes = [];
-if (User.value.email) {
+if (User.email) {
   const responseMyHeroes = await fetch('/.netlify/functions/heroes-find', {
     method: 'POST',
-    body: JSON.stringify({ params: { 'user.email': User.value.email } }),
+    body: JSON.stringify({ params: { 'user.email': User.email } }),
   });
   MyHeroes = await responseMyHeroes.json();
 }
