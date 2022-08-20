@@ -17,29 +17,36 @@ function setTabs(index) {
 </script>
 <template>
   <nav
-    class="sticky top-0 mx-auto z-50 rounded-lg shadow border border-gray-500200 flex divide-x divide-gray-200"
+    class="sticky top-0 mx-auto z-50 flex justify-between items-center w-full bg-white shadow rounded overflow-hidden"
     aria-label="Tabs"
   >
-    <button
-      v-for="(tab, tabIdx) in tabs"
-      :key="tab.name"
-      :class="[
-        tab.current ? 'text-gray-900' : 'text-gray-500 hover:text-gray-700',
-        tabIdx === 0 ? 'rounded-l-lg' : '',
-        tabIdx === tabs.length - 1 ? 'rounded-r-lg' : '',
-        'group relative min-w-0 flex-1 overflow-hidden bg-white py-4 px-4 text-lg text-center hover:bg-gray-50 focus:z-10',
-      ]"
-      :aria-current="tab.current ? 'page' : undefined"
-      @click="setTabs(tabIdx)"
-    >
-      <span>{{ tab.name }}</span>
-      <span
-        aria-hidden="true"
+    <div>
+      <button
+        v-for="(tab, tabIdx) in tabs"
+        class="group relative min-w-0 flex-0 overflow-hidden bg-white py-4 px-4 text-lg text-center hover:bg-gray-50 focus:z-10"
+        :key="tab.name"
         :class="[
-          tab.current ? 'bg-red-700' : 'bg-transparent',
-          'absolute inset-x-0 bottom-0 h-1',
+          tab.current ? 'text-gray-900' : 'text-gray-500 hover:text-gray-700',
         ]"
-      />
-    </button>
+        :aria-current="tab.current ? 'page' : undefined"
+        @click="setTabs(tabIdx)"
+      >
+        <span>{{ tab.name }}</span>
+        <span
+          aria-hidden="true"
+          :class="[
+            tab.current ? 'bg-red-700' : 'bg-transparent',
+            'absolute inset-x-0 bottom-0 h-1',
+          ]"
+        />
+      </button>
+    </div>
+    <div class="pr-4">
+      <button
+        class="px-4 py-2 border-2 border-white shadow text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700"
+      >
+        Save
+      </button>
+    </div>
   </nav>
 </template>
