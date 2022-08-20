@@ -1,22 +1,30 @@
-import { defineStore } from 'pinia';
+import { defineStore, storeToRefs } from 'pinia';
 import netlifyIdentity from 'netlify-identity-widget';
+import { useHeroesStore } from '@/stores/heroes-store.js';
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
-    User: {},
+    User: {
+      authenticated: false,
+    },
   }),
   actions: {
     login(action) {
+      const heroesStore = useHeroesStore();
       netlifyIdentity.open(action);
       netlifyIdentity.on(action, (response) => {
         this.setUser(response);
         netlifyIdentity.close();
+        heroesStore.fetchUserHeroes();
       });
     },
     logout() {
       this.User = {
         authenticated: false,
       };
+      const heroesStore = useHeroesStore();
+      const { UserHeroes } = storeToRefs(heroesStore);
+      UserHeroes.value = [];
       netlifyIdentity.logout();
     },
     init() {
