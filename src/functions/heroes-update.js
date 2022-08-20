@@ -12,7 +12,12 @@ exports.handler = async function ({ body }) {
     data._id = new ObjectID(data._id);
     const database = (await clientPromise).db('cursed-database');
     const collection = database.collection('Heroes');
-    const item = await collection.findOne({ _id: data._id });
+    const item = await collection.findOneAndUpdate(
+      { _id: data._id },
+      { $set: data },
+      { returnDocument: 'after' }
+    );
+    console.log(item);
     return {
       statusCode: 200,
       body: JSON.stringify(item),

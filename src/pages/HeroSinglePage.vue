@@ -1,16 +1,12 @@
 <script setup>
-import { reactive } from 'vue';
 import { useRoute } from 'vue-router';
 import HeroCard from '@/components/cards/hero-card.vue';
+import { useHeroesStore } from '@/stores/heroes-store.js';
+
 const route = useRoute();
-const responseMyHeroes = await fetch('/.netlify/functions/heroes-findone', {
-  method: 'POST',
-  body: JSON.stringify({
-    _id: route.params.id,
-  }),
-});
-const Hero = await responseMyHeroes.json();
-const hero = reactive(Hero);
+const heroesStore = useHeroesStore();
+await heroesStore.fetchHero(route.params.id);
+const Hero = heroesStore.Hero;
 function printHero() {
   window.print();
 }
@@ -20,12 +16,12 @@ function printHero() {
   <div>
     <HeroCard
       status="normal"
-      v-model:hero="hero"
+      v-model:hero="Hero"
       class="hero-card-display mt-4"
     />
     <HeroCard
       status="inspired"
-      v-model:hero="hero"
+      v-model:hero="Hero"
       class="hero-card-display mt-4"
     />
     <div class="flex justify-center items-center mt-4 hidden-print">

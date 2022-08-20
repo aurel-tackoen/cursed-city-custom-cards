@@ -13,10 +13,10 @@ const app = createApp(App);
 const store = createPinia();
 
 dayjs.extend(relativeTime);
-app.config.globalProperties.$dayjs = dayjs;
 
 app.component('fa-icon', FontAwesomeIcon);
 app.use(router);
 app.use(store);
+app.provide('dayjs', dayjs);
 
 app.mount('#app');

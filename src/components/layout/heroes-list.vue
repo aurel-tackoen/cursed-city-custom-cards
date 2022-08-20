@@ -1,4 +1,6 @@
 <script setup>
+import { inject } from 'vue';
+const dayjs = inject('dayjs');
 defineProps({
   heroes: Array,
   target: String,
@@ -48,7 +50,7 @@ defineProps({
           <div class="px-4">
             <div class="text-sm leading-4 text-gray-600">
               Created by <span class="font-bold">{{ hero.user.username }}</span>
-              {{ $dayjs(hero.date * 1000).fromNow() }}
+              {{ dayjs(hero.date * 1000).fromNow() }}
             </div>
           </div>
         </div>

@@ -11,10 +11,10 @@ exports.handler = async function ({ body }) {
     console.log(data.params);
     const database = (await clientPromise).db('cursed-database');
     const collection = database.collection('Heroes');
-    const results = await collection.find(data.params).limit(20).toArray();
+    const items = await collection.find(data.params).limit(20).toArray();
     return {
       statusCode: 200,
-      body: JSON.stringify(results),
+      body: JSON.stringify(items),
     };
   } catch (error) {
     console.log(error);

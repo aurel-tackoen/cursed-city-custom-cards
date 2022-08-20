@@ -3,24 +3,24 @@ import { reactive } from 'vue';
 import { useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useAuthStore } from '@/stores/auth-store.js';
+import { useHeroesStore } from '@/stores/heroes-store.js';
+
 import HeroNav from '@/components/layout/hero-nav.vue';
 import HeroCard from '@/components/cards/hero-card.vue';
 import HeroNormalForm from '@/components/cards/hero-normal-form.vue';
 import HeroInspiredForm from '@/components/cards/hero-inspired-form.vue';
-const route = useRoute();
 
+const route = useRoute();
 const authStore = useAuthStore();
 const { User } = storeToRefs(authStore);
+const heroesStore = useHeroesStore();
+await heroesStore.fetchHero(route.params.id);
+const { Hero } = storeToRefs(heroesStore);
 
-const responseMyHeroes = await fetch('/.netlify/functions/heroes-findone', {
-  method: 'POST',
-  body: JSON.stringify({
-    _id: route.params.id,
-  }),
-});
-const Hero = await responseMyHeroes.json();
+function updateHero() {
+  heroesStore.updateHero();
+}
 
-const hero = reactive(Hero);
 const tabs = reactive([
   { name: 'Path to Glory', current: true },
   { name: 'Inspired', current: false },
@@ -35,27 +35,34 @@ const tabs = reactive([
     >
       You are not allowed to update this Hero.
     </div>
-    <HeroNav :hero="hero" v-model:tabs="tabs" :save="true" class="mt-4" />
+    <HeroNav
+      @update:hero="updateHero"
+      :hero="Hero"
+      v-model:tabs="tabs"
+      :save="true"
+      :create="false"
+      class="mt-4"
+    />
     <HeroCard
       v-if="tabs[0].current"
       status="normal"
-      v-model:hero="hero"
+      v-model:hero="Hero"
       class="hero-card-display mt-4"
     />
     <HeroCard
       v-if="tabs[1].current"
       status="inspired"
-      v-model:hero="hero"
+      v-model:hero="Hero"
       class="hero-card-display mt-4"
     />
     <HeroNormalForm
       v-if="User.email === Hero.user.email && tabs[0].current"
-      v-model:hero="hero"
+      v-model:hero="Hero"
       class="mt-4"
     />
     <HeroInspiredForm
       v-if="User.email === Hero.user.email && tabs[1].current"
-      v-model:hero="hero"
+      v-model:hero="Hero"
       class="mt-4"
     />
   </div>
