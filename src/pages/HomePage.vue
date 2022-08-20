@@ -5,11 +5,12 @@ import DiceD8 from '@/components/dices/dice-d8.vue';
 import DiceD12 from '@/components/dices/dice-d12.vue';
 
 const { User } = userAuth();
+console.log(User.value.email);
 let MyHeroes = [];
-if (User.email) {
+if (User.value.email) {
   const responseMyHeroes = await fetch('/.netlify/functions/heroes-find', {
     method: 'POST',
-    body: JSON.stringify({ params: { 'user.email': User.email } }),
+    body: JSON.stringify({ params: { 'user.email': User.value.email } }),
   });
   MyHeroes = await responseMyHeroes.json();
 }
