@@ -9,21 +9,16 @@ const clientPromise = mongoClient.connect();
 
 export const handler = async function ({ body }, context) {
   try {
-    console.log(context);
-    console.log(process.env.CONTEXT);
-    if (process.env.CONTEXT !== 'dev') {
-      await checkAuth(context);
-    }
-    console.log('user', user);
-    // const data = JSON.parse(body);
-    // await heroesValidation(data);
-    // const database = (await clientPromise).db('cursed-database');
-    // const collection = database.collection('Heroes');
-    // const item = await collection.insertOne(data);
-    // return {
-    //   statusCode: 200,
-    //   body: JSON.stringify(item),
-    // };
+    await checkAuth(context);
+    const data = JSON.parse(body);
+    await heroesValidation(data);
+    const database = (await clientPromise).db('cursed-database');
+    const collection = database.collection('Heroes');
+    const item = await collection.insertOne(data);
+    return {
+      statusCode: 200,
+      body: JSON.stringify(item),
+    };
   } catch (error) {
     console.log(error);
     return { statusCode: 500, body: JSON.stringify(error) };

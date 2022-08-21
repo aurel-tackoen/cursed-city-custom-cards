@@ -16,8 +16,6 @@ export const useHeroesStore = defineStore('heroes', {
       try {
         this.HeroErrors = [];
         const item = await heroesValidation(data);
-        console.log(User);
-        console.log(User.value);
         const response = await fetch('/.netlify/functions/heroes-create', {
           headers: {
             Authorization: `Bearer ${User.value.access_token}`,
@@ -42,9 +40,14 @@ export const useHeroesStore = defineStore('heroes', {
     },
     async updateHero() {
       try {
+        const authStore = useAuthStore();
+        const { User } = storeToRefs(authStore);
         this.HeroErrors = [];
         const item = await heroesValidation(this.Hero);
         const response = await fetch('/.netlify/functions/heroes-update', {
+          headers: {
+            Authorization: `Bearer ${User.value.access_token}`,
+          },
           method: 'POST',
           body: JSON.stringify(item),
         });
@@ -58,6 +61,7 @@ export const useHeroesStore = defineStore('heroes', {
           throw errors;
         }
       } catch (errors) {
+        console.log(errors);
         const validationErrors = heroesErrors(errors);
         this.HeroErrors = validationErrors;
         return false;
@@ -93,10 +97,14 @@ export const useHeroesStore = defineStore('heroes', {
     async fetchUserHeroes() {
       try {
         const authStore = useAuthStore();
+        const { User } = storeToRefs(authStore);
         const response = await fetch('/.netlify/functions/heroes-find', {
+          headers: {
+            Authorization: `Bearer ${User.value.access_token}`,
+          },
           method: 'POST',
           body: JSON.stringify({
-            params: { 'user.email': authStore.User.email },
+            params: { 'user.email': User.value.email },
           }),
         });
         const heroes = await response.json();
