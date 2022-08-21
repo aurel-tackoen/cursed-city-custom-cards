@@ -18,7 +18,9 @@
 <template>
   <div class="rounded bg-white shadow">
     <div class="mt-8">
-      <div class="flex h-16 items-center justify-between px-4">
+      <div
+        class="flex h-16 items-center justify-between bg-gradient-to-t from-gray-50 to-white px-4"
+      >
         <div class="">
           <h3 class="text-lg font-medium leading-6 text-gray-900">My Heroes</h3>
         </div>
@@ -64,7 +66,9 @@
   </div>
   <div class="rounded bg-white shadow">
     <div class="mt-8">
-      <div class="flex h-16 items-center justify-between px-4">
+      <div
+        class="flex h-16 items-center justify-between bg-gradient-to-t from-gray-50 to-white px-4"
+      >
         <div class="">
           <h3 class="text-lg font-medium leading-6 text-gray-900">
             All Heroes

@@ -10,7 +10,7 @@
 <template>
   <div class="block min-w-full">
     <div class="overflow-hidden border-t">
-      <div class="">
+      <div class="divide-y divide-gray-100">
         <div
           v-for="hero in heroes"
           :key="hero._id"
