@@ -7,8 +7,7 @@ import { useHeroesStore } from '@/stores/heroes-store.js';
 
 import HeroNav from '@/components/layout/hero-nav.vue';
 import HeroCard from '@/components/cards/hero-card.vue';
-import HeroNormalForm from '@/components/cards/hero-normal-form.vue';
-import HeroInspiredForm from '@/components/cards/hero-inspired-form.vue';
+import HeroForm from '@/components/cards/hero-form.vue';
 
 const route = useRoute();
 const authStore = useAuthStore();
@@ -55,13 +54,15 @@ const tabs = reactive([
       v-model:hero="Hero"
       class="hero-card-display mt-4"
     />
-    <HeroNormalForm
+    <HeroForm
       v-if="User.email === Hero.user.email && tabs[0].current"
+      status="normal"
       v-model:hero="Hero"
       class="mt-4"
     />
-    <HeroInspiredForm
+    <HeroForm
       v-if="User.email === Hero.user.email && tabs[1].current"
+      status="inspired"
       v-model:hero="Hero"
       class="mt-4"
     />

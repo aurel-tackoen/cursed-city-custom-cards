@@ -7,7 +7,7 @@ import { defaultHero } from '@/assets/data/heroes.js';
 
 import HeroNav from '@/components/layout/hero-nav.vue';
 import HeroCard from '@/components/cards/hero-card.vue';
-import HeroNormalForm from '@/components/cards/hero-normal-form.vue';
+import HeroForm from '@/components/cards/hero-form.vue';
 import HeroInspiredForm from '@/components/cards/hero-inspired-form.vue';
 
 const dayjs = inject('dayjs');
@@ -33,38 +33,37 @@ function createHero() {
 </script>
 
 <template>
-  <div>
+  <div class="space-y-4">
     <HeroNav
       @create:hero="createHero()"
       :hero="hero"
       v-model:tabs="tabs"
       :save="false"
       :create="true"
-      class="mt-4"
     />
     <HeroCard
       v-if="tabs[0].current"
       status="normal"
       v-model:hero="hero"
-      class="hero-card-display mt-4"
+      class="hero-card-display"
     />
     <HeroCard
       v-if="tabs[1].current"
       status="inspired"
       v-model:hero="hero"
-      class="hero-card-display mt-4"
+      class="hero-card-display"
     />
-    <HeroNormalForm
+    <HeroForm
       v-if="tabs[0].current"
+      status="normal"
       :errors="HeroErrors"
       v-model:hero="hero"
-      class="mt-4"
     />
-    <HeroInspiredForm
+    <HeroForm
       v-if="tabs[1].current"
+      status="inspired"
       :errors="HeroErrors"
       v-model:hero="hero"
-      class="mt-4"
     />
   </div>
 </template>

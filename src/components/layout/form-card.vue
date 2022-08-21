@@ -4,7 +4,7 @@ defineProps({
 });
 </script>
 <template>
-  <div class="shadow-sm rounded border border-gray-100 mb-4">
+  <div class="shadow-sm rounded border border-gray-100">
     <div
       class="text-lg font-semibold bg-gray-50 px-5 py-3 mb-3 border-b border-gray-100"
     >

@@ -3,9 +3,19 @@ import { computed } from 'vue';
 import draggable from 'vuedraggable';
 import Multiselect from '@vueform/multiselect';
 import FormCard from '@/components/layout/form-card.vue';
+import ErrorsAlert from '@/components/layout/errors-alert.vue';
 const props = defineProps({
-  hero: Object,
-  errors: Array,
+  status: String,
+  hero: {
+    type: Object,
+    required: true,
+  },
+  errors: {
+    type: Array,
+    default() {
+      return [];
+    },
+  },
 });
 const emit = defineEmits(['update:hero']);
 const hero = computed({
@@ -31,12 +41,12 @@ const defaultAbilities = {
   rule: '',
 };
 const getError = (path) => {
-  return props.errors.find((e) => e.path === path);
+  return props?.errors.find((e) => e.path === path);
 };
 </script>
 <template>
-  <div class="mx-auto">
-    {{ errors }}
+  <div class="mx-auto space-y-4">
+    <ErrorsAlert :errors="errors" />
     <FormCard id="user-hero" title="Hero">
       <div class="flex w-full bg-white">
         <div class="space-y-3 grow">
@@ -137,12 +147,12 @@ const getError = (path) => {
           <div class="grid grid-cols-5">
             <span class="flex items-center">Move / Run: </span>
             <input
-              v-model="hero.normal.stats.move"
+              v-model="hero[status].stats.move"
               type="number"
               class="mr-1 col-span-2 border border-gray-300 rounded bg-white outline-none"
             />
             <input
-              v-model="hero.normal.stats.run"
+              v-model="hero[status].stats.run"
               type="number"
               class="ml-1 col-span-2 border border-gray-300 rounded bg-white outline-none"
             />
@@ -150,7 +160,7 @@ const getError = (path) => {
           <div class="grid grid-cols-5">
             <span class="flex items-center">Agility: </span>
             <select
-              v-model="hero.normal.stats.agility"
+              v-model="hero[status].stats.agility"
               class="col-span-4 border border-gray-300 rounded bg-white outline-none"
             >
               <option value="d6">D6 (Square)</option>
@@ -161,7 +171,7 @@ const getError = (path) => {
           <div class="grid grid-cols-5">
             <span class="flex items-center">Vitality: </span>
             <select
-              v-model="hero.normal.stats.vitality"
+              v-model="hero[status].stats.vitality"
               class="col-span-4 border border-gray-300 rounded bg-white outline-none"
             >
               <option value="d6">D6 (Square)</option>
@@ -172,7 +182,7 @@ const getError = (path) => {
           <div class="grid grid-cols-5">
             <span class="flex items-center">Defence: </span>
             <select
-              v-model="hero.normal.stats.defence"
+              v-model="hero[status].stats.defence"
               class="col-span-4 border border-gray-300 rounded bg-white outline-none"
             >
               <option value="d6">D6 (Square)</option>
@@ -187,7 +197,11 @@ const getError = (path) => {
       </div>
     </FormCard>
     <FormCard id="user-weapons" title="Weapons">
-      <draggable v-model="hero.normal.weapons" item-key="name" handle=".handle">
+      <draggable
+        v-model="hero[status].weapons"
+        item-key="name"
+        handle=".handle"
+      >
         <template #item="{ element: weapon, index }">
           <div class="pb-2 mb-2 border-b-2 border-dashed flex w-full bg-white">
             <div class="space-y-3 grow">
@@ -257,7 +271,7 @@ const getError = (path) => {
                   v-model="weapon.notes"
                 >
                   <option
-                    v-for="(note, index) in hero.normal.notes"
+                    v-for="(note, index) in hero[status].notes"
                     :key="index"
                     :value="index + 1"
                   >
@@ -275,7 +289,7 @@ const getError = (path) => {
                   :icon="['fas', 'grip-vertical']"
                 />
               </div>
-              <button @click="hero.normal.weapons.splice(index, 1)">
+              <button @click="hero[status].weapons.splice(index, 1)">
                 <fa-icon
                   class="fa-fw text-gray-300 hover:text-red-700"
                   :icon="['fas', 'trash']"
@@ -288,14 +302,14 @@ const getError = (path) => {
       <div class="flex justify-center items-center">
         <button
           class="fa-fw text-gray-300 hover:text-red-700"
-          @click="hero.normal.weapons.push(defaultWeapon)"
+          @click="hero[status].weapons.push(defaultWeapon)"
         >
           <fa-icon class="fa-fw" :icon="['fas', 'plus-large']" />
         </button>
       </div>
     </FormCard>
     <FormCard id="user-weapons-notes" title="Weapons Notes">
-      <draggable v-model="hero.normal.notes" item-key="name" handle=".handle">
+      <draggable v-model="hero[status].notes" item-key="name" handle=".handle">
         <template #item="{ element: note, index }">
           <div class="pb-2 mb-2 border-b-2 border-dashed flex w-full bg-white">
             <div class="space-y-3 grow">
@@ -325,7 +339,7 @@ const getError = (path) => {
                   :icon="['fas', 'grip-vertical']"
                 />
               </div>
-              <button @click="hero.normal.notes.splice(index, 1)">
+              <button @click="hero[status].notes.splice(index, 1)">
                 <fa-icon
                   class="fa-fw text-gray-300 hover:text-red-700"
                   :icon="['fas', 'trash']"
@@ -338,7 +352,7 @@ const getError = (path) => {
       <div class="flex justify-center items-center">
         <button
           class="fa-fw text-gray-300 hover:text-red-700"
-          @click="hero.normal.notes.push(defaultNotes)"
+          @click="hero[status].notes.push(defaultNotes)"
         >
           <fa-icon class="fa-fw" :icon="['fas', 'plus-large']" />
         </button>
@@ -346,7 +360,7 @@ const getError = (path) => {
     </FormCard>
     <FormCard id="user-abilities" title="Unique Abilities">
       <draggable
-        v-model="hero.normal.abilities"
+        v-model="hero[status].abilities"
         item-key="name"
         handle=".handle"
       >
@@ -387,7 +401,7 @@ const getError = (path) => {
                   :icon="['fas', 'grip-vertical']"
                 />
               </div>
-              <button @click="hero.normal.abilities.splice(index, 1)">
+              <button @click="hero[status].abilities.splice(index, 1)">
                 <fa-icon
                   class="fa-fw text-gray-300 hover:text-red-700"
                   :icon="['fas', 'trash']"
@@ -400,19 +414,19 @@ const getError = (path) => {
       <div class="flex justify-center items-center">
         <button
           class="fa-fw text-gray-300 hover:text-red-700"
-          @click="hero.normal.abilities.push(defaultAbilities)"
+          @click="hero[status].abilities.push(defaultAbilities)"
         >
           <fa-icon class="fa-fw" :icon="['fas', 'plus-large']" />
         </button>
       </div>
     </FormCard>
-    <FormCard id="user-path" title="Path to Glory">
+    <FormCard v-if="status === 'normal'" id="user-path" title="Path to Glory">
       <div class="flex w-full bg-white">
         <div class="space-y-3 grow">
           <div class="grid grid-cols-5">
             <span class="flex items-center">Name: </span>
             <input
-              v-model="hero.normal.path.name"
+              v-model="hero[status].path.name"
               type="text"
               class="col-span-4 border border-gray-300 rounded bg-white outline-none"
             />
@@ -420,7 +434,7 @@ const getError = (path) => {
           <div class="grid grid-cols-5">
             <span class="flex items-center">Rule: </span>
             <textarea
-              v-model="hero.normal.path.rule"
+              v-model="hero[status].path.rule"
               type="text"
               class="col-span-4 border border-gray-300 rounded bg-white outline-none"
             />
