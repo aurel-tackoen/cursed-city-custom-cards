@@ -20,7 +20,7 @@ export const useHeroesStore = defineStore('heroes', {
         console.log(User.value);
         const response = await fetch('/.netlify/functions/heroes-create', {
           headers: {
-            Authorization: `bearer ${User.value.access_token}`,
+            Authorization: `Bearer ${User.value.access_token}`,
           },
           method: 'POST',
           body: JSON.stringify(item),
