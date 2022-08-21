@@ -14,7 +14,6 @@ export const useHeroesStore = defineStore('heroes', {
       try {
         this.HeroErrors = [];
         const item = await heroesValidation(data);
-        console.log(item);
         const response = await fetch('/.netlify/functions/heroes-create', {
           method: 'POST',
           body: JSON.stringify(item),
@@ -28,6 +27,7 @@ export const useHeroesStore = defineStore('heroes', {
           throw errors;
         }
       } catch (errors) {
+        console.log(errors);
         const validationErrors = heroesErrors(errors);
         this.HeroErrors = validationErrors;
         return false;

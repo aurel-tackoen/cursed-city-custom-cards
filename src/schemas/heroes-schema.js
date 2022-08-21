@@ -1,7 +1,5 @@
 import { object, string, number, array } from 'yup';
 
-// TODO: add validation for each field
-
 const heroesSchema = object({
   name: string().required(),
   size: string().required(),
@@ -10,13 +8,16 @@ const heroesSchema = object({
     offsetY: number().required(),
     offsetX: number().required(),
     zoom: number().required(),
-  }),
-  tags: array(),
+  }).required(),
+  tags: array(string().required()).required(),
   normal: object({
     stats: object({
-      move: number(),
-      run: number(),
-    }),
+      move: number().required(),
+      run: number().required(),
+      agility: string().required(),
+      vitality: string().required(),
+      defence: string().required(),
+    }).required(),
     weapons: array(
       object({
         name: string().required(),
@@ -25,30 +26,31 @@ const heroesSchema = object({
         damages: object({
           base: number().required(),
           critical: number().required(),
-        }),
-      })
-    ),
+        }).required(),
+      }).required()
+    ).required(),
     notes: array(
       object({
         name: string().required(),
         rule: string().required(),
       })
-    ),
+    ).required(),
     abilities: array(
       object({
         name: string().required(),
+        activation: number().required(),
         rule: string().required(),
       })
-    ),
+    ).required(),
     path: object({
-      name: string().required(),
-      rule: string().required(),
-    }),
+      name: string(),
+      rule: string(),
+    }).required(),
   }),
   user: object({
     email: string().email().required(),
     username: string().required(),
-  }),
+  }).required(),
   date: number().required().positive().integer(),
 });
 

@@ -13,7 +13,6 @@ export const handler = async function ({ body }) {
     const database = (await clientPromise).db('cursed-database');
     const collection = database.collection('Heroes');
     const item = await collection.insertOne(data);
-    console.log(item);
     return {
       statusCode: 200,
       body: JSON.stringify(item),

@@ -110,6 +110,101 @@
             >
           </div>
           <div class="grid grid-cols-5">
+            <span class="flex items-center">Move / Run: </span>
+            <input
+              v-model="hero[status].stats.move"
+              type="number"
+              class="col-span-2 mr-1 rounded border border-gray-300 bg-white outline-none"
+              :class="{
+                'border-red-800': getError(`${status}.stats.move`),
+              }"
+            />
+            <input
+              v-model="hero[status].stats.run"
+              type="number"
+              class="col-span-2 ml-1 rounded border border-gray-300 bg-white outline-none"
+              :class="{
+                'border-red-800': getError(`${status}.stats.run`),
+              }"
+            />
+            <span
+              class="col-span-4 col-start-2 text-xs uppercase text-red-800"
+              v-if="getError(`${status}.stats.move`)"
+              >{{ getError(`${status}.stats.move`).message }}</span
+            >
+            <span
+              class="col-span-4 col-start-2 text-xs uppercase text-red-800"
+              v-if="getError(`${status}.stats.run`)"
+              >{{ getError(`${status}.stats.run`).message }}</span
+            >
+          </div>
+          <div class="grid grid-cols-5">
+            <span class="flex items-center">Agility: </span>
+            <select
+              v-model="hero[status].stats.agility"
+              class="col-span-4 rounded border border-gray-300 bg-white outline-none"
+              :class="{
+                'border-red-800': getError(`${status}.stats.agility`),
+              }"
+            >
+              <option value="d6">D6 (Square)</option>
+              <option value="d8">D8 (Triangle)</option>
+              <option value="d12">D12 (Pentagone)</option>
+            </select>
+            <span
+              class="col-span-4 col-start-2 text-xs uppercase text-red-800"
+              v-if="getError(`${status}.stats.agility`)"
+              >{{ getError(`${status}.stats.agility`).message }}</span
+            >
+          </div>
+          <div class="grid grid-cols-5">
+            <span class="flex items-center">Vitality: </span>
+            <select
+              v-model="hero[status].stats.vitality"
+              class="col-span-4 rounded border border-gray-300 bg-white outline-none"
+              :class="{
+                'border-red-800': getError(`${status}.stats.vitality`),
+              }"
+            >
+              <option value="d6">D6 (Square)</option>
+              <option value="d8">D8 (Triangle)</option>
+              <option value="d12">D12 (Pentagone)</option>
+            </select>
+            <span
+              class="col-span-4 col-start-2 text-xs uppercase text-red-800"
+              v-if="getError(`${status}.stats.vitality`)"
+              >{{ getError(`${status}.stats.vitality`).message }}</span
+            >
+          </div>
+          <div class="grid grid-cols-5">
+            <span class="flex items-center">Defence: </span>
+            <select
+              v-model="hero[status].stats.defence"
+              class="col-span-4 rounded border border-gray-300 bg-white outline-none"
+              :class="{
+                'border-red-800': getError(`${status}.stats.defence`),
+              }"
+            >
+              <option value="d6">D6 (Square)</option>
+              <option value="d8">D8 (Triangle)</option>
+              <option value="d12">D12 (Pentagone)</option>
+            </select>
+            <span
+              class="col-span-4 col-start-2 text-xs uppercase text-red-800"
+              v-if="getError(`${status}.stats.defence`)"
+              >{{ getError(`${status}.stats.defence`).message }}</span
+            >
+          </div>
+        </div>
+        <div
+          class="-mr-4 w-12 flex-row items-center justify-center text-center"
+        ></div>
+      </div>
+    </FormCard>
+    <FormCard id="user-hero-stats" title="Picture">
+      <div class="flex w-full bg-white">
+        <div class="grow space-y-3">
+          <div class="grid grid-cols-5">
             <span class="flex items-center">Picture: </span>
             <input
               v-model="hero.picture.url"
@@ -176,61 +271,6 @@
               v-if="getError('picture.zoom')"
               >{{ getError('picture.zoom').message }}</span
             >
-          </div>
-        </div>
-        <div
-          class="-mr-4 w-12 flex-row items-center justify-center text-center"
-        ></div>
-      </div>
-    </FormCard>
-    <FormCard id="user-hero-stats" title="Hero Stats">
-      <div class="flex w-full bg-white">
-        <div class="grow space-y-3">
-          <div class="grid grid-cols-5">
-            <span class="flex items-center">Move / Run: </span>
-            <input
-              v-model="hero[status].stats.move"
-              type="number"
-              class="col-span-2 mr-1 rounded border border-gray-300 bg-white outline-none"
-            />
-            <input
-              v-model="hero[status].stats.run"
-              type="number"
-              class="col-span-2 ml-1 rounded border border-gray-300 bg-white outline-none"
-            />
-          </div>
-          <div class="grid grid-cols-5">
-            <span class="flex items-center">Agility: </span>
-            <select
-              v-model="hero[status].stats.agility"
-              class="col-span-4 rounded border border-gray-300 bg-white outline-none"
-            >
-              <option value="d6">D6 (Square)</option>
-              <option value="d8">D8 (Triangle)</option>
-              <option value="d12">D12 (Pentagone)</option>
-            </select>
-          </div>
-          <div class="grid grid-cols-5">
-            <span class="flex items-center">Vitality: </span>
-            <select
-              v-model="hero[status].stats.vitality"
-              class="col-span-4 rounded border border-gray-300 bg-white outline-none"
-            >
-              <option value="d6">D6 (Square)</option>
-              <option value="d8">D8 (Triangle)</option>
-              <option value="d12">D12 (Pentagone)</option>
-            </select>
-          </div>
-          <div class="grid grid-cols-5">
-            <span class="flex items-center">Defence: </span>
-            <select
-              v-model="hero[status].stats.defence"
-              class="col-span-4 rounded border border-gray-300 bg-white outline-none"
-            >
-              <option value="d6">D6 (Square)</option>
-              <option value="d8">D8 (Triangle)</option>
-              <option value="d12">D12 (Pentagone)</option>
-            </select>
           </div>
         </div>
         <div
@@ -471,7 +511,15 @@
               v-model="hero[status].path.name"
               type="text"
               class="col-span-4 rounded border border-gray-300 bg-white outline-none"
+              :class="{
+                'border-red-800': getError(`${status}.path.name`),
+              }"
             />
+            <span
+              class="col-span-4 col-start-2 text-xs uppercase text-red-800"
+              v-if="getError(`${status}.path.name`)"
+              >{{ getError(`${status}.path.name`).message }}</span
+            >
           </div>
           <div class="grid grid-cols-5">
             <span class="flex items-center">Rule: </span>
@@ -479,7 +527,15 @@
               v-model="hero[status].path.rule"
               type="text"
               class="col-span-4 rounded border border-gray-300 bg-white outline-none"
+              :class="{
+                'border-red-800': getError(`${status}.path.rule`),
+              }"
             />
+            <span
+              class="col-span-4 col-start-2 text-xs uppercase text-red-800"
+              v-if="getError(`${status}.path.rule`)"
+              >{{ getError(`${status}.path.rule`).message }}</span
+            >
           </div>
         </div>
         <div
