@@ -19,8 +19,9 @@ export const useHeroesStore = defineStore('heroes', {
           body: JSON.stringify(data),
         });
         if (response.status === 200) {
-          const hero = await response.json();
-          this.Hero = hero.value;
+          const result = await response.json();
+          console.log(result.insertedId);
+          return { _id: result.insertedId };
         }
         if (response.status === 500) {
           const errors = await response.json();
@@ -29,7 +30,7 @@ export const useHeroesStore = defineStore('heroes', {
       } catch (errors) {
         const validationErrors = heroesErrors(errors);
         this.HeroErrors = validationErrors;
-        console.log(validationErrors);
+        return false;
       }
     },
     async updateHero() {
@@ -43,6 +44,7 @@ export const useHeroesStore = defineStore('heroes', {
         if (response.status === 200) {
           const hero = await response.json();
           this.Hero = hero.value;
+          return true;
         }
         if (response.status === 500) {
           const errors = await response.json();
@@ -51,7 +53,7 @@ export const useHeroesStore = defineStore('heroes', {
       } catch (errors) {
         const validationErrors = heroesErrors(errors);
         this.HeroErrors = validationErrors;
-        console.log(validationErrors);
+        return false;
       }
     },
     async fetchHero(id) {

@@ -23,10 +23,7 @@
           <h3 class="text-lg font-medium leading-6 text-gray-900">My Heroes</h3>
         </div>
         <div v-if="UserHeroes.length > 0" class="flex-shrink-0">
-          <router-link
-            :to="{ name: 'heroes-create' }"
-            class="rounded-md border-2 border-white bg-red-500 px-4 py-2 text-sm font-medium text-white shadow hover:bg-red-700"
-          >
+          <router-link :to="{ name: 'heroes-create' }" class="btn-primary">
             Create a new Hero
           </router-link>
         </div>

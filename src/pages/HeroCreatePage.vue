@@ -1,6 +1,8 @@
 <script setup>
   import { reactive, inject } from 'vue';
   import { storeToRefs } from 'pinia';
+  import { useRouter } from 'vue-router';
+  import { cloneDeep } from 'lodash';
   import { useAuthStore } from '@/stores/auth-store.js';
   import { useHeroesStore } from '@/stores/heroes-store.js';
   import { defaultHero } from '@/assets/data/heroes.js';
@@ -10,8 +12,9 @@
   import HeroForm from '@/components/cards/hero-form.vue';
   import ErrorsAlert from '@/components/layout/errors-alert.vue';
 
+  const router = useRouter();
   const dayjs = inject('dayjs');
-  const newHero = reactive(defaultHero);
+  const newHero = reactive(cloneDeep(defaultHero));
   const tabs = reactive([
     { name: 'Path to Glory', current: true },
     { name: 'Inspired', current: false },
@@ -20,17 +23,21 @@
   const authStore = useAuthStore();
   const { User } = storeToRefs(authStore);
   const heroesStore = useHeroesStore();
-  const { Hero, HeroErrors } = storeToRefs(heroesStore);
+  const { HeroErrors } = storeToRefs(heroesStore);
 
   newHero.user.email = User.value.email;
   newHero.user.username = User.value.username;
   newHero.date = dayjs().unix();
   newHero.fake = 'fake';
 
-  function createHero() {
-    const result = heroesStore.createHero(newHero);
-    console.log(result);
-    console.log(Hero.value);
+  async function createHero() {
+    console.log(newHero);
+    const result = await heroesStore.createHero(newHero);
+    if (result) {
+      console.log(defaultHero);
+      router.push({ name: 'heroes-update', params: { id: result._id } });
+      Object.assign(newHero, defaultHero);
+    }
   }
 </script>
 

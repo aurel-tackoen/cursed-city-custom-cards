@@ -116,7 +116,7 @@
               type="text"
               class="col-span-4 rounded border border-gray-300 bg-white outline-none"
               :class="{
-                'border-red-800': getError('name'),
+                'border-red-800': getError('picture.url'),
               }"
             />
             <span

@@ -26,7 +26,7 @@ async function heroesValidation(data) {
 
 function heroesErrors(errors) {
   const validationErrors = [];
-  errors.inner.forEach((e) => {
+  errors?.inner?.forEach((e) => {
     validationErrors.push({
       name: e.path.split('.').join(' '),
       path: e.path,
