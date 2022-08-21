@@ -3,9 +3,9 @@ import { createPinia } from 'pinia';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import FontAwesomeIcon from '@/plugins/fontawesome.js';
+import router from '@/plugins/router';
 
 import App from './App.vue';
-import router from './router';
 
 import './assets/main.css';
 
