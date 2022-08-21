@@ -27,7 +27,7 @@ const tabs = reactive([
 </script>
 
 <template>
-  <div>
+  <div class="space-y-4 mt-4">
     <div
       v-if="User.email !== Hero.user.email"
       class="bg-red-50 border-2 border-red-700 rounded border-dashed text-red-800 px-4 py-3 mt-4"
@@ -39,32 +39,29 @@ const tabs = reactive([
       :hero="Hero"
       v-model:tabs="tabs"
       :save="true"
-      :create="false"
-      class="mt-4"
+      :single="true"
     />
     <HeroCard
       v-if="tabs[0].current"
       status="normal"
       v-model:hero="Hero"
-      class="hero-card-display mt-4"
+      class="hero-card-display"
     />
     <HeroCard
       v-if="tabs[1].current"
       status="inspired"
       v-model:hero="Hero"
-      class="hero-card-display mt-4"
+      class="hero-card-display"
     />
     <HeroForm
       v-if="User.email === Hero.user.email && tabs[0].current"
       status="normal"
       v-model:hero="Hero"
-      class="mt-4"
     />
     <HeroForm
       v-if="User.email === Hero.user.email && tabs[1].current"
       status="inspired"
       v-model:hero="Hero"
-      class="mt-4"
     />
   </div>
 </template>

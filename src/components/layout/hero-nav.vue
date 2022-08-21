@@ -4,8 +4,26 @@ const dayjs = inject('dayjs');
 const props = defineProps({
   hero: Object,
   tabs: Array,
-  save: Boolean,
-  create: Boolean,
+  status: {
+    type: Boolean,
+    default: true,
+  },
+  save: {
+    type: Boolean,
+    default: false,
+  },
+  create: {
+    type: Boolean,
+    default: false,
+  },
+  print: {
+    type: Boolean,
+    default: false,
+  },
+  single: {
+    type: Boolean,
+    default: false,
+  },
 });
 const emit = defineEmits(['update:tabs', 'update:hero', 'create:hero']);
 const tabs = computed({
@@ -18,13 +36,16 @@ function setTabs(index) {
   });
   tabs.value[index].current = true;
 }
+function printHero() {
+  window.print();
+}
 </script>
 <template>
   <nav
     class="sticky top-0 h-20 px-2 mx-auto z-50 flex items-center w-full bg-gradient-to-t from-gray-50 to-white shadow rounded overflow-hidden"
     aria-label="Tabs"
   >
-    <div class="w-6/12 flex items-center">
+    <div class="w-5/12 flex items-center">
       <div v-if="hero.picture && hero.picture.url">
         <div
           class="rounded-full border border-gray-100 shadow overflow-hidden flex items-center"
@@ -49,29 +70,31 @@ function setTabs(index) {
       </div>
     </div>
     <div class="w-4/12 flex justify-center self-stretch">
-      <button
-        v-for="(tab, tabIdx) in tabs"
-        class="relative overflow-hidden h-full px-3 text-center"
-        :key="tab.name"
-        :class="[
-          tab.current
-            ? 'text-gray-900 cursor-default'
-            : 'text-gray-500 hover:text-red-700',
-        ]"
-        :aria-current="tab.current ? 'page' : undefined"
-        @click="setTabs(tabIdx)"
-      >
-        <span>{{ tab.name }}</span>
-        <span
-          aria-hidden="true"
+      <div v-if="status === true">
+        <button
+          v-for="(tab, tabIdx) in tabs"
+          class="relative overflow-hidden h-full px-3 text-center"
+          :key="tab.name"
           :class="[
-            tab.current ? 'bg-red-700' : 'bg-transparent',
-            'absolute inset-x-0 bottom-0 h-1',
+            tab.current
+              ? 'text-gray-900 cursor-default'
+              : 'text-gray-500 hover:text-red-700',
           ]"
-        />
-      </button>
+          :aria-current="tab.current ? 'page' : undefined"
+          @click="setTabs(tabIdx)"
+        >
+          <span>{{ tab.name }}</span>
+          <span
+            aria-hidden="true"
+            :class="[
+              tab.current ? 'bg-red-700' : 'bg-transparent',
+              'absolute inset-x-0 bottom-0 h-1',
+            ]"
+          />
+        </button>
+      </div>
     </div>
-    <div class="w-2/12 flex justify-end items-center">
+    <div class="w-3/12 flex justify-end items-center space-x-2">
       <button
         v-if="save === true"
         @click="emit('update:hero')"
@@ -79,14 +102,26 @@ function setTabs(index) {
       >
         Save
       </button>
-    </div>
-    <div class="w-2/12 flex justify-end items-center">
       <button
         v-if="create === true"
         @click="emit('create:hero')"
         class="px-4 py-2 border-2 border-white shadow text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700"
       >
         Create
+      </button>
+      <router-link
+        v-if="single === true"
+        :to="{ name: 'heroes-single', params: { id: hero._id } }"
+        class="px-4 py-2 border-2 border-white shadow text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700"
+      >
+        View
+      </router-link>
+      <button
+        v-if="print === true"
+        @click="printHero()"
+        class="px-4 py-2 border-2 border-white shadow text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700"
+      >
+        Print
       </button>
     </div>
   </nav>
