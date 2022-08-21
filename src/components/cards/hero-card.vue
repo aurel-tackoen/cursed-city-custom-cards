@@ -9,9 +9,9 @@ defineProps({
 </script>
 <template>
   <div
-    class="drop-shadow-lg border relative font-Cardo rounded-2xl mx-auto bg-white"
+    class="relative mx-auto rounded-2xl border bg-white font-Cardo drop-shadow-lg"
   >
-    <div class="-mt-6 -mb-4 -mx-4">
+    <div class="-mx-4 -mt-6 -mb-4">
       <img
         v-if="status === 'normal'"
         src="@/assets/pictures/hero-background-normal.png"
@@ -26,10 +26,10 @@ defineProps({
       />
     </div>
     <div
-      class="absolute pointer-events-none top-0 z-40 h-full w-full border-2 border-gray-400 rounded-2xl"
+      class="pointer-events-none absolute top-0 z-40 h-full w-full rounded-2xl border-2 border-gray-400"
     ></div>
     <div
-      class="absolute rounded-full overflow-hidden flex items-center"
+      class="absolute flex items-center overflow-hidden rounded-full"
       style="top: -50px; left: -35px; width: 290px; height: 290px"
     >
       <img
@@ -41,42 +41,42 @@ defineProps({
     </div>
     <div
       id="hero-stats"
-      class="absolute text-black w-12 grid grid-cols-2"
+      class="absolute grid w-12 grid-cols-2 text-black"
       style="top: 280px; left: 70px; width: 100px"
     >
       <div
-        class="col-span-2 flex justify-center text-[28px] leading-[32px] font-bold mt-px mb-px"
+        class="col-span-2 mt-px mb-px flex justify-center text-[28px] font-bold leading-[32px]"
       >
         {{ hero[status].stats.move
         }}<span v-if="hero[status].stats.move && hero[status].stats.run">/</span
         >{{ hero[status].stats.run }}
       </div>
-      <div class="flex justify-start mt-2">
-        <DiceD6 v-if="hero[status].stats.agility === 'd6'" class="w-6 h-6" />
-        <DiceD8 v-if="hero[status].stats.agility === 'd8'" class="w-6 h-6" />
-        <DiceD12 v-if="hero[status].stats.agility === 'd12'" class="w-6 h-6" />
+      <div class="mt-2 flex justify-start">
+        <DiceD6 v-if="hero[status].stats.agility === 'd6'" class="h-6 w-6" />
+        <DiceD8 v-if="hero[status].stats.agility === 'd8'" class="h-6 w-6" />
+        <DiceD12 v-if="hero[status].stats.agility === 'd12'" class="h-6 w-6" />
       </div>
-      <div class="flex justify-end mt-2">
-        <DiceD6 v-if="hero[status].stats.vitality === 'd6'" class="w-6 h-6" />
-        <DiceD8 v-if="hero[status].stats.vitality === 'd8'" class="w-6 h-6" />
-        <DiceD12 v-if="hero[status].stats.vitality === 'd12'" class="w-6 h-6" />
+      <div class="mt-2 flex justify-end">
+        <DiceD6 v-if="hero[status].stats.vitality === 'd6'" class="h-6 w-6" />
+        <DiceD8 v-if="hero[status].stats.vitality === 'd8'" class="h-6 w-6" />
+        <DiceD12 v-if="hero[status].stats.vitality === 'd12'" class="h-6 w-6" />
       </div>
-      <div class="col-span-2 flex justify-center mt-3">
-        <DiceD6 v-if="hero[status].stats.defence === 'd6'" class="w-6 h-6" />
-        <DiceD8 v-if="hero[status].stats.defence === 'd8'" class="w-6 h-6" />
-        <DiceD12 v-if="hero[status].stats.defence === 'd12'" class="w-6 h-6" />
+      <div class="col-span-2 mt-3 flex justify-center">
+        <DiceD6 v-if="hero[status].stats.defence === 'd6'" class="h-6 w-6" />
+        <DiceD8 v-if="hero[status].stats.defence === 'd8'" class="h-6 w-6" />
+        <DiceD12 v-if="hero[status].stats.defence === 'd12'" class="h-6 w-6" />
       </div>
     </div>
     <div
       id="hero-name"
-      class="absolute text-center text-4xl leading-none font-semibold"
+      class="absolute text-center text-4xl font-semibold leading-none"
       style="top: 38px; left: 294px; width: 520px; height: 34px"
     >
       <div>{{ hero.name }}</div>
     </div>
     <div
       id="hero-tags"
-      class="absolute text-center text-lg italic leading-none font-semibold"
+      class="absolute text-center text-lg font-semibold italic leading-none"
       style="top: 74px; left: 294px; width: 520px; height: 20px"
     >
       <div>
@@ -88,7 +88,7 @@ defineProps({
     </div>
     <div
       id="hero-size"
-      class="absolute text-center text-sm italic text-red-800 leading-none font-semibold"
+      class="absolute text-center text-sm font-semibold italic leading-none text-red-800"
       style="top: 96px; left: 294px; width: 520px; height: 16px"
     >
       <div v-if="hero.size">
@@ -104,7 +104,7 @@ defineProps({
         <div
           v-for="(weapon, index) in hero[status].weapons"
           :key="weapon.name"
-          class="text-base font-semibold flex justify-start items-center h-7 -ml-4"
+          class="-ml-4 flex h-7 items-center justify-start text-base font-semibold"
           :class="{ 'bg-gray-100': index % 2 !== 0 }"
         >
           <div class="pl-4" style="width: 310px">
@@ -122,12 +122,12 @@ defineProps({
             style="width: 70px; margin-right: 25px"
             class="flex justify-center"
           >
-            <DiceD6 v-if="weapon.dice1 === 'd6'" class="w-4 h-4" />
-            <DiceD8 v-if="weapon.dice1 === 'd8'" class="w-4 h-4" />
-            <DiceD12 v-if="weapon.dice1 === 'd12'" class="w-4 h-4" />
-            <DiceD6 v-if="weapon.dice2 === 'd6'" class="w-4 h-4 ml-1" />
-            <DiceD8 v-if="weapon.dice2 === 'd8'" class="w-4 h-4 ml-1" />
-            <DiceD12 v-if="weapon.dice2 === 'd12'" class="w-4 h-4 ml-1" />
+            <DiceD6 v-if="weapon.dice1 === 'd6'" class="h-4 w-4" />
+            <DiceD8 v-if="weapon.dice1 === 'd8'" class="h-4 w-4" />
+            <DiceD12 v-if="weapon.dice1 === 'd12'" class="h-4 w-4" />
+            <DiceD6 v-if="weapon.dice2 === 'd6'" class="ml-1 h-4 w-4" />
+            <DiceD8 v-if="weapon.dice2 === 'd8'" class="ml-1 h-4 w-4" />
+            <DiceD12 v-if="weapon.dice2 === 'd12'" class="ml-1 h-4 w-4" />
           </div>
           <div style="width: 70px" class="text-center">
             {{ weapon.damages.base }}/{{ weapon.damages.critical }}
@@ -147,7 +147,7 @@ defineProps({
       >
         Unique Abilities
       </div>
-      <div class="text-sm space-y-0.5">
+      <div class="space-y-0.5 text-sm">
         <div
           v-for="ability in hero[status].abilities"
           :key="ability.name"
@@ -163,7 +163,7 @@ defineProps({
     </div>
     <div
       v-if="status === 'normal'"
-      class="absolute text-sm text-center leading-none"
+      class="absolute text-center text-sm leading-none"
       style="top: 544px; left: 292px; width: 522px; height: 40px"
     >
       <strong v-if="hero.normal.path.name">{{ hero.normal.path.name }}: </strong

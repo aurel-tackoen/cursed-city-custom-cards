@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import draggable from 'vuedraggable';
 import Multiselect from '@vueform/multiselect';
 import FormCard from '@/components/layout/form-card.vue';
+import ErrorsAlert from '@/components/layout/errors-alert.vue';
 const props = defineProps({
   status: String,
   hero: {
@@ -47,19 +48,19 @@ const getError = (path) => {
   <div class="mx-auto space-y-4">
     <FormCard id="user-hero" title="Hero">
       <div class="flex w-full bg-white">
-        <div class="space-y-3 grow">
+        <div class="grow space-y-3">
           <div class="grid grid-cols-5">
             <span class="flex items-center">Name: </span>
             <input
               v-model="hero.name"
               type="text"
-              class="col-span-4 border border-gray-300 rounded bg-white outline-none"
+              class="col-span-4 rounded border border-gray-300 bg-white outline-none"
               :class="{
                 'border-red-800': getError('name'),
               }"
             />
             <span
-              class="col-start-2 col-span-4 text-xs text-red-800 uppercase"
+              class="col-span-4 col-start-2 text-xs uppercase text-red-800"
               v-if="getError('name')"
               >{{ getError('name').message }}</span
             >
@@ -89,7 +90,7 @@ const getError = (path) => {
             <span class="flex items-center">Size: </span>
             <select
               v-model="hero.size"
-              class="col-span-4 border border-gray-300 rounded bg-white outline-none"
+              class="col-span-4 rounded border border-gray-300 bg-white outline-none"
             >
               <option value="small">Small</option>
               <option value="large">Large</option>
@@ -100,13 +101,13 @@ const getError = (path) => {
             <input
               v-model="hero.picture.url"
               type="text"
-              class="col-span-4 border border-gray-300 rounded bg-white outline-none"
+              class="col-span-4 rounded border border-gray-300 bg-white outline-none"
               :class="{
                 'border-red-800': getError('name'),
               }"
             />
             <span
-              class="col-start-2 col-span-4 text-xs text-red-800 uppercase"
+              class="col-span-4 col-start-2 text-xs uppercase text-red-800"
               v-if="getError('picture.url')"
               >{{ getError('picture.url').message }}</span
             >
@@ -116,12 +117,12 @@ const getError = (path) => {
             <input
               v-model="hero.picture.offsetX"
               type="number"
-              class="mr-1 col-span-2 border border-gray-300 rounded bg-white outline-none"
+              class="col-span-2 mr-1 rounded border border-gray-300 bg-white outline-none"
             />
             <input
               v-model="hero.picture.offsetY"
               type="number"
-              class="ml-1 col-span-2 border border-gray-300 rounded bg-white outline-none"
+              class="col-span-2 ml-1 rounded border border-gray-300 bg-white outline-none"
             />
           </div>
           <div class="grid grid-cols-5">
@@ -130,36 +131,36 @@ const getError = (path) => {
               step="0.01"
               v-model="hero.picture.zoom"
               type="number"
-              class="col-span-4 border border-gray-300 rounded bg-white outline-none"
+              class="col-span-4 rounded border border-gray-300 bg-white outline-none"
             />
           </div>
         </div>
         <div
-          class="text-center flex-row items-center justify-center w-12 -mr-4"
+          class="-mr-4 w-12 flex-row items-center justify-center text-center"
         ></div>
       </div>
     </FormCard>
     <FormCard id="user-hero-stats" title="Hero Stats">
       <div class="flex w-full bg-white">
-        <div class="space-y-3 grow">
+        <div class="grow space-y-3">
           <div class="grid grid-cols-5">
             <span class="flex items-center">Move / Run: </span>
             <input
               v-model="hero[status].stats.move"
               type="number"
-              class="mr-1 col-span-2 border border-gray-300 rounded bg-white outline-none"
+              class="col-span-2 mr-1 rounded border border-gray-300 bg-white outline-none"
             />
             <input
               v-model="hero[status].stats.run"
               type="number"
-              class="ml-1 col-span-2 border border-gray-300 rounded bg-white outline-none"
+              class="col-span-2 ml-1 rounded border border-gray-300 bg-white outline-none"
             />
           </div>
           <div class="grid grid-cols-5">
             <span class="flex items-center">Agility: </span>
             <select
               v-model="hero[status].stats.agility"
-              class="col-span-4 border border-gray-300 rounded bg-white outline-none"
+              class="col-span-4 rounded border border-gray-300 bg-white outline-none"
             >
               <option value="d6">D6 (Square)</option>
               <option value="d8">D8 (Triangle)</option>
@@ -170,7 +171,7 @@ const getError = (path) => {
             <span class="flex items-center">Vitality: </span>
             <select
               v-model="hero[status].stats.vitality"
-              class="col-span-4 border border-gray-300 rounded bg-white outline-none"
+              class="col-span-4 rounded border border-gray-300 bg-white outline-none"
             >
               <option value="d6">D6 (Square)</option>
               <option value="d8">D8 (Triangle)</option>
@@ -181,7 +182,7 @@ const getError = (path) => {
             <span class="flex items-center">Defence: </span>
             <select
               v-model="hero[status].stats.defence"
-              class="col-span-4 border border-gray-300 rounded bg-white outline-none"
+              class="col-span-4 rounded border border-gray-300 bg-white outline-none"
             >
               <option value="d6">D6 (Square)</option>
               <option value="d8">D8 (Triangle)</option>
@@ -190,7 +191,7 @@ const getError = (path) => {
           </div>
         </div>
         <div
-          class="text-center flex-row items-center justify-center w-12 -mr-4"
+          class="-mr-4 w-12 flex-row items-center justify-center text-center"
         ></div>
       </div>
     </FormCard>
@@ -201,14 +202,14 @@ const getError = (path) => {
         handle=".handle"
       >
         <template #item="{ element: weapon, index }">
-          <div class="pb-2 mb-2 border-b-2 border-dashed flex w-full bg-white">
-            <div class="space-y-3 grow">
+          <div class="mb-2 flex w-full border-b-2 border-dashed bg-white pb-2">
+            <div class="grow space-y-3">
               <div class="grid grid-cols-5">
                 <span class="flex items-center">Name: </span>
                 <input
                   v-model="weapon.name"
                   type="text"
-                  class="col-span-4 border border-gray-300 rounded bg-white outline-none"
+                  class="col-span-4 rounded border border-gray-300 bg-white outline-none"
                 />
               </div>
               <div class="grid grid-cols-5">
@@ -216,11 +217,11 @@ const getError = (path) => {
                 <input
                   v-model="weapon.activation"
                   type="number"
-                  class="mr-1 col-span-2 border border-gray-300 rounded bg-white outline-none"
+                  class="col-span-2 mr-1 rounded border border-gray-300 bg-white outline-none"
                 />
                 <select
                   v-model="weapon.type"
-                  class="ml-1 col-span-2 border border-gray-300 rounded bg-white outline-none"
+                  class="col-span-2 ml-1 rounded border border-gray-300 bg-white outline-none"
                 >
                   <option value="melee">Melee</option>
                   <option value="ranged">Ranged</option>
@@ -232,7 +233,7 @@ const getError = (path) => {
                 <span class="flex items-center">Dices: </span>
                 <select
                   v-model="weapon.dice1"
-                  class="mr-1 col-span-2 border border-gray-300 rounded bg-white outline-none"
+                  class="col-span-2 mr-1 rounded border border-gray-300 bg-white outline-none"
                 >
                   <option value="d6">D6 (Square)</option>
                   <option value="d8">D8 (Triangle)</option>
@@ -240,7 +241,7 @@ const getError = (path) => {
                 </select>
                 <select
                   v-model="weapon.dice2"
-                  class="ml-1 col-span-2 border border-gray-300 rounded bg-white outline-none"
+                  class="col-span-2 ml-1 rounded border border-gray-300 bg-white outline-none"
                 >
                   <option value="">None</option>
                   <option value="d6">D6 (Square)</option>
@@ -253,19 +254,19 @@ const getError = (path) => {
                 <input
                   v-model="weapon.damages.base"
                   type="number"
-                  class="mr-1 col-span-2 border border-gray-300 rounded bg-white outline-none"
+                  class="col-span-2 mr-1 rounded border border-gray-300 bg-white outline-none"
                 />
                 <input
                   v-model="weapon.damages.critical"
                   type="number"
-                  class="ml-1 col-span-2 border border-gray-300 rounded bg-white outline-none"
+                  class="col-span-2 ml-1 rounded border border-gray-300 bg-white outline-none"
                 />
               </div>
               <div class="grid grid-cols-5">
                 <span class="flex items-center">Notes: </span>
                 <select
                   multiple
-                  class="col-span-4 border h-14 border-gray-300 rounded bg-white outline-none"
+                  class="col-span-4 h-14 rounded border border-gray-300 bg-white outline-none"
                   v-model="weapon.notes"
                 >
                   <option
@@ -279,7 +280,7 @@ const getError = (path) => {
               </div>
             </div>
             <div
-              class="text-center flex-row items-center justify-center w-12 -mr-4"
+              class="-mr-4 w-12 flex-row items-center justify-center text-center"
             >
               <div class="handle cursor-move">
                 <fa-icon
@@ -297,7 +298,7 @@ const getError = (path) => {
           </div>
         </template>
       </draggable>
-      <div class="flex justify-center items-center">
+      <div class="flex items-center justify-center">
         <button
           class="fa-fw text-gray-300 hover:text-red-700"
           @click="hero[status].weapons.push(defaultWeapon)"
@@ -309,14 +310,14 @@ const getError = (path) => {
     <FormCard id="user-weapons-notes" title="Weapons Notes">
       <draggable v-model="hero[status].notes" item-key="name" handle=".handle">
         <template #item="{ element: note, index }">
-          <div class="pb-2 mb-2 border-b-2 border-dashed flex w-full bg-white">
-            <div class="space-y-3 grow">
+          <div class="mb-2 flex w-full border-b-2 border-dashed bg-white pb-2">
+            <div class="grow space-y-3">
               <div class="grid grid-cols-5">
                 <span class="flex items-center">Name: </span>
                 <input
                   v-model="note.name"
                   type="text"
-                  class="col-span-4 border border-gray-300 rounded bg-white outline-none"
+                  class="col-span-4 rounded border border-gray-300 bg-white outline-none"
                 />
               </div>
               <div class="grid grid-cols-5">
@@ -324,12 +325,12 @@ const getError = (path) => {
                 <textarea
                   v-model="note.rule"
                   type="text"
-                  class="col-span-4 border border-gray-300 rounded bg-white outline-none"
+                  class="col-span-4 rounded border border-gray-300 bg-white outline-none"
                 />
               </div>
             </div>
             <div
-              class="text-center flex-row items-center justify-center w-12 -mr-4"
+              class="-mr-4 w-12 flex-row items-center justify-center text-center"
             >
               <div class="handle cursor-move">
                 <fa-icon
@@ -347,7 +348,7 @@ const getError = (path) => {
           </div>
         </template>
       </draggable>
-      <div class="flex justify-center items-center">
+      <div class="flex items-center justify-center">
         <button
           class="fa-fw text-gray-300 hover:text-red-700"
           @click="hero[status].notes.push(defaultNotes)"
@@ -363,14 +364,14 @@ const getError = (path) => {
         handle=".handle"
       >
         <template #item="{ element: ability, index }">
-          <div class="pb-2 mb-2 border-b-2 border-dashed flex w-full bg-white">
-            <div class="space-y-3 grow">
+          <div class="mb-2 flex w-full border-b-2 border-dashed bg-white pb-2">
+            <div class="grow space-y-3">
               <div class="grid grid-cols-5">
                 <span class="flex items-center">Name: </span>
                 <input
                   v-model="ability.name"
                   type="text"
-                  class="col-span-4 border border-gray-300 rounded bg-white outline-none"
+                  class="col-span-4 rounded border border-gray-300 bg-white outline-none"
                 />
               </div>
               <div class="grid grid-cols-5">
@@ -378,7 +379,7 @@ const getError = (path) => {
                 <input
                   v-model="ability.activation"
                   type="number"
-                  class="col-span-4 border border-gray-300 rounded bg-white outline-none"
+                  class="col-span-4 rounded border border-gray-300 bg-white outline-none"
                 />
               </div>
               <div class="grid grid-cols-5">
@@ -386,12 +387,12 @@ const getError = (path) => {
                 <textarea
                   v-model="ability.rule"
                   type="text"
-                  class="col-span-4 border border-gray-300 rounded bg-white outline-none"
+                  class="col-span-4 rounded border border-gray-300 bg-white outline-none"
                 />
               </div>
             </div>
             <div
-              class="text-center flex-row items-center justify-center w-12 -mr-4"
+              class="-mr-4 w-12 flex-row items-center justify-center text-center"
             >
               <div class="handle cursor-move">
                 <fa-icon
@@ -409,7 +410,7 @@ const getError = (path) => {
           </div>
         </template>
       </draggable>
-      <div class="flex justify-center items-center">
+      <div class="flex items-center justify-center">
         <button
           class="fa-fw text-gray-300 hover:text-red-700"
           @click="hero[status].abilities.push(defaultAbilities)"
@@ -420,13 +421,13 @@ const getError = (path) => {
     </FormCard>
     <FormCard v-if="status === 'normal'" id="user-path" title="Path to Glory">
       <div class="flex w-full bg-white">
-        <div class="space-y-3 grow">
+        <div class="grow space-y-3">
           <div class="grid grid-cols-5">
             <span class="flex items-center">Name: </span>
             <input
               v-model="hero[status].path.name"
               type="text"
-              class="col-span-4 border border-gray-300 rounded bg-white outline-none"
+              class="col-span-4 rounded border border-gray-300 bg-white outline-none"
             />
           </div>
           <div class="grid grid-cols-5">
@@ -434,12 +435,12 @@ const getError = (path) => {
             <textarea
               v-model="hero[status].path.rule"
               type="text"
-              class="col-span-4 border border-gray-300 rounded bg-white outline-none"
+              class="col-span-4 rounded border border-gray-300 bg-white outline-none"
             />
           </div>
         </div>
         <div
-          class="text-center flex-row items-center justify-center w-12 -mr-4"
+          class="-mr-4 w-12 flex-row items-center justify-center text-center"
         ></div>
       </div>
     </FormCard>

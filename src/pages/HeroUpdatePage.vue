@@ -28,10 +28,10 @@ const tabs = reactive([
 </script>
 
 <template>
-  <div class="space-y-4 mt-4">
+  <div class="mt-4 space-y-4">
     <div
       v-if="User.email !== Hero.user.email"
-      class="bg-red-50 border-2 border-red-700 rounded border-dashed text-red-800 px-4 py-3 mt-4"
+      class="mt-4 rounded border-2 border-dashed border-red-700 bg-red-50 px-4 py-3 text-red-800"
     >
       You are not allowed to update this Hero.
     </div>

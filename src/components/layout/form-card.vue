@@ -4,9 +4,9 @@ defineProps({
 });
 </script>
 <template>
-  <div class="shadow-sm rounded border border-gray-100">
+  <div class="rounded border border-gray-100 shadow-sm">
     <div
-      class="text-lg font-semibold bg-gray-50 px-5 py-3 mb-3 border-b border-gray-100"
+      class="mb-3 border-b border-gray-100 bg-gray-50 px-5 py-3 text-lg font-semibold"
     >
       {{ title }}:
     </div>

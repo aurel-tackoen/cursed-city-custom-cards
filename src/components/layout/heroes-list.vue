@@ -14,12 +14,12 @@ defineProps({
         <div
           v-for="hero in heroes"
           :key="hero._id"
-          class="flex justify-start items-center w-full py-2"
+          class="flex w-full items-center justify-start py-2"
         >
           <div class="px-4">
             <div
               id="hero-picture"
-              class="rounded-full border-2 border-gray-100 shadow-sm overflow-hidden flex items-center"
+              class="flex items-center overflow-hidden rounded-full border-2 border-gray-100 shadow-sm"
               style="width: 58px; height: 58px"
             >
               <img
@@ -30,17 +30,17 @@ defineProps({
               />
             </div>
           </div>
-          <div class="grow flex flex-col px-4 space-y-1">
+          <div class="flex grow flex-col space-y-1 px-4">
             <router-link
               :to="{
                 name: `heroes-${target}`,
                 params: { id: hero._id },
               }"
-              class="text-lg leading-4 font-bold text-gray-900 hover:text-red-900"
+              class="text-lg font-bold leading-4 text-gray-900 hover:text-red-900"
             >
               {{ hero.name }}
             </router-link>
-            <div class="text-sm leading-4 text-gray-600 italic">
+            <div class="text-sm italic leading-4 text-gray-600">
               <span v-for="(tag, index) in hero.tags" :key="tag.name">
                 {{ tag.label
                 }}<span v-if="index < hero.tags.length - 1">, </span>

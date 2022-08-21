@@ -16,25 +16,25 @@ await heroesStore.fetchHeroes();
 </script>
 
 <template>
-  <div class="shadow bg-white rounded">
+  <div class="rounded bg-white shadow">
     <div class="mt-8">
-      <div class="flex items-center justify-between h-16 px-4">
+      <div class="flex h-16 items-center justify-between px-4">
         <div class="">
-          <h3 class="text-lg leading-6 font-medium text-gray-900">My Heroes</h3>
+          <h3 class="text-lg font-medium leading-6 text-gray-900">My Heroes</h3>
         </div>
         <div v-if="UserHeroes.length > 0" class="flex-shrink-0">
           <router-link
             :to="{
               name: 'heroes-create',
             }"
-            class="px-4 py-2 border-2 border-white shadow text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700"
+            class="rounded-md border-2 border-white bg-red-500 px-4 py-2 text-sm font-medium text-white shadow hover:bg-red-700"
           >
             Create a new Hero
           </router-link>
         </div>
       </div>
       <div v-if="UserHeroes.length === 0" class="overflow-x-auto">
-        <div class="py-8 text-center border-t">
+        <div class="border-t py-8 text-center">
           <fa-icon
             class="fa-fw fa-3x mb-3 text-red-700"
             :icon="['fad', 'book-skull']"
@@ -44,11 +44,11 @@ await heroesStore.fetchHeroes();
           </div>
           <div
             v-if="!User.authenticated"
-            class="text-gray-400 flex justify-center w-full mt-2"
+            class="mt-2 flex w-full justify-center text-gray-400"
           >
             Please
             <button
-              class="border-b border-grey-200 hover:border-red-700 px-1 hover:text-red-800"
+              class="border-grey-200 border-b px-1 hover:border-red-700 hover:text-red-800"
               @click="authStore.login('login')"
             >
               log In
@@ -60,7 +60,7 @@ await heroesStore.fetchHeroes();
               :to="{
                 name: 'heroes-create',
               }"
-              class="px-4 py-2 border-2 border-white shadow text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700"
+              class="rounded-md border-2 border-white bg-red-500 px-4 py-2 text-sm font-medium text-white shadow hover:bg-red-700"
             >
               Create a new Hero
             </router-link>
@@ -72,11 +72,11 @@ await heroesStore.fetchHeroes();
       </div>
     </div>
   </div>
-  <div class="shadow bg-white rounded">
+  <div class="rounded bg-white shadow">
     <div class="mt-8">
-      <div class="flex items-center justify-between h-16 px-4">
+      <div class="flex h-16 items-center justify-between px-4">
         <div class="">
-          <h3 class="text-lg leading-6 font-medium text-gray-900">
+          <h3 class="text-lg font-medium leading-6 text-gray-900">
             All Heroes
           </h3>
         </div>

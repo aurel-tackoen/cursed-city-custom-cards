@@ -42,13 +42,13 @@ function printHero() {
 </script>
 <template>
   <nav
-    class="sticky top-0 h-20 px-2 mx-auto z-50 flex items-center w-full bg-gradient-to-t from-gray-50 to-white shadow rounded overflow-hidden"
+    class="sticky top-0 z-50 mx-auto flex h-20 w-full items-center overflow-hidden rounded bg-gradient-to-t from-gray-50 to-white px-2 shadow"
     aria-label="Tabs"
   >
-    <div class="w-5/12 flex items-center">
+    <div class="flex w-5/12 items-center">
       <div v-if="hero.picture && hero.picture.url">
         <div
-          class="rounded-full border border-gray-100 shadow overflow-hidden flex items-center"
+          class="flex items-center overflow-hidden rounded-full border border-gray-100 shadow"
           style="width: 58px; height: 58px"
         >
           <img
@@ -59,25 +59,25 @@ function printHero() {
           />
         </div>
       </div>
-      <div class="grow hidden sm:flex flex-col px-4 space-y-1">
-        <div class="text-lg leading-4 font-bold text-gray-900">
+      <div class="hidden grow flex-col space-y-1 px-4 sm:flex">
+        <div class="text-lg font-bold leading-4 text-gray-900">
           {{ hero.name }}
         </div>
-        <div class="text-xs leading-4 text-gray-600 italic">
+        <div class="text-xs italic leading-4 text-gray-600">
           Created by <span class="font-bold">{{ hero.user.username }}</span>
           {{ dayjs(hero.date * 1000).fromNow() }}
         </div>
       </div>
     </div>
-    <div class="w-4/12 flex justify-center self-stretch">
+    <div class="flex w-4/12 justify-center self-stretch">
       <div v-if="status === true">
         <button
           v-for="(tab, tabIdx) in tabs"
-          class="relative overflow-hidden h-full px-3 text-center"
+          class="relative h-full overflow-hidden px-3 text-center"
           :key="tab.name"
           :class="[
             tab.current
-              ? 'text-gray-900 cursor-default'
+              ? 'cursor-default text-gray-900'
               : 'text-gray-500 hover:text-red-700',
           ]"
           :aria-current="tab.current ? 'page' : undefined"
@@ -94,32 +94,32 @@ function printHero() {
         </button>
       </div>
     </div>
-    <div class="w-3/12 flex justify-end items-center space-x-2">
+    <div class="flex w-3/12 items-center justify-end space-x-2">
       <button
         v-if="save === true"
         @click="emit('update:hero')"
-        class="px-4 py-2 border-2 border-white shadow text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700"
+        class="rounded-md border-2 border-white bg-red-500 px-4 py-2 text-sm font-medium text-white shadow hover:bg-red-700"
       >
         Save
       </button>
       <button
         v-if="create === true"
         @click="emit('create:hero')"
-        class="px-4 py-2 border-2 border-white shadow text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700"
+        class="rounded-md border-2 border-white bg-red-500 px-4 py-2 text-sm font-medium text-white shadow hover:bg-red-700"
       >
         Create
       </button>
       <router-link
         v-if="single === true"
         :to="{ name: 'heroes-single', params: { id: hero._id } }"
-        class="px-4 py-2 border-2 border-white shadow text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700"
+        class="rounded-md border-2 border-white bg-red-500 px-4 py-2 text-sm font-medium text-white shadow hover:bg-red-700"
       >
         View
       </router-link>
       <button
         v-if="print === true"
         @click="printHero()"
-        class="px-4 py-2 border-2 border-white shadow text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700"
+        class="rounded-md border-2 border-white bg-red-500 px-4 py-2 text-sm font-medium text-white shadow hover:bg-red-700"
       >
         Print
       </button>

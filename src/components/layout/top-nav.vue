@@ -15,37 +15,36 @@ const { User } = storeToRefs(authStore);
 
 <template>
   <nav class="bg-white shadow">
-    <div class="flex justify-between h-12 container mx-auto">
+    <div class="container mx-auto flex h-12 justify-between">
       <div class="flex">
-        <div class="flex-shrink-0 flex items-center">
+        <div class="flex flex-shrink-0 items-center">
           <router-link to="/">
             <fa-icon :icon="['fad', 'dice-d8']" class="fa-2xl text-red-700" />
           </router-link>
           <router-link to="/">
-            <div class="ml-2 tracking-tighter text-xl">
+            <div class="ml-2 text-xl tracking-tighter">
               Cursed City Custom Cards
             </div>
           </router-link>
         </div>
         <div class="ml-8 flex space-x-8">
-          <!-- Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
           <router-link
             to="/heroes"
-            class="border-red-700 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-base"
+            class="inline-flex items-center border-b-2 border-red-700 px-1 pt-1 text-base text-gray-900"
           >
             Heroes
           </router-link>
           <div
             title="Soon !"
-            class="border-transparent text-gray-400 inline-flex items-center px-1 pt-1 border-b-2 text-base"
+            class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-base text-gray-400"
           >
             Monsters
           </div>
         </div>
       </div>
-      <div class="text-sm flex items-center">
+      <div class="flex items-center text-sm">
         <button
-          class="border-b border-transparent hover:border-red-700 px-1 hover:text-red-800"
+          class="border-b border-transparent px-1 hover:border-red-700 hover:text-red-800"
           v-if="!User.authenticated"
           @click="authStore.login('login')"
         >
@@ -53,14 +52,14 @@ const { User } = storeToRefs(authStore);
         </button>
         <div class="px-1" v-if="!User.authenticated">or</div>
         <button
-          class="border-b border-transparent hover:border-red-700 px-1 hover:text-red-800"
+          class="border-b border-transparent px-1 hover:border-red-700 hover:text-red-800"
           v-if="!User.authenticated"
           @click="authStore.login('signup')"
         >
           Sign Up
         </button>
         <button
-          class="text-gray-500 border-b border-transparent hover:border-red-700 px-1 hover:text-red-800"
+          class="border-b border-transparent px-1 text-gray-500 hover:border-red-700 hover:text-red-800"
           v-if="User.authenticated"
           @click="authStore.logout()"
         >
@@ -71,7 +70,7 @@ const { User } = storeToRefs(authStore);
         </span>
         <div
           v-if="User.authenticated"
-          class="rounded-full overflow-hidden h-9 w-9 border border-white shadow mx-1"
+          class="mx-1 h-9 w-9 overflow-hidden rounded-full border border-white shadow"
           v-html="getAvatar(User.username)"
         ></div>
       </div>
