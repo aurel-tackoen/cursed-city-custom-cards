@@ -15,3 +15,4 @@ netlify env:set MONGODB_URI "YYY"
 - [x] Update + Validation
 - [ ] Delete heroes
 - [ ] Cannot access create page when logged out
+- [ ] More example Heroes
