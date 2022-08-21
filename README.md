@@ -16,3 +16,4 @@ netlify env:set MONGODB_URI "YYY"
 - [ ] Delete heroes
 - [ ] Cannot access create page when logged out
 - [ ] More example Heroes
+- [ ] Monster Cards
