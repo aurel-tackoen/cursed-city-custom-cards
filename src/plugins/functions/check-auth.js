@@ -3,8 +3,7 @@ module.exports = function checkAuth(context) {
     // Reading the context.clientContext will give us the current user
     const user = context.clientContext && context.clientContext.user;
     if (!user) {
-      console.log('No claims! Begone!');
-      return reject(new Error('No user claims'));
+      return reject(new Error('Not authenticated'));
     }
     console.log('user', user);
     return resolve(user);
