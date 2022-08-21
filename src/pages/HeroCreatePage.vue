@@ -28,13 +28,11 @@
   newHero.user.email = User.value.email;
   newHero.user.username = User.value.username;
   newHero.date = dayjs().unix();
-  newHero.fake = 'fake';
+  newHero.notInSchema = 'this data should not be in the database';
 
   async function createHero() {
-    console.log(newHero);
     const result = await heroesStore.createHero(newHero);
     if (result) {
-      console.log(defaultHero);
       router.push({ name: 'heroes-update', params: { id: result._id } });
       Object.assign(newHero, defaultHero);
     }

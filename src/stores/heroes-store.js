@@ -13,14 +13,14 @@ export const useHeroesStore = defineStore('heroes', {
     async createHero(data) {
       try {
         this.HeroErrors = [];
-        await heroesValidation(data);
+        const item = await heroesValidation(data);
+        console.log(item);
         const response = await fetch('/.netlify/functions/heroes-create', {
           method: 'POST',
-          body: JSON.stringify(data),
+          body: JSON.stringify(item),
         });
         if (response.status === 200) {
           const result = await response.json();
-          console.log(result.insertedId);
           return { _id: result.insertedId };
         }
         if (response.status === 500) {
@@ -36,10 +36,10 @@ export const useHeroesStore = defineStore('heroes', {
     async updateHero() {
       try {
         this.HeroErrors = [];
-        const data = await heroesValidation(this.Hero);
+        const item = await heroesValidation(this.Hero);
         const response = await fetch('/.netlify/functions/heroes-update', {
           method: 'POST',
-          body: JSON.stringify(data),
+          body: JSON.stringify(item),
         });
         if (response.status === 200) {
           const hero = await response.json();

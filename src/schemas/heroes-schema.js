@@ -1,14 +1,50 @@
-import { object, string, number } from 'yup';
+import { object, string, number, array } from 'yup';
+
+// TODO: add validation for each field
 
 const heroesSchema = object({
   name: string().required(),
+  size: string().required(),
   picture: object({
     url: string().url().required(),
     offsetY: number().required(),
     offsetX: number().required(),
     zoom: number().required(),
   }),
-  size: string().required(),
+  tags: array(),
+  normal: object({
+    stats: object({
+      move: number(),
+      run: number(),
+    }),
+    weapons: array(
+      object({
+        name: string().required(),
+        dice1: number().required(),
+        dice2: number(),
+        damages: object({
+          base: number().required(),
+          critical: number().required(),
+        }),
+      })
+    ),
+    notes: array(
+      object({
+        name: string().required(),
+        rule: string().required(),
+      })
+    ),
+    abilities: array(
+      object({
+        name: string().required(),
+        rule: string().required(),
+      })
+    ),
+    path: object({
+      name: string().required(),
+      rule: string().required(),
+    }),
+  }),
   user: object({
     email: string().email().required(),
     username: string().required(),
