@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia';
+import { defineStore, storeToRefs } from 'pinia';
 import { useAuthStore } from '@/stores/auth-store';
 import { heroesValidation, heroesErrors } from '@/schemas/heroes-schema.js';
 
@@ -11,10 +11,15 @@ export const useHeroesStore = defineStore('heroes', {
   }),
   actions: {
     async createHero(data) {
+      const authStore = useAuthStore();
+      const { User } = storeToRefs(authStore);
       try {
         this.HeroErrors = [];
         const item = await heroesValidation(data);
         const response = await fetch('/.netlify/functions/heroes-create', {
+          headers: {
+            Authorization: `Bearer ${User.token.access_token}`,
+          },
           method: 'POST',
           body: JSON.stringify(item),
         });
