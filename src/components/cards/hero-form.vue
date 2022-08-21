@@ -3,7 +3,6 @@ import { computed } from 'vue';
 import draggable from 'vuedraggable';
 import Multiselect from '@vueform/multiselect';
 import FormCard from '@/components/layout/form-card.vue';
-import ErrorsAlert from '@/components/layout/errors-alert.vue';
 const props = defineProps({
   status: String,
   hero: {
@@ -46,7 +45,6 @@ const getError = (path) => {
 </script>
 <template>
   <div class="mx-auto space-y-4">
-    <ErrorsAlert :errors="errors" />
     <FormCard id="user-hero" title="Hero">
       <div class="flex w-full bg-white">
         <div class="space-y-3 grow">

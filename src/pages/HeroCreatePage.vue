@@ -8,6 +8,7 @@ import { defaultHero } from '@/assets/data/heroes.js';
 import HeroNav from '@/components/layout/hero-nav.vue';
 import HeroCard from '@/components/cards/hero-card.vue';
 import HeroForm from '@/components/cards/hero-form.vue';
+import ErrorsAlert from '@/components/layout/errors-alert.vue';
 
 const dayjs = inject('dayjs');
 const newHero = reactive(defaultHero);
@@ -51,6 +52,7 @@ function createHero() {
       v-model:hero="newHero"
       class="hero-card-display"
     />
+    <ErrorsAlert :errors="HeroErrors" />
     <HeroForm
       v-if="tabs[0].current"
       status="normal"

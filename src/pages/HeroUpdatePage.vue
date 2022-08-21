@@ -8,13 +8,14 @@ import { useHeroesStore } from '@/stores/heroes-store.js';
 import HeroNav from '@/components/layout/hero-nav.vue';
 import HeroCard from '@/components/cards/hero-card.vue';
 import HeroForm from '@/components/cards/hero-form.vue';
+import ErrorsAlert from '@/components/layout/errors-alert.vue';
 
 const route = useRoute();
 const authStore = useAuthStore();
 const { User } = storeToRefs(authStore);
 const heroesStore = useHeroesStore();
 await heroesStore.fetchHero(route.params.id);
-const { Hero } = storeToRefs(heroesStore);
+const { Hero, HeroErrors } = storeToRefs(heroesStore);
 
 function updateHero() {
   heroesStore.updateHero();
@@ -53,15 +54,18 @@ const tabs = reactive([
       v-model:hero="Hero"
       class="hero-card-display"
     />
+    <ErrorsAlert :errors="HeroErrors" />
     <HeroForm
       v-if="User.email === Hero.user.email && tabs[0].current"
       status="normal"
       v-model:hero="Hero"
+      :errors="HeroErrors"
     />
     <HeroForm
       v-if="User.email === Hero.user.email && tabs[1].current"
       status="inspired"
       v-model:hero="Hero"
+      :errors="HeroErrors"
     />
   </div>
 </template>
