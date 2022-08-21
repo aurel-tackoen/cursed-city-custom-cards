@@ -14,3 +14,4 @@ netlify env:set MONGODB_URI "YYY"
 [ ] - Authenticate Netlify Functions
 [ ] - Upload + Validation
 [ ] - Delete heroes
+[ ] - Cannot access create page when logged out

@@ -16,6 +16,8 @@ export const useHeroesStore = defineStore('heroes', {
       try {
         this.HeroErrors = [];
         const item = await heroesValidation(data);
+        console.log(User);
+        console.log(User.value);
         const response = await fetch('/.netlify/functions/heroes-create', {
           headers: {
             Authorization: `Bearer ${User.value.access_token}`,
