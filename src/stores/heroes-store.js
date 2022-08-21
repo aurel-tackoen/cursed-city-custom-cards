@@ -18,7 +18,7 @@ export const useHeroesStore = defineStore('heroes', {
         const item = await heroesValidation(data);
         const response = await fetch('/.netlify/functions/heroes-create', {
           headers: {
-            Authorization: `Bearer ${User.token.access_token}`,
+            Authorization: `Bearer ${User.access_token}`,
           },
           method: 'POST',
           body: JSON.stringify(item),
