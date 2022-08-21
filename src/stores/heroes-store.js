@@ -34,18 +34,29 @@ export const useHeroesStore = defineStore('heroes', {
     },
     async updateHero() {
       try {
+        this.HeroErrors = [];
+        const data = await heroesValidation(this.Hero);
         const response = await fetch('/.netlify/functions/heroes-update', {
           method: 'POST',
-          body: JSON.stringify(this.Hero),
+          body: JSON.stringify(data),
         });
-        const hero = await response.json();
-        this.Hero = hero.value;
-      } catch (error) {
-        console.log(error);
+        if (response.status === 200) {
+          const hero = await response.json();
+          this.Hero = hero.value;
+        }
+        if (response.status === 500) {
+          const errors = await response.json();
+          throw errors;
+        }
+      } catch (errors) {
+        const validationErrors = heroesErrors(errors);
+        this.HeroErrors = validationErrors;
+        console.log(validationErrors);
       }
     },
     async fetchHero(id) {
       try {
+        this.HeroErrors = [];
         const response = await fetch('/.netlify/functions/heroes-findone', {
           method: 'POST',
           body: JSON.stringify({

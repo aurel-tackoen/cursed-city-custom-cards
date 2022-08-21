@@ -9,10 +9,12 @@
   });
 </script>
 <template>
-  <div
-    class="rounded border-2 border-dashed border-red-700 bg-red-100 py-2 px-4 text-red-700"
-  >
-    {{ errors.length }}
-    {{ errors }}
+  <div v-if="errors.length > 0">
+    <div class="alert-container">
+      <div v-for="error in errors" :key="error.path">
+        <span class="font-bold capitalize"> {{ error.name }}: </span>
+        <span class="first-letter:uppercase">{{ error.message }}</span>
+      </div>
+    </div>
   </div>
 </template>

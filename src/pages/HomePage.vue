@@ -54,7 +54,7 @@
             before creating a new Hero.
           </div>
           <div v-if="User.authenticated" class="mt-4 flex-shrink-0">
-            <router-link :to="{ name: 'heroes-create' }" class="btn">
+            <router-link :to="{ name: 'heroes-create' }" class="btn-primary">
               Create a new Hero
             </router-link>
           </div>

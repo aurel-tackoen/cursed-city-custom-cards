@@ -14,9 +14,9 @@ export const handler = async function ({ body }) {
     await heroesValidation(data);
     const database = (await clientPromise).db('cursed-database');
     const collection = database.collection('Heroes');
-    // const item = await collection.insertOne(data);
+    const item = await collection.insertOne(data);
     console.log(data);
-    // console.log(item);
+    console.log(item);
     return {
       statusCode: 200,
       body: JSON.stringify(data),

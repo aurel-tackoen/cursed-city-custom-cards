@@ -29,6 +29,8 @@
 
   function createHero() {
     const result = heroesStore.createHero(newHero);
+    console.log(result);
+    console.log(Hero.value);
   }
 </script>
 
@@ -40,6 +42,7 @@
       v-model:tabs="tabs"
       :create="true"
     />
+    <ErrorsAlert :errors="HeroErrors" />
     <HeroCard
       v-if="tabs[0].current"
       status="normal"
@@ -52,7 +55,6 @@
       v-model:hero="newHero"
       class="hero-card-display"
     />
-    <ErrorsAlert :errors="HeroErrors" />
     <HeroForm
       v-if="tabs[0].current"
       status="normal"

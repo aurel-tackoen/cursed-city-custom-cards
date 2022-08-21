@@ -10,7 +10,7 @@ sup { top: 0.1rem; vertical-align: super;}
 sub { bottom: -0.25em; vertical-align: sub;}
 
 @layer components {
-  .btn {
+  .btn-primary {
     border-radius: theme('borderRadius.md');
     padding-left: theme('spacing.4');
     padding-right: theme('spacing.4');
@@ -25,8 +25,20 @@ sub { bottom: -0.25em; vertical-align: sub;}
     font-size: theme('fontSize.sm');
     line-height: theme('lineHeight.5');
   }
-  .btn:hover {
+  .btn-primary:hover {
     background-color: theme('colors.red.700');
+  }
+  .alert-container {
+    border-radius: theme('borderRadius.md');
+    border-width: theme('borderWidth.2');
+    border-style: dashed;
+    border-color: theme('colors.red.700');
+    background-color: theme('colors.red.100');
+    padding-left: theme('spacing.4');
+    padding-right: theme('spacing.4');
+    padding-top: theme('spacing.2');
+    padding-bottom: theme('spacing.2');
+    color: theme('colors.red.700');
   }
 }
 

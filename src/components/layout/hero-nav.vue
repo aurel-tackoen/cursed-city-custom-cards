@@ -101,20 +101,28 @@
         </div>
       </div>
       <div class="flex w-3/12 items-center justify-end space-x-2">
-        <button v-if="save === true" @click="emit('update:hero')" class="btn">
+        <button
+          v-if="save === true"
+          @click="emit('update:hero')"
+          class="btn-primary"
+        >
           Save
         </button>
-        <button v-if="create === true" @click="emit('create:hero')" class="btn">
+        <button
+          v-if="create === true"
+          @click="emit('create:hero')"
+          class="btn-primary"
+        >
           Create
         </button>
         <router-link
           v-if="single === true"
           :to="{ name: 'heroes-single', params: { id: hero._id } }"
-          class="btn"
+          class="btn-primary"
         >
           View
         </router-link>
-        <button v-if="print === true" @click="printHero()" class="btn">
+        <button v-if="print === true" @click="printHero()" class="btn-primary">
           Print
         </button>
       </div>

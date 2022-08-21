@@ -29,10 +29,7 @@
 
 <template>
   <div class="mt-4 space-y-4">
-    <div
-      v-if="User.email !== Hero.user.email"
-      class="mt-4 rounded border-2 border-dashed border-red-700 bg-red-50 px-4 py-3 text-red-800"
-    >
+    <div v-if="User.email !== Hero.user.email" class="alert-container">
       You are not allowed to update this Hero.
     </div>
     <HeroNav
@@ -42,6 +39,7 @@
       :save="true"
       :single="true"
     />
+    <ErrorsAlert :errors="HeroErrors" />
     <HeroCard
       v-if="tabs[0].current"
       status="normal"
@@ -54,7 +52,6 @@
       v-model:hero="Hero"
       class="hero-card-display"
     />
-    <ErrorsAlert :errors="HeroErrors" />
     <HeroForm
       v-if="User.email === Hero.user.email && tabs[0].current"
       status="normal"

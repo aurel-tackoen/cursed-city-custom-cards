@@ -96,10 +96,18 @@
             <select
               v-model="hero.size"
               class="col-span-4 rounded border border-gray-300 bg-white outline-none"
+              :class="{
+                'border-red-800': getError('size'),
+              }"
             >
               <option value="small">Small</option>
               <option value="large">Large</option>
             </select>
+            <span
+              class="col-span-4 col-start-2 text-xs uppercase text-red-800"
+              v-if="getError('size')"
+              >{{ getError('size').message }}</span
+            >
           </div>
           <div class="grid grid-cols-5">
             <span class="flex items-center">Picture: </span>
@@ -123,12 +131,34 @@
               v-model="hero.picture.offsetX"
               type="number"
               class="col-span-2 mr-1 rounded border border-gray-300 bg-white outline-none"
+              :class="{
+                'border-red-800': getError('picture.offsetX'),
+              }"
             />
             <input
               v-model="hero.picture.offsetY"
               type="number"
               class="col-span-2 ml-1 rounded border border-gray-300 bg-white outline-none"
+              :class="{
+                'border-red-800': getError('picture.offsetY'),
+              }"
             />
+            <div
+              v-if="getError('picture.offsetX')"
+              class="col-span-4 col-start-2"
+            >
+              <span class="text-xs uppercase text-red-800">{{
+                getError('picture.offsetX').message
+              }}</span>
+            </div>
+            <div
+              v-if="getError('picture.offsetY')"
+              class="col-span-4 col-start-2"
+            >
+              <span class="text-xs uppercase text-red-800">{{
+                getError('picture.offsetY').message
+              }}</span>
+            </div>
           </div>
           <div class="grid grid-cols-5">
             <span class="flex items-center">Picture Zoom: </span>
@@ -137,7 +167,15 @@
               v-model="hero.picture.zoom"
               type="number"
               class="col-span-4 rounded border border-gray-300 bg-white outline-none"
+              :class="{
+                'border-red-800': getError('picture.zoom'),
+              }"
             />
+            <span
+              class="col-span-4 col-start-2 text-xs uppercase text-red-800"
+              v-if="getError('picture.zoom')"
+              >{{ getError('picture.zoom').message }}</span
+            >
           </div>
         </div>
         <div

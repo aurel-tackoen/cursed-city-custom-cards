@@ -1,6 +1,6 @@
 import { object, string, number } from 'yup';
 
-let heroesSchema = object({
+const heroesSchema = object({
   name: string().required(),
   picture: object({
     url: string().url().required(),
@@ -28,6 +28,7 @@ function heroesErrors(errors) {
   const validationErrors = [];
   errors.inner.forEach((e) => {
     validationErrors.push({
+      name: e.path.split('.').join(' '),
       path: e.path,
       message: e.message,
     });
