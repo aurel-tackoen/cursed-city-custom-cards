@@ -20,17 +20,15 @@ const tabs = reactive([
 const authStore = useAuthStore();
 const { User } = storeToRefs(authStore);
 const heroesStore = useHeroesStore();
-const { Hero } = storeToRefs(heroesStore);
+const { Hero, HeroErrors } = storeToRefs(heroesStore);
 
 hero.user.email = User.value.email;
 hero.user.username = User.value.username;
 hero.date = dayjs().unix();
+hero.fake = 'fake';
 
 function createHero() {
-  console.log(hero);
   const result = heroesStore.createHero(hero);
-  console.log(result);
-  console.log(Hero);
 }
 </script>
 
@@ -56,7 +54,17 @@ function createHero() {
       v-model:hero="hero"
       class="hero-card-display mt-4"
     />
-    <HeroNormalForm v-if="tabs[0].current" v-model:hero="hero" class="mt-4" />
-    <HeroInspiredForm v-if="tabs[1].current" v-model:hero="hero" class="mt-4" />
+    <HeroNormalForm
+      v-if="tabs[0].current"
+      :errors="HeroErrors"
+      v-model:hero="hero"
+      class="mt-4"
+    />
+    <HeroInspiredForm
+      v-if="tabs[1].current"
+      :errors="HeroErrors"
+      v-model:hero="hero"
+      class="mt-4"
+    />
   </div>
 </template>

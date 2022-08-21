@@ -258,12 +258,12 @@ const heroes = [
 ];
 
 const defaultHero = {
-  user: {},
   picture: {
     offsetY: 100,
     offsetX: -50,
     zoom: 1,
   },
+  size: 'large',
   tags: [],
   normal: {
     stats: {
@@ -281,6 +281,7 @@ const defaultHero = {
     notes: [],
     abilities: [],
   },
+  user: {},
 };
 
 export { defaultHero };

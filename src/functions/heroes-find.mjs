@@ -1,26 +1,20 @@
 const { MongoClient } = require('mongodb');
-const ObjectID = require('mongodb').ObjectId;
 
 const mongoClient = new MongoClient(process.env.MONGODB_URI);
 
 const clientPromise = mongoClient.connect();
 
-exports.handler = async function ({ body }) {
+export const handler = async function ({ body }) {
   try {
     console.log(body);
     const data = JSON.parse(body);
-    data._id = new ObjectID(data._id);
+    console.log(data.params);
     const database = (await clientPromise).db('cursed-database');
     const collection = database.collection('Heroes');
-    const item = await collection.findOneAndUpdate(
-      { _id: data._id },
-      { $set: data },
-      { returnDocument: 'after' }
-    );
-    console.log(item);
+    const items = await collection.find(data.params).limit(20).toArray();
     return {
       statusCode: 200,
-      body: JSON.stringify(item),
+      body: JSON.stringify(items),
     };
   } catch (error) {
     console.log(error);

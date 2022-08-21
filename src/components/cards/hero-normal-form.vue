@@ -5,6 +5,7 @@ import Multiselect from '@vueform/multiselect';
 import FormCard from '@/components/layout/form-card.vue';
 const props = defineProps({
   hero: Object,
+  errors: Array,
 });
 const emit = defineEmits(['update:hero']);
 const hero = computed({
@@ -29,9 +30,13 @@ const defaultAbilities = {
   name: '',
   rule: '',
 };
+const getError = (path) => {
+  return props.errors.find((e) => e.path === path);
+};
 </script>
 <template>
   <div class="mx-auto">
+    {{ errors }}
     <FormCard id="user-hero" title="Hero">
       <div class="flex w-full bg-white">
         <div class="space-y-3 grow">
@@ -41,7 +46,15 @@ const defaultAbilities = {
               v-model="hero.name"
               type="text"
               class="col-span-4 border border-gray-300 rounded bg-white outline-none"
+              :class="{
+                'border-red-800': getError('name'),
+              }"
             />
+            <span
+              class="col-start-2 col-span-4 text-xs text-red-800 uppercase"
+              v-if="getError('name')"
+              >{{ getError('name').message }}</span
+            >
           </div>
           <div class="grid grid-cols-5">
             <span class="flex items-center">Tags: </span>
@@ -80,7 +93,15 @@ const defaultAbilities = {
               v-model="hero.picture.url"
               type="text"
               class="col-span-4 border border-gray-300 rounded bg-white outline-none"
+              :class="{
+                'border-red-800': getError('name'),
+              }"
             />
+            <span
+              class="col-start-2 col-span-4 text-xs text-red-800 uppercase"
+              v-if="getError('picture.url')"
+              >{{ getError('picture.url').message }}</span
+            >
           </div>
           <div class="grid grid-cols-5">
             <span class="flex items-center">Picture Offset X/Y: </span>

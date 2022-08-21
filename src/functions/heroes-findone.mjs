@@ -5,7 +5,7 @@ const mongoClient = new MongoClient(process.env.MONGODB_URI);
 
 const clientPromise = mongoClient.connect();
 
-exports.handler = async function ({ body }) {
+export const handler = async function ({ body }) {
   try {
     console.log(body);
     const data = JSON.parse(body);
