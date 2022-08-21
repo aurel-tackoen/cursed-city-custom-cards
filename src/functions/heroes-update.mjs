@@ -2,6 +2,7 @@ const { MongoClient } = require('mongodb');
 const ObjectID = require('mongodb').ObjectId;
 
 const checkAuth = require('../plugins/functions/check-auth.js');
+const checkOwner = require('../plugins/functions/check-owner.js');
 import { heroesValidation } from '../schemas/heroes-schema.js';
 
 const mongoClient = new MongoClient(process.env.MONGODB_URI);
@@ -10,9 +11,10 @@ const clientPromise = mongoClient.connect();
 
 export const handler = async function ({ body }, context) {
   try {
-    await checkAuth(context);
+    const user = await checkAuth(context);
     const data = JSON.parse(body);
     await heroesValidation(data);
+    await checkOwner(user, data);
     data._id = new ObjectID(data._id);
     const database = (await clientPromise).db('cursed-database');
     const collection = database.collection('Heroes');

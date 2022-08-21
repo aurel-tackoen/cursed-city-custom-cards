@@ -1,9 +1,15 @@
 import { object, string, number, array } from 'yup';
 
 const heroesSchema = object({
+  _id: string(),
   name: string().required(),
   size: string().required(),
-  tags: array(string().required()).required(),
+  tags: array(
+    object({
+      label: string().required(),
+      value: string().required(),
+    }).required()
+  ).required(),
   picture: object({
     url: string().url().required(),
     offsetY: number().required(),
@@ -21,8 +27,8 @@ const heroesSchema = object({
     weapons: array(
       object({
         name: string().required(),
-        dice1: number().required(),
-        dice2: number(),
+        dice1: string().required(),
+        dice2: string(),
         damages: object({
           base: number().required(),
           critical: number().required(),
@@ -31,14 +37,14 @@ const heroesSchema = object({
     ).required(),
     notes: array(
       object({
-        name: string().required(),
+        name: string(),
         rule: string().required(),
       })
     ).required(),
     abilities: array(
       object({
         name: string().required(),
-        activation: number().required(),
+        activation: number(),
         rule: string().required(),
       })
     ).required(),
@@ -58,8 +64,8 @@ const heroesSchema = object({
     weapons: array(
       object({
         name: string().required(),
-        dice1: number().required(),
-        dice2: number(),
+        dice1: string().required(),
+        dice2: string(),
         damages: object({
           base: number().required(),
           critical: number().required(),
@@ -68,14 +74,14 @@ const heroesSchema = object({
     ).required(),
     notes: array(
       object({
-        name: string().required(),
+        name: string(),
         rule: string().required(),
       })
     ).required(),
     abilities: array(
       object({
         name: string().required(),
-        activation: number().required(),
+        activation: number(),
         rule: string().required(),
       })
     ).required(),

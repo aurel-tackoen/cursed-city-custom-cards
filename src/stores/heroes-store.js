@@ -51,6 +51,7 @@ export const useHeroesStore = defineStore('heroes', {
           method: 'POST',
           body: JSON.stringify(item),
         });
+        console.log(response);
         if (response.status === 200) {
           const hero = await response.json();
           this.Hero = hero.value;
