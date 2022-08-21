@@ -1,35 +1,35 @@
 <script setup>
-import { reactive, inject } from 'vue';
-import { storeToRefs } from 'pinia';
-import { useAuthStore } from '@/stores/auth-store.js';
-import { useHeroesStore } from '@/stores/heroes-store.js';
-import { defaultHero } from '@/assets/data/heroes.js';
+  import { reactive, inject } from 'vue';
+  import { storeToRefs } from 'pinia';
+  import { useAuthStore } from '@/stores/auth-store.js';
+  import { useHeroesStore } from '@/stores/heroes-store.js';
+  import { defaultHero } from '@/assets/data/heroes.js';
 
-import HeroNav from '@/components/layout/hero-nav.vue';
-import HeroCard from '@/components/cards/hero-card.vue';
-import HeroForm from '@/components/cards/hero-form.vue';
-import ErrorsAlert from '@/components/layout/errors-alert.vue';
+  import HeroNav from '@/components/layout/hero-nav.vue';
+  import HeroCard from '@/components/cards/hero-card.vue';
+  import HeroForm from '@/components/cards/hero-form.vue';
+  import ErrorsAlert from '@/components/layout/errors-alert.vue';
 
-const dayjs = inject('dayjs');
-const newHero = reactive(defaultHero);
-const tabs = reactive([
-  { name: 'Path to Glory', current: true },
-  { name: 'Inspired', current: false },
-]);
+  const dayjs = inject('dayjs');
+  const newHero = reactive(defaultHero);
+  const tabs = reactive([
+    { name: 'Path to Glory', current: true },
+    { name: 'Inspired', current: false },
+  ]);
 
-const authStore = useAuthStore();
-const { User } = storeToRefs(authStore);
-const heroesStore = useHeroesStore();
-const { Hero, HeroErrors } = storeToRefs(heroesStore);
+  const authStore = useAuthStore();
+  const { User } = storeToRefs(authStore);
+  const heroesStore = useHeroesStore();
+  const { Hero, HeroErrors } = storeToRefs(heroesStore);
 
-newHero.user.email = User.value.email;
-newHero.user.username = User.value.username;
-newHero.date = dayjs().unix();
-newHero.fake = 'fake';
+  newHero.user.email = User.value.email;
+  newHero.user.username = User.value.username;
+  newHero.date = dayjs().unix();
+  newHero.fake = 'fake';
 
-function createHero() {
-  const result = heroesStore.createHero(newHero);
-}
+  function createHero() {
+    const result = heroesStore.createHero(newHero);
+  }
 </script>
 
 <template>

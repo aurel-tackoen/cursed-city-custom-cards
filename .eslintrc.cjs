@@ -13,6 +13,7 @@ module.exports = {
     ecmaVersion: 'latest',
   },
   rules: {
+    'vue/script-indent': ['error', 2, { baseIndent: 1 }],
     'max-len': ['warn', { code: 120 }],
     'require-jsdoc': 0,
   },

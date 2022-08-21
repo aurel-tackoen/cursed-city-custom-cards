@@ -1,48 +1,47 @@
 <script setup>
-import { computed } from 'vue';
-import draggable from 'vuedraggable';
-import Multiselect from '@vueform/multiselect';
-import FormCard from '@/components/layout/form-card.vue';
-import ErrorsAlert from '@/components/layout/errors-alert.vue';
-const props = defineProps({
-  status: String,
-  hero: {
-    type: Object,
-    required: true,
-  },
-  errors: {
-    type: Array,
-    default() {
-      return [];
+  import { computed } from 'vue';
+  import draggable from 'vuedraggable';
+  import Multiselect from '@vueform/multiselect';
+  import FormCard from '@/components/layout/form-card.vue';
+  const props = defineProps({
+    status: String,
+    hero: {
+      type: Object,
+      required: true,
     },
-  },
-});
-const emit = defineEmits(['update:hero']);
-const hero = computed({
-  get: () => props.hero,
-  set: (value) => emit('update:hero', value),
-});
-const defaultWeapon = {
-  name: '',
-  activation: 1,
-  type: 'melee',
-  dices: '',
-  damages: {
-    base: 1,
-    critical: 1,
-  },
-};
-const defaultNotes = {
-  name: '',
-  rule: '',
-};
-const defaultAbilities = {
-  name: '',
-  rule: '',
-};
-const getError = (path) => {
-  return props?.errors.find((e) => e.path === path);
-};
+    errors: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
+  });
+  const emit = defineEmits(['update:hero']);
+  const hero = computed({
+    get: () => props.hero,
+    set: (value) => emit('update:hero', value),
+  });
+  const defaultWeapon = {
+    name: '',
+    activation: 1,
+    type: 'melee',
+    dices: '',
+    damages: {
+      base: 1,
+      critical: 1,
+    },
+  };
+  const defaultNotes = {
+    name: '',
+    rule: '',
+  };
+  const defaultAbilities = {
+    name: '',
+    rule: '',
+  };
+  const getError = (path) => {
+    return props?.errors.find((e) => e.path === path);
+  };
 </script>
 <template>
   <div class="mx-auto space-y-4">

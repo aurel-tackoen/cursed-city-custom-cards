@@ -1,44 +1,44 @@
 <script setup>
-import { computed, inject } from 'vue';
-const dayjs = inject('dayjs');
-const props = defineProps({
-  hero: Object,
-  tabs: Array,
-  status: {
-    type: Boolean,
-    default: true,
-  },
-  save: {
-    type: Boolean,
-    default: false,
-  },
-  create: {
-    type: Boolean,
-    default: false,
-  },
-  print: {
-    type: Boolean,
-    default: false,
-  },
-  single: {
-    type: Boolean,
-    default: false,
-  },
-});
-const emit = defineEmits(['update:tabs', 'update:hero', 'create:hero']);
-const tabs = computed({
-  get: () => props.tabs,
-  set: (value) => emit('update:tabs', value),
-});
-function setTabs(index) {
-  tabs.value.map((tab) => {
-    tab.current = false;
+  import { computed, inject } from 'vue';
+  const dayjs = inject('dayjs');
+  const props = defineProps({
+    hero: Object,
+    tabs: Array,
+    status: {
+      type: Boolean,
+      default: true,
+    },
+    save: {
+      type: Boolean,
+      default: false,
+    },
+    create: {
+      type: Boolean,
+      default: false,
+    },
+    print: {
+      type: Boolean,
+      default: false,
+    },
+    single: {
+      type: Boolean,
+      default: false,
+    },
   });
-  tabs.value[index].current = true;
-}
-function printHero() {
-  window.print();
-}
+  const emit = defineEmits(['update:tabs', 'update:hero', 'create:hero']);
+  const tabs = computed({
+    get: () => props.tabs,
+    set: (value) => emit('update:tabs', value),
+  });
+  function setTabs(index) {
+    tabs.value.map((tab) => {
+      tab.current = false;
+    });
+    tabs.value[index].current = true;
+  }
+  function printHero() {
+    window.print();
+  }
 </script>
 <template>
   <nav

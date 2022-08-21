@@ -1,12 +1,12 @@
 <script setup>
-defineProps({
-  errors: {
-    type: Array,
-    default() {
-      return [];
+  defineProps({
+    errors: {
+      type: Array,
+      default() {
+        return [];
+      },
     },
-  },
-});
+  });
 </script>
 <template>
   <div

@@ -1,11 +1,11 @@
 <script setup>
-import DiceD6 from '@/components/dices/dice-d6.vue';
-import DiceD8 from '@/components/dices/dice-d8.vue';
-import DiceD12 from '@/components/dices/dice-d12.vue';
-defineProps({
-  hero: Object,
-  status: String,
-});
+  import DiceD6 from '@/components/dices/dice-d6.vue';
+  import DiceD8 from '@/components/dices/dice-d8.vue';
+  import DiceD12 from '@/components/dices/dice-d12.vue';
+  defineProps({
+    hero: Object,
+    status: String,
+  });
 </script>
 <template>
   <div
@@ -36,7 +36,12 @@ defineProps({
         :src="hero.picture.url"
         alt="Hero Picture"
         class="max-w-max"
-        :style="`transform: scale(${hero.picture.zoom});margin-top: ${hero.picture.offsetY}px; margin-left: ${hero.picture.offsetX}px; height: 500px`"
+        :style="`
+          transform: scale(${hero.picture.zoom});
+          margin-top: ${hero.picture.offsetY}px;
+          margin-left: ${hero.picture.offsetX}px;
+          height: 500px
+        `"
       />
     </div>
     <div

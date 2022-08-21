@@ -1,18 +1,18 @@
 <script setup>
-import { storeToRefs } from 'pinia';
-import { useAuthStore } from '@/stores/auth-store.js';
-import { useHeroesStore } from '@/stores/heroes-store.js';
-import HeroesList from '@/components/layout/heroes-list.vue';
+  import { storeToRefs } from 'pinia';
+  import { useAuthStore } from '@/stores/auth-store.js';
+  import { useHeroesStore } from '@/stores/heroes-store.js';
+  import HeroesList from '@/components/layout/heroes-list.vue';
 
-const authStore = useAuthStore();
-const { User } = storeToRefs(authStore);
-const heroesStore = useHeroesStore();
-const { UserHeroes, Heroes } = storeToRefs(heroesStore);
+  const authStore = useAuthStore();
+  const { User } = storeToRefs(authStore);
+  const heroesStore = useHeroesStore();
+  const { UserHeroes, Heroes } = storeToRefs(heroesStore);
 
-if (User.value.authenticated) {
-  await heroesStore.fetchUserHeroes();
-}
-await heroesStore.fetchHeroes();
+  if (User.value.authenticated) {
+    await heroesStore.fetchUserHeroes();
+  }
+  await heroesStore.fetchHeroes();
 </script>
 
 <template>
@@ -24,9 +24,7 @@ await heroesStore.fetchHeroes();
         </div>
         <div v-if="UserHeroes.length > 0" class="flex-shrink-0">
           <router-link
-            :to="{
-              name: 'heroes-create',
-            }"
+            :to="{ name: 'heroes-create' }"
             class="rounded-md border-2 border-white bg-red-500 px-4 py-2 text-sm font-medium text-white shadow hover:bg-red-700"
           >
             Create a new Hero
@@ -57,9 +55,7 @@ await heroesStore.fetchHeroes();
           </div>
           <div v-if="User.authenticated" class="mt-4 flex-shrink-0">
             <router-link
-              :to="{
-                name: 'heroes-create',
-              }"
+              :to="{ name: 'heroes-create' }"
               class="rounded-md border-2 border-white bg-red-500 px-4 py-2 text-sm font-medium text-white shadow hover:bg-red-700"
             >
               Create a new Hero

@@ -1,10 +1,10 @@
 <script setup>
-import { inject } from 'vue';
-const dayjs = inject('dayjs');
-defineProps({
-  heroes: Array,
-  target: String,
-});
+  import { inject } from 'vue';
+  const dayjs = inject('dayjs');
+  defineProps({
+    heroes: Array,
+    target: String,
+  });
 </script>
 
 <template>
@@ -26,7 +26,12 @@ defineProps({
                 :src="hero.picture.url"
                 alt="Hero Picture"
                 class="max-w-max"
-                :style="`transform: scale(${hero.picture.zoom});margin-top: calc(${hero.picture.offsetY}px / 5); margin-left: calc(${hero.picture.offsetX}px / 5); height: calc(500px / 5)`"
+                :style="`
+                  transform: scale(${hero.picture.zoom});
+                  margin-top: calc(${hero.picture.offsetY}px / 5);
+                  margin-left: calc(${hero.picture.offsetX}px / 5);
+                  height: calc(500px / 5)
+                `"
               />
             </div>
           </div>

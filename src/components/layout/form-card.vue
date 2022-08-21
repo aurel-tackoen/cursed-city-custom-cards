@@ -1,7 +1,7 @@
 <script setup>
-defineProps({
-  title: String,
-});
+  defineProps({
+    title: String,
+  });
 </script>
 <template>
   <div class="rounded border border-gray-100 shadow-sm">

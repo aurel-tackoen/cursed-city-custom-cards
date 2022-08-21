@@ -1,16 +1,16 @@
 <script setup>
-import { storeToRefs } from 'pinia';
-import { useAuthStore } from '@/stores/auth-store.js';
-import { createAvatar } from '@dicebear/avatars';
-import * as style from '@dicebear/avatars-initials-sprites';
-function getAvatar(username) {
-  const avatar = createAvatar(style, {
-    seed: username,
-  });
-  return avatar;
-}
-const authStore = useAuthStore();
-const { User } = storeToRefs(authStore);
+  import { storeToRefs } from 'pinia';
+  import { useAuthStore } from '@/stores/auth-store.js';
+  import { createAvatar } from '@dicebear/avatars';
+  import * as style from '@dicebear/avatars-initials-sprites';
+  function getAvatar(username) {
+    const avatar = createAvatar(style, {
+      seed: username,
+    });
+    return avatar;
+  }
+  const authStore = useAuthStore();
+  const { User } = storeToRefs(authStore);
 </script>
 
 <template>

@@ -1,18 +1,18 @@
 <script setup>
-import { useRoute } from 'vue-router';
-import { reactive } from 'vue';
-import HeroCard from '@/components/cards/hero-card.vue';
-import { useHeroesStore } from '@/stores/heroes-store.js';
-import HeroNav from '@/components/layout/hero-nav.vue';
+  import { useRoute } from 'vue-router';
+  import { reactive } from 'vue';
+  import HeroCard from '@/components/cards/hero-card.vue';
+  import { useHeroesStore } from '@/stores/heroes-store.js';
+  import HeroNav from '@/components/layout/hero-nav.vue';
 
-const tabs = reactive([
-  { name: 'Path to Glory', current: true },
-  { name: 'Inspired', current: false },
-]);
-const route = useRoute();
-const heroesStore = useHeroesStore();
-await heroesStore.fetchHero(route.params.id);
-const Hero = heroesStore.Hero;
+  const tabs = reactive([
+    { name: 'Path to Glory', current: true },
+    { name: 'Inspired', current: false },
+  ]);
+  const route = useRoute();
+  const heroesStore = useHeroesStore();
+  await heroesStore.fetchHero(route.params.id);
+  const Hero = heroesStore.Hero;
 </script>
 
 <template>

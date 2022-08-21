@@ -1,30 +1,30 @@
 <script setup>
-import { reactive } from 'vue';
-import { useRoute } from 'vue-router';
-import { storeToRefs } from 'pinia';
-import { useAuthStore } from '@/stores/auth-store.js';
-import { useHeroesStore } from '@/stores/heroes-store.js';
+  import { reactive } from 'vue';
+  import { useRoute } from 'vue-router';
+  import { storeToRefs } from 'pinia';
+  import { useAuthStore } from '@/stores/auth-store.js';
+  import { useHeroesStore } from '@/stores/heroes-store.js';
 
-import HeroNav from '@/components/layout/hero-nav.vue';
-import HeroCard from '@/components/cards/hero-card.vue';
-import HeroForm from '@/components/cards/hero-form.vue';
-import ErrorsAlert from '@/components/layout/errors-alert.vue';
+  import HeroNav from '@/components/layout/hero-nav.vue';
+  import HeroCard from '@/components/cards/hero-card.vue';
+  import HeroForm from '@/components/cards/hero-form.vue';
+  import ErrorsAlert from '@/components/layout/errors-alert.vue';
 
-const route = useRoute();
-const authStore = useAuthStore();
-const { User } = storeToRefs(authStore);
-const heroesStore = useHeroesStore();
-await heroesStore.fetchHero(route.params.id);
-const { Hero, HeroErrors } = storeToRefs(heroesStore);
+  const route = useRoute();
+  const authStore = useAuthStore();
+  const { User } = storeToRefs(authStore);
+  const heroesStore = useHeroesStore();
+  await heroesStore.fetchHero(route.params.id);
+  const { Hero, HeroErrors } = storeToRefs(heroesStore);
 
-function updateHero() {
-  heroesStore.updateHero();
-}
+  function updateHero() {
+    heroesStore.updateHero();
+  }
 
-const tabs = reactive([
-  { name: 'Path to Glory', current: true },
-  { name: 'Inspired', current: false },
-]);
+  const tabs = reactive([
+    { name: 'Path to Glory', current: true },
+    { name: 'Inspired', current: false },
+  ]);
 </script>
 
 <template>
