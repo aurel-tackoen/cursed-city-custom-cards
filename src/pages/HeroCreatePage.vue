@@ -8,7 +8,6 @@ import { defaultHero } from '@/assets/data/heroes.js';
 import HeroNav from '@/components/layout/hero-nav.vue';
 import HeroCard from '@/components/cards/hero-card.vue';
 import HeroForm from '@/components/cards/hero-form.vue';
-import HeroInspiredForm from '@/components/cards/hero-inspired-form.vue';
 
 const dayjs = inject('dayjs');
 const hero = reactive(defaultHero);
