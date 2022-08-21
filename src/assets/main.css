@@ -9,6 +9,27 @@ sub, sup { font-weight: bold; font-size: 75%; line-height: 0; position: relative
 sup { top: 0.1rem; vertical-align: super;}
 sub { bottom: -0.25em; vertical-align: sub;}
 
+@layer components {
+  .btn {
+    border-radius: theme('borderRadius.md');
+    padding-left: theme('spacing.4');
+    padding-right: theme('spacing.4');
+    padding-top: theme('spacing.2');
+    padding-bottom: theme('spacing.2');
+    background-color: theme('colors.red.500');
+    border-color: theme('colors.white');
+    border-width: theme('borderWidth.2');
+    box-shadow: theme('boxShadow.md');
+    color: theme('colors.white');
+    font-weight: theme('fontWeight.medium');
+    font-size: theme('fontSize.sm');
+    line-height: theme('lineHeight.5');
+  }
+  .btn:hover {
+    background-color: theme('colors.red.700');
+  }
+}
+
 .hero-card-display {
   width: 233mm;
   height: 170mm;
