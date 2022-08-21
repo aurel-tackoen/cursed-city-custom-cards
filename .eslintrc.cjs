@@ -14,5 +14,6 @@ module.exports = {
   },
   rules: {
     'max-len': ['warn', { code: 120 }],
+    'require-jsdoc': 0,
   },
 };
