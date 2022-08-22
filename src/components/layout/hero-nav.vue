@@ -46,7 +46,7 @@
       class="flex h-20 w-full items-center overflow-hidden rounded bg-gradient-to-t from-slate-50 to-white px-2 shadow"
       aria-label="Tabs"
     >
-      <div class="hidden w-5/12 items-center sm:flex">
+      <div class="flex w-7/12 items-center sm:w-5/12">
         <div v-if="hero.picture && hero.picture.url">
           <div
             class="flex items-center overflow-hidden rounded-lg border-slate-100 shadow shadow-slate-100"
@@ -65,17 +65,17 @@
             />
           </div>
         </div>
-        <div class="hidden grow flex-col space-y-1 px-4 sm:flex">
+        <div class="flex grow flex-col space-y-1 px-4">
           <div class="text-lg font-bold leading-4 text-slate-900">
             {{ hero.name }}
           </div>
-          <div class="text-xs italic leading-4 text-slate-600">
+          <div class="hidden text-xs italic leading-4 text-slate-600 sm:block">
             Created by <span class="font-bold">{{ hero.user.username }}</span>
             {{ dayjs(hero.date * 1000).fromNow() }}
           </div>
         </div>
       </div>
-      <div class="flex w-7/12 justify-center self-stretch sm:w-4/12">
+      <div class="hidden justify-center self-stretch sm:flex sm:w-4/12">
         <div v-if="status === true">
           <button
             v-for="(tab, tabIdx) in tabs"
@@ -125,6 +125,36 @@
         <button v-if="print === true" @click="printHero()" class="btn-primary">
           Print
         </button>
+      </div>
+    </nav>
+    <nav
+      class="flex h-12 w-full items-center rounded bg-gradient-to-t from-slate-50 to-white px-2 shadow sm:hidden"
+      aria-label="Tabs"
+    >
+      <div class="flex w-full justify-center self-stretch sm:w-4/12">
+        <div v-if="status === true">
+          <button
+            v-for="(tab, tabIdx) in tabs"
+            class="relative h-full overflow-hidden px-3 text-center"
+            :key="tab.name"
+            :class="[
+              tab.current
+                ? 'cursor-default text-slate-900'
+                : 'text-slate-500 hover:text-red-700',
+            ]"
+            :aria-current="tab.current ? 'page' : undefined"
+            @click="setTabs(tabIdx)"
+          >
+            <span>{{ tab.name }}</span>
+            <span
+              aria-hidden="true"
+              :class="[
+                tab.current ? 'bg-red-700' : 'bg-transparent',
+                'absolute inset-x-0 bottom-0 h-1',
+              ]"
+            />
+          </button>
+        </div>
       </div>
     </nav>
   </div>
