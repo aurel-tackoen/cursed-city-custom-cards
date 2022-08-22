@@ -20,6 +20,11 @@
   function updateHero() {
     heroesStore.updateHero();
   }
+  function removeHero() {
+    if (confirm('Are you sure you want to delete this hero?') == true) {
+      heroesStore.removeHero(Hero.value._id);
+    }
+  }
 
   const tabs = reactive([
     { name: 'Path to Glory', current: true },
@@ -64,5 +69,8 @@
       v-model:hero="Hero"
       :errors="HeroErrors"
     />
+    <div>
+      <button @click="removeHero">Delete this hero</button>
+    </div>
   </div>
 </template>

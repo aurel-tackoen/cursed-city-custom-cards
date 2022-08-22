@@ -45,7 +45,7 @@
       />
     </div>
     <div
-      id="hero-stats"
+      v-if="hero[status] && hero[status].stats"
       class="absolute grid w-12 grid-cols-2 text-black"
       style="top: 280px; left: 70px; width: 100px"
     >
@@ -100,12 +100,8 @@
         Size: <span class="capitalize">{{ hero.size }}</span>
       </div>
     </div>
-    <div
-      id="hero-weapons"
-      class="absolute"
-      style="top: 265px; left: 292px; width: 560px"
-    >
-      <div>
+    <div class="absolute" style="top: 265px; left: 292px; width: 560px">
+      <div v-if="hero[status] && hero[status].weapons">
         <div
           v-for="(weapon, index) in hero[status].weapons"
           :key="weapon.name"
@@ -146,28 +142,30 @@
           </div>
         </div>
       </div>
-      <div
-        v-if="hero[status].abilities.length > 0"
-        class="mt-3 mb-px w-full text-center text-lg uppercase leading-none"
-      >
-        Unique Abilities
-      </div>
-      <div class="space-y-0.5 text-sm">
+      <div v-if="hero[status] && hero[status].abilities">
         <div
-          v-for="ability in hero[status].abilities"
-          :key="ability.name"
-          class="leading-tight"
+          v-if="hero[status].abilities.length > 0"
+          class="mt-3 mb-px w-full text-center text-lg uppercase leading-none"
         >
-          <strong v-if="ability.name"
-            >{{ ability.name }}
-            <span v-if="ability.activation">(+{{ ability.activation }})</span
-            >: </strong
-          >{{ ability.rule }}
+          Unique Abilities
+        </div>
+        <div class="space-y-0.5 text-sm">
+          <div
+            v-for="ability in hero[status].abilities"
+            :key="ability.name"
+            class="leading-tight"
+          >
+            <strong v-if="ability.name"
+              >{{ ability.name }}
+              <span v-if="ability.activation">(+{{ ability.activation }})</span
+              >: </strong
+            >{{ ability.rule }}
+          </div>
         </div>
       </div>
     </div>
     <div
-      v-if="status === 'normal'"
+      v-if="status === 'normal' && hero[status] && hero[status].path"
       class="absolute text-center text-sm leading-none"
       style="top: 544px; left: 292px; width: 522px; height: 40px"
     >

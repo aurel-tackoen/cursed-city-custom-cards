@@ -51,7 +51,6 @@ export const useHeroesStore = defineStore('heroes', {
           method: 'POST',
           body: JSON.stringify(item),
         });
-        console.log(response);
         if (response.status === 200) {
           const hero = await response.json();
           this.Hero = hero.value;
@@ -70,15 +69,21 @@ export const useHeroesStore = defineStore('heroes', {
     },
     async fetchHero(id) {
       try {
-        this.HeroErrors = [];
         const response = await fetch('/.netlify/functions/heroes-findone', {
           method: 'POST',
           body: JSON.stringify({
             _id: id,
           }),
         });
-        const hero = await response.json();
-        this.Hero = hero;
+        if (response.status === 200) {
+          const hero = await response.json();
+          this.Hero = hero;
+          return hero;
+        }
+        if (response.status === 500) {
+          const errors = await response.json();
+          throw errors;
+        }
       } catch (error) {
         console.log(error);
       }
@@ -89,8 +94,15 @@ export const useHeroesStore = defineStore('heroes', {
           method: 'POST',
           body: JSON.stringify({}),
         });
-        const heroes = await response.json();
-        this.Heroes = heroes;
+        if (response.status === 200) {
+          const heroes = await response.json();
+          this.Heroes = heroes;
+          return true;
+        }
+        if (response.status === 500) {
+          const errors = await response.json();
+          throw errors;
+        }
       } catch (error) {
         console.log(error);
       }
@@ -108,8 +120,42 @@ export const useHeroesStore = defineStore('heroes', {
             params: { 'user.email': User.value.email },
           }),
         });
-        const heroes = await response.json();
-        this.UserHeroes = heroes;
+        if (response.status === 200) {
+          const heroes = await response.json();
+          this.UserHeroes = heroes;
+          return true;
+        }
+        if (response.status === 500) {
+          const errors = await response.json();
+          throw errors;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async removeHero(id) {
+      try {
+        const authStore = useAuthStore();
+        const { User } = storeToRefs(authStore);
+        const hero = await this.fetchHero(id);
+        const response = await fetch('/.netlify/functions/heroes-remove', {
+          headers: {
+            Authorization: `Bearer ${User.value.access_token}`,
+          },
+          method: 'POST',
+          body: JSON.stringify({
+            _id: id,
+            hero,
+          }),
+        });
+        if (response.status === 200) {
+          this.Hero = {};
+          return true;
+        }
+        if (response.status === 500) {
+          const errors = await response.json();
+          throw errors;
+        }
       } catch (error) {
         console.log(error);
       }
