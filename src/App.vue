@@ -5,7 +5,7 @@
   authStore.init();
 </script>
 <template>
-  <div class="antialiased">
+  <div class="bg-slate-50 antialiased">
     <TopNav class="hidden-print" />
     <Suspense>
       <div class="container mx-auto">

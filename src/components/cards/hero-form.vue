@@ -53,7 +53,7 @@
             <input
               v-model="hero.name"
               type="text"
-              class="col-span-4 rounded border border-gray-300 bg-white outline-none"
+              class="col-span-4 rounded border border-slate-300 bg-white outline-none"
               :class="{
                 'border-red-800': getError('name'),
               }"
@@ -95,7 +95,7 @@
             <span class="flex items-center">Size: </span>
             <select
               v-model="hero.size"
-              class="col-span-4 rounded border border-gray-300 bg-white outline-none"
+              class="col-span-4 rounded border border-slate-300 bg-white outline-none"
               :class="{
                 'border-red-800': getError('size'),
               }"
@@ -114,7 +114,7 @@
             <input
               v-model="hero[status].stats.move"
               type="number"
-              class="col-span-2 mr-1 rounded border border-gray-300 bg-white outline-none"
+              class="col-span-2 mr-1 rounded border border-slate-300 bg-white outline-none"
               :class="{
                 'border-red-800': getError(`${status}.stats.move`),
               }"
@@ -122,7 +122,7 @@
             <input
               v-model="hero[status].stats.run"
               type="number"
-              class="col-span-2 ml-1 rounded border border-gray-300 bg-white outline-none"
+              class="col-span-2 ml-1 rounded border border-slate-300 bg-white outline-none"
               :class="{
                 'border-red-800': getError(`${status}.stats.run`),
               }"
@@ -142,7 +142,7 @@
             <span class="flex items-center">Agility: </span>
             <select
               v-model="hero[status].stats.agility"
-              class="col-span-4 rounded border border-gray-300 bg-white outline-none"
+              class="col-span-4 rounded border border-slate-300 bg-white outline-none"
               :class="{
                 'border-red-800': getError(`${status}.stats.agility`),
               }"
@@ -161,7 +161,7 @@
             <span class="flex items-center">Vitality: </span>
             <select
               v-model="hero[status].stats.vitality"
-              class="col-span-4 rounded border border-gray-300 bg-white outline-none"
+              class="col-span-4 rounded border border-slate-300 bg-white outline-none"
               :class="{
                 'border-red-800': getError(`${status}.stats.vitality`),
               }"
@@ -180,7 +180,7 @@
             <span class="flex items-center">Defence: </span>
             <select
               v-model="hero[status].stats.defence"
-              class="col-span-4 rounded border border-gray-300 bg-white outline-none"
+              class="col-span-4 rounded border border-slate-300 bg-white outline-none"
               :class="{
                 'border-red-800': getError(`${status}.stats.defence`),
               }"
@@ -209,7 +209,7 @@
             <input
               v-model="hero.picture.url"
               type="text"
-              class="col-span-4 rounded border border-gray-300 bg-white outline-none"
+              class="col-span-4 rounded border border-slate-300 bg-white outline-none"
               :class="{
                 'border-red-800': getError('picture.url'),
               }"
@@ -225,7 +225,7 @@
             <input
               v-model="hero.picture.offsetX"
               type="number"
-              class="col-span-2 mr-1 rounded border border-gray-300 bg-white outline-none"
+              class="col-span-2 mr-1 rounded border border-slate-300 bg-white outline-none"
               :class="{
                 'border-red-800': getError('picture.offsetX'),
               }"
@@ -233,7 +233,7 @@
             <input
               v-model="hero.picture.offsetY"
               type="number"
-              class="col-span-2 ml-1 rounded border border-gray-300 bg-white outline-none"
+              class="col-span-2 ml-1 rounded border border-slate-300 bg-white outline-none"
               :class="{
                 'border-red-800': getError('picture.offsetY'),
               }"
@@ -261,7 +261,7 @@
               step="0.01"
               v-model="hero.picture.zoom"
               type="number"
-              class="col-span-4 rounded border border-gray-300 bg-white outline-none"
+              class="col-span-4 rounded border border-slate-300 bg-white outline-none"
               :class="{
                 'border-red-800': getError('picture.zoom'),
               }"
@@ -292,7 +292,7 @@
                 <input
                   v-model="weapon.name"
                   type="text"
-                  class="col-span-4 rounded border border-gray-300 bg-white outline-none"
+                  class="col-span-4 rounded border border-slate-300 bg-white outline-none"
                 />
               </div>
               <div class="grid grid-cols-5">
@@ -300,11 +300,11 @@
                 <input
                   v-model="weapon.activation"
                   type="number"
-                  class="col-span-2 mr-1 rounded border border-gray-300 bg-white outline-none"
+                  class="col-span-2 mr-1 rounded border border-slate-300 bg-white outline-none"
                 />
                 <select
                   v-model="weapon.type"
-                  class="col-span-2 ml-1 rounded border border-gray-300 bg-white outline-none"
+                  class="col-span-2 ml-1 rounded border border-slate-300 bg-white outline-none"
                 >
                   <option value="melee">Melee</option>
                   <option value="ranged">Ranged</option>
@@ -316,7 +316,7 @@
                 <span class="flex items-center">Dices: </span>
                 <select
                   v-model="weapon.dice1"
-                  class="col-span-2 mr-1 rounded border border-gray-300 bg-white outline-none"
+                  class="col-span-2 mr-1 rounded border border-slate-300 bg-white outline-none"
                 >
                   <option value="d6">D6 (Square)</option>
                   <option value="d8">D8 (Triangle)</option>
@@ -324,7 +324,7 @@
                 </select>
                 <select
                   v-model="weapon.dice2"
-                  class="col-span-2 ml-1 rounded border border-gray-300 bg-white outline-none"
+                  class="col-span-2 ml-1 rounded border border-slate-300 bg-white outline-none"
                 >
                   <option value="">None</option>
                   <option value="d6">D6 (Square)</option>
@@ -337,19 +337,19 @@
                 <input
                   v-model="weapon.damages.base"
                   type="number"
-                  class="col-span-2 mr-1 rounded border border-gray-300 bg-white outline-none"
+                  class="col-span-2 mr-1 rounded border border-slate-300 bg-white outline-none"
                 />
                 <input
                   v-model="weapon.damages.critical"
                   type="number"
-                  class="col-span-2 ml-1 rounded border border-gray-300 bg-white outline-none"
+                  class="col-span-2 ml-1 rounded border border-slate-300 bg-white outline-none"
                 />
               </div>
               <div class="grid grid-cols-5">
                 <span class="flex items-center">Notes: </span>
                 <select
                   multiple
-                  class="col-span-4 h-14 rounded border border-gray-300 bg-white outline-none"
+                  class="col-span-4 h-14 rounded border border-slate-300 bg-white outline-none"
                   v-model="weapon.notes"
                 >
                   <option
@@ -367,13 +367,13 @@
             >
               <div class="handle cursor-move">
                 <fa-icon
-                  class="fa-fw text-gray-300 hover:text-red-700"
+                  class="fa-fw text-slate-300 hover:text-red-700"
                   :icon="['fas', 'grip-vertical']"
                 />
               </div>
               <button @click="hero[status].weapons.splice(index, 1)">
                 <fa-icon
-                  class="fa-fw text-gray-300 hover:text-red-700"
+                  class="fa-fw text-slate-300 hover:text-red-700"
                   :icon="['fas', 'trash']"
                 />
               </button>
@@ -383,7 +383,7 @@
       </draggable>
       <div class="flex items-center justify-center">
         <button
-          class="fa-fw text-gray-300 hover:text-red-700"
+          class="fa-fw text-slate-300 hover:text-red-700"
           @click="hero[status].weapons.push(defaultWeapon)"
         >
           <fa-icon class="fa-fw" :icon="['fas', 'plus-large']" />
@@ -400,7 +400,7 @@
                 <input
                   v-model="note.name"
                   type="text"
-                  class="col-span-4 rounded border border-gray-300 bg-white outline-none"
+                  class="col-span-4 rounded border border-slate-300 bg-white outline-none"
                 />
               </div>
               <div class="grid grid-cols-5">
@@ -408,7 +408,7 @@
                 <textarea
                   v-model="note.rule"
                   type="text"
-                  class="col-span-4 rounded border border-gray-300 bg-white outline-none"
+                  class="col-span-4 rounded border border-slate-300 bg-white outline-none"
                 />
               </div>
             </div>
@@ -417,13 +417,13 @@
             >
               <div class="handle cursor-move">
                 <fa-icon
-                  class="fa-fw text-gray-300 hover:text-red-700"
+                  class="fa-fw text-slate-300 hover:text-red-700"
                   :icon="['fas', 'grip-vertical']"
                 />
               </div>
               <button @click="hero[status].notes.splice(index, 1)">
                 <fa-icon
-                  class="fa-fw text-gray-300 hover:text-red-700"
+                  class="fa-fw text-slate-300 hover:text-red-700"
                   :icon="['fas', 'trash']"
                 />
               </button>
@@ -433,7 +433,7 @@
       </draggable>
       <div class="flex items-center justify-center">
         <button
-          class="fa-fw text-gray-300 hover:text-red-700"
+          class="fa-fw text-slate-300 hover:text-red-700"
           @click="hero[status].notes.push(defaultNotes)"
         >
           <fa-icon class="fa-fw" :icon="['fas', 'plus-large']" />
@@ -454,7 +454,7 @@
                 <input
                   v-model="ability.name"
                   type="text"
-                  class="col-span-4 rounded border border-gray-300 bg-white outline-none"
+                  class="col-span-4 rounded border border-slate-300 bg-white outline-none"
                 />
               </div>
               <div class="grid grid-cols-5">
@@ -462,7 +462,7 @@
                 <input
                   v-model="ability.activation"
                   type="number"
-                  class="col-span-4 rounded border border-gray-300 bg-white outline-none"
+                  class="col-span-4 rounded border border-slate-300 bg-white outline-none"
                 />
               </div>
               <div class="grid grid-cols-5">
@@ -470,7 +470,7 @@
                 <textarea
                   v-model="ability.rule"
                   type="text"
-                  class="col-span-4 rounded border border-gray-300 bg-white outline-none"
+                  class="col-span-4 rounded border border-slate-300 bg-white outline-none"
                 />
               </div>
             </div>
@@ -479,13 +479,13 @@
             >
               <div class="handle cursor-move">
                 <fa-icon
-                  class="fa-fw text-gray-300 hover:text-red-700"
+                  class="fa-fw text-slate-300 hover:text-red-700"
                   :icon="['fas', 'grip-vertical']"
                 />
               </div>
               <button @click="hero[status].abilities.splice(index, 1)">
                 <fa-icon
-                  class="fa-fw text-gray-300 hover:text-red-700"
+                  class="fa-fw text-slate-300 hover:text-red-700"
                   :icon="['fas', 'trash']"
                 />
               </button>
@@ -495,7 +495,7 @@
       </draggable>
       <div class="flex items-center justify-center">
         <button
-          class="fa-fw text-gray-300 hover:text-red-700"
+          class="fa-fw text-slate-300 hover:text-red-700"
           @click="hero[status].abilities.push(defaultAbilities)"
         >
           <fa-icon class="fa-fw" :icon="['fas', 'plus-large']" />
@@ -510,7 +510,7 @@
             <input
               v-model="hero[status].path.name"
               type="text"
-              class="col-span-4 rounded border border-gray-300 bg-white outline-none"
+              class="col-span-4 rounded border border-slate-300 bg-white outline-none"
               :class="{
                 'border-red-800': getError(`${status}.path.name`),
               }"
@@ -526,7 +526,7 @@
             <textarea
               v-model="hero[status].path.rule"
               type="text"
-              class="col-span-4 rounded border border-gray-300 bg-white outline-none"
+              class="col-span-4 rounded border border-slate-300 bg-white outline-none"
               :class="{
                 'border-red-800': getError(`${status}.path.rule`),
               }"

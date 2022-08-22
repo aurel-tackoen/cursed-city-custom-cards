@@ -4,13 +4,13 @@
   });
 </script>
 <template>
-  <div class="rounded border border-gray-100 shadow-sm">
+  <div class="rounded border border-slate-100 shadow-sm">
     <div
-      class="mb-3 border-b border-gray-100 bg-gray-50 px-5 py-3 text-lg font-semibold"
+      class="border-b border-slate-100 bg-gradient-to-t from-slate-50 to-white px-5 py-3"
     >
-      {{ title }}:
+      <span class="text-lg font-semibold text-slate-600"> {{ title }}: </span>
     </div>
-    <div class="space-y-3 px-5 pb-3">
+    <div class="space-y-3 bg-white px-5 py-3">
       <slot></slot>
     </div>
   </div>

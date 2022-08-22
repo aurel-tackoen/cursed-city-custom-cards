@@ -43,13 +43,13 @@
 <template>
   <div class="sticky top-0 z-50 mx-auto">
     <nav
-      class="flex h-20 w-full items-center overflow-hidden rounded bg-gradient-to-t from-gray-50 to-white px-2 shadow"
+      class="flex h-20 w-full items-center overflow-hidden rounded bg-gradient-to-t from-slate-50 to-white px-2 shadow"
       aria-label="Tabs"
     >
-      <div class="flex w-5/12 items-center">
+      <div class="hidden w-5/12 items-center sm:flex">
         <div v-if="hero.picture && hero.picture.url">
           <div
-            class="flex items-center overflow-hidden rounded-full border border-gray-100 shadow"
+            class="flex items-center overflow-hidden rounded-lg border-slate-100 shadow shadow-slate-100"
             style="width: 58px; height: 58px"
           >
             <img
@@ -58,7 +58,7 @@
               class="max-w-max"
               :style="`
                 transform: scale(${hero.picture.zoom});
-                margin-top: calc(${hero.picture.offsetY}px / 5);
+                margin-top: calc(${hero.picture.offsetY}px / 6);
                 margin-left: calc(${hero.picture.offsetX}px / 5);
                 height: calc(500px / 5)
               `"
@@ -66,16 +66,16 @@
           </div>
         </div>
         <div class="hidden grow flex-col space-y-1 px-4 sm:flex">
-          <div class="text-lg font-bold leading-4 text-gray-900">
+          <div class="text-lg font-bold leading-4 text-slate-900">
             {{ hero.name }}
           </div>
-          <div class="text-xs italic leading-4 text-gray-600">
+          <div class="text-xs italic leading-4 text-slate-600">
             Created by <span class="font-bold">{{ hero.user.username }}</span>
             {{ dayjs(hero.date * 1000).fromNow() }}
           </div>
         </div>
       </div>
-      <div class="flex w-4/12 justify-center self-stretch">
+      <div class="flex w-7/12 justify-center self-stretch sm:w-4/12">
         <div v-if="status === true">
           <button
             v-for="(tab, tabIdx) in tabs"
@@ -83,8 +83,8 @@
             :key="tab.name"
             :class="[
               tab.current
-                ? 'cursor-default text-gray-900'
-                : 'text-gray-500 hover:text-red-700',
+                ? 'cursor-default text-slate-900'
+                : 'text-slate-500 hover:text-red-700',
             ]"
             :aria-current="tab.current ? 'page' : undefined"
             @click="setTabs(tabIdx)"
@@ -100,7 +100,7 @@
           </button>
         </div>
       </div>
-      <div class="flex w-3/12 items-center justify-end space-x-2">
+      <div class="flex w-5/12 items-center justify-end space-x-2 sm:w-3/12">
         <button
           v-if="save === true"
           @click="emit('update:hero')"

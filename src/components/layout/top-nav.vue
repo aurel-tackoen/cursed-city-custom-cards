@@ -21,22 +21,22 @@
           <router-link to="/">
             <fa-icon :icon="['fad', 'dice-d8']" class="fa-2xl text-red-700" />
           </router-link>
-          <router-link to="/">
+          <router-link to="/" class="hidden sm:block">
             <div class="ml-2 text-xl tracking-tighter">
               Cursed City Custom Cards
             </div>
           </router-link>
         </div>
-        <div class="ml-8 flex space-x-8">
+        <div class="ml-8 hidden space-x-8 sm:flex">
           <router-link
             to="/heroes"
-            class="inline-flex items-center border-b-2 border-red-700 px-1 pt-1 text-base text-gray-900"
+            class="inline-flex items-center border-b-2 border-red-700 px-1 pt-1 text-base text-slate-900"
           >
             Heroes
           </router-link>
           <div
             title="Soon !"
-            class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-base text-gray-400"
+            class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-base text-slate-400"
           >
             Monsters
           </div>
@@ -59,7 +59,7 @@
           Sign Up
         </button>
         <button
-          class="border-b border-transparent px-1 text-gray-500 hover:border-red-700 hover:text-red-800"
+          class="border-b border-transparent px-1 text-slate-500 hover:border-red-700 hover:text-red-800"
           v-if="User.authenticated"
           @click="authStore.logout()"
         >

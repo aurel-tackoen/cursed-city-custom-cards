@@ -19,10 +19,12 @@
   <div class="rounded bg-white shadow">
     <div class="mt-8">
       <div
-        class="flex h-16 items-center justify-between bg-gradient-to-t from-gray-50 to-white px-4"
+        class="flex h-16 items-center justify-between bg-gradient-to-t from-slate-50 to-white px-4"
       >
         <div class="">
-          <h3 class="text-lg font-medium leading-6 text-gray-900">My Heroes</h3>
+          <h3 class="text-lg font-medium leading-6 text-slate-900">
+            My Heroes
+          </h3>
         </div>
         <div v-if="UserHeroes.length > 0" class="flex-shrink-0">
           <router-link :to="{ name: 'heroes-create' }" class="btn-primary">
@@ -36,12 +38,12 @@
             class="fa-fw fa-3x mb-3 text-red-700"
             :icon="['fad', 'book-skull']"
           />
-          <div class="text-xl text-gray-400">
+          <div class="text-xl text-slate-400">
             You don't have any heroes yet.
           </div>
           <div
             v-if="!User.authenticated"
-            class="mt-2 flex w-full justify-center text-gray-400"
+            class="mt-2 flex w-full justify-center text-slate-400"
           >
             Please
             <button
@@ -67,10 +69,10 @@
   <div class="rounded bg-white shadow">
     <div class="mt-8">
       <div
-        class="flex h-16 items-center justify-between bg-gradient-to-t from-gray-50 to-white px-4"
+        class="flex h-16 items-center justify-between bg-gradient-to-t from-slate-50 to-white px-4"
       >
         <div class="">
-          <h3 class="text-lg font-medium leading-6 text-gray-900">
+          <h3 class="text-lg font-medium leading-6 text-slate-900">
             All Heroes
           </h3>
         </div>

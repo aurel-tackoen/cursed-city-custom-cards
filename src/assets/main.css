@@ -43,9 +43,32 @@ sub { bottom: -0.25em; vertical-align: sub;}
 }
 
 .hero-card-display {
+  /* overflow-x: scroll; */
+}
+.hero-card-display > div {
   width: 233mm;
   height: 170mm;
-  overflow: hidden;
+  transform-origin: top left;
+  transform: scale(0.45);
+  margin-bottom: calc((0.45 - 1) * 170mm);
+}
+@media screen(sm) {
+  .hero-card-display > div {
+    transform: scale(0.725);
+    margin-bottom: calc((0.725 - 1) * 170mm);
+  }
+}
+@media screen(md) {
+  .hero-card-display > div {
+    transform: scale(0.87);
+    margin-bottom: calc((0.87 - 1) * 170mm);
+  }
+}
+@media screen(lg) {
+  .hero-card-display > div {
+    transform: scale(1);
+    margin-bottom: calc((1 - 1) * 170mm);
+  }
 }
 @media print {
   .hero-card-display {
