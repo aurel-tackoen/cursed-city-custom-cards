@@ -33,7 +33,7 @@ sub { bottom: -0.25em; vertical-align: sub;}
     border-width: theme('borderWidth.2');
     border-style: dashed;
     border-color: theme('colors.red.700');
-    background-color: theme('colors.red.100');
+    background-color: theme('colors.red.50');
     padding-left: theme('spacing.4');
     padding-right: theme('spacing.4');
     padding-top: theme('spacing.2');

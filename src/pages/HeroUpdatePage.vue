@@ -41,7 +41,7 @@
       @update:hero="updateHero"
       :hero="Hero"
       v-model:tabs="tabs"
-      :save="true"
+      :save="User.email === Hero.user.email ? true : false"
       :single="true"
     />
     <ErrorsAlert :errors="HeroErrors" />
@@ -69,8 +69,11 @@
       v-model:hero="Hero"
       :errors="HeroErrors"
     />
-    <div>
-      <button @click="removeHero">Delete this hero</button>
+    <div
+      v-if="User.email === Hero.user.email"
+      class="flex w-full items-center justify-end"
+    >
+      <button class="btn-primary" @click="removeHero">Delete this hero</button>
     </div>
   </div>
 </template>
