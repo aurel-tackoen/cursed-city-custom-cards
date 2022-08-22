@@ -8,7 +8,7 @@
   });
 </script>
 <template>
-  <div class="aspect-15/11">
+  <div class="">
     <div
       class="relative mx-auto overflow-hidden rounded-2xl border bg-white font-Cardo"
     >
