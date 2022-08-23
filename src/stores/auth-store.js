@@ -1,5 +1,5 @@
-import { defineStore, storeToRefs } from 'pinia';
 import netlifyIdentity from 'netlify-identity-widget';
+import { defineStore } from 'pinia';
 import { useHeroesStore } from '@/stores/heroes-store.js';
 
 export const useAuthStore = defineStore('auth', {
@@ -15,35 +15,29 @@ export const useAuthStore = defineStore('auth', {
       const response = netlifyIdentity.currentUser();
       this.setUser(response);
     },
-    login(action) {
-      const heroesStore = useHeroesStore();
+    async login(action) {
       netlifyIdentity.open(action);
       netlifyIdentity.on(action, (response) => {
         this.setUser(response);
         netlifyIdentity.close();
-        heroesStore.fetchUserHeroes();
       });
     },
     logout() {
       this.User = {
         authenticated: false,
       };
-      const heroesStore = useHeroesStore();
-      const { UserHeroes } = storeToRefs(heroesStore);
-      UserHeroes.value = [];
       netlifyIdentity.logout();
     },
     init() {
-      const heroesStore = useHeroesStore();
       netlifyIdentity.init();
       const response = netlifyIdentity.currentUser();
       if (response) {
         this.netlifyIdentity = netlifyIdentity;
         this.setUser(response);
-        heroesStore.fetchUserHeroes();
       }
     },
     setUser(response) {
+      const heroesStore = useHeroesStore();
       const user = {
         authenticated: true,
         username: response.user_metadata.full_name,
@@ -54,6 +48,7 @@ export const useAuthStore = defineStore('auth', {
         token_type: response.token.token_type,
       };
       this.User = user;
+      heroesStore.fetchUserHeroes();
     },
   },
 });

@@ -1,6 +1,7 @@
 <script setup>
   import { storeToRefs } from 'pinia';
   import { useAuthStore } from '@/stores/auth-store.js';
+  import { useHeroesStore } from '@/stores/heroes-store.js';
   import { createAvatar } from '@dicebear/avatars';
   import * as style from '@dicebear/avatars-initials-sprites';
   function getAvatar(username) {
@@ -10,7 +11,17 @@
     return avatar;
   }
   const authStore = useAuthStore();
+  const heroesStore = useHeroesStore();
   const { User } = storeToRefs(authStore);
+  const { UserHeroes } = storeToRefs(heroesStore);
+
+  function login(action) {
+    authStore.login(action);
+  }
+  function logout() {
+    authStore.logout();
+    UserHeroes.value = [];
+  }
 </script>
 
 <template>
@@ -46,7 +57,7 @@
         <button
           class="border-b border-transparent px-1 hover:border-red-700 hover:text-red-800"
           v-if="!User.authenticated"
-          @click="authStore.login('login')"
+          @click="login('login')"
         >
           Log In
         </button>
@@ -54,14 +65,14 @@
         <button
           class="border-b border-transparent px-1 hover:border-red-700 hover:text-red-800"
           v-if="!User.authenticated"
-          @click="authStore.login('signup')"
+          @click="login('signup')"
         >
           Sign Up
         </button>
         <button
           class="border-b border-transparent px-1 text-slate-500 hover:border-red-700 hover:text-red-800"
           v-if="User.authenticated"
-          @click="authStore.logout()"
+          @click="logout()"
         >
           Log Out
         </button>
