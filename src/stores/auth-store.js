@@ -1,5 +1,5 @@
-import netlifyIdentity from 'netlify-identity-widget';
 import { defineStore } from 'pinia';
+import netlifyIdentity from 'netlify-identity-widget';
 import { useHeroesStore } from '@/stores/heroes-store.js';
 
 export const useAuthStore = defineStore('auth', {
@@ -7,48 +7,49 @@ export const useAuthStore = defineStore('auth', {
     User: {
       authenticated: false,
     },
-    netlifyIdentity: {},
+    netlifyIdentity: null,
   }),
   actions: {
-    async refresh() {
-      await this.netlifyIdentity.currentUser().jwt(true);
+    init() {
+      netlifyIdentity.init();
       const response = netlifyIdentity.currentUser();
-      this.setUser(response);
+      if (response) {
+        this.setUser(netlifyIdentity);
+      }
     },
-    async login(action) {
+    login(action) {
       netlifyIdentity.open(action);
-      netlifyIdentity.on(action, (response) => {
-        this.setUser(response);
+      netlifyIdentity.on(action, async (response) => {
+        this.setUser(netlifyIdentity);
         netlifyIdentity.close();
+        await useHeroesStore().fetchUserHeroes();
       });
     },
     logout() {
       this.User = {
         authenticated: false,
       };
+      this.netlifyIdentity = null;
       netlifyIdentity.logout();
     },
-    init() {
-      netlifyIdentity.init();
-      const response = netlifyIdentity.currentUser();
-      if (response) {
-        this.netlifyIdentity = netlifyIdentity;
-        this.setUser(response);
-      }
+    async refresh() {
+      await this.netlifyIdentity.currentUser().jwt(true);
+      netlifyIdentity.currentUser();
+      this.setUser(netlifyIdentity);
     },
-    setUser(response) {
-      const heroesStore = useHeroesStore();
+    setUser(netlifyIdentity) {
+      const currentUser = netlifyIdentity.currentUser();
       const user = {
         authenticated: true,
-        username: response.user_metadata.full_name,
-        email: response.email,
-        access_token: response.token.access_token,
-        expires_at: response.token.expires_at,
-        refresh_token: response.token.refresh_token,
-        token_type: response.token.token_type,
+        username: currentUser.user_metadata.full_name,
+        email: currentUser.email,
+        access_token: currentUser.token.access_token,
+        expires_at: currentUser.token.expires_at,
+        refresh_token: currentUser.token.refresh_token,
+        token_type: currentUser.token.token_type,
       };
+      this.netlifyIdentity = netlifyIdentity;
       this.User = user;
-      heroesStore.fetchUserHeroes();
     },
   },
 });
