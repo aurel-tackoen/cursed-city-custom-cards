@@ -125,7 +125,6 @@ export const useHeroesStore = defineStore('heroes', {
         });
         if (response.status === 200) {
           const heroes = await response.json();
-          console.log(heroes);
           this.UserHeroes = heroes;
           return true;
         }
