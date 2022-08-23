@@ -20,6 +20,9 @@ const heroesSchema = object({
     stats: object({
       move: number().required(),
       run: number().required(),
+      // agility: string(),
+      // vitality: string(),
+      // defence: string(),
       agility: string().required(),
       vitality: string().required(),
       defence: string().required(),

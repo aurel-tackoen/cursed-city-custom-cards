@@ -1,5 +1,5 @@
 <script setup>
-  import { reactive, inject } from 'vue';
+  import { reactive, inject, onUnmounted } from 'vue';
   import { storeToRefs } from 'pinia';
   import { useRouter } from 'vue-router';
   import { cloneDeep } from 'lodash';
@@ -37,6 +37,9 @@
       Object.assign(newHero, defaultHero);
     }
   }
+  onUnmounted(() => {
+    HeroErrors.value = [];
+  });
 </script>
 
 <template>

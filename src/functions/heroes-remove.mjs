@@ -17,7 +17,7 @@ export const handler = async function ({ body }, context) {
     data._id = new ObjectID(data._id);
     const database = (await clientPromise).db('cursed-database');
     const collection = database.collection('Heroes');
-    // await collection.deleteOne({ _id: data._id });
+    await collection.deleteOne({ _id: data._id });
     return {
       statusCode: 200,
       body: JSON.stringify(true),

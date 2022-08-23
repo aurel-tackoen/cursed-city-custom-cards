@@ -4,7 +4,7 @@ import { heroesValidation, heroesErrors } from '@/schemas/heroes-schema.js';
 
 export const useHeroesStore = defineStore('heroes', {
   state: () => ({
-    Hero: {},
+    Hero: null,
     HeroErrors: [],
     Heroes: [],
     UserHeroes: [],
@@ -125,6 +125,7 @@ export const useHeroesStore = defineStore('heroes', {
         });
         if (response.status === 200) {
           const heroes = await response.json();
+          console.log(heroes);
           this.UserHeroes = heroes;
           return true;
         }
@@ -153,7 +154,7 @@ export const useHeroesStore = defineStore('heroes', {
           }),
         });
         if (response.status === 200) {
-          this.Hero = {};
+          this.Hero = null;
           return true;
         }
         if (response.status === 500) {

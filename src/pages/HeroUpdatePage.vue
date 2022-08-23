@@ -1,6 +1,6 @@
 <script setup>
-  import { reactive } from 'vue';
-  import { useRoute } from 'vue-router';
+  import { reactive, onUnmounted } from 'vue';
+  import { useRoute, useRouter } from 'vue-router';
   import { storeToRefs } from 'pinia';
   import { useAuthStore } from '@/stores/auth-store.js';
   import { useHeroesStore } from '@/stores/heroes-store.js';
@@ -11,6 +11,7 @@
   import ErrorsAlert from '@/components/layout/errors-alert.vue';
 
   const route = useRoute();
+  const router = useRouter();
   const authStore = useAuthStore();
   const { User } = storeToRefs(authStore);
   const heroesStore = useHeroesStore();
@@ -20,11 +21,16 @@
   function updateHero() {
     heroesStore.updateHero();
   }
-  function removeHero() {
+  async function removeHero() {
     if (confirm('Are you sure you want to delete this hero?') == true) {
-      heroesStore.removeHero(Hero.value._id);
+      await heroesStore.removeHero(Hero.value._id);
+      router.push({ name: 'home' });
     }
   }
+
+  onUnmounted(() => {
+    HeroErrors.value = [];
+  });
 
   const tabs = reactive([
     { name: 'Path to Glory', current: true },
@@ -33,7 +39,7 @@
 </script>
 
 <template>
-  <div class="mt-4 space-y-4">
+  <div class="mt-4 space-y-4" v-if="Hero">
     <div v-if="User.email !== Hero.user.email" class="alert-container">
       You are not allowed to update this Hero.
     </div>
