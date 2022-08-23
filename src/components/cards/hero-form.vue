@@ -1,7 +1,8 @@
 <script setup>
-  import { computed } from 'vue';
+  import { computed, toRaw } from 'vue';
   import draggable from 'vuedraggable';
   import Multiselect from '@vueform/multiselect';
+  import { v4 as uuidv4 } from 'uuid';
   import FormCard from '@/components/layout/form-card.vue';
   const props = defineProps({
     status: String,
@@ -22,6 +23,7 @@
     set: (value) => emit('update:hero', value),
   });
   const defaultWeapon = {
+    uuid: uuidv4(),
     name: '',
     activation: 1,
     type: 'melee',
@@ -30,6 +32,7 @@
       base: 1,
       critical: 1,
     },
+    notes: [],
   };
   const defaultNotes = {
     name: '',
@@ -39,9 +42,12 @@
     name: '',
     rule: '',
   };
-  const getError = (path) => {
+  function getError(path) {
     return props?.errors.find((e) => e.path === path);
-  };
+  }
+  function clone(item) {
+    return structuredClone(toRaw(item));
+  }
 </script>
 <template>
   <div class="mx-auto space-y-4">
@@ -281,7 +287,7 @@
     <FormCard id="user-weapons" title="Weapons">
       <draggable
         v-model="hero[status].weapons"
-        item-key="name"
+        :item-key="uuidv4()"
         handle=".handle"
       >
         <template #item="{ element: weapon, index }">
@@ -384,13 +390,13 @@
       <div class="flex items-center justify-center">
         <button
           class="fa-fw text-slate-300 hover:text-red-700"
-          @click="hero[status].weapons.push(defaultWeapon)"
+          @click="hero[status].weapons.push(clone(defaultWeapon))"
         >
           <fa-icon class="fa-fw" :icon="['fas', 'plus-large']" />
         </button>
         <button
           v-if="status === 'inspired'"
-          @click="hero.inspired.weapons = [...hero.normal.weapons]"
+          @click="hero.inspired.weapons = clone(hero.normal.weapons)"
         >
           <fa-icon
             class="fa-fw text-gray-300 hover:text-red-700"
@@ -400,7 +406,11 @@
       </div>
     </FormCard>
     <FormCard id="user-weapons-notes" title="Weapons Notes">
-      <draggable v-model="hero[status].notes" item-key="name" handle=".handle">
+      <draggable
+        v-model="hero[status].notes"
+        :item-key="uuidv4()"
+        handle=".handle"
+      >
         <template #item="{ element: note, index }">
           <div class="mb-2 flex w-full border-b-2 border-dashed bg-white pb-2">
             <div class="grow space-y-3">
@@ -449,7 +459,7 @@
         </button>
         <button
           v-if="status === 'inspired'"
-          @click="hero.inspired.notes = [...hero.normal.notes]"
+          @click="hero.inspired.notes = clone(hero.normal.notes)"
         >
           <fa-icon
             class="fa-fw text-gray-300 hover:text-red-700"
@@ -461,7 +471,7 @@
     <FormCard id="user-abilities" title="Unique Abilities">
       <draggable
         v-model="hero[status].abilities"
-        item-key="name"
+        :item-key="uuidv4()"
         handle=".handle"
       >
         <template #item="{ element: ability, index }">
@@ -520,7 +530,7 @@
         </button>
         <button
           v-if="status === 'inspired'"
-          @click="hero.inspired.abilities = [...hero.normal.abilities]"
+          @click="hero.inspired.abilities = clone(hero.normal.abilities)"
         >
           <fa-icon
             class="fa-fw text-gray-300 hover:text-red-700"
