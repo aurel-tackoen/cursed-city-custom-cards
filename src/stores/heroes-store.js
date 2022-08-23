@@ -15,6 +15,7 @@ export const useHeroesStore = defineStore('heroes', {
       const { User } = storeToRefs(authStore);
       try {
         this.HeroErrors = [];
+        await authStore.refresh();
         const item = await heroesValidation(data);
         const response = await fetch('/.netlify/functions/heroes-create', {
           headers: {
@@ -41,6 +42,7 @@ export const useHeroesStore = defineStore('heroes', {
     async updateHero() {
       try {
         const authStore = useAuthStore();
+        await authStore.refresh();
         const { User } = storeToRefs(authStore);
         this.HeroErrors = [];
         const item = await heroesValidation(this.Hero);
@@ -110,6 +112,7 @@ export const useHeroesStore = defineStore('heroes', {
     async fetchUserHeroes() {
       try {
         const authStore = useAuthStore();
+        await authStore.refresh();
         const { User } = storeToRefs(authStore);
         const response = await fetch('/.netlify/functions/heroes-find', {
           headers: {
@@ -136,6 +139,7 @@ export const useHeroesStore = defineStore('heroes', {
     async removeHero(id) {
       try {
         const authStore = useAuthStore();
+        await authStore.refresh();
         const { User } = storeToRefs(authStore);
         const hero = await this.fetchHero(id);
         const response = await fetch('/.netlify/functions/heroes-remove', {

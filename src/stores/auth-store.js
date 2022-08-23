@@ -7,8 +7,14 @@ export const useAuthStore = defineStore('auth', {
     User: {
       authenticated: false,
     },
+    netlifyIdentity: {},
   }),
   actions: {
+    async refresh() {
+      await this.netlifyIdentity.currentUser().jwt(true);
+      const response = netlifyIdentity.currentUser();
+      this.setUser(response);
+    },
     login(action) {
       const heroesStore = useHeroesStore();
       netlifyIdentity.open(action);
@@ -32,6 +38,7 @@ export const useAuthStore = defineStore('auth', {
       netlifyIdentity.init();
       const response = netlifyIdentity.currentUser();
       if (response) {
+        this.netlifyIdentity = netlifyIdentity;
         this.setUser(response);
         heroesStore.fetchUserHeroes();
       }
