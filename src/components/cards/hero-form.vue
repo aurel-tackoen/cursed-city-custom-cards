@@ -388,6 +388,15 @@
         >
           <fa-icon class="fa-fw" :icon="['fas', 'plus-large']" />
         </button>
+        <button
+          v-if="status === 'inspired'"
+          @click="hero.inspired.weapons = [...hero.normal.weapons]"
+        >
+          <fa-icon
+            class="fa-fw text-gray-300 hover:text-red-700"
+            :icon="['fas', 'copy']"
+          />
+        </button>
       </div>
     </FormCard>
     <FormCard id="user-weapons-notes" title="Weapons Notes">
@@ -437,6 +446,15 @@
           @click="hero[status].notes.push(defaultNotes)"
         >
           <fa-icon class="fa-fw" :icon="['fas', 'plus-large']" />
+        </button>
+        <button
+          v-if="status === 'inspired'"
+          @click="hero.inspired.notes = [...hero.normal.notes]"
+        >
+          <fa-icon
+            class="fa-fw text-gray-300 hover:text-red-700"
+            :icon="['fas', 'copy']"
+          />
         </button>
       </div>
     </FormCard>
@@ -499,6 +517,15 @@
           @click="hero[status].abilities.push(defaultAbilities)"
         >
           <fa-icon class="fa-fw" :icon="['fas', 'plus-large']" />
+        </button>
+        <button
+          v-if="status === 'inspired'"
+          @click="hero.inspired.abilities = [...hero.normal.abilities]"
+        >
+          <fa-icon
+            class="fa-fw text-gray-300 hover:text-red-700"
+            :icon="['fas', 'copy']"
+          />
         </button>
       </div>
     </FormCard>

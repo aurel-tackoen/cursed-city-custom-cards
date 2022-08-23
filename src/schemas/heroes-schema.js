@@ -30,12 +30,15 @@ const heroesSchema = object({
     weapons: array(
       object({
         name: string().required(),
+        activation: number().required(),
+        type: string().required(),
         dice1: string().required(),
         dice2: string(),
         damages: object({
           base: number().required(),
           critical: number().required(),
         }).required(),
+        notes: array(number()),
       }).required()
     ).required(),
     notes: array(
@@ -67,12 +70,15 @@ const heroesSchema = object({
     weapons: array(
       object({
         name: string().required(),
+        activation: number().required(),
+        type: string().required(),
         dice1: string().required(),
         dice2: string(),
         damages: object({
           base: number().required(),
           critical: number().required(),
         }).required(),
+        notes: array(number()),
       }).required()
     ).required(),
     notes: array(
