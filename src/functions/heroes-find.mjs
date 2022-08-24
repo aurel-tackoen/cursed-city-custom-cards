@@ -11,8 +11,13 @@ export const handler = async function ({ body }) {
     const params = data.params;
     const database = (await clientPromise).db('cursed-database');
     const collection = database.collection('Heroes');
+    console.log(params);
     const items = await collection
-      .find(query, { sort: params.sort, limit: params.limit })
+      .find(query, {
+        sort: params.sort,
+        limit: params.limit,
+        skip: params.skip,
+      })
       .toArray();
     const count = await collection.countDocuments(query);
     return {

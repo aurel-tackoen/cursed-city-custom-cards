@@ -1,17 +1,32 @@
 <script setup>
   console.log('list-pagination');
+  import { computed } from 'vue';
+  const props = defineProps({
+    params: {
+      type: Object,
+      required: true,
+    },
+  });
+  const emit = defineEmits(['update:params']);
+  const params = computed({
+    get: () => props.params,
+    set: (value) => emit('update:params', value),
+  });
+  console.log(params);
 </script>
 <template>
   <nav
     class="flex items-center justify-between border-t border-slate-200 px-4 pb-4 sm:px-0"
   >
     <div class="-mt-px flex w-0 flex-1">
-      <a
-        href="#"
+      <button
+        @click="params.skip = params.skip - params.limit"
         class="inline-flex items-center border-t-2 border-transparent pt-4 pl-4 pr-4 text-sm text-slate-500 hover:border-slate-300 hover:text-slate-700"
+        :disabled="params.skip === 0"
       >
         Previous
-      </a>
+      </button>
+      {{ params.skip }}
     </div>
     <div class="hidden md:-mt-px md:flex">
       <a
@@ -59,12 +74,13 @@
       </a>
     </div>
     <div class="-mt-px flex w-0 flex-1 justify-end">
-      <a
-        href="#"
+      <button
+        @click="params.skip = params.skip + params.limit"
         class="inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm text-slate-500 hover:border-slate-300 hover:text-slate-700"
+        :disabled="params.skip >= params.count - params.limit"
       >
         Next
-      </a>
+      </button>
     </div>
   </nav>
 </template>

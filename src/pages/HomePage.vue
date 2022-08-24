@@ -1,4 +1,5 @@
 <script setup>
+  import { watch } from 'vue';
   import { storeToRefs } from 'pinia';
   import { useAuthStore } from '@/stores/auth-store.js';
   import { useHeroesStore } from '@/stores/heroes-store.js';
@@ -8,7 +9,15 @@
   const authStore = useAuthStore();
   const { User } = storeToRefs(authStore);
   const heroesStore = useHeroesStore();
-  const { UserHeroes, Heroes, HeroesParams } = storeToRefs(heroesStore);
+  const { UserHeroes, Heroes, UserHeroesParams } = storeToRefs(heroesStore);
+
+  watch(
+    () => UserHeroesParams.value.skip,
+    async (skip) => {
+      await heroesStore.fetchUserHeroes();
+      console.log(`skip is: ${skip}`);
+    }
+  );
 
   if (User.value.authenticated) {
     await heroesStore.fetchUserHeroes();
@@ -69,7 +78,7 @@
         <div v-if="UserHeroes.length > 0">
           <ListHeroes :heroes="UserHeroes" target="update" />
           <!-- {{ HeroesParams.count }} -->
-          <ListPagination />
+          <ListPagination v-model:params="UserHeroesParams" />
         </div>
       </div>
     </div>

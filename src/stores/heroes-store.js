@@ -134,6 +134,7 @@ export const useHeroesStore = defineStore('heroes', {
         const authStore = useAuthStore();
         await authStore.refresh();
         const { User } = storeToRefs(authStore);
+        console.log(this.UserHeroesParams);
         const response = await fetch('/.netlify/functions/heroes-find', {
           headers: {
             Authorization: `Bearer ${User.value.access_token}`,
