@@ -15,7 +15,9 @@
         <router-view></router-view>
       </div>
     </Suspense>
-    <div class="mt-8 grow-0 border-t bg-white py-2 text-center text-xs">
+    <div
+      class="hidden-print mt-8 grow-0 border-t bg-white py-2 text-center text-xs"
+    >
       2022 - Cursed City Custom Cards
     </div>
   </div>
