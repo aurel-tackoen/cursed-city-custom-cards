@@ -40,7 +40,7 @@
         </div>
         <div class="ml-8 hidden space-x-8 sm:flex">
           <router-link
-            to="/heroes"
+            to="/"
             class="inline-flex items-center border-b-2 border-red-700 px-1 pt-1 text-base text-slate-900"
           >
             Heroes
@@ -76,14 +76,19 @@
         >
           Log Out
         </button>
-        <span v-if="User.authenticated" class="border-b border-transparent">
-          {{ User.username }}
-        </span>
-        <div
+        <router-link
           v-if="User.authenticated"
-          class="mx-1 h-9 w-9 overflow-hidden rounded-full border border-white shadow"
-          v-html="getAvatar(User.username)"
-        ></div>
+          to="/user"
+          class="border-b border-transparent px-1 text-slate-800 hover:border-red-700 hover:text-red-800"
+        >
+          {{ User.username }}
+        </router-link>
+        <router-link v-if="User.authenticated" to="/user" class="">
+          <div
+            class="mx-1 h-9 w-9 overflow-hidden rounded-full border border-white shadow"
+            v-html="getAvatar(User.username)"
+          ></div>
+        </router-link>
       </div>
     </div>
   </nav>

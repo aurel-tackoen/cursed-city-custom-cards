@@ -8,7 +8,7 @@
   heroesStore.fetchHeroes();
 </script>
 <template>
-  <div class="bg-slate-50 antialiased">
+  <div class="min-h-screen bg-slate-50 antialiased">
     <TopNav class="hidden-print" />
     <Suspense>
       <div class="container mx-auto">
