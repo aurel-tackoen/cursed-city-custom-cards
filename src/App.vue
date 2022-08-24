@@ -16,7 +16,7 @@
       </div>
     </Suspense>
     <div
-      class="hidden-print mt-8 grow-0 border-t bg-white py-2 text-center text-xs"
+      class="hidden-print mt-8 grow-0 border-t bg-white py-2 text-center text-xs text-slate-600"
     >
       2022 - Cursed City Custom Cards
     </div>
