@@ -23,9 +23,12 @@
           class="flex h-16 items-center justify-between bg-gradient-to-t from-slate-50 to-white px-4"
         >
           <div class="">
-            <h3 class="text-lg font-medium leading-6 text-slate-900">
+            <router-link
+              :to="{ name: 'user-home' }"
+              class="text-lg font-medium leading-6 text-slate-900 hover:text-red-800"
+            >
               My Heroes
-            </h3>
+            </router-link>
           </div>
           <div v-if="UserHeroes.length > 0" class="flex-shrink-0">
             <router-link :to="{ name: 'heroes-create' }" class="btn-primary">
