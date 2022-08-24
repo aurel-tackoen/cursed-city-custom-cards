@@ -48,7 +48,7 @@
             <div class="hidden text-sm italic leading-4 text-slate-600 sm:flex">
               <span v-for="(tag, index) in hero.tags" :key="tag.name">
                 {{ tag.label
-                }}<span v-if="index < hero.tags.length - 1">, </span>
+                }}<span v-if="index < hero.tags.length - 1">,&nbsp;</span>
               </span>
             </div>
             <div
