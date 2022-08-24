@@ -23,7 +23,6 @@
     set: (value) => emit('update:hero', value),
   });
   const defaultWeapon = {
-    uuid: uuidv4(),
     name: '',
     activation: 1,
     type: 'melee',
