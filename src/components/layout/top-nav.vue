@@ -69,13 +69,6 @@
         >
           Sign Up
         </button>
-        <button
-          class="border-b border-transparent px-1 text-slate-500 hover:border-red-700 hover:text-red-800"
-          v-if="User.authenticated"
-          @click="logout()"
-        >
-          Log Out
-        </button>
         <router-link
           v-if="User.authenticated"
           to="/user"
