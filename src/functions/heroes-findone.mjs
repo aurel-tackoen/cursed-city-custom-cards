@@ -8,8 +8,8 @@ const clientPromise = mongoClient.connect();
 export const handler = async function ({ body }) {
   try {
     console.log(body);
-    const data = JSON.parse(body);
-    data._id = new ObjectID(data._id);
+    const query = JSON.parse(body);
+    data._id = new ObjectID(query._id);
     const database = (await clientPromise).db('cursed-database');
     const collection = database.collection('Heroes');
     const item = await collection.findOne({ _id: data._id });

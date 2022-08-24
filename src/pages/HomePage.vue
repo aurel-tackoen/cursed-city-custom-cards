@@ -3,11 +3,12 @@
   import { useAuthStore } from '@/stores/auth-store.js';
   import { useHeroesStore } from '@/stores/heroes-store.js';
   import ListHeroes from '@/components/lists/list-heroes.vue';
+  import ListPagination from '@/components/lists/list-pagination.vue';
 
   const authStore = useAuthStore();
   const { User } = storeToRefs(authStore);
   const heroesStore = useHeroesStore();
-  const { UserHeroes, Heroes } = storeToRefs(heroesStore);
+  const { UserHeroes, Heroes, HeroesParams } = storeToRefs(heroesStore);
 
   if (User.value.authenticated) {
     await heroesStore.fetchUserHeroes();
@@ -67,6 +68,8 @@
         </div>
         <div v-if="UserHeroes.length > 0">
           <ListHeroes :heroes="UserHeroes" target="update" />
+          <!-- {{ HeroesParams.count }} -->
+          <ListPagination />
         </div>
       </div>
     </div>

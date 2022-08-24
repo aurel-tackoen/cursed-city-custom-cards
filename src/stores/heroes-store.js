@@ -7,14 +7,22 @@ export const useHeroesStore = defineStore('heroes', {
     Hero: null,
     HeroErrors: [],
     Heroes: [],
-    HeroesQuery: {
+    HeroesParams: {
       skip: 0,
-      limit: 20,
+      limit: 2,
+      count: null,
+      sort: {
+        date: -1,
+      },
     },
     UserHeroes: [],
-    UserHeroesQuery: {
+    UserHeroesParams: {
       skip: 0,
-      limit: 20,
+      limit: 2,
+      count: null,
+      sort: {
+        date: -1,
+      },
     },
   }),
   actions: {
@@ -102,11 +110,15 @@ export const useHeroesStore = defineStore('heroes', {
       try {
         const response = await fetch('/.netlify/functions/heroes-find', {
           method: 'POST',
-          body: JSON.stringify({}),
+          body: JSON.stringify({
+            query: {},
+            params: this.HeroesParams,
+          }),
         });
         if (response.status === 200) {
-          const heroes = await response.json();
-          this.Heroes = heroes;
+          const data = await response.json();
+          this.Heroes = data.items;
+          this.HeroesParams.count = data.count;
           return true;
         }
         if (response.status === 500) {
@@ -128,12 +140,14 @@ export const useHeroesStore = defineStore('heroes', {
           },
           method: 'POST',
           body: JSON.stringify({
-            params: { 'user.email': User.value.email },
+            query: { 'user.email': User.value.email },
+            params: this.UserHeroesParams,
           }),
         });
         if (response.status === 200) {
-          const heroes = await response.json();
-          this.UserHeroes = heroes;
+          const data = await response.json();
+          this.UserHeroes = data.items;
+          this.UserHeroesParams.count = data.count;
           return true;
         }
         if (response.status === 500) {
