@@ -2,7 +2,7 @@
   import { storeToRefs } from 'pinia';
   import { useAuthStore } from '@/stores/auth-store.js';
   import { useHeroesStore } from '@/stores/heroes-store.js';
-  import HeroesList from '@/components/layout/heroes-list.vue';
+  import ListHeroes from '@/components/lists/list-heroes.vue';
 
   const authStore = useAuthStore();
   const { User } = storeToRefs(authStore);
@@ -62,7 +62,7 @@
           </div>
         </div>
         <div v-if="UserHeroes.length > 0">
-          <HeroesList :heroes="UserHeroes" target="update" />
+          <ListHeroes :heroes="UserHeroes" target="update" />
         </div>
       </div>
     </div>

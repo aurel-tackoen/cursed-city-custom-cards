@@ -7,7 +7,15 @@ export const useHeroesStore = defineStore('heroes', {
     Hero: null,
     HeroErrors: [],
     Heroes: [],
+    HeroesQuery: {
+      skip: 0,
+      limit: 20,
+    },
     UserHeroes: [],
+    UserHeroesQuery: {
+      skip: 0,
+      limit: 20,
+    },
   }),
   actions: {
     async createHero(data) {
