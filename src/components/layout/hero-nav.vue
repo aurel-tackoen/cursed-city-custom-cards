@@ -41,7 +41,7 @@
   }
 </script>
 <template>
-  <div class="sticky top-0 z-50 mx-auto">
+  <div class="hidden-print sticky top-0 z-50 mx-auto">
     <nav
       class="flex h-20 w-full items-center overflow-hidden rounded bg-gradient-to-t from-slate-50 to-white px-2 shadow"
       aria-label="Tabs"

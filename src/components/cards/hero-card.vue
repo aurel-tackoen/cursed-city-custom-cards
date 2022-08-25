@@ -161,7 +161,7 @@
           >
             Unique Abilities
           </div>
-          <div class="space-y-0.5 text-sm">
+          <div class="space-y-1 text-sm">
             <div
               v-for="ability in hero[status].abilities"
               :key="ability.name"
