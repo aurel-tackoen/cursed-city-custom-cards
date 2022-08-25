@@ -12,13 +12,6 @@
     get: () => props.params,
     set: (value) => emit('update:params', value),
   });
-  function getPages() {
-    return [
-      ...Array(
-        Number((params.value.count / params.value.limit).toFixed(0))
-      ).keys(),
-    ];
-  }
   console.log(params);
 </script>
 <template>
@@ -36,14 +29,14 @@
     </div>
     <div class="hidden md:-mt-px md:flex">
       <button
-        v-for="(page, index) in getPages()"
+        v-for="(page, index) in Math.ceil(params.count / params.limit)"
         :key="index"
         class="pagination-number"
         :class="{
-          active: page * params.limit == params.skip,
+          active: index * params.limit == params.skip,
         }"
       >
-        {{ page + 1 }}
+        {{ page }}
       </button>
     </div>
     <div class="-mt-px flex w-0 flex-1 justify-end">
