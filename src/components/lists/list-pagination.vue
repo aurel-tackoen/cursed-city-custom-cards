@@ -30,6 +30,7 @@
     <div class="hidden md:-mt-px md:flex">
       <button
         v-for="(page, index) in Math.ceil(params.count / params.limit)"
+        @click="params.skip = params.limit * index"
         :key="index"
         class="pagination-number"
         :class="{
