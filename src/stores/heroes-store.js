@@ -18,7 +18,7 @@ export const useHeroesStore = defineStore('heroes', {
     UserHeroes: [],
     UserHeroesParams: {
       skip: 0,
-      limit: 4,
+      limit: 2,
       count: null,
       sort: {
         date: -1,
