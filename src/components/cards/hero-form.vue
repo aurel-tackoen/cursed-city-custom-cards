@@ -452,7 +452,7 @@
       <div class="flex items-center justify-center">
         <button
           class="fa-fw text-slate-300 hover:text-red-700"
-          @click="hero[status].notes.push(defaultNotes)"
+          @click="hero[status].notes.push(clone(defaultNotes))"
         >
           <fa-icon class="fa-fw" :icon="['fas', 'plus-large']" />
         </button>
@@ -523,7 +523,7 @@
       <div class="flex items-center justify-center">
         <button
           class="fa-fw text-slate-300 hover:text-red-700"
-          @click="hero[status].abilities.push(defaultAbilities)"
+          @click="hero[status].abilities.push(clone(defaultAbilities))"
         >
           <fa-icon class="fa-fw" :icon="['fas', 'plus-large']" />
         </button>
