@@ -42,6 +42,38 @@ sub { bottom: -0.25em; vertical-align: sub;}
   }
 }
 
+a.pagination-number.active,
+button.pagination-number,
+a.pagination-number,
+span.pagination-number {
+  display: inline-flex;
+  ialign-items: center;
+  border-top-width: theme('borderWidth.2');
+  border-color: theme('colors.transparent');
+  padding-left: theme('spacing.4');
+  padding-right: theme('spacing.4');
+  padding-top: theme('spacing.4');
+  font-size: theme('fontSize.sm');
+  line-height: theme('lineHeight.5');
+  color: theme('colors.slate.500');
+  cursor: pointer;
+}
+a.pagination-number.active{
+  border-color: theme('colors.red.500');
+  color: theme('colors.red.500');
+  cursor: auto;
+  font-weight: theme('fontWeight.bold');
+}
+button.pagination-number:hover,
+a.pagination-number:hover {
+  border-color: theme('colors.slate.300');
+  color: theme('colors.slate.700');
+}
+a.pagination-number.active:hover{
+  border-color: theme('colors.red.500');
+  color: theme('colors.red.500');
+}
+
 .hero-card-display {
   /* overflow-x: scroll; */
 }
