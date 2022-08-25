@@ -120,7 +120,7 @@
             :class="{ 'bg-slate-100': index % 2 !== 0 }"
           >
             <div class="pl-4" style="width: 310px">
-              {{ weapon.name }} (+{{ weapon.activation }})<sup
+              {{ weapon.name }} ({{ weapon.activation+ }})<sup
                 v-for="note in weapon.notes"
                 :key="note"
                 class="ml-1"
@@ -170,7 +170,7 @@
               <strong v-if="ability.name"
                 >{{ ability.name }}
                 <span v-if="ability.activation"
-                  >(+{{ ability.activation }})</span
+                  >({{ ability.activation }}+)</span
                 >: </strong
               >{{ ability.rule }}
             </div>
