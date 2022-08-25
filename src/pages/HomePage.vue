@@ -9,13 +9,19 @@
   const authStore = useAuthStore();
   const { User } = storeToRefs(authStore);
   const heroesStore = useHeroesStore();
-  const { UserHeroes, Heroes, UserHeroesParams } = storeToRefs(heroesStore);
+  const { UserHeroes, UserHeroesParams, Heroes, HeroesParams } =
+    storeToRefs(heroesStore);
 
   watch(
     () => UserHeroesParams.value.skip,
     async (skip) => {
       await heroesStore.fetchUserHeroes();
-      console.log(`skip is: ${skip}`);
+    }
+  );
+  watch(
+    () => HeroesParams.value.skip,
+    async (skip) => {
+      await heroesStore.fetchHeroes();
     }
   );
 
@@ -77,7 +83,6 @@
         </div>
         <div v-if="UserHeroes.length > 0">
           <ListHeroes :heroes="UserHeroes" target="update" />
-          <!-- {{ HeroesParams.count }} -->
           <ListPagination v-model:params="UserHeroesParams" />
         </div>
       </div>
@@ -95,6 +100,7 @@
         </div>
         <div>
           <ListHeroes :heroes="Heroes" target="single" />
+          <ListPagination v-model:params="HeroesParams" />
         </div>
       </div>
     </div>

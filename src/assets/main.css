@@ -65,6 +65,11 @@ button.pagination-number:hover{
   border-color: theme('colors.slate.300');
   color: theme('colors.slate.700');
 }
+button.pagination-number[disabled]:hover{
+  cursor: default;
+  border-color: theme('colors.transparent');
+  color: theme('colors.slate.500');
+}
 button.pagination-number.active:hover{
   border-color: theme('colors.red.500');
   color: theme('colors.red.500');
