@@ -7,7 +7,6 @@ const clientPromise = mongoClient.connect();
 
 export const handler = async function ({ body }) {
   try {
-    console.log(body);
     const data = JSON.parse(body);
     data._id = new ObjectID(data._id);
     const database = (await clientPromise).db('cursed-database');

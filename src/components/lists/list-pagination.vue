@@ -1,5 +1,4 @@
 <script setup>
-  console.log('list-pagination');
   import { computed } from 'vue';
   const props = defineProps({
     params: {
@@ -12,7 +11,6 @@
     get: () => props.params,
     set: (value) => emit('update:params', value),
   });
-  console.log(params);
 </script>
 <template>
   <nav

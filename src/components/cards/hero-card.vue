@@ -172,7 +172,7 @@
                 <span v-if="ability.activation"
                   >({{ ability.activation }}+)</span
                 >: </strong
-              >{{ ability.rule }}
+              ><span>{{ ability.rule }}</span>
             </div>
           </div>
         </div>

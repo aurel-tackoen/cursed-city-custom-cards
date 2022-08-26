@@ -5,6 +5,5 @@ module.exports = function checkAuth(user, data) {
       return reject(new Error('Not owner'));
     }
     return resolve(true);
-    // return reject(new Error('Ok owner'));
   });
 };

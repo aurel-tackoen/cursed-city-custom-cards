@@ -12,7 +12,6 @@ export const handler = async function ({ body }, context) {
   try {
     const user = await checkAuth(context);
     const data = JSON.parse(body);
-    console.log(data);
     await checkOwner(user, data.hero);
     data._id = new ObjectID(data._id);
     const database = (await clientPromise).db('cursed-database');

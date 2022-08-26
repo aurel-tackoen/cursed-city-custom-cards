@@ -1,7 +1,7 @@
 const { MongoClient } = require('mongodb');
 
 const checkAuth = require('../plugins/functions/check-auth.js');
-import { heroesValidation } from '../schemas/heroes-schema.js';
+import { validate } from '../schemas/heroes-schema.js';
 
 const mongoClient = new MongoClient(process.env.MONGODB_URI);
 
@@ -11,7 +11,7 @@ export const handler = async function ({ body }, context) {
   try {
     await checkAuth(context);
     const data = JSON.parse(body);
-    await heroesValidation(data);
+    await validate(data);
     const database = (await clientPromise).db('cursed-database');
     const collection = database.collection('Heroes');
     const item = await collection.insertOne(data);

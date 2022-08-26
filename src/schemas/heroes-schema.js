@@ -1,4 +1,5 @@
 import { object, string, number, array } from 'yup';
+import sanitizeHtml from 'sanitize-html';
 
 const heroesSchema = object({
   _id: string(),
@@ -20,9 +21,6 @@ const heroesSchema = object({
     stats: object({
       move: number().required(),
       run: number().required(),
-      // agility: string(),
-      // vitality: string(),
-      // defence: string(),
       agility: string().required(),
       vitality: string().required(),
       defence: string().required(),
@@ -102,7 +100,17 @@ const heroesSchema = object({
   date: number().required().positive().integer(),
 });
 
-async function heroesValidation(data) {
+async function sanitize(data) {
+  data.normal.abilities.map((ability) => {
+    console.log(ability.rule);
+    const sanitized = sanitizeHtml(ability.rule);
+    console.log(sanitized);
+    // ability.rule = sanitized;
+  });
+  return data;
+}
+
+async function validate(data) {
   const result = await heroesSchema.validate(data, {
     abortEarly: false,
     stripUnknown: true,
@@ -110,7 +118,7 @@ async function heroesValidation(data) {
   return result;
 }
 
-function heroesErrors(errors) {
+function generateErrors(errors) {
   const validationErrors = [];
   errors?.inner?.forEach((e) => {
     validationErrors.push({
@@ -122,4 +130,4 @@ function heroesErrors(errors) {
   return validationErrors;
 }
 
-export { heroesSchema, heroesValidation, heroesErrors };
+export { heroesSchema, validate, sanitize, generateErrors };

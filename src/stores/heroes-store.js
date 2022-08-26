@@ -1,6 +1,6 @@
 import { defineStore, storeToRefs } from 'pinia';
 import { useAuthStore } from '@/stores/auth-store';
-import { heroesValidation, heroesErrors } from '@/schemas/heroes-schema.js';
+import { validate, generateErrors } from '@/schemas/heroes-schema.js';
 
 export const useHeroesStore = defineStore('heroes', {
   state: () => ({
@@ -32,7 +32,7 @@ export const useHeroesStore = defineStore('heroes', {
       try {
         this.HeroErrors = [];
         await authStore.refresh();
-        const item = await heroesValidation(data);
+        const item = await validate(data);
         const response = await fetch('/.netlify/functions/heroes-create', {
           headers: {
             Authorization: `Bearer ${User.value.access_token}`,
@@ -50,7 +50,7 @@ export const useHeroesStore = defineStore('heroes', {
         }
       } catch (errors) {
         console.log(errors);
-        const validationErrors = heroesErrors(errors);
+        const validationErrors = generateErrors(errors);
         this.HeroErrors = validationErrors;
         return false;
       }
@@ -61,7 +61,7 @@ export const useHeroesStore = defineStore('heroes', {
         await authStore.refresh();
         const { User } = storeToRefs(authStore);
         this.HeroErrors = [];
-        const item = await heroesValidation(this.Hero);
+        const item = await validate(this.Hero);
         const response = await fetch('/.netlify/functions/heroes-update', {
           headers: {
             Authorization: `Bearer ${User.value.access_token}`,
@@ -80,7 +80,7 @@ export const useHeroesStore = defineStore('heroes', {
         }
       } catch (errors) {
         console.log(errors);
-        const validationErrors = heroesErrors(errors);
+        const validationErrors = generateErrors(errors);
         this.HeroErrors = validationErrors;
         return false;
       }
@@ -134,7 +134,6 @@ export const useHeroesStore = defineStore('heroes', {
         const authStore = useAuthStore();
         await authStore.refresh();
         const { User } = storeToRefs(authStore);
-        console.log(this.UserHeroesParams);
         const response = await fetch('/.netlify/functions/heroes-find', {
           headers: {
             Authorization: `Bearer ${User.value.access_token}`,
