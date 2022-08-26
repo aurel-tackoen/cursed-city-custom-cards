@@ -1,5 +1,4 @@
 import { object, string, number, array } from 'yup';
-import sanitizeHtml from 'sanitize-html';
 
 const heroesSchema = object({
   _id: string(),
@@ -103,9 +102,6 @@ const heroesSchema = object({
 async function sanitize(data) {
   data.normal.abilities.map((ability) => {
     console.log(ability.rule);
-    const sanitized = sanitizeHtml(ability.rule);
-    console.log(sanitized);
-    // ability.rule = sanitized;
   });
   return data;
 }
