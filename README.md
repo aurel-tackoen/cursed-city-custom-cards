@@ -1,5 +1,7 @@
 # cursed-city-custom-cards
 
+SANITIZE INPUT
+
 http://localhost:5174/
 
 Set env NPM_TOKEN with :
