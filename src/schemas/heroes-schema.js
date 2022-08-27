@@ -100,6 +100,7 @@ const heroesSchema = object({
 });
 
 async function sanitize(data) {
+  console.log(data);
   data.normal.abilities.map((ability) => {
     console.log(ability.rule);
   });
