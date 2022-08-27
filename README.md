@@ -1,6 +1,6 @@
 # cursed-city-custom-cards
 
--[ ] SANITIZE INPUT
+- [ ] SANITIZE INPUT
 
 http://localhost:5174/
 
