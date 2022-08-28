@@ -12,6 +12,27 @@
       { label: 'Flesh-eater', value: 'flesh-eater' },
       { label: 'Villain', value: 'villain' },
     ],
+    normal: {
+      special: [
+        {
+          name: 'Unstoppable Battle Fury',
+          activation: 4,
+          rule: 'When a reaction occur, lorem ipsum dolore sit amens.',
+        },
+        {
+          name: 'Krag Blackhammer’s Rune',
+          activation: 6,
+          rule: 'Once per turn, Gotrek lorem ipsum dolore sit amens, felix and gotrek in a balad.',
+        },
+        {
+          name: 'Shoulder Plate of Edassa',
+          rule: 'Every time This keeps your base styling decisions in your markup alongside all of your other styles.',
+        },
+      ],
+    },
+    empowered: {
+      special: {},
+    },
   };
 </script>
 

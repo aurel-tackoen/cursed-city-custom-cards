@@ -74,6 +74,44 @@
       >
         <div><span class="uppercase">Defence: </span>None</div>
       </div>
+      <div
+        class="absolute flex pl-10 text-center font-semibold italic leading-none text-white"
+        style="top: 256px; left: 40px; width: 555px; height: 16px"
+      >
+        <div class="uppercase" style="width: 270px">Weapon Action</div>
+        <div class="uppercase" style="width: 80px">Type</div>
+        <div class="uppercase" style="width: 75px">Dice</div>
+        <div class="uppercase" style="width: 90px">Damage</div>
+      </div>
+      <div
+        class="absolute"
+        style="top: 286px; left: 40px; width: 555px; height: 16px"
+      >
+        <div class="flex pl-10 text-center font-semibold italic leading-none">
+          <div class="" style="width: 270px">Gory Talons and Fangs</div>
+          <div class="" style="width: 80px">Melee</div>
+          <div class="" style="width: 75px">X O</div>
+          <div class="" style="width: 90px">3/5</div>
+        </div>
+        <div
+          class="mt-5 mb-1 w-full text-center text-lg font-semibold uppercase leading-none"
+        >
+          Special Rules
+        </div>
+        <div class="space-y-1 text-sm">
+          <div
+            v-for="special in hostile[status].special"
+            :key="special.name"
+            class="leading-tight"
+          >
+            <strong v-if="special.name"
+              >{{ special.name }}
+              <span v-if="special.activation">({{ special.activation }}+)</span
+              >: </strong
+            ><span>{{ special.rule }}</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
