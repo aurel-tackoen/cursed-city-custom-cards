@@ -30,8 +30,8 @@ const router = createRouter({
       component: HeroUpdatePage,
     },
     {
-      path: '/hostile/:id',
-      name: 'hostile-single',
+      path: '/hostiles/:id',
+      name: 'hostiles-single',
       component: HostileSinglePage,
     },
     {

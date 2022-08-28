@@ -43,11 +43,36 @@
         />
       </div>
       <div
-        v-if="hostile[status]"
-        class="absolute grid w-12 grid-cols-2 text-black"
-        style="top: 280px; left: 70px; width: 100px"
+        class="absolute text-center text-4xl font-semibold leading-none"
+        style="top: 28px; left: 285px; width: 295px; height: 80px"
       >
-        aaa
+        <div>{{ hostile.name }}</div>
+      </div>
+      <div
+        class="absolute text-center text-lg font-semibold italic leading-none"
+        style="top: 110px; left: 285px; width: 295px; height: 20px"
+      >
+        <div>
+          <span v-for="(tag, index) in hostile.tags" :key="tag.name">
+            {{ tag.label
+            }}<span v-if="index < hostile.tags.length - 1">, </span>
+          </span>
+          <span v-if="status === 'empowered'">, Empowered </span>
+        </div>
+      </div>
+      <div
+        class="absolute flex justify-between text-center font-semibold italic leading-none text-white"
+        style="top: 185px; left: 250px; width: 355px; height: 24px"
+      >
+        <div><span class="uppercase">Move: </span>5/8</div>
+        <div><span class="uppercase">Wounds: </span>12</div>
+        <div><span class="uppercase">Size: </span>Large</div>
+      </div>
+      <div
+        class="absolute flex justify-center text-center font-semibold italic leading-none"
+        style="top: 220px; left: 250px; width: 355px; height: 24px"
+      >
+        <div><span class="uppercase">Defence: </span>None</div>
       </div>
     </div>
   </div>
