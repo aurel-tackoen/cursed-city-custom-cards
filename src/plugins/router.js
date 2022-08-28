@@ -3,6 +3,7 @@ import HomePage from '@/pages/HomePage.vue';
 import HeroSinglePage from '@/pages/HeroSinglePage.vue';
 import HeroCreatePage from '@/pages/HeroCreatePage.vue';
 import HeroUpdatePage from '@/pages/HeroUpdatePage.vue';
+import HostileSinglePage from '@/pages/HostileSinglePage.vue';
 import UserHomePage from '@/pages/UserHomePage.vue';
 
 const router = createRouter({
@@ -27,6 +28,11 @@ const router = createRouter({
       path: '/heroes/:id/update',
       name: 'heroes-update',
       component: HeroUpdatePage,
+    },
+    {
+      path: '/hostile/:id',
+      name: 'hostile-single',
+      component: HostileSinglePage,
     },
     {
       path: '/user/',
