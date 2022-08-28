@@ -77,9 +77,14 @@
     />
     <div
       v-if="User.email === Hero.user.email"
-      class="flex w-full items-center justify-end"
+      class="flex w-full items-center justify-start border-t pt-2"
     >
-      <button class="btn-primary" @click="removeHero">Delete this hero</button>
+      <button
+        class="cursor-pointer text-red-500 hover:text-red-700 hover:underline"
+        @click="removeHero"
+      >
+        Delete this hero
+      </button>
     </div>
   </div>
 </template>
