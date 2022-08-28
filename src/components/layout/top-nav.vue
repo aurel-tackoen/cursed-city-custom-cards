@@ -49,7 +49,7 @@
             title="Soon !"
             class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-base text-slate-400"
           >
-            Monsters
+            Hostiles
           </div>
         </div>
       </div>
