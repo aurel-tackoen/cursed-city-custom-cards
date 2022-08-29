@@ -111,6 +111,19 @@
             ><span>{{ special.rule }}</span>
           </div>
         </div>
+        <div>
+          <div
+            class="mt-4 flex h-7 items-center justify-center bg-black text-lg uppercase leading-none text-white"
+          >
+            Behaviour Table
+          </div>
+          <div
+            class="flex h-5 items-center justify-center bg-gray-400 text-lg uppercase leading-none text-black"
+          >
+            <div>Roll</div>
+            <div>Result</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
