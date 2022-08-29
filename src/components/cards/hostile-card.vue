@@ -118,10 +118,18 @@
             Behaviour Table
           </div>
           <div
-            class="flex h-5 items-center justify-center bg-gray-400 text-lg uppercase leading-none text-black"
+            class="flex h-6 items-center justify-start bg-gray-400 leading-none text-black"
           >
-            <div>Roll</div>
-            <div>Result</div>
+            <div
+              class="flex h-full w-16 items-center justify-start border-r border-gray-500 pl-2 font-semibold"
+            >
+              Roll
+            </div>
+            <div
+              class="flex h-full w-full items-center justify-start pl-2 font-semibold"
+            >
+              Result
+            </div>
           </div>
         </div>
       </div>
