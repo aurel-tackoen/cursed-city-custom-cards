@@ -131,6 +131,23 @@
               Result
             </div>
           </div>
+          <div class="min-h-12 flex items-center justify-start text-black">
+            <div
+              class="flex h-full w-16 items-center justify-start border-r border-gray-500 pl-2 font-semibold"
+            >
+              1-2
+            </div>
+            <div class="h-full w-full pl-2 text-sm">
+              <span class="font-semibold">Summon Imperial Guard:</span>
+              <span class="">
+                Each hostile in the acting hostile group makes an **advance**
+                action. Then, Deploy any slain Crypt Ghouls from this hostile
+                group as reinforcements, or add 1 available Crypt Ghoul to this
+                hostile group and deploy it as reinforcements, if there are no
+                slain Crypt Ghouls in this hostile group.
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
