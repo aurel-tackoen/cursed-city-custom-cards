@@ -120,24 +120,24 @@
           <div
             class="flex h-6 items-center justify-start bg-gray-400 leading-none text-black"
           >
-            <div
-              class="flex h-full w-16 items-center justify-start border-r border-gray-500 pl-2 font-semibold"
-            >
+            <div class="flex w-16 items-center justify-center font-semibold">
               Roll
             </div>
             <div
-              class="flex h-full w-full items-center justify-start pl-2 font-semibold"
+              class="flex h-full w-full items-center justify-start border-l border-gray-500 pl-2 font-semibold"
             >
               Result
             </div>
           </div>
           <div class="min-h-12 flex items-center justify-start text-black">
             <div
-              class="flex h-full w-16 items-center justify-start border-r border-gray-500 pl-2 font-semibold"
+              class="flex h-full w-16 items-center justify-center py-2 font-semibold"
             >
               1-2
             </div>
-            <div class="h-full w-full pl-2 text-sm">
+            <div
+              class="h-full w-full border-l border-gray-200 py-2 pl-2 text-sm"
+            >
               <span class="font-semibold">Summon Imperial Guard:</span>
               <span class="">
                 Each hostile in the acting hostile group makes an **advance**
@@ -145,6 +145,57 @@
                 group as reinforcements, or add 1 available Crypt Ghoul to this
                 hostile group and deploy it as reinforcements, if there are no
                 slain Crypt Ghouls in this hostile group.
+              </span>
+            </div>
+          </div>
+          <div
+            class="min-h-12 flex items-center justify-start bg-gray-100 text-black"
+          >
+            <div
+              class="flex h-full w-16 items-center justify-center py-2 font-semibold"
+            >
+              3-5
+            </div>
+            <div
+              class="h-full w-full border-l border-gray-200 py-2 pl-2 text-sm"
+            >
+              <span class="font-semibold">Advance</span>
+            </div>
+          </div>
+          <div class="min-h-12 flex items-center justify-start text-black">
+            <div
+              class="flex h-full w-16 items-center justify-center py-2 font-semibold"
+            >
+              6-9
+            </div>
+            <div
+              class="h-full w-full border-l border-gray-200 py-2 pl-2 text-sm"
+            >
+              <span class="font-semibold">Terrifying Power:</span>
+              <span class="">
+                The acting hostile makes an **Assault** action. Remove 1 wound
+                from the acting hostile for every damage it inflicts upon its
+                target during that action.
+              </span>
+            </div>
+          </div>
+          <div
+            class="min-h-12 flex items-center justify-start bg-gray-100 text-black"
+          >
+            <div
+              class="flex h-full w-16 items-center justify-center py-2 font-semibold"
+            >
+              10-12
+            </div>
+            <div
+              class="h-full w-full border-l border-gray-200 py-2 pl-2 text-sm"
+            >
+              <span class="font-semibold">Ferocious Hunger: </span>
+              <span class="">
+                Each other visible *Flesh-Eater* hostile one the battlefield
+                makes a **Charge** action. If there are no other visible
+                *Flesh-Eater* hostiles, treat this as a result of **Terrifying
+                Power**.
               </span>
             </div>
           </div>

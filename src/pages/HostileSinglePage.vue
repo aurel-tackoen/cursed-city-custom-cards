@@ -9,7 +9,7 @@
       zoom: 1,
     },
     tags: [
-      { label: 'Flesh-eater', value: 'flesh-eater' },
+      { label: 'Flesh-Eater', value: 'flesh-eater' },
       { label: 'Villain', value: 'villain' },
     ],
     normal: {
