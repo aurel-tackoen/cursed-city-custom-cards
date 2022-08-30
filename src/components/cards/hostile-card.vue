@@ -76,7 +76,7 @@
       </div>
       <div
         class="absolute flex pl-10 text-center font-semibold italic leading-none text-white"
-        style="top: 256px; left: 40px; width: 555px; height: 16px"
+        style="top: 254px; left: 40px; width: 555px; height: 16px"
       >
         <div class="uppercase" style="width: 270px">Weapon Action</div>
         <div class="uppercase" style="width: 80px">Type</div>
