@@ -1,4 +1,7 @@
 <script setup>
+  import DiceD6 from '@/components/dices/dice-d6.vue';
+  import DiceD8 from '@/components/dices/dice-d8.vue';
+  import DiceD12 from '@/components/dices/dice-d12.vue';
   defineProps({
     hostile: Object,
     status: String,
@@ -64,15 +67,27 @@
         class="absolute flex justify-between text-center font-semibold italic leading-none text-white"
         style="top: 185px; left: 250px; width: 355px; height: 24px"
       >
-        <div><span class="uppercase">Move: </span>5/8</div>
-        <div><span class="uppercase">Wounds: </span>12</div>
-        <div><span class="uppercase">Size: </span>Large</div>
+        <div>
+          <span class="uppercase">Move: </span
+          >{{ hostile[status].stats.move }}/{{ hostile[status].stats.run }}
+        </div>
+        <div>
+          <span class="uppercase">Wounds: </span
+          >{{ hostile[status].stats.wounds }}
+        </div>
+        <div>
+          <span class="uppercase">Size: </span
+          ><span class="capitalize">{{ hostile.size }}</span>
+        </div>
       </div>
       <div
         class="absolute flex justify-center text-center font-semibold italic leading-none"
         style="top: 220px; left: 250px; width: 355px; height: 24px"
       >
-        <div><span class="uppercase">Defence: </span>None</div>
+        <div>
+          <span class="uppercase">Defence: </span
+          >{{ hostile[status].stats.defence }}
+        </div>
       </div>
       <div
         class="absolute flex pl-10 text-center font-semibold italic leading-none text-white"
@@ -87,11 +102,24 @@
         class="absolute"
         style="top: 286px; left: 40px; width: 555px; height: 16px"
       >
-        <div class="flex pl-10 text-center font-semibold italic leading-none">
-          <div class="" style="width: 270px">Gory Talons and Fangs</div>
-          <div class="" style="width: 80px">Melee</div>
-          <div class="" style="width: 75px">X O</div>
-          <div class="" style="width: 90px">3/5</div>
+        <div
+          v-for="weapon in hostile[status].weapons"
+          :key="weapon.name"
+          class="flex pl-10 text-center font-semibold italic leading-none"
+        >
+          <div class="" style="width: 270px">{{ weapon.name }}</div>
+          <div class="capitalize" style="width: 80px">{{ weapon.type }}</div>
+          <div style="width: 75px" class="flex justify-center">
+            <DiceD6 v-if="weapon.dice1 === 'd6'" class="h-4 w-4" />
+            <DiceD8 v-if="weapon.dice1 === 'd8'" class="h-4 w-4" />
+            <DiceD12 v-if="weapon.dice1 === 'd12'" class="h-4 w-4" />
+            <DiceD6 v-if="weapon.dice2 === 'd6'" class="ml-1 h-4 w-4" />
+            <DiceD8 v-if="weapon.dice2 === 'd8'" class="ml-1 h-4 w-4" />
+            <DiceD12 v-if="weapon.dice2 === 'd12'" class="ml-1 h-4 w-4" />
+          </div>
+          <div class="" style="width: 90px">
+            {{ weapon.damages.base }}/{{ weapon.damages.critical }}
+          </div>
         </div>
         <div
           class="mt-5 mb-1 w-full text-center text-lg font-semibold uppercase leading-none"

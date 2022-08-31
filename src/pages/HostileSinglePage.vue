@@ -12,7 +12,26 @@
       { label: 'Flesh-Eater', value: 'flesh-eater' },
       { label: 'Villain', value: 'villain' },
     ],
+    size: 'large',
     normal: {
+      stats: {
+        move: 5,
+        run: 8,
+        wounds: 12,
+        defence: 'none',
+      },
+      weapons: [
+        {
+          name: 'Gory Talons and Fangs',
+          type: 'melee',
+          dice1: 'd6',
+          dice2: 'd8',
+          damages: {
+            base: 3,
+            critical: 5,
+          },
+        },
+      ],
       special: [
         {
           name: 'Supreme Ghoul King',
@@ -23,9 +42,78 @@
           rule: 'Each time this hostile ends their activation, remove 2 wounds counter from the acting hostile.',
         },
       ],
+      behaviour: [
+        {
+          roll: '1-2',
+          title: 'Summon Imperial Guard',
+          rule: 'Each hostile in the acting hostile group makes an **advance** action. Then, Deploy any slain Crypt Ghouls from this hostile group as reinforcements, or add 1 available Crypt Ghoul to this hostile group and deploy it as reinforcements, if there are no slain Crypt Ghouls in this hostile group.',
+        },
+        {
+          roll: '3-5',
+          title: 'Advance',
+        },
+        {
+          roll: '6-9',
+          title: 'Terrifying Power',
+          rule: 'The acting hostile makes an **Assault** action. Remove 1 wound from the acting hostile for every damage it inflicts upon its target during that action.',
+        },
+        {
+          roll: '10-12',
+          title: 'Ferocious Hunger',
+          rule: 'Each other visible *Flesh-Eater* hostile one the battlefield makes a **Charge** action. If there are no other visible *Flesh-Eater* hostiles, treat this as a result of **Terrifying Power**.',
+        },
+      ],
     },
     empowered: {
-      special: {},
+      stats: {
+        move: 5,
+        run: 8,
+        wounds: 12,
+        defence: 'none',
+      },
+      weapons: [
+        {
+          name: 'Gory Talons and Fangs',
+          type: 'melee',
+          dice1: 'd6',
+          dice2: 'd8',
+          damages: {
+            base: 3,
+            critical: 5,
+          },
+        },
+      ],
+      special: [
+        {
+          name: 'Supreme Ghoul King',
+          rule: 'Increase the Damage values of all other Flesh-Eater hostiles weapon actions by +0/+1 while this hostile is on the battlefield',
+        },
+        {
+          name: 'Imperial Blood',
+          rule: 'Each time this hostile ends their activation, remove 2 wounds counter from the acting hostile.',
+        },
+      ],
+      behaviour: [
+        {
+          roll: '1-2',
+          title: 'Summon Imperial Guard',
+          rule: 'Each hostile in the acting hostile group makes an **advance** action. Then, Deploy any slain Crypt Ghouls from this hostile group as reinforcements, or add 1 available Crypt Ghoul to this hostile group and deploy it as reinforcements, if there are no slain Crypt Ghouls in this hostile group.',
+        },
+        {
+          roll: '3-5',
+          title: 'Advance',
+        },
+        {
+          roll: '6-9',
+          title: 'Terrifying Power',
+          rule: 'The acting hostile makes an **Assault** action. Remove 1 wound from the acting hostile for every damage it inflicts upon its target during that action.',
+        },
+        {
+          roll: '10-12',
+          title: 'Ferocious Hunger',
+          rule: 'Each other visible *Flesh-Eater* hostile one the battlefield makes a **Charge** action. If there are no other visible *Flesh-Eater* hostiles, treat this as a result of **Terrifying Power**.',
+        },
+      ],
     },
   };
 </script>
