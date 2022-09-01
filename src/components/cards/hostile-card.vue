@@ -132,11 +132,8 @@
             :key="special.name"
             class="leading-tight"
           >
-            <strong v-if="special.name"
-              >{{ special.name }}
-              <span v-if="special.activation">({{ special.activation }}+)</span
-              >: </strong
-            ><span>{{ special.rule }}</span>
+            <strong v-if="special.name">{{ special.name }}: </strong>
+            <span>{{ special.rule }}</span>
           </div>
         </div>
         <div>
@@ -165,9 +162,7 @@
               'bg-gray-100': index % 2 !== 0,
             }"
           >
-            <div
-              class="flex h-full w-16 items-center justify-center py-2 font-semibold"
-            >
+            <div class="flex h-full w-16 items-center justify-center py-2">
               {{ behaviour.roll }}
             </div>
             <div
