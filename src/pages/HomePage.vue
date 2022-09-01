@@ -9,8 +9,8 @@
   const authStore = useAuthStore();
   const { User } = storeToRefs(authStore);
   const heroesStore = useHeroesStore();
-  const { UserHeroes, UserHeroesParams, Heroes, HeroesParams } =
-    storeToRefs(heroesStore);
+  const { UserHeroes, Heroes } = storeToRefs(heroesStore);
+  const { UserHeroesParams, HeroesParams } = storeToRefs(heroesStore);
 
   watch(
     () => UserHeroesParams.value.skip,
