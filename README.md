@@ -4,6 +4,7 @@
 - [ ] Markdown Input
 - [ ] Display Bold and Italic in cards
 - [ ] Documentation about pictures
+- [ ] Documentation about markdown
 
 http://localhost:5174/
 
