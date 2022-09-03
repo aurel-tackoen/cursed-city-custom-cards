@@ -1,6 +1,12 @@
 import { defineStore, storeToRefs } from 'pinia';
 import { useAuthStore } from '@/stores/auth-store';
 import { validate, generateErrors } from '@/schemas/heroes-schema.js';
+// import DOMPurify from 'isomorphic-dompurify';
+
+function sanitize() {
+  // const clean = DOMPurify.sanitize('<b>hello there</b>');
+  // console.log(clean);
+}
 
 export const useHeroesStore = defineStore('heroes', {
   state: () => ({
@@ -62,6 +68,8 @@ export const useHeroesStore = defineStore('heroes', {
         const { User } = storeToRefs(authStore);
         this.HeroErrors = [];
         const item = await validate(this.Hero);
+        const sanitized = sanitize(this.Hero);
+        console.log(sanitized);
         const response = await fetch('/.netlify/functions/heroes-update', {
           headers: {
             Authorization: `Bearer ${User.value.access_token}`,
