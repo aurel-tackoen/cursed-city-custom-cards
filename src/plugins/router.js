@@ -3,7 +3,7 @@ import HomePage from '@/pages/HomePage.vue';
 import HeroSinglePage from '@/pages/HeroSinglePage.vue';
 import HeroCreatePage from '@/pages/HeroCreatePage.vue';
 import HeroUpdatePage from '@/pages/HeroUpdatePage.vue';
-import HostileSinglePage from '@/pages/HostileSinglePage.vue';
+import VillainSinglePage from '@/pages/VillainSinglePage.vue';
 import UserHomePage from '@/pages/UserHomePage.vue';
 
 const router = createRouter({
@@ -30,9 +30,9 @@ const router = createRouter({
       component: HeroUpdatePage,
     },
     {
-      path: '/hostiles/:id',
-      name: 'hostiles-single',
-      component: HostileSinglePage,
+      path: '/villains/:id',
+      name: 'villains-single',
+      component: VillainSinglePage,
     },
     {
       path: '/user/',

@@ -4,7 +4,7 @@
   import DiceD8 from '/public/svg/dice-d8.svg';
   import DiceD12 from '/public/svg/dice-d12.svg';
   defineProps({
-    hostile: Object,
+    villain: Object,
     status: String,
   });
 </script>
@@ -16,14 +16,14 @@
       <div class="-mx-4 -mt-6 -mb-4">
         <img
           v-if="status === 'normal'"
-          src="@/assets/pictures/hostile-background-normal.png"
-          alt="Hostile Background"
+          src="@/assets/pictures/villain-background-normal.png"
+          alt="Villain Background"
           style="width: 178mm; height: 241mm"
         />
         <img
           v-if="status === 'empowered'"
-          src="@/assets/pictures/hostile-background-empowered.png"
-          alt="Hostile Background"
+          src="@/assets/pictures/villain-background-empowered.png"
+          alt="Villain Background"
           style="width: 178mm; height: 241mm"
         />
       </div>
@@ -35,13 +35,13 @@
         style="top: -67px; left: -53px; width: 317px; height: 317px"
       >
         <img
-          :src="hostile.picture.url"
-          alt="Hostile Picture"
+          :src="villain.picture.url"
+          alt="Villain Picture"
           class="max-w-max"
           :style="`
-          transform: scale(${hostile.picture.zoom});
-          margin-top: ${hostile.picture.offsetY}px;
-          margin-left: ${hostile.picture.offsetX}px;
+          transform: scale(${villain.picture.zoom});
+          margin-top: ${villain.picture.offsetY}px;
+          margin-left: ${villain.picture.offsetX}px;
           height: 500px
         `"
         />
@@ -50,16 +50,16 @@
         class="absolute text-center text-4xl font-semibold leading-none"
         style="top: 28px; left: 285px; width: 295px; height: 80px"
       >
-        <div>{{ hostile.name }}</div>
+        <div>{{ villain.name }}</div>
       </div>
       <div
         class="absolute text-center text-lg font-semibold italic leading-none"
         style="top: 110px; left: 285px; width: 295px; height: 20px"
       >
         <div>
-          <span v-for="(tag, index) in hostile.tags" :key="tag.name">
+          <span v-for="(tag, index) in villain.tags" :key="tag.name">
             {{ tag.label
-            }}<span v-if="index < hostile.tags.length - 1">, </span>
+            }}<span v-if="index < villain.tags.length - 1">, </span>
           </span>
           <span v-if="status === 'empowered'">, Empowered </span>
         </div>
@@ -70,15 +70,15 @@
       >
         <div>
           <span class="uppercase">Move: </span
-          >{{ hostile[status].stats.move }}/{{ hostile[status].stats.run }}
+          >{{ villain[status].stats.move }}/{{ villain[status].stats.run }}
         </div>
         <div>
           <span class="uppercase">Wounds: </span
-          >{{ hostile[status].stats.wounds }}
+          >{{ villain[status].stats.wounds }}
         </div>
         <div>
           <span class="uppercase">Size: </span
-          ><span class="capitalize">{{ hostile.size }}</span>
+          ><span class="capitalize">{{ villain.size }}</span>
         </div>
       </div>
       <div
@@ -87,7 +87,7 @@
       >
         <div>
           <span class="uppercase">Defence: </span
-          >{{ hostile[status].stats.defence }}
+          >{{ villain[status].stats.defence }}
         </div>
       </div>
       <div
@@ -104,7 +104,7 @@
         style="top: 286px; left: 40px; width: 555px; height: 16px"
       >
         <div
-          v-for="weapon in hostile[status].weapons"
+          v-for="weapon in villain[status].weapons"
           :key="weapon.name"
           class="flex pl-10 text-center font-semibold italic leading-none"
         >
@@ -129,7 +129,7 @@
         </div>
         <div class="space-y-1 text-sm">
           <div
-            v-for="special in hostile[status].special"
+            v-for="special in villain[status].special"
             :key="special.name"
             class="leading-tight"
           >
@@ -156,7 +156,7 @@
             </div>
           </div>
           <div
-            v-for="(behaviour, index) in hostile[status].behaviour"
+            v-for="(behaviour, index) in villain[status].behaviour"
             :key="behaviour.roll"
             class="min-h-12 flex items-center justify-start text-black"
             :class="{

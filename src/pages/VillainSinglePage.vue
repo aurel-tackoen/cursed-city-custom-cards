@@ -1,6 +1,6 @@
 <script setup>
-  import HeroCard from '@/components/cards/hostile-card.vue';
-  const Hostile = {
+  import HeroCard from '@/components/cards/villain-card.vue';
+  const Villain = {
     name: 'Abhorrant Archregent',
     picture: {
       url: 'https://www.games-workshop.com/resources/catalog/product/920x950/99070207009_AbhorrantArchregent01.jpg',
@@ -122,13 +122,13 @@
   <div class="mt-4 space-y-4">
     <HeroCard
       status="normal"
-      v-model:hostile="Hostile"
-      class="hostile-card-display"
+      v-model:villain="Villain"
+      class="villain-card-display"
     />
     <HeroCard
       status="empowered"
-      v-model:hostile="Hostile"
-      class="hostile-card-display"
+      v-model:villain="Villain"
+      class="villain-card-display"
     />
   </div>
 </template>
