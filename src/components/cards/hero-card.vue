@@ -1,4 +1,5 @@
 <script setup>
+  import { marked } from 'marked';
   import DiceD6 from '@/components/dices/dice-d6.vue';
   import DiceD8 from '@/components/dices/dice-d8.vue';
   import DiceD12 from '@/components/dices/dice-d12.vue';
@@ -150,7 +151,7 @@
               <sup class="mr-0.5">{{ index + 1 }}</sup>
               <span v-if="note.name" class="font-semibold"
                 >{{ note.name }}: </span
-              >{{ note.rule }}
+              ><span v-html="marked.parse(note.rule)"></span>
             </div>
           </div>
         </div>
@@ -172,7 +173,7 @@
                 <span v-if="ability.activation"
                   >({{ ability.activation }}+)</span
                 >: </strong
-              ><span>{{ ability.rule }}</span>
+              ><span v-html="marked.parse(ability.rule)"></span>
             </div>
           </div>
         </div>
@@ -184,7 +185,7 @@
       >
         <strong v-if="hero.normal.path.name"
           >{{ hero.normal.path.name }}: </strong
-        >{{ hero.normal.path.rule }}
+        ><span v-html="marked.parse(hero.normal.path.rule)"></span>
       </div>
     </div>
   </div>
