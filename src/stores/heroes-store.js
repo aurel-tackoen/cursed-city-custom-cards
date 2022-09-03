@@ -6,29 +6,19 @@ import DOMPurify from 'isomorphic-dompurify';
 async function sanitize(hero) {
   const options = { ALLOWED_TAGS: [] };
   hero?.normal?.notes.map((note) => {
-    console.log(note.rule);
     note.rule = DOMPurify.sanitize(note.rule, options);
-    console.log(note.rule);
   });
   hero?.inspired?.notes.map((note) => {
-    console.log(note.rule);
     note.rule = DOMPurify.sanitize(note.rule, options);
-    console.log(note.rule);
   });
   hero?.normal?.abilities.map((ability) => {
-    console.log(ability.rule);
     ability.rule = DOMPurify.sanitize(ability.rule, options);
-    console.log(ability.rule);
   });
   hero?.inspired?.abilities.map((ability) => {
-    console.log(ability.rule);
     ability.rule = DOMPurify.sanitize(ability.rule, options);
-    console.log(ability.rule);
   });
   if (hero.normal.path.rule) {
-    console.log(hero.normal.path.rule);
     hero.normal.path.rule = DOMPurify.sanitize(hero.normal.path.rule, options);
-    console.log(hero.normal.path.rule);
   }
   return hero;
 }
