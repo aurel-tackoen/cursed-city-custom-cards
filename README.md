@@ -2,6 +2,8 @@
 
 - [ ] Sanitize Input
 - [ ] Markdown Input
+- [ ] Display Bold and Italic in cards
+- [ ] Documentation about pictures
 
 http://localhost:5174/
 
