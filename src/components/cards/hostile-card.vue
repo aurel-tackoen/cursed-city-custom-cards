@@ -1,4 +1,5 @@
 <script setup>
+  import { generateHtml } from '@/plugins/markdown.js';
   import DiceD6 from '/public/svg/dice-d6.svg';
   import DiceD8 from '/public/svg/dice-d8.svg';
   import DiceD12 from '/public/svg/dice-d12.svg';
@@ -133,7 +134,7 @@
             class="leading-tight"
           >
             <strong v-if="special.name">{{ special.name }}: </strong>
-            <span>{{ special.rule }}</span>
+            <span v-html="generateHtml(special.rule)"></span>
           </div>
         </div>
         <div>
@@ -172,8 +173,8 @@
                 >{{ behaviour.title
                 }}<span v-if="behaviour.rule">: </span></span
               >
-              <span v-if="behaviour.rule" class="">
-                {{ behaviour.rule }}
+              <span v-if="behaviour.rule">
+                <span v-html="generateHtml(behaviour.rule)"></span>
               </span>
             </div>
           </div>
