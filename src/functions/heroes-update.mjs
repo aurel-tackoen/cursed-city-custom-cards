@@ -3,7 +3,7 @@ const ObjectID = require('mongodb').ObjectId;
 
 const checkAuth = require('../plugins/functions/check-auth.js');
 const checkOwner = require('../plugins/functions/check-owner.js');
-import { validate, sanitize } from '../schemas/heroes-schema.js';
+import { validate } from '../schemas/heroes-schema.js';
 
 const mongoClient = new MongoClient(process.env.MONGODB_URI);
 
@@ -13,7 +13,6 @@ export const handler = async function ({ body }, context) {
   try {
     const user = await checkAuth(context);
     const data = JSON.parse(body);
-    await sanitize(data);
     await validate(data);
     await checkOwner(user, data);
     data._id = new ObjectID(data._id);

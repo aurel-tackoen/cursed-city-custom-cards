@@ -1,6 +1,6 @@
 import { object, string, number, array } from 'yup';
 
-const heroesSchema = object({
+const schema = object({
   _id: string(),
   name: string().required(),
   size: string().required(),
@@ -99,23 +99,15 @@ const heroesSchema = object({
   date: number().required().positive().integer(),
 });
 
-async function sanitize(data) {
-  console.log(data);
-  data.normal.abilities.map((ability) => {
-    console.log(ability.rule);
-  });
-  return data;
-}
-
 async function validate(data) {
-  const result = await heroesSchema.validate(data, {
+  const result = await schema.validate(data, {
     abortEarly: false,
     stripUnknown: true,
   });
   return result;
 }
 
-function generateErrors(errors) {
+function getErrors(errors) {
   const validationErrors = [];
   errors?.inner?.forEach((e) => {
     validationErrors.push({
@@ -127,4 +119,4 @@ function generateErrors(errors) {
   return validationErrors;
 }
 
-export { heroesSchema, validate, sanitize, generateErrors };
+export { schema, validate, getErrors };

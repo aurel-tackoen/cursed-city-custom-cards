@@ -23,6 +23,7 @@
     "@vueform/multiselect": "^2.5.2",
     "dayjs": "^1.11.5",
     "isomorphic-dompurify": "^0.22.0",
+    "marked": "^4.1.0",
     "mini-svg-data-uri": "^1.4.4",
     "mongodb": "^4.9.0",
     "netlify-identity-widget": "^1.9.2",

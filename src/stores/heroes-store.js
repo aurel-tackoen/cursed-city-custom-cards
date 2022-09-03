@@ -1,11 +1,36 @@
 import { defineStore, storeToRefs } from 'pinia';
 import { useAuthStore } from '@/stores/auth-store';
-import { validate, generateErrors } from '@/schemas/heroes-schema.js';
-// import DOMPurify from 'isomorphic-dompurify';
+import { validate, getErrors } from '@/schemas/heroes-schema.js';
+import DOMPurify from 'isomorphic-dompurify';
 
-function sanitize() {
-  // const clean = DOMPurify.sanitize('<b>hello there</b>');
-  // console.log(clean);
+async function sanitize(hero) {
+  const options = { ALLOWED_TAGS: [] };
+  hero?.normal?.notes.map((note) => {
+    console.log(note.rule);
+    note.rule = DOMPurify.sanitize(note.rule, options);
+    console.log(note.rule);
+  });
+  hero?.inspired?.notes.map((note) => {
+    console.log(note.rule);
+    note.rule = DOMPurify.sanitize(note.rule, options);
+    console.log(note.rule);
+  });
+  hero?.normal?.abilities.map((ability) => {
+    console.log(ability.rule);
+    ability.rule = DOMPurify.sanitize(ability.rule, options);
+    console.log(ability.rule);
+  });
+  hero?.inspired?.abilities.map((ability) => {
+    console.log(ability.rule);
+    ability.rule = DOMPurify.sanitize(ability.rule, options);
+    console.log(ability.rule);
+  });
+  if (hero.normal.path.rule) {
+    console.log(hero.normal.path.rule);
+    hero.normal.path.rule = DOMPurify.sanitize(hero.normal.path.rule, options);
+    console.log(hero.normal.path.rule);
+  }
+  return hero;
 }
 
 export const useHeroesStore = defineStore('heroes', {
@@ -56,7 +81,7 @@ export const useHeroesStore = defineStore('heroes', {
         }
       } catch (errors) {
         console.log(errors);
-        const validationErrors = generateErrors(errors);
+        const validationErrors = getErrors(errors);
         this.HeroErrors = validationErrors;
         return false;
       }
@@ -68,7 +93,7 @@ export const useHeroesStore = defineStore('heroes', {
         const { User } = storeToRefs(authStore);
         this.HeroErrors = [];
         const item = await validate(this.Hero);
-        const sanitized = sanitize(this.Hero);
+        const sanitized = await sanitize(this.Hero);
         console.log(sanitized);
         const response = await fetch('/.netlify/functions/heroes-update', {
           headers: {
@@ -88,7 +113,7 @@ export const useHeroesStore = defineStore('heroes', {
         }
       } catch (errors) {
         console.log(errors);
-        const validationErrors = generateErrors(errors);
+        const validationErrors = getErrors(errors);
         this.HeroErrors = validationErrors;
         return false;
       }
