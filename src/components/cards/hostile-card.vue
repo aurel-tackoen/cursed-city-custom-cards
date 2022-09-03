@@ -1,7 +1,7 @@
 <script setup>
-  import DiceD6 from '@/components/dices/dice-d6.vue';
-  import DiceD8 from '@/components/dices/dice-d8.vue';
-  import DiceD12 from '@/components/dices/dice-d12.vue';
+  import DiceD6 from '/public/svg/dice-d6.svg';
+  import DiceD8 from '/public/svg/dice-d8.svg';
+  import DiceD12 from '/public/svg/dice-d12.svg';
   defineProps({
     hostile: Object,
     status: String,

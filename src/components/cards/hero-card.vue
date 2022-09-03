@@ -1,8 +1,8 @@
 <script setup>
-  import { marked } from 'marked';
-  import DiceD6 from '@/components/dices/dice-d6.vue';
-  import DiceD8 from '@/components/dices/dice-d8.vue';
-  import DiceD12 from '@/components/dices/dice-d12.vue';
+  import { generateHtml } from '@/plugins/markdown.js';
+  import DiceD6 from '/public/svg/dice-d6.svg';
+  import DiceD8 from '/public/svg/dice-d8.svg';
+  import DiceD12 from '/public/svg/dice-d12.svg';
   defineProps({
     hero: Object,
     status: String,
@@ -151,7 +151,7 @@
               <sup class="mr-0.5">{{ index + 1 }}</sup>
               <span v-if="note.name" class="font-semibold"
                 >{{ note.name }}: </span
-              ><span v-html="marked.parse(note.rule)"></span>
+              ><span v-html="generateHtml(note.rule)"></span>
             </div>
           </div>
         </div>
@@ -173,7 +173,7 @@
                 <span v-if="ability.activation"
                   >({{ ability.activation }}+)</span
                 >: </strong
-              ><span v-html="marked.parse(ability.rule)"></span>
+              ><span v-html="generateHtml(ability.rule)"></span>
             </div>
           </div>
         </div>
@@ -185,7 +185,7 @@
       >
         <strong v-if="hero.normal.path.name"
           >{{ hero.normal.path.name }}: </strong
-        ><span v-html="marked.parse(hero.normal.path.rule)"></span>
+        ><span v-html="generateHtml(hero.normal.path.rule)"></span>
       </div>
     </div>
   </div>
