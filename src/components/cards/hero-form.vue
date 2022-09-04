@@ -5,6 +5,7 @@
   import { v4 as uuidv4 } from 'uuid';
   import FormCard from '@/components/layout/form-card.vue';
   import MarkdownDocumentation from '@/components/layout/markdown-documentation.vue';
+  import PictureDocumentation from '@/components/layout/picture-documentation.vue';
   const props = defineProps({
     status: String,
     hero: {
@@ -288,7 +289,9 @@
         </div>
         <div
           class="-mr-4 w-12 flex-row items-center justify-center text-center"
-        ></div>
+        >
+          <PictureDocumentation />
+        </div>
       </div>
     </FormCard>
     <FormCard id="user-weapons" title="Weapons">
