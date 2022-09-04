@@ -1,11 +1,5 @@
 # cursed-city-custom-cards
 
-- [ ] Sanitize Input
-- [ ] Markdown Input
-- [ ] Display Bold and Italic in cards
-- [ ] Documentation about pictures
-- [ ] Documentation about markdown
-
 http://localhost:5174/
 
 Set env NPM_TOKEN with :
