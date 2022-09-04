@@ -2,9 +2,9 @@
   import { computed, toRaw } from 'vue';
   import draggable from 'vuedraggable';
   import Multiselect from '@vueform/multiselect';
-  import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue';
   import { v4 as uuidv4 } from 'uuid';
   import FormCard from '@/components/layout/form-card.vue';
+  import MarkdownDocumentation from '@/components/layout/markdown-documentation.vue';
   const props = defineProps({
     status: String,
     hero: {
@@ -23,6 +23,11 @@
     get: () => props.hero,
     set: (value) => emit('update:hero', value),
   });
+  async function remove(target, index) {
+    if (confirm('Are you sure you want to delete this?') == true) {
+      hero.value[props.status][target].splice(index, 1);
+    }
+  }
   const defaultWeapon = {
     name: '',
     activation: 1,
@@ -46,7 +51,9 @@
     return props?.errors.find((e) => e.path === path);
   }
   function clone(item) {
-    return structuredClone(toRaw(item));
+    if (confirm('Are you sure you want to copy this?') == true) {
+      return structuredClone(toRaw(item));
+    }
   }
 </script>
 <template>
@@ -377,7 +384,7 @@
                   :icon="['fas', 'grip-vertical']"
                 />
               </div>
-              <button @click="hero[status].weapons.splice(index, 1)">
+              <button @click="remove('weapons', index)">
                 <fa-icon
                   class="fa-fw text-slate-300 hover:text-red-700"
                   :icon="['fas', 'trash']"
@@ -434,30 +441,14 @@
             <div
               class="-mr-4 w-12 flex-row items-center justify-center text-center"
             >
-              <Popover>
-                <PopoverButton>
-                  <fa-icon
-                    class="fa-fw text-slate-300 hover:text-red-700"
-                    :icon="['fas', 'hat-wizard']"
-                  />
-                </PopoverButton>
-                <PopoverPanel class="absolute z-10 -mt-8 w-96 -translate-x-96">
-                  <div
-                    class="y overflow-hidden rounded-lg border bg-white p-4 text-left shadow-lg"
-                  >
-                    You can use **<strong>bold</strong>** and *<em>italic</em>*
-                    in the rule text. You can also use [D6], or [D8], or [D12]
-                    to display a dice icon.
-                  </div>
-                </PopoverPanel>
-              </Popover>
+              <MarkdownDocumentation />
               <div class="handle cursor-move">
                 <fa-icon
                   class="fa-fw text-slate-300 hover:text-red-700"
                   :icon="['fas', 'grip-vertical']"
                 />
               </div>
-              <button @click="hero[status].notes.splice(index, 1)">
+              <button @click="remove('notes', index)">
                 <fa-icon
                   class="fa-fw text-slate-300 hover:text-red-700"
                   :icon="['fas', 'trash']"
@@ -522,13 +513,14 @@
             <div
               class="-mr-4 w-12 flex-row items-center justify-center text-center"
             >
+              <MarkdownDocumentation />
               <div class="handle cursor-move">
                 <fa-icon
                   class="fa-fw text-slate-300 hover:text-red-700"
                   :icon="['fas', 'grip-vertical']"
                 />
               </div>
-              <button @click="hero[status].abilities.splice(index, 1)">
+              <button @click="remove('abilities', index)">
                 <fa-icon
                   class="fa-fw text-slate-300 hover:text-red-700"
                   :icon="['fas', 'trash']"
@@ -594,7 +586,9 @@
         </div>
         <div
           class="-mr-4 w-12 flex-row items-center justify-center text-center"
-        ></div>
+        >
+          <MarkdownDocumentation />
+        </div>
       </div>
     </FormCard>
   </div>
