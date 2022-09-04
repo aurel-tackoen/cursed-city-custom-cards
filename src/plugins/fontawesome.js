@@ -5,6 +5,7 @@ import {
   faTrash,
   faCopy,
   faPlusLarge,
+  faHatWizard,
 } from '@fortawesome/pro-solid-svg-icons';
 import {
   faDiceD6,
@@ -13,7 +14,7 @@ import {
   faDiceD12,
   faBookSkull,
 } from '@fortawesome/pro-duotone-svg-icons';
-library.add(faGripVertical, faTrash, faPlusLarge, faCopy);
+library.add(faGripVertical, faTrash, faPlusLarge, faCopy, faHatWizard);
 library.add(faDiceD6, faDiceD8, faDiceD10, faDiceD12, faBookSkull);
 
 export default FontAwesomeIcon;

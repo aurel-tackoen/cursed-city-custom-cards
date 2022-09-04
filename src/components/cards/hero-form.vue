@@ -2,6 +2,7 @@
   import { computed, toRaw } from 'vue';
   import draggable from 'vuedraggable';
   import Multiselect from '@vueform/multiselect';
+  import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue';
   import { v4 as uuidv4 } from 'uuid';
   import FormCard from '@/components/layout/form-card.vue';
   const props = defineProps({
@@ -433,6 +434,23 @@
             <div
               class="-mr-4 w-12 flex-row items-center justify-center text-center"
             >
+              <Popover>
+                <PopoverButton>
+                  <fa-icon
+                    class="fa-fw text-slate-300 hover:text-red-700"
+                    :icon="['fas', 'hat-wizard']"
+                  />
+                </PopoverButton>
+                <PopoverPanel class="absolute z-10 -mt-8 w-96 -translate-x-96">
+                  <div
+                    class="y overflow-hidden rounded-lg border bg-white p-4 text-left shadow-lg"
+                  >
+                    You can use **<strong>bold</strong>** and *<em>italic</em>*
+                    in the rule text. You can also use [D6], or [D8], or [D12]
+                    to display a dice icon.
+                  </div>
+                </PopoverPanel>
+              </Popover>
               <div class="handle cursor-move">
                 <fa-icon
                   class="fa-fw text-slate-300 hover:text-red-700"

@@ -20,6 +20,7 @@
     "@fortawesome/pro-solid-svg-icons": "^6.1.2",
     "@fortawesome/pro-thin-svg-icons": "^6.1.2",
     "@fortawesome/vue-fontawesome": "^3.0.1",
+    "@headlessui/vue": "^1.6.7",
     "@vueform/multiselect": "^2.5.2",
     "dayjs": "^1.11.5",
     "isomorphic-dompurify": "^0.22.0",
