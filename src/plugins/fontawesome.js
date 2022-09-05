@@ -19,8 +19,10 @@ import {
   faDiceD12 as fadDiceD12,
   faBookSkull as fadBookSkull,
 } from '@fortawesome/pro-duotone-svg-icons';
+import { faDiceD12 as fatDiceD12 } from '@fortawesome/pro-thin-svg-icons';
 library.add(fasGripVertical, fasTrash, fasPlusLarge, fasCopy, fasHatWizard);
 library.add(fasDiceD6, fasDiceD8, fasDiceD10, fasDiceD12, fasBookSkull);
 library.add(fadDiceD6, fadDiceD8, fadDiceD10, fadDiceD12, fadBookSkull);
+library.add(fatDiceD12);
 
 export default FontAwesomeIcon;

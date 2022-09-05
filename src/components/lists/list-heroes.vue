@@ -12,15 +12,15 @@
   <div class="block min-w-full">
     <div class="overflow-hidden border-t">
       <div
-        v-if="params.loading === false"
+        v-if="params.loading === true"
         class="flex h-48 items-center justify-center"
       >
         <fa-icon
-          class="fa-fw fa-spin text-red-700"
-          :icon="['fas', 'dice-d12']"
+          class="fa-fw fa-spin fa-2xl text-slate-300"
+          :icon="['fat', 'dice-d12']"
         />
       </div>
-      <div v-if="params.loading === true" class="divide-y divide-slate-100">
+      <div v-if="params.loading === false" class="divide-y divide-slate-100">
         <div
           v-for="hero in heroes"
           :key="hero._id"
