@@ -3,6 +3,7 @@
   const dayjs = inject('dayjs');
   defineProps({
     heroes: Array,
+    params: Object,
     target: String,
   });
 </script>
@@ -10,7 +11,16 @@
 <template>
   <div class="block min-w-full">
     <div class="overflow-hidden border-t">
-      <div class="divide-y divide-slate-100">
+      <div
+        v-if="params.loading === false"
+        class="flex h-48 items-center justify-center"
+      >
+        <fa-icon
+          class="fa-fw fa-spin text-red-700"
+          :icon="['fas', 'dice-d12']"
+        />
+      </div>
+      <div v-if="params.loading === true" class="divide-y divide-slate-100">
         <div
           v-for="hero in heroes"
           :key="hero._id"

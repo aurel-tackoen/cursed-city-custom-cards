@@ -1,7 +1,7 @@
 import { marked } from 'marked';
-import DiceD6 from '/public/svg/dice-d6.svg?raw';
-import DiceD8 from '/public/svg/dice-d8.svg?raw';
-import DiceD12 from '/public/svg/dice-d12.svg?raw';
+import DiceD6 from '@/assets/svg/dice-d6.svg?raw';
+import DiceD8 from '@/assets/svg/dice-d8.svg?raw';
+import DiceD12 from '@/assets/svg/dice-d12.svg?raw';
 
 function generateHtml(text) {
   if (text) {

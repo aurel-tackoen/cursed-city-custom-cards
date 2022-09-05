@@ -29,6 +29,7 @@ export const useHeroesStore = defineStore('heroes', {
     HeroErrors: [],
     Heroes: [],
     HeroesParams: {
+      loading: false,
       skip: 0,
       limit: 10,
       count: null,
@@ -38,6 +39,7 @@ export const useHeroesStore = defineStore('heroes', {
     },
     UserHeroes: [],
     UserHeroesParams: {
+      loading: false,
       skip: 0,
       limit: 5,
       count: null,
@@ -130,6 +132,7 @@ export const useHeroesStore = defineStore('heroes', {
       }
     },
     async fetchHeroes() {
+      this.HeroesParams.loading = true;
       try {
         const response = await fetch('/.netlify/functions/heroes-find', {
           method: 'POST',
@@ -142,6 +145,7 @@ export const useHeroesStore = defineStore('heroes', {
           const data = await response.json();
           this.Heroes = data.items;
           this.HeroesParams.count = data.count;
+          this.HeroesParams.loading = false;
           return true;
         }
         if (response.status === 500) {
@@ -153,6 +157,7 @@ export const useHeroesStore = defineStore('heroes', {
       }
     },
     async fetchUserHeroes() {
+      this.UserHeroesParams.loading = true;
       try {
         const authStore = useAuthStore();
         await authStore.refresh();
@@ -171,6 +176,7 @@ export const useHeroesStore = defineStore('heroes', {
           const data = await response.json();
           this.UserHeroes = data.items;
           this.UserHeroesParams.count = data.count;
+          this.UserHeroesParams.loading = false;
           return true;
         }
         if (response.status === 500) {

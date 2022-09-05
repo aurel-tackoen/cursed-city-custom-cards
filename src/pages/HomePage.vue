@@ -82,7 +82,11 @@
           </div>
         </div>
         <div v-if="UserHeroes.length > 0">
-          <ListHeroes :heroes="UserHeroes" target="update" />
+          <ListHeroes
+            :params="UserHeroesParams"
+            :heroes="UserHeroes"
+            target="update"
+          />
           <ListPagination v-model:params="UserHeroesParams" />
         </div>
       </div>
@@ -99,7 +103,7 @@
           </div>
         </div>
         <div>
-          <ListHeroes :heroes="Heroes" target="single" />
+          <ListHeroes :params="HeroesParams" :heroes="Heroes" target="single" />
           <ListPagination v-model:params="HeroesParams" />
         </div>
       </div>
