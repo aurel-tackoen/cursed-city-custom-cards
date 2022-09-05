@@ -13,7 +13,7 @@
     <div class="overflow-hidden border-t">
       <div
         v-if="params.loading === true"
-        class="flex h-48 items-center justify-center"
+        class="flex h-96 items-center justify-center"
       >
         <fa-icon
           class="fa-fw fa-spin fa-2xl text-slate-300"

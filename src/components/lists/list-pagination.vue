@@ -20,6 +20,7 @@
       <button
         @click="params.skip = params.skip - params.limit"
         class="pagination-number"
+        :class="{ 'opacity-0': params.skip === 0 }"
         :disabled="params.skip === 0"
       >
         Previous
@@ -42,6 +43,9 @@
       <button
         @click="params.skip = params.skip + params.limit"
         class="pagination-number"
+        :class="{
+          'opacity-0': params.skip >= params.count - params.limit,
+        }"
         :disabled="params.skip >= params.count - params.limit"
       >
         Next
