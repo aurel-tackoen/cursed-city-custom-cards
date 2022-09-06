@@ -7,4 +7,4 @@ Set env NPM_TOKEN with :
 netlify env:set NPM_TOKEN "XXX"
 netlify env:set MONGODB_URI "YYY"
 
-start with : netlify dev
+**start with :** netlify dev
