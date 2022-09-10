@@ -7,6 +7,7 @@
       <fa-icon
         class="fa-fw text-slate-300 hover:text-red-700"
         :icon="['fas', 'hat-wizard']"
+        title="Help"
       />
     </PopoverButton>
     <PopoverPanel class="absolute z-10 -mt-8 w-96 -translate-x-96">

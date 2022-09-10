@@ -385,12 +385,14 @@
                 <fa-icon
                   class="fa-fw text-slate-300 hover:text-red-700"
                   :icon="['fas', 'grip-vertical']"
+                  title="Drag to reorder"
                 />
               </div>
               <button @click="remove('weapons', index)">
                 <fa-icon
                   class="fa-fw text-slate-300 hover:text-red-700"
                   :icon="['fas', 'trash']"
+                  title="Delete this weapon"
                 />
               </button>
             </div>
@@ -401,12 +403,14 @@
         <button
           class="fa-fw text-slate-300 hover:text-red-700"
           @click="hero[status].weapons.push(clone(defaultWeapon))"
+          title="Add a weapon"
         >
           <fa-icon class="fa-fw" :icon="['fas', 'plus-large']" />
         </button>
         <button
           v-if="status === 'inspired'"
           @click="hero.inspired.weapons = clone(hero.normal.weapons)"
+          title="Copy weapons from normal"
         >
           <fa-icon
             class="fa-fw text-gray-300 hover:text-red-700"
@@ -449,12 +453,14 @@
                 <fa-icon
                   class="fa-fw text-slate-300 hover:text-red-700"
                   :icon="['fas', 'grip-vertical']"
+                  title="Drag to reorder"
                 />
               </div>
               <button @click="remove('notes', index)">
                 <fa-icon
                   class="fa-fw text-slate-300 hover:text-red-700"
                   :icon="['fas', 'trash']"
+                  title="Delete this note"
                 />
               </button>
             </div>
@@ -465,12 +471,14 @@
         <button
           class="fa-fw text-slate-300 hover:text-red-700"
           @click="hero[status].notes.push(clone(defaultNotes))"
+          title="Add a new note"
         >
           <fa-icon class="fa-fw" :icon="['fas', 'plus-large']" />
         </button>
         <button
           v-if="status === 'inspired'"
           @click="hero.inspired.notes = clone(hero.normal.notes)"
+          title="Copy notes from normal"
         >
           <fa-icon
             class="fa-fw text-gray-300 hover:text-red-700"
@@ -521,12 +529,14 @@
                 <fa-icon
                   class="fa-fw text-slate-300 hover:text-red-700"
                   :icon="['fas', 'grip-vertical']"
+                  title="Drag to reorder"
                 />
               </div>
               <button @click="remove('abilities', index)">
                 <fa-icon
                   class="fa-fw text-slate-300 hover:text-red-700"
                   :icon="['fas', 'trash']"
+                  title="Delete an ability"
                 />
               </button>
             </div>
@@ -537,12 +547,14 @@
         <button
           class="fa-fw text-slate-300 hover:text-red-700"
           @click="hero[status].abilities.push(clone(defaultAbilities))"
+          title="Add a new ability"
         >
           <fa-icon class="fa-fw" :icon="['fas', 'plus-large']" />
         </button>
         <button
           v-if="status === 'inspired'"
           @click="hero.inspired.abilities = clone(hero.normal.abilities)"
+          title="Copy abilities from normal"
         >
           <fa-icon
             class="fa-fw text-gray-300 hover:text-red-700"
