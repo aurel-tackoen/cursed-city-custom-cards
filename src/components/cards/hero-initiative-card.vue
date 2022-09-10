@@ -11,6 +11,12 @@
     >
       <div class="">
         <img
+          v-if="side === 'recto'"
+          src="@/assets/pictures/hero-initiative-background-recto.png"
+          alt="Hero Initiative Background"
+          style="width: 26.5mm; height: 40.7mm"
+        />
+        <img
           v-if="side === 'verso'"
           src="@/assets/pictures/hero-initiative-background-verso.png"
           alt="Hero Initiative Background"
@@ -19,8 +25,20 @@
       </div>
       <div
         v-if="side === 'recto'"
+        class="absolute bg-white"
+        style="top: 18px; left: 0px; width: 26mm; height: 14px"
+      ></div>
+      <div
+        id="hero-name"
+        class="absolute text-center text-sm font-semibold leading-none"
+        style="top: 20px; left: 0px; width: 26mm; height: 34px"
+      >
+        <div>{{ hero.name }}</div>
+      </div>
+      <div
+        v-if="side === 'recto'"
         class="absolute flex items-center justify-center overflow-hidden rounded-full"
-        style="top: 20px; left: 0px; width: 26mm; height: 26mm"
+        style="top: 50px; left: 0px; width: 26mm; height: 26mm"
       >
         <img
           :src="hero.picture.url"
