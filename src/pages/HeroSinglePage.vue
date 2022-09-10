@@ -2,6 +2,7 @@
   import { useRoute } from 'vue-router';
   import { reactive } from 'vue';
   import HeroCard from '@/components/cards/hero-card.vue';
+  import HeroInitiativeCard from '@/components/cards/hero-initiative-card.vue';
   import { useHeroesStore } from '@/stores/heroes-store.js';
   import HeroNav from '@/components/layout/hero-nav.vue';
 
@@ -26,5 +27,15 @@
     />
     <HeroCard status="normal" v-model:hero="Hero" class="hero-card-display" />
     <HeroCard status="inspired" v-model:hero="Hero" class="hero-card-display" />
+    <HeroInitiativeCard
+      side="recto"
+      v-model:hero="Hero"
+      class="hero-initiative-card-display"
+    />
+    <HeroInitiativeCard
+      side="verso"
+      v-model:hero="Hero"
+      class="hero-initiative-card-display"
+    />
   </div>
 </template>

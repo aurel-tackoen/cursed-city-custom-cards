@@ -42,8 +42,8 @@
           transform: scale(${hero.picture.zoom});
           margin-top: ${hero.picture.offsetY}px;
           margin-left: ${hero.picture.offsetX}px;
-          height: 500px
-        `"
+            height: 500px
+          `"
         />
       </div>
       <div
