@@ -142,21 +142,33 @@ button.pagination-number.active:hover{
   }
 }
 @media print {
-  .hero-card-display {
+  .print-container {
+    page-break-after: always;
+  }
+  .hero-card-display > div {
+    transform: scale(0.647);
+    margin-bottom: calc((0.647 - 1) * 170mm);
+  }
+  .villain-card-display > div {
+    transform: scale(0.647);
+    margin-bottom: calc((0.647 - 1) * 233mm);
+  }
+  .hero-initiative-card-display > div {
+    transform: scale(0.647);
+    margin-bottom: calc((0.647 - 1) * 40.7mm);
+  }
+  /* .hero-card-display {
     transform: scale(0.647);
     overflow: visible;
-    page-break-after: always;
   }
   .villain-card-display {
     transform: scale(0.647);
     overflow: visible;
-    page-break-after: always;
   }
   .hero-initiative-card-display {
     transform: scale(0.647);
     overflow: visible;
-    page-break-after: always;
-  }
+  } */
   .hidden-print {
     display: none;
   }
