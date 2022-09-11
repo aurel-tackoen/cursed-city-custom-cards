@@ -25,25 +25,17 @@
       :print="true"
       :status="false"
     />
-    <div class="print-container flex justify-center space-x-8">
-      <HeroInitiativeCard
-        side="recto"
-        v-model:hero="Hero"
-        class="hero-initiative-card-display"
-      />
-      <HeroCard status="normal" v-model:hero="Hero" class="hero-card-display" />
-    </div>
-    <div class="print-container flex justify-center space-x-8">
-      <HeroInitiativeCard
-        side="verso"
-        v-model:hero="Hero"
-        class="hero-initiative-card-display"
-      />
-      <HeroCard
-        status="inspired"
-        v-model:hero="Hero"
-        class="hero-card-display"
-      />
-    </div>
+    <HeroCard status="normal" v-model:hero="Hero" class="hero-card-display" />
+    <HeroCard status="inspired" v-model:hero="Hero" class="hero-card-display" />
+    <HeroInitiativeCard
+      side="recto"
+      v-model:hero="Hero"
+      class="hero-initiative-card-display"
+    />
+    <HeroInitiativeCard
+      side="verso"
+      v-model:hero="Hero"
+      class="hero-initiative-card-display"
+    />
   </div>
 </template>

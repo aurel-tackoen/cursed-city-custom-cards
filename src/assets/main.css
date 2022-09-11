@@ -96,8 +96,8 @@ button.pagination-number.active:hover{
   width: 26.5mm;
   height: 40.7mm;
   transform-origin: top left;
-  transform: scale(0.45);
-  margin-bottom: calc((0.45 - 1) * 40.7mm);
+  /* transform: scale(0.45);
+  margin-bottom: calc((0.45 - 1) * 40.7mm); */
 }
 @media screen(sm) {
   .hero-card-display > div {
@@ -109,8 +109,8 @@ button.pagination-number.active:hover{
     margin-bottom: calc((0.725 - 1) * 233mm);
   }
   .hero-initiative-card-display > div {
-    transform: scale(0.725);
-    margin-bottom: calc((0.725 - 1) * 40.7mm);
+    /* transform: scale(0.725);
+    margin-bottom: calc((0.725 - 1) * 40.7mm); */
   }
 }
 @media screen(md) {
@@ -123,8 +123,8 @@ button.pagination-number.active:hover{
     margin-bottom: calc((0.87 - 1) * 233mm);
   }
   .hero-initiative-card-display > div {
-    transform: scale(0.87);
-    margin-bottom: calc((0.87 - 1) * 40.7mm);
+    /* transform: scale(0.87);
+    margin-bottom: calc((0.87 - 1) * 40.7mm); */
   }
 }
 @media screen(lg) {
@@ -148,14 +148,20 @@ button.pagination-number.active:hover{
   .hero-card-display > div {
     transform: scale(0.647);
     margin-bottom: calc((0.647 - 1) * 170mm);
+    page-break-after: always;
+    transform-origin: top;
   }
   .villain-card-display > div {
     transform: scale(0.647);
     margin-bottom: calc((0.647 - 1) * 233mm);
+    page-break-after: always;
+    transform-origin: top;
   }
   .hero-initiative-card-display > div {
     transform: scale(0.647);
     margin-bottom: calc((0.647 - 1) * 40.7mm);
+    page-break-after: always;
+    transform-origin: top;
   }
   /* .hero-card-display {
     transform: scale(0.647);
