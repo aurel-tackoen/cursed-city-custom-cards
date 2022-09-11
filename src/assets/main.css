@@ -145,22 +145,22 @@ button.pagination-number.active:hover{
   .print-container {
     page-break-after: always;
   }
-  .hero-card-display > div {
+  .hero-card-display {
     transform: scale(0.647);
     margin-bottom: calc((0.647 - 1) * 170mm);
-    page-break-after: always;
+    /* page-break-after: always; */
     transform-origin: top;
   }
-  .villain-card-display > div {
+  .villain-card-display {
     transform: scale(0.647);
     margin-bottom: calc((0.647 - 1) * 233mm);
-    page-break-after: always;
+    /* page-break-after: always; */
     transform-origin: top;
   }
-  .hero-initiative-card-display > div {
+  .hero-initiative-card-display {
     transform: scale(0.647);
     margin-bottom: calc((0.647 - 1) * 40.7mm);
-    page-break-after: always;
+    /* page-break-after: always; */
     transform-origin: top;
   }
   /* .hero-card-display {
