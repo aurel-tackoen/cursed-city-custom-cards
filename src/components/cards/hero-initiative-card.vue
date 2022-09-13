@@ -24,14 +24,9 @@
         />
       </div>
       <div
-        v-if="side === 'recto'"
-        class="absolute bg-white"
-        style="top: 18px; left: 0px; width: 26mm; height: 14px"
-      ></div>
-      <div
         id="hero-name"
-        class="absolute text-center text-sm font-semibold leading-none"
-        style="top: 20px; left: 0px; width: 26mm; height: 34px"
+        class="absolute text-center text-xs font-semibold leading-none"
+        style="top: 16px; left: 0px; width: 26mm; height: 34px"
       >
         <div>{{ hero.name }}</div>
       </div>
