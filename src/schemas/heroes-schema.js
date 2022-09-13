@@ -15,6 +15,9 @@ const schema = object({
     offsetY: number().required(),
     offsetX: number().required(),
     zoom: number().required(),
+    initiative_offsetY: number(),
+    initiative_offsetX: number(),
+    initiative_zoom: number(),
   }).required(),
   normal: object({
     stats: object({

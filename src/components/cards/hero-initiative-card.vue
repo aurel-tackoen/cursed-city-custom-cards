@@ -32,19 +32,32 @@
       </div>
       <div
         v-if="side === 'recto'"
-        class="absolute flex items-center justify-center overflow-hidden rounded-full"
-        style="top: 50px; left: 0px; width: 26mm; height: 26mm"
+        class="absolute flex items-center justify-center overflow-hidden rounded-full shadow-inner"
+        style="top: 50px; left: 1mm; width: 24mm; height: 24mm"
       >
         <img
           :src="hero.picture.url"
           alt="Hero Picture"
           class="max-w-max"
           :style="`
-            margin-top: ${hero.picture.offsetY / 3}px;
+            transform: scale(${hero.picture.initiative_zoom});
+            margin-top: ${hero.picture.initiative_offsetY}px;
+            margin-left: ${hero.picture.initiative_offsetX}px;
             height: 40.7mm
           `"
         />
       </div>
+      <div
+        v-if="side === 'recto'"
+        class="absolute rounded-full"
+        style="
+          top: 50px;
+          left: 1mm;
+          width: 24mm;
+          height: 24mm;
+          box-shadow: rgb(0 0 0 / 40%) 0px -5px 20px 2px inset;
+        "
+      ></div>
     </div>
   </div>
 </template>

@@ -9,6 +9,7 @@
 
   import HeroNav from '@/components/layout/hero-nav.vue';
   import HeroCard from '@/components/cards/hero-card.vue';
+  import HeroInitiativeCard from '@/components/cards/hero-initiative-card.vue';
   import HeroForm from '@/components/cards/hero-form.vue';
   import ErrorsAlert from '@/components/layout/errors-alert.vue';
 
@@ -51,18 +52,27 @@
       :create="true"
     />
     <ErrorsAlert :errors="HeroErrors" />
-    <HeroCard
-      v-if="tabs[0].current"
-      status="normal"
-      v-model:hero="newHero"
-      class="hero-card-display"
-    />
-    <HeroCard
-      v-if="tabs[1].current"
-      status="inspired"
-      v-model:hero="newHero"
-      class="hero-card-display"
-    />
+    <div
+      class="flex flex-col justify-center space-y-2 lg:flex-row lg:space-x-2 lg:space-y-0"
+    >
+      <HeroCard
+        v-if="tabs[0].current"
+        status="normal"
+        v-model:hero="newHero"
+        class="hero-card-display"
+      />
+      <HeroCard
+        v-if="tabs[1].current"
+        status="inspired"
+        v-model:hero="newHero"
+        class="hero-card-display"
+      />
+      <HeroInitiativeCard
+        side="recto"
+        v-model:hero="newHero"
+        class="hero-initiative-card-display"
+      />
+    </div>
     <HeroForm
       v-if="tabs[0].current"
       status="normal"

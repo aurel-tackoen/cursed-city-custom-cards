@@ -286,6 +286,58 @@
               >{{ getError('picture.zoom').message }}</span
             >
           </div>
+          <div class="grid grid-cols-5">
+            <span class="flex items-center">Initiative Offset X/Y: </span>
+            <input
+              v-model="hero.picture.initiative_offsetX"
+              type="number"
+              class="col-span-2 mr-1 rounded border border-slate-300 bg-white outline-none"
+              :class="{
+                'border-red-800': getError('picture.initiative_offsetX'),
+              }"
+            />
+            <input
+              v-model="hero.picture.initiative_offsetY"
+              type="number"
+              class="col-span-2 ml-1 rounded border border-slate-300 bg-white outline-none"
+              :class="{
+                'border-red-800': getError('picture.initiative_offsetY'),
+              }"
+            />
+            <div
+              v-if="getError('picture.initiative_offsetX')"
+              class="col-span-4 col-start-2"
+            >
+              <span class="text-xs uppercase text-red-800">{{
+                getError('picture.initiative_offsetX').message
+              }}</span>
+            </div>
+            <div
+              v-if="getError('picture.initiative_offsetY')"
+              class="col-span-4 col-start-2"
+            >
+              <span class="text-xs uppercase text-red-800">{{
+                getError('picture.initiative_offsetY').message
+              }}</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-5">
+            <span class="flex items-center">Picture Zoom: </span>
+            <input
+              step="0.01"
+              v-model="hero.picture.initiative_zoom"
+              type="number"
+              class="col-span-4 rounded border border-slate-300 bg-white outline-none"
+              :class="{
+                'border-red-800': getError('picture.initiative_zoom'),
+              }"
+            />
+            <span
+              class="col-span-4 col-start-2 text-xs uppercase text-red-800"
+              v-if="getError('picture.initiative_zoom')"
+              >{{ getError('picture.initiative_zoom').message }}</span
+            >
+          </div>
         </div>
         <div
           class="-mr-4 w-12 flex-row items-center justify-center text-center"
