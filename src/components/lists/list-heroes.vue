@@ -28,19 +28,18 @@
         >
           <div class="">
             <div
-              id="hero-picture"
-              class="flex items-center overflow-hidden rounded-lg border-slate-100 shadow shadow-slate-200"
-              style="width: 58px; height: 58px"
+              class="flex items-center justify-center overflow-hidden rounded-full shadow-inner"
+              style="width: 12mm; height: 12mm"
             >
               <img
                 :src="hero.picture.url"
                 alt="Hero Picture"
                 class="max-w-max"
                 :style="`
-                  transform: scale(${hero.picture.zoom});
-                  margin-top: calc(${hero.picture.offsetY - 10}px / 5);
-                  margin-left: calc(${hero.picture.offsetX}px / 5);
-                  height: calc(500px / 5)
+                  transform: scale(${hero.picture.initiative_zoom / 2});
+                  margin-top: ${hero.picture.initiative_offsetY / 2}px;
+                  margin-left: ${hero.picture.initiative_offsetX / 2}px;
+                  height: 40.7mm
                 `"
               />
             </div>
