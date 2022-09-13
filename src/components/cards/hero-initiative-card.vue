@@ -33,7 +33,7 @@
       <div
         v-if="side === 'recto'"
         class="absolute flex items-center justify-center overflow-hidden rounded-full shadow-inner"
-        style="top: 50px; left: 1mm; width: 24mm; height: 24mm"
+        style="top: 54px; left: 1mm; width: 24mm; height: 24mm"
       >
         <img
           :src="hero.picture.url"
@@ -51,7 +51,7 @@
         v-if="side === 'recto'"
         class="absolute rounded-full"
         style="
-          top: 50px;
+          top: 54px;
           left: 1mm;
           width: 24mm;
           height: 24mm;
