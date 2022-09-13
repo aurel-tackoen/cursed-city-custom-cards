@@ -25,8 +25,8 @@
       </div>
       <div
         id="hero-name"
-        class="absolute text-center text-xs font-semibold leading-none"
-        style="top: 16px; left: 0px; width: 26mm; height: 34px"
+        class="absolute flex items-center justify-center text-center text-xs font-semibold leading-none"
+        style="top: 16px; left: 0px; width: 26mm; height: 26px"
       >
         <div>{{ hero.name }}</div>
       </div>
