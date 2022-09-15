@@ -28,7 +28,7 @@
         >
           <div class="">
             <div
-              class="flex items-center justify-center overflow-hidden rounded-full shadow-inner"
+              class="flex items-center justify-center overflow-hidden rounded-full border shadow-inner"
               style="width: 12mm; height: 12mm"
             >
               <img
