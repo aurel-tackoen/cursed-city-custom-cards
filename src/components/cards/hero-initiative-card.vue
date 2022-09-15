@@ -32,8 +32,8 @@
       </div>
       <div
         v-if="side === 'recto'"
-        class="absolute flex items-center justify-center overflow-hidden rounded-full shadow-inner"
-        style="top: 54px; left: 1mm; width: 24mm; height: 24mm"
+        class="absolute flex items-center justify-center overflow-hidden rounded-full shadow-lg"
+        style="top: 62px; left: 3mm; width: 20mm; height: 20mm"
       >
         <img
           :src="hero.picture.url"
@@ -51,10 +51,10 @@
         v-if="side === 'recto'"
         class="absolute rounded-full"
         style="
-          top: 54px;
-          left: 1mm;
-          width: 24mm;
-          height: 24mm;
+          top: 62px;
+          left: 3mm;
+          width: 20mm;
+          height: 20mm;
           box-shadow: rgb(0 0 0 / 40%) 0px -5px 20px 2px inset;
         "
       ></div>
