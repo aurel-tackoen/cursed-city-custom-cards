@@ -49,19 +49,19 @@
       <div class="flex w-7/12 items-center sm:w-5/12">
         <div v-if="hero.picture && hero.picture.url">
           <div
-            class="flex items-center overflow-hidden rounded-lg border-slate-100 shadow shadow-slate-100"
-            style="width: 58px; height: 58px"
+            class="flex items-center justify-center overflow-hidden rounded-full border shadow-inner"
+            style="width: 12mm; height: 12mm"
           >
             <img
               :src="hero.picture.url"
               alt="Hero Picture"
               class="max-w-max"
               :style="`
-                transform: scale(${hero.picture.zoom});
-                margin-top: calc(${hero.picture.offsetY}px / 6);
-                margin-left: calc(${hero.picture.offsetX}px / 5);
-                height: calc(500px / 5)
-              `"
+                  transform: scale(${hero.picture.initiative_zoom / 2});
+                  margin-top: ${hero.picture.initiative_offsetY / 2}px;
+                  margin-left: ${hero.picture.initiative_offsetX / 2}px;
+                  height: 40.7mm
+                `"
             />
           </div>
         </div>
