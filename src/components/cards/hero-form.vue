@@ -59,6 +59,137 @@
 </script>
 <template>
   <div class="mx-auto space-y-4">
+    <FormCard id="user-picture" title="Picture">
+      <div class="flex w-full bg-white">
+        <div class="grow space-y-3">
+          <div class="grid grid-cols-5">
+            <span class="flex items-center">Picture: </span>
+            <input
+              v-model="hero.picture.url"
+              type="text"
+              class="col-span-4 rounded border border-slate-300 bg-white outline-none"
+              :class="{
+                'border-red-800': getError('picture.url'),
+              }"
+            />
+            <span
+              class="col-span-4 col-start-2 text-xs uppercase text-red-800"
+              v-if="getError('picture.url')"
+              >{{ getError('picture.url').message }}</span
+            >
+          </div>
+          <div class="grid grid-cols-5">
+            <span class="flex items-center">Picture Offset X/Y: </span>
+            <input
+              v-model="hero.picture.offsetX"
+              type="number"
+              class="col-span-2 mr-1 rounded border border-slate-300 bg-white outline-none"
+              :class="{
+                'border-red-800': getError('picture.offsetX'),
+              }"
+            />
+            <input
+              v-model="hero.picture.offsetY"
+              type="number"
+              class="col-span-2 ml-1 rounded border border-slate-300 bg-white outline-none"
+              :class="{
+                'border-red-800': getError('picture.offsetY'),
+              }"
+            />
+            <div
+              v-if="getError('picture.offsetX')"
+              class="col-span-4 col-start-2"
+            >
+              <span class="text-xs uppercase text-red-800">{{
+                getError('picture.offsetX').message
+              }}</span>
+            </div>
+            <div
+              v-if="getError('picture.offsetY')"
+              class="col-span-4 col-start-2"
+            >
+              <span class="text-xs uppercase text-red-800">{{
+                getError('picture.offsetY').message
+              }}</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-5">
+            <span class="flex items-center">Picture Zoom: </span>
+            <input
+              step="0.01"
+              v-model="hero.picture.zoom"
+              type="number"
+              class="col-span-4 rounded border border-slate-300 bg-white outline-none"
+              :class="{
+                'border-red-800': getError('picture.zoom'),
+              }"
+            />
+            <span
+              class="col-span-4 col-start-2 text-xs uppercase text-red-800"
+              v-if="getError('picture.zoom')"
+              >{{ getError('picture.zoom').message }}</span
+            >
+          </div>
+          <div class="grid grid-cols-5">
+            <span class="flex items-center">Initiative Offset X/Y: </span>
+            <input
+              v-model="hero.picture.initiative_offsetX"
+              type="number"
+              class="col-span-2 mr-1 rounded border border-slate-300 bg-white outline-none"
+              :class="{
+                'border-red-800': getError('picture.initiative_offsetX'),
+              }"
+            />
+            <input
+              v-model="hero.picture.initiative_offsetY"
+              type="number"
+              class="col-span-2 ml-1 rounded border border-slate-300 bg-white outline-none"
+              :class="{
+                'border-red-800': getError('picture.initiative_offsetY'),
+              }"
+            />
+            <div
+              v-if="getError('picture.initiative_offsetX')"
+              class="col-span-4 col-start-2"
+            >
+              <span class="text-xs uppercase text-red-800">{{
+                getError('picture.initiative_offsetX').message
+              }}</span>
+            </div>
+            <div
+              v-if="getError('picture.initiative_offsetY')"
+              class="col-span-4 col-start-2"
+            >
+              <span class="text-xs uppercase text-red-800">{{
+                getError('picture.initiative_offsetY').message
+              }}</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-5">
+            <span class="flex items-center">Picture Zoom: </span>
+            <input
+              step="0.01"
+              v-model="hero.picture.initiative_zoom"
+              type="number"
+              class="col-span-4 rounded border border-slate-300 bg-white outline-none"
+              :class="{
+                'border-red-800': getError('picture.initiative_zoom'),
+              }"
+            />
+            <span
+              class="col-span-4 col-start-2 text-xs uppercase text-red-800"
+              v-if="getError('picture.initiative_zoom')"
+              >{{ getError('picture.initiative_zoom').message }}</span
+            >
+          </div>
+        </div>
+        <div
+          class="-mr-4 w-12 flex-row items-center justify-center text-center"
+        >
+          <PictureDocumentation />
+        </div>
+      </div>
+    </FormCard>
     <FormCard id="user-hero" title="Hero">
       <div class="flex w-full bg-white">
         <div class="grow space-y-3">
@@ -213,137 +344,6 @@
         <div
           class="-mr-4 w-12 flex-row items-center justify-center text-center"
         ></div>
-      </div>
-    </FormCard>
-    <FormCard id="user-hero-stats" title="Picture">
-      <div class="flex w-full bg-white">
-        <div class="grow space-y-3">
-          <div class="grid grid-cols-5">
-            <span class="flex items-center">Picture: </span>
-            <input
-              v-model="hero.picture.url"
-              type="text"
-              class="col-span-4 rounded border border-slate-300 bg-white outline-none"
-              :class="{
-                'border-red-800': getError('picture.url'),
-              }"
-            />
-            <span
-              class="col-span-4 col-start-2 text-xs uppercase text-red-800"
-              v-if="getError('picture.url')"
-              >{{ getError('picture.url').message }}</span
-            >
-          </div>
-          <div class="grid grid-cols-5">
-            <span class="flex items-center">Picture Offset X/Y: </span>
-            <input
-              v-model="hero.picture.offsetX"
-              type="number"
-              class="col-span-2 mr-1 rounded border border-slate-300 bg-white outline-none"
-              :class="{
-                'border-red-800': getError('picture.offsetX'),
-              }"
-            />
-            <input
-              v-model="hero.picture.offsetY"
-              type="number"
-              class="col-span-2 ml-1 rounded border border-slate-300 bg-white outline-none"
-              :class="{
-                'border-red-800': getError('picture.offsetY'),
-              }"
-            />
-            <div
-              v-if="getError('picture.offsetX')"
-              class="col-span-4 col-start-2"
-            >
-              <span class="text-xs uppercase text-red-800">{{
-                getError('picture.offsetX').message
-              }}</span>
-            </div>
-            <div
-              v-if="getError('picture.offsetY')"
-              class="col-span-4 col-start-2"
-            >
-              <span class="text-xs uppercase text-red-800">{{
-                getError('picture.offsetY').message
-              }}</span>
-            </div>
-          </div>
-          <div class="grid grid-cols-5">
-            <span class="flex items-center">Picture Zoom: </span>
-            <input
-              step="0.01"
-              v-model="hero.picture.zoom"
-              type="number"
-              class="col-span-4 rounded border border-slate-300 bg-white outline-none"
-              :class="{
-                'border-red-800': getError('picture.zoom'),
-              }"
-            />
-            <span
-              class="col-span-4 col-start-2 text-xs uppercase text-red-800"
-              v-if="getError('picture.zoom')"
-              >{{ getError('picture.zoom').message }}</span
-            >
-          </div>
-          <div class="grid grid-cols-5">
-            <span class="flex items-center">Initiative Offset X/Y: </span>
-            <input
-              v-model="hero.picture.initiative_offsetX"
-              type="number"
-              class="col-span-2 mr-1 rounded border border-slate-300 bg-white outline-none"
-              :class="{
-                'border-red-800': getError('picture.initiative_offsetX'),
-              }"
-            />
-            <input
-              v-model="hero.picture.initiative_offsetY"
-              type="number"
-              class="col-span-2 ml-1 rounded border border-slate-300 bg-white outline-none"
-              :class="{
-                'border-red-800': getError('picture.initiative_offsetY'),
-              }"
-            />
-            <div
-              v-if="getError('picture.initiative_offsetX')"
-              class="col-span-4 col-start-2"
-            >
-              <span class="text-xs uppercase text-red-800">{{
-                getError('picture.initiative_offsetX').message
-              }}</span>
-            </div>
-            <div
-              v-if="getError('picture.initiative_offsetY')"
-              class="col-span-4 col-start-2"
-            >
-              <span class="text-xs uppercase text-red-800">{{
-                getError('picture.initiative_offsetY').message
-              }}</span>
-            </div>
-          </div>
-          <div class="grid grid-cols-5">
-            <span class="flex items-center">Picture Zoom: </span>
-            <input
-              step="0.01"
-              v-model="hero.picture.initiative_zoom"
-              type="number"
-              class="col-span-4 rounded border border-slate-300 bg-white outline-none"
-              :class="{
-                'border-red-800': getError('picture.initiative_zoom'),
-              }"
-            />
-            <span
-              class="col-span-4 col-start-2 text-xs uppercase text-red-800"
-              v-if="getError('picture.initiative_zoom')"
-              >{{ getError('picture.initiative_zoom').message }}</span
-            >
-          </div>
-        </div>
-        <div
-          class="-mr-4 w-12 flex-row items-center justify-center text-center"
-        >
-          <PictureDocumentation />
-        </div>
       </div>
     </FormCard>
     <FormCard id="user-weapons" title="Weapons">
