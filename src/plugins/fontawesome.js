@@ -13,6 +13,7 @@ import {
   faBookSkull as fasBookSkull,
   faFontCase as fasFontCase,
   faSwords as fasSwords,
+  faImage as FasImage,
 } from '@fortawesome/pro-solid-svg-icons';
 import {
   faDiceD6 as fadDiceD6,
@@ -30,6 +31,7 @@ library.add(
   fasHatWizard,
   fasFontCase,
   fasSwords
+  FasImage
 );
 library.add(fasDiceD6, fasDiceD8, fasDiceD10, fasDiceD12, fasBookSkull);
 library.add(fadDiceD6, fadDiceD8, fadDiceD10, fadDiceD12, fadBookSkull);
