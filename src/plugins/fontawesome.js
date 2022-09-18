@@ -11,6 +11,8 @@ import {
   faDiceD10 as fasDiceD10,
   faDiceD12 as fasDiceD12,
   faBookSkull as fasBookSkull,
+  faFontCase as fasFontCase,
+  faSwords as fasSwords,
 } from '@fortawesome/pro-solid-svg-icons';
 import {
   faDiceD6 as fadDiceD6,
@@ -20,7 +22,15 @@ import {
   faBookSkull as fadBookSkull,
 } from '@fortawesome/pro-duotone-svg-icons';
 import { faDiceD12 as fatDiceD12 } from '@fortawesome/pro-thin-svg-icons';
-library.add(fasGripVertical, fasTrash, fasPlusLarge, fasCopy, fasHatWizard);
+library.add(
+  fasGripVertical,
+  fasTrash,
+  fasPlusLarge,
+  fasCopy,
+  fasHatWizard,
+  fasFontCase,
+  fasSwords
+);
 library.add(fasDiceD6, fasDiceD8, fasDiceD10, fasDiceD12, fasBookSkull);
 library.add(fadDiceD6, fadDiceD8, fadDiceD10, fadDiceD12, fadBookSkull);
 library.add(fatDiceD12);
