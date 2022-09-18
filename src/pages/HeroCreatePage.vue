@@ -29,7 +29,6 @@
   newHero.user.email = User.value.email;
   newHero.user.username = User.value.username;
   newHero.date = dayjs().unix();
-  newHero.notInSchema = 'this data should not be in the database';
 
   async function createHero() {
     const result = await heroesStore.createHero(newHero);
