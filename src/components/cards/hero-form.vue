@@ -4,8 +4,9 @@
   import Multiselect from '@vueform/multiselect';
   import { v4 as uuidv4 } from 'uuid';
   import FormCard from '@/components/layout/form-card.vue';
-  import MarkdownDocumentation from '@/components/layout/markdown-documentation.vue';
-  import PictureDocumentation from '@/components/layout/picture-documentation.vue';
+  import DocMarkdown from '@/components/layout/doc-markdown.vue';
+  import DocPicture from '@/components/layout/doc-picture.vue';
+  import DocWeapons from '@/components/layout/doc-weapons.vue';
   const props = defineProps({
     status: String,
     hero: {
@@ -186,7 +187,7 @@
         <div
           class="-mr-4 w-12 flex-row items-center justify-center text-center"
         >
-          <PictureDocumentation />
+          <DocPicture />
         </div>
       </div>
     </FormCard>
@@ -433,6 +434,7 @@
             <div
               class="-mr-4 w-12 flex-row items-center justify-center text-center"
             >
+              <DocWeapons />
               <div class="handle cursor-move">
                 <fa-icon
                   class="fa-fw text-slate-300 hover:text-red-700"
@@ -451,12 +453,6 @@
           </div>
         </template>
       </draggable>
-      <div>
-        <p class="mt-2 w-full text-center text-sm italic">
-          Weapon notes are defined in the next panel. Once setup, you can select
-          them here.
-        </p>
-      </div>
       <div class="flex items-center justify-center">
         <button
           class="fa-fw text-slate-300 hover:text-red-700"
@@ -506,7 +502,8 @@
             <div
               class="-mr-4 w-12 flex-row items-center justify-center text-center"
             >
-              <MarkdownDocumentation />
+              <DocWeapons />
+              <DocMarkdown />
               <div class="handle cursor-move">
                 <fa-icon
                   class="fa-fw text-slate-300 hover:text-red-700"
@@ -525,11 +522,6 @@
           </div>
         </template>
       </draggable>
-      <div>
-        <p class="mt-2 w-full text-center text-sm italic">
-          Here you can define notes that can be used in weapons.
-        </p>
-      </div>
       <div class="flex items-center justify-center">
         <button
           class="fa-fw text-slate-300 hover:text-red-700"
@@ -587,7 +579,7 @@
             <div
               class="-mr-4 w-12 flex-row items-center justify-center text-center"
             >
-              <MarkdownDocumentation />
+              <DocMarkdown />
               <div class="handle cursor-move">
                 <fa-icon
                   class="fa-fw text-slate-300 hover:text-red-700"
@@ -665,7 +657,7 @@
         <div
           class="-mr-4 w-12 flex-row items-center justify-center text-center"
         >
-          <MarkdownDocumentation />
+          <DocMarkdown />
         </div>
       </div>
     </FormCard>
