@@ -52,6 +52,9 @@
   function getError(path) {
     return props?.errors.find((e) => e.path === path);
   }
+  function copy(item) {
+    return structuredClone(toRaw(item));
+  }
   function clone(item) {
     if (confirm('Are you sure you want to copy this?') == true) {
       return structuredClone(toRaw(item));
@@ -456,7 +459,7 @@
       <div class="flex items-center justify-center">
         <button
           class="fa-fw text-slate-300 hover:text-red-700"
-          @click="hero[status].weapons.push(clone(defaultWeapon))"
+          @click="hero[status].weapons.push(copy(defaultWeapon))"
           title="Add a weapon"
         >
           <fa-icon class="fa-fw" :icon="['fas', 'plus-large']" />
@@ -525,7 +528,7 @@
       <div class="flex items-center justify-center">
         <button
           class="fa-fw text-slate-300 hover:text-red-700"
-          @click="hero[status].notes.push(clone(defaultNotes))"
+          @click="hero[status].notes.push(copy(defaultNotes))"
           title="Add a new note"
         >
           <fa-icon class="fa-fw" :icon="['fas', 'plus-large']" />
