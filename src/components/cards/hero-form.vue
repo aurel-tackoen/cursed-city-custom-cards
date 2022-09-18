@@ -451,6 +451,12 @@
           </div>
         </template>
       </draggable>
+      <div>
+        <p class="mt-2 w-full text-center text-sm italic">
+          Weapon notes are defined in the next panel. Once setup, you can select
+          them here.
+        </p>
+      </div>
       <div class="flex items-center justify-center">
         <button
           class="fa-fw text-slate-300 hover:text-red-700"
@@ -519,6 +525,11 @@
           </div>
         </template>
       </draggable>
+      <div>
+        <p class="mt-2 w-full text-center text-sm italic">
+          Here you can define notes that can be used in weapons.
+        </p>
+      </div>
       <div class="flex items-center justify-center">
         <button
           class="fa-fw text-slate-300 hover:text-red-700"
