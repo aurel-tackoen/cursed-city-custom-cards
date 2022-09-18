@@ -5,7 +5,7 @@
   <Popover>
     <PopoverButton>
       <fa-icon
-        class="fa-fw text-slate-300 hover:text-red-700"
+        class="fa-fw text-slate-500 hover:text-red-700"
         :icon="['fas', 'hat-wizard']"
         title="Help"
       />
