@@ -441,7 +441,7 @@
               <div class="handle cursor-move">
                 <fa-icon
                   class="fa-fw text-slate-300 hover:text-red-700"
-                  :icon="['fas', 'grip-vertical']"
+                  :icon="['fas', 'line-height']"
                   title="Drag to reorder"
                 />
               </div>
@@ -510,7 +510,7 @@
               <div class="handle cursor-move">
                 <fa-icon
                   class="fa-fw text-slate-300 hover:text-red-700"
-                  :icon="['fas', 'grip-vertical']"
+                  :icon="['fas', 'line-height']"
                   title="Drag to reorder"
                 />
               </div>
@@ -586,7 +586,7 @@
               <div class="handle cursor-move">
                 <fa-icon
                   class="fa-fw text-slate-300 hover:text-red-700"
-                  :icon="['fas', 'grip-vertical']"
+                  :icon="['fas', 'line-height']"
                   title="Drag to reorder"
                 />
               </div>
