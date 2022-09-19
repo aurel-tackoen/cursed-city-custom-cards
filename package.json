@@ -22,6 +22,7 @@
     "@fortawesome/vue-fontawesome": "^3.0.1",
     "@headlessui/vue": "^1.6.7",
     "@vueform/multiselect": "^2.5.2",
+    "@vueform/slider": "^2.1.2",
     "dayjs": "^1.11.5",
     "isomorphic-dompurify": "^0.22.0",
     "marked": "^4.1.0",
