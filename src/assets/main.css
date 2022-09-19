@@ -1,6 +1,8 @@
 @import '../../node_modules/@vueform/multiselect/themes/tailwind.css';
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap');
+@import '@vueform/slider/themes/default.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,6 +10,12 @@
 sub, sup { font-weight: bold; font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
 sup { top: 0.1rem; vertical-align: super;}
 sub { bottom: -0.25em; vertical-align: sub;}
+
+:root {
+  --slider-connect-bg: theme('colors.red.700');
+  --slider-tooltip-bg: theme('colors.red.700');
+  --slider-handle-ring-color: theme('colors.red.700');
+}
 
 @layer components {
   .btn-primary {

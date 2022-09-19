@@ -1,5 +1,6 @@
 <script setup>
   import { computed, toRaw } from 'vue';
+  import Slider from '@vueform/slider';
   import draggable from 'vuedraggable';
   import Multiselect from '@vueform/multiselect';
   import { v4 as uuidv4 } from 'uuid';
@@ -84,22 +85,12 @@
           </div>
           <div class="grid grid-cols-5">
             <span class="flex items-center">Picture Offset X/Y: </span>
-            <input
-              v-model="hero.picture.offsetX"
-              type="number"
-              class="col-span-2 mr-1 rounded border border-slate-300 bg-white outline-none"
-              :class="{
-                'border-red-800': getError('picture.offsetX'),
-              }"
-            />
-            <input
-              v-model="hero.picture.offsetY"
-              type="number"
-              class="col-span-2 ml-1 rounded border border-slate-300 bg-white outline-none"
-              :class="{
-                'border-red-800': getError('picture.offsetY'),
-              }"
-            />
+            <div class="col-span-2 mt-8">
+              <Slider v-model="hero.picture.offsetX" :min="-200" :max="0" />
+            </div>
+            <div class="col-span-2 mt-8">
+              <Slider v-model="hero.picture.offsetY" :min="0" :max="200" />
+            </div>
             <div
               v-if="getError('picture.offsetX')"
               class="col-span-4 col-start-2"
