@@ -85,11 +85,21 @@
           </div>
           <div class="grid grid-cols-5">
             <span class="flex items-center">Picture Offset X/Y: </span>
-            <div class="col-span-2 mt-8">
-              <Slider v-model="hero.picture.offsetX" :min="-200" :max="0" />
+            <div class="col-span-2 mt-8 pr-2">
+              <Slider
+                :lazy="false"
+                v-model="hero.picture.offsetX"
+                :min="-200"
+                :max="0"
+              />
             </div>
-            <div class="col-span-2 mt-8">
-              <Slider v-model="hero.picture.offsetY" :min="0" :max="200" />
+            <div class="col-span-2 mt-8 pl-4">
+              <Slider
+                :lazy="false"
+                v-model="hero.picture.offsetY"
+                :min="0"
+                :max="200"
+              />
             </div>
             <div
               v-if="getError('picture.offsetX')"
