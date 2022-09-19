@@ -83,6 +83,7 @@
               >{{ getError('picture.url').message }}</span
             >
           </div>
+          <hr class="border border-dashed border-slate-200" />
           <div class="grid grid-cols-5">
             <span class="flex items-center">Picture Offset X/Y: </span>
             <div class="col-span-2 mt-8 pr-2">
@@ -98,7 +99,7 @@
                 :lazy="false"
                 v-model="hero.picture.offsetY"
                 :min="0"
-                :max="200"
+                :max="400"
               />
             </div>
             <div
@@ -120,39 +121,40 @@
           </div>
           <div class="grid grid-cols-5">
             <span class="flex items-center">Picture Zoom: </span>
-            <input
-              step="0.01"
-              v-model="hero.picture.zoom"
-              type="number"
-              class="col-span-4 rounded border border-slate-300 bg-white outline-none"
-              :class="{
-                'border-red-800': getError('picture.zoom'),
-              }"
-            />
+            <div class="col-span-4 mt-8">
+              <Slider
+                :lazy="false"
+                v-model="hero.picture.zoom"
+                :min="0"
+                :max="5"
+                :step="-1"
+              />
+            </div>
             <span
               class="col-span-4 col-start-2 text-xs uppercase text-red-800"
               v-if="getError('picture.zoom')"
               >{{ getError('picture.zoom').message }}</span
             >
           </div>
+          <hr class="border border-dashed border-slate-200" />
           <div class="grid grid-cols-5">
             <span class="flex items-center">Initiative Offset X/Y: </span>
-            <input
-              v-model="hero.picture.initiative_offsetX"
-              type="number"
-              class="col-span-2 mr-1 rounded border border-slate-300 bg-white outline-none"
-              :class="{
-                'border-red-800': getError('picture.initiative_offsetX'),
-              }"
-            />
-            <input
-              v-model="hero.picture.initiative_offsetY"
-              type="number"
-              class="col-span-2 ml-1 rounded border border-slate-300 bg-white outline-none"
-              :class="{
-                'border-red-800': getError('picture.initiative_offsetY'),
-              }"
-            />
+            <div class="col-span-2 mt-8 pr-2">
+              <Slider
+                :lazy="false"
+                v-model="hero.picture.initiative_offsetX"
+                :min="-200"
+                :max="0"
+              />
+            </div>
+            <div class="col-span-2 mt-8 pl-4">
+              <Slider
+                :lazy="false"
+                v-model="hero.picture.initiative_offsetY"
+                :min="0"
+                :max="400"
+              />
+            </div>
             <div
               v-if="getError('picture.initiative_offsetX')"
               class="col-span-4 col-start-2"
@@ -172,15 +174,15 @@
           </div>
           <div class="grid grid-cols-5">
             <span class="flex items-center">Picture Zoom: </span>
-            <input
-              step="0.01"
-              v-model="hero.picture.initiative_zoom"
-              type="number"
-              class="col-span-4 rounded border border-slate-300 bg-white outline-none"
-              :class="{
-                'border-red-800': getError('picture.initiative_zoom'),
-              }"
-            />
+            <div class="col-span-4 mt-8">
+              <Slider
+                :lazy="false"
+                v-model="hero.picture.initiative_zoom"
+                :min="0"
+                :max="10"
+                :step="-1"
+              />
+            </div>
             <span
               class="col-span-4 col-start-2 text-xs uppercase text-red-800"
               v-if="getError('picture.initiative_zoom')"
