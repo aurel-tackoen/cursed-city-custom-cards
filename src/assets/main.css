@@ -12,9 +12,10 @@ sup { top: 0.1rem; vertical-align: super;}
 sub { bottom: -0.25em; vertical-align: sub;}
 
 :root {
-  --slider-connect-bg: theme('colors.red.700');
-  --slider-tooltip-bg: theme('colors.red.700');
-  --slider-handle-ring-color: theme('colors.red.700');
+  --slider-connect-bg: theme('colors.red.500');
+  --slider-tooltip-bg: theme('colors.red.500');
+  --slider-tooltip-color: theme('colors.white');
+  --slider-handle-ring-color: theme('colors.red.300');
 }
 
 @layer components {
