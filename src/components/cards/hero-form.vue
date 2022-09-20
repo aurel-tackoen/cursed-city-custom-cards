@@ -443,14 +443,14 @@
               <DocWeapons />
               <div class="handle cursor-move">
                 <fa-icon
-                  class="fa-fw text-slate-300 hover:text-red-700"
+                  class="fa-fw text-slate-500 hover:text-red-700"
                   :icon="['fas', 'line-height']"
                   title="Drag to reorder"
                 />
               </div>
               <button @click="remove('weapons', index)">
                 <fa-icon
-                  class="fa-fw text-slate-300 hover:text-red-700"
+                  class="fa-fw text-slate-500 hover:text-red-700"
                   :icon="['fas', 'trash']"
                   title="Delete this weapon"
                 />
@@ -512,14 +512,14 @@
               <DocMarkdown />
               <div class="handle cursor-move">
                 <fa-icon
-                  class="fa-fw text-slate-300 hover:text-red-700"
+                  class="fa-fw text-slate-500 hover:text-red-700"
                   :icon="['fas', 'line-height']"
                   title="Drag to reorder"
                 />
               </div>
               <button @click="remove('notes', index)">
                 <fa-icon
-                  class="fa-fw text-slate-300 hover:text-red-700"
+                  class="fa-fw text-slate-500 hover:text-red-700"
                   :icon="['fas', 'trash']"
                   title="Delete this note"
                 />
@@ -588,14 +588,14 @@
               <DocMarkdown />
               <div class="handle cursor-move">
                 <fa-icon
-                  class="fa-fw text-slate-300 hover:text-red-700"
+                  class="fa-fw text-slate-500 hover:text-red-700"
                   :icon="['fas', 'line-height']"
                   title="Drag to reorder"
                 />
               </div>
               <button @click="remove('abilities', index)">
                 <fa-icon
-                  class="fa-fw text-slate-300 hover:text-red-700"
+                  class="fa-fw text-slate-500 hover:text-red-700"
                   :icon="['fas', 'trash']"
                   title="Delete an ability"
                 />
