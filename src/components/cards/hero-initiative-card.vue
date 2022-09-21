@@ -36,6 +36,7 @@
         style="top: 62px; left: 3mm; width: 20mm; height: 20mm"
       >
         <img
+          v-if="hero.picture && hero.picture.url"
           :src="hero.picture.url"
           alt="Hero Picture"
           class="max-w-max"
@@ -45,6 +46,11 @@
             margin-left: ${hero.picture.initiative_offsetX}px;
             height: 40.7mm
           `"
+        />
+        <fa-icon
+          v-else
+          class="fa-fw fa-xl mx-auto justify-self-center text-gray-300 hover:text-red-700"
+          :icon="['fas', 'question']"
         />
       </div>
       <div

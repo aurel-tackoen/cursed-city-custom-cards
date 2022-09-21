@@ -47,12 +47,13 @@
       aria-label="Tabs"
     >
       <div class="flex w-7/12 items-center sm:w-5/12">
-        <div v-if="hero.picture && hero.picture.url">
+        <div>
           <div
             class="flex items-center justify-center overflow-hidden rounded-full border shadow-inner"
             style="width: 12mm; height: 12mm"
           >
             <img
+              v-if="hero.picture && hero.picture.url"
               :src="hero.picture.url"
               alt="Hero Picture"
               class="max-w-max"
@@ -62,6 +63,11 @@
                   margin-left: ${hero.picture.initiative_offsetX / 2}px;
                   height: 40.7mm
                 `"
+            />
+            <fa-icon
+              v-else
+              class="fa-fw fa-lg mx-auto justify-self-center text-gray-300 hover:text-red-700"
+              :icon="['fas', 'question']"
             />
           </div>
         </div>

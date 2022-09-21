@@ -11,14 +11,14 @@ const schema = object({
     }).required()
   ).required(),
   picture: object({
-    url: string().url().required(),
-    offsetY: number().required(),
-    offsetX: number().required(),
-    zoom: number().required(),
+    url: string().url(),
+    offsetY: number(),
+    offsetX: number(),
+    zoom: number(),
     initiative_offsetY: number(),
     initiative_offsetX: number(),
     initiative_zoom: number(),
-  }).required(),
+  }),
   normal: object({
     stats: object({
       move: number().required(),
