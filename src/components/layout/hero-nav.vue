@@ -66,8 +66,8 @@
             />
             <fa-icon
               v-else
-              class="fa-fw fa-lg mx-auto justify-self-center text-gray-300 hover:text-red-700"
-              :icon="['fas', 'question']"
+              class="fa-fw fa-xl mx-auto justify-self-center text-gray-400 hover:text-red-700"
+              :icon="['fad', 'ghost']"
             />
           </div>
         </div>

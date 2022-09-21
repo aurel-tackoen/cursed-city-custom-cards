@@ -16,7 +16,6 @@ import {
   faLineHeight as fasLineHeight,
   faImage as FasImage,
   faQuestion as FasQuestion,
-  faGhost as FasGhost,
 } from '@fortawesome/pro-solid-svg-icons';
 import {
   faDiceD6 as fadDiceD6,
@@ -24,6 +23,7 @@ import {
   faDiceD10 as fadDiceD10,
   faDiceD12 as fadDiceD12,
   faBookSkull as fadBookSkull,
+  faGhost as FadGhost,
 } from '@fortawesome/pro-duotone-svg-icons';
 import { faDiceD12 as fatDiceD12 } from '@fortawesome/pro-thin-svg-icons';
 library.add(
@@ -36,11 +36,17 @@ library.add(
   fasSwords,
   fasLineHeight,
   FasImage,
-  FasQuestion,
-  FasGhost
+  FasQuestion
 );
 library.add(fasDiceD6, fasDiceD8, fasDiceD10, fasDiceD12, fasBookSkull);
-library.add(fadDiceD6, fadDiceD8, fadDiceD10, fadDiceD12, fadBookSkull);
+library.add(
+  fadDiceD6,
+  fadDiceD8,
+  fadDiceD10,
+  fadDiceD12,
+  fadBookSkull,
+  FadGhost
+);
 library.add(fatDiceD12);
 
 export default FontAwesomeIcon;
