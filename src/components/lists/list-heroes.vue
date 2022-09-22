@@ -32,6 +32,7 @@
               style="width: 12mm; height: 12mm"
             >
               <img
+                v-if="hero.picture && hero.picture.url"
                 :src="hero.picture.url"
                 alt="Hero Picture"
                 class="max-w-max"
@@ -41,6 +42,11 @@
                   margin-left: ${hero.picture.initiative_offsetX / 2}px;
                   height: 40.7mm
                 `"
+              />
+              <fa-icon
+                v-else
+                class="fa-fw fa-xl mx-auto justify-self-center text-gray-400 hover:text-red-700"
+                :icon="['fad', 'ghost']"
               />
             </div>
           </div>
