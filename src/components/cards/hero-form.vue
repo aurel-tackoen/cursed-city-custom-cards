@@ -70,8 +70,10 @@
           <div class="grid grid-cols-5">
             <span class="flex items-center">Picture: </span>
             <input
+              id="pictureInput"
               v-model="hero.picture.url"
-              type="text"
+              type="url"
+              pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)(.jpg|.png|.gif)"
               class="col-span-4 rounded border border-slate-300 bg-white outline-none"
               :class="{
                 'border-red-800': getError('picture.url'),
@@ -726,3 +728,9 @@
     </FormCard>
   </div>
 </template>
+
+<style scoped>
+  #pictureInput:invalid {
+    outline: 2px solid red;
+  }
+</style>
