@@ -86,7 +86,10 @@
           <hr class="border border-dashed border-slate-200" />
           <div class="grid grid-cols-5">
             <span class="flex items-center">Picture Offset X/Y: </span>
-            <div class="col-span-2 mt-8 pr-2">
+            <div
+              v-if="hero.picture.offsetX !== undefined"
+              class="col-span-2 mt-8 pr-2"
+            >
               <Slider
                 :lazy="false"
                 v-model="hero.picture.offsetX"
@@ -94,12 +97,29 @@
                 :max="0"
               />
             </div>
-            <div class="col-span-2 mt-8 pl-4">
+            <div v-else class="col-span-2">
+              <input
+                v-model="hero.picture.offsetX"
+                type="number"
+                class="col-span-2 ml-1 rounded border border-slate-300 bg-white outline-none"
+              />
+            </div>
+            <div
+              v-if="hero.picture.offsetY !== undefined"
+              class="col-span-2 mt-8 pl-4"
+            >
               <Slider
                 :lazy="false"
                 v-model="hero.picture.offsetY"
                 :min="0"
                 :max="400"
+              />
+            </div>
+            <div v-else class="col-span-2">
+              <input
+                v-model="hero.picture.offsetY"
+                type="number"
+                class="col-span-2 ml-1 rounded border border-slate-300 bg-white outline-none"
               />
             </div>
             <div
@@ -121,13 +141,20 @@
           </div>
           <div class="grid grid-cols-5">
             <span class="flex items-center">Picture Zoom: </span>
-            <div class="col-span-4 mt-8">
+            <div v-if="hero.picture.zoom !== undefined" class="col-span-4 mt-8">
               <Slider
                 :lazy="false"
                 v-model="hero.picture.zoom"
                 :min="0"
                 :max="5"
                 :step="-1"
+              />
+            </div>
+            <div v-else class="col-span-4">
+              <input
+                v-model="hero.picture.zoom"
+                type="number"
+                class="col-span-2 ml-1 rounded border border-slate-300 bg-white outline-none"
               />
             </div>
             <span
@@ -139,7 +166,10 @@
           <hr class="border border-dashed border-slate-200" />
           <div class="grid grid-cols-5">
             <span class="flex items-center">Initiative Offset X/Y: </span>
-            <div class="col-span-2 mt-8 pr-2">
+            <div
+              v-if="hero.picture.initiative_offsetX !== undefined"
+              class="col-span-2 mt-8 pr-2"
+            >
               <Slider
                 :lazy="false"
                 v-model="hero.picture.initiative_offsetX"
@@ -147,12 +177,29 @@
                 :max="0"
               />
             </div>
-            <div class="col-span-2 mt-8 pl-4">
+            <div v-else class="col-span-2">
+              <input
+                v-model="hero.picture.initiative_offsetX"
+                type="number"
+                class="col-span-2 ml-1 rounded border border-slate-300 bg-white outline-none"
+              />
+            </div>
+            <div
+              v-if="hero.picture.initiative_offsetY !== undefined"
+              class="col-span-2 mt-8 pl-4"
+            >
               <Slider
                 :lazy="false"
                 v-model="hero.picture.initiative_offsetY"
                 :min="0"
                 :max="400"
+              />
+            </div>
+            <div v-else class="col-span-2">
+              <input
+                v-model="hero.picture.initiative_offsetY"
+                type="number"
+                class="col-span-2 ml-1 rounded border border-slate-300 bg-white outline-none"
               />
             </div>
             <div
@@ -174,13 +221,23 @@
           </div>
           <div class="grid grid-cols-5">
             <span class="flex items-center">Picture Zoom: </span>
-            <div class="col-span-4 mt-8">
+            <div
+              v-if="hero.picture.initiative_zoom !== undefined"
+              class="col-span-4 mt-8"
+            >
               <Slider
                 :lazy="false"
                 v-model="hero.picture.initiative_zoom"
                 :min="0"
                 :max="10"
                 :step="-1"
+              />
+            </div>
+            <div v-else class="col-span-4">
+              <input
+                v-model="hero.picture.initiative_zoom"
+                type="number"
+                class="col-span-2 ml-1 rounded border border-slate-300 bg-white outline-none"
               />
             </div>
             <span
