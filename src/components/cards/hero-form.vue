@@ -94,7 +94,7 @@
                 :lazy="false"
                 v-model="hero.picture.offsetX"
                 :min="-200"
-                :max="0"
+                :max="100"
               />
             </div>
             <div v-else class="col-span-2">
@@ -111,7 +111,7 @@
               <Slider
                 :lazy="false"
                 v-model="hero.picture.offsetY"
-                :min="0"
+                :min="-200"
                 :max="400"
               />
             </div>
@@ -174,7 +174,7 @@
                 :lazy="false"
                 v-model="hero.picture.initiative_offsetX"
                 :min="-200"
-                :max="0"
+                :max="100"
               />
             </div>
             <div v-else class="col-span-2">
@@ -191,7 +191,7 @@
               <Slider
                 :lazy="false"
                 v-model="hero.picture.initiative_offsetY"
-                :min="0"
+                :min="-200"
                 :max="400"
               />
             </div>
