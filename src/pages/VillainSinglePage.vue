@@ -1,5 +1,5 @@
 <script setup>
-  import HeroCard from '@/components/cards/villain-card.vue';
+  import VillainCard from '@/components/cards/villain-card.vue';
   const Villain = {
     name: 'Abhorrant Archregent',
     picture: {
@@ -120,12 +120,12 @@
 
 <template>
   <div class="mt-4 space-y-4">
-    <HeroCard
+    <VillainCard
       status="normal"
       v-model:villain="Villain"
       class="villain-card-display"
     />
-    <HeroCard
+    <VillainCard
       status="empowered"
       v-model:villain="Villain"
       class="villain-card-display"
