@@ -24,6 +24,7 @@
         />
       </div>
       <div
+        v-if="side === 'recto'"
         id="hero-name"
         class="absolute flex items-center justify-center text-center text-xs font-semibold leading-none"
         style="top: 16px; left: 0px; width: 26mm; height: 26px"
