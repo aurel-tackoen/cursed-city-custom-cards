@@ -23,7 +23,8 @@ import {
   faDiceD10 as fadDiceD10,
   faDiceD12 as fadDiceD12,
   faBookSkull as fadBookSkull,
-  faGhost as FadGhost,
+  faGhost as fadGhost,
+  faSkullCrossbones as fadSkullCrossbones,
 } from '@fortawesome/pro-duotone-svg-icons';
 import { faDiceD12 as fatDiceD12 } from '@fortawesome/pro-thin-svg-icons';
 library.add(
@@ -45,7 +46,8 @@ library.add(
   fadDiceD10,
   fadDiceD12,
   fadBookSkull,
-  FadGhost
+  fadGhost,
+  fadSkullCrossbones
 );
 library.add(fatDiceD12);
 
