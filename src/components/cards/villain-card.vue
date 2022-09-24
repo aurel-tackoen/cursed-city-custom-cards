@@ -35,6 +35,7 @@
         style="top: -67px; left: -53px; width: 317px; height: 317px"
       >
         <img
+          v-if="villain.picture && villain.picture.url"
           :src="villain.picture.url"
           alt="Villain Picture"
           class="max-w-max"
@@ -44,6 +45,11 @@
           margin-left: ${villain.picture.offsetX}px;
           height: 500px
         `"
+        />
+        <fa-icon
+          v-else
+          class="fa-fw fa-4x mx-auto justify-self-center text-gray-400"
+          :icon="['fad', 'skull-crossbones']"
         />
       </div>
       <div

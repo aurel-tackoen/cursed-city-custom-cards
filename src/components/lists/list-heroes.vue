@@ -45,7 +45,7 @@
               />
               <fa-icon
                 v-else
-                class="fa-fw fa-xl mx-auto justify-self-center text-gray-400 hover:text-red-700"
+                class="fa-fw fa-xl mx-auto justify-self-center text-gray-400"
                 :icon="['fad', 'ghost']"
               />
             </div>
