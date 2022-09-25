@@ -3,6 +3,7 @@
   import { cloneDeep } from 'lodash';
   import { defaultVillain } from '@/assets/data/villain.js';
   import VillainCard from '@/components/cards/villain-card.vue';
+  import VillainForm from '@/components/cards/villain-form.vue';
   const newVillain = reactive(cloneDeep(defaultVillain));
 </script>
 
@@ -17,11 +18,6 @@
         class="villain-card-display"
       />
     </div>
-    <!-- <VillainForm
-      v-if="tabs[0].current"
-      status="normal"
-      :errors="HeroErrors"
-      v-model:villain="newVillain"
-    /> -->
+    <VillainForm status="normal" v-model:villain="newVillain" />
   </div>
 </template>
