@@ -1,26 +1,26 @@
 import { defineStore, storeToRefs } from 'pinia';
 import { useAuthStore } from '@/stores/auth-store';
-import { validate, getErrors } from '@/schemas/heroes-schema.js';
+import { validate, getErrors } from '@/schemas/villains-schema.js';
 import DOMPurify from 'isomorphic-dompurify';
 
-async function sanitize(hero) {
+async function sanitize(villain) {
   const options = { ALLOWED_TAGS: [] };
-  hero?.normal?.notes.map((note) => {
+  villain?.normal?.notes.map((note) => {
     note.rule = DOMPurify.sanitize(note.rule, options);
   });
-  hero?.empowered?.notes.map((note) => {
+  villain?.empowered?.notes.map((note) => {
     note.rule = DOMPurify.sanitize(note.rule, options);
   });
-  hero?.normal?.special.map((special) => {
+  villain?.normal?.special.map((special) => {
     special.rule = DOMPurify.sanitize(special.rule, options);
   });
-  hero?.empowered?.special.map((special) => {
+  villain?.empowered?.special.map((special) => {
     special.rule = DOMPurify.sanitize(special.rule, options);
   });
-  return hero;
+  return villain;
 }
 
-export const useHeroesStore = defineStore('heroes', {
+export const useVillainsStore = defineStore('villains', {
   state: () => ({
     Villain: null,
     VillainErrors: [],
@@ -109,7 +109,7 @@ export const useHeroesStore = defineStore('heroes', {
     },
     async fetchVillain(id) {
       try {
-        const response = await fetch('/.netlify/functions/heroes-findone', {
+        const response = await fetch('/.netlify/functions/Villains-findone', {
           method: 'POST',
           body: JSON.stringify({
             _id: id,
