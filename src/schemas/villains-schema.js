@@ -15,22 +15,17 @@ const schema = object({
     offsetY: number(),
     offsetX: number(),
     zoom: number(),
-    initiative_offsetY: number(),
-    initiative_offsetX: number(),
-    initiative_zoom: number(),
   }),
   normal: object({
     stats: object({
       move: number().required(),
       run: number().required(),
-      agility: string().required(),
-      vitality: string().required(),
-      defence: string().required(),
+      wounds: number(),
+      defence: number(),
     }).required(),
     weapons: array(
       object({
         name: string().required(),
-        activation: number().required(),
         type: string().required(),
         dice1: string().required(),
         dice2: string(),
@@ -47,14 +42,50 @@ const schema = object({
         rule: string().required(),
       })
     ).required(),
-    abilities: array(
+    special: array(
       object({
         name: string().required(),
-        activation: number(),
         rule: string().required(),
       })
     ).required(),
-    path: object({
+    behaviour: object({
+      name: string(),
+      rule: string(),
+    }).required(),
+  }),
+  empowered: object({
+    stats: object({
+      move: number(),
+      run: number(),
+      wounds: number(),
+      defence: number(),
+    }).required(),
+    weapons: array(
+      object({
+        name: string().required(),
+        type: string().required(),
+        dice1: string().required(),
+        dice2: string(),
+        damages: object({
+          base: number().required(),
+          critical: number().required(),
+        }).required(),
+        notes: array(number()),
+      }).required()
+    ).required(),
+    notes: array(
+      object({
+        name: string(),
+        rule: string().required(),
+      })
+    ).required(),
+    special: array(
+      object({
+        name: string().required(),
+        rule: string().required(),
+      })
+    ).required(),
+    behaviour: object({
       name: string(),
       rule: string(),
     }).required(),
