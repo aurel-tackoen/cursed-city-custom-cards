@@ -1,3 +1,4 @@
+// Example Heroes
 const heroes = [
   {
     picture: {
