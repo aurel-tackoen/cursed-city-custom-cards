@@ -58,9 +58,9 @@
               alt="Hero Picture"
               class="max-w-max"
               :style="`
-                  transform: scale(${hero.picture.initiative_zoom / 2});
-                  margin-top: ${hero.picture.initiative_offsetY / 2}px;
-                  margin-left: ${hero.picture.initiative_offsetX / 2}px;
+                  transform: scale(${hero.picture.small_zoom / 2});
+                  margin-top: ${hero.picture.small_offsetY / 2}px;
+                  margin-left: ${hero.picture.small_offsetX / 2}px;
                   height: 40.7mm
                 `"
             />

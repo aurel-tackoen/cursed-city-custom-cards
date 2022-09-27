@@ -169,67 +169,67 @@
           <div class="grid grid-cols-5">
             <span class="flex items-center">Initiative Offset X/Y: </span>
             <div
-              v-if="hero.picture.initiative_offsetX !== undefined"
+              v-if="hero.picture.small_offsetX !== undefined"
               class="col-span-2 mt-8 pr-2"
             >
               <Slider
                 :lazy="false"
-                v-model="hero.picture.initiative_offsetX"
+                v-model="hero.picture.small_offsetX"
                 :min="-200"
                 :max="100"
               />
             </div>
             <div v-else class="col-span-2">
               <input
-                v-model="hero.picture.initiative_offsetX"
+                v-model="hero.picture.small_offsetX"
                 type="number"
                 class="col-span-2 ml-1 rounded border border-slate-300 bg-white outline-none"
               />
             </div>
             <div
-              v-if="hero.picture.initiative_offsetY !== undefined"
+              v-if="hero.picture.small_offsetY !== undefined"
               class="col-span-2 mt-8 pl-4"
             >
               <Slider
                 :lazy="false"
-                v-model="hero.picture.initiative_offsetY"
+                v-model="hero.picture.small_offsetY"
                 :min="-200"
                 :max="400"
               />
             </div>
             <div v-else class="col-span-2">
               <input
-                v-model="hero.picture.initiative_offsetY"
+                v-model="hero.picture.small_offsetY"
                 type="number"
                 class="col-span-2 ml-1 rounded border border-slate-300 bg-white outline-none"
               />
             </div>
             <div
-              v-if="getError('picture.initiative_offsetX')"
+              v-if="getError('picture.small_offsetX')"
               class="col-span-4 col-start-2"
             >
               <span class="text-xs uppercase text-red-800">{{
-                getError('picture.initiative_offsetX').message
+                getError('picture.small_offsetX').message
               }}</span>
             </div>
             <div
-              v-if="getError('picture.initiative_offsetY')"
+              v-if="getError('picture.small_offsetY')"
               class="col-span-4 col-start-2"
             >
               <span class="text-xs uppercase text-red-800">{{
-                getError('picture.initiative_offsetY').message
+                getError('picture.small_offsetY').message
               }}</span>
             </div>
           </div>
           <div class="grid grid-cols-5">
             <span class="flex items-center">Picture Zoom: </span>
             <div
-              v-if="hero.picture.initiative_zoom !== undefined"
+              v-if="hero.picture.small_zoom !== undefined"
               class="col-span-4 mt-8"
             >
               <Slider
                 :lazy="false"
-                v-model="hero.picture.initiative_zoom"
+                v-model="hero.picture.small_zoom"
                 :min="0"
                 :max="10"
                 :step="-1"
@@ -237,15 +237,15 @@
             </div>
             <div v-else class="col-span-4">
               <input
-                v-model="hero.picture.initiative_zoom"
+                v-model="hero.picture.small_zoom"
                 type="number"
                 class="col-span-2 ml-1 rounded border border-slate-300 bg-white outline-none"
               />
             </div>
             <span
               class="col-span-4 col-start-2 text-xs uppercase text-red-800"
-              v-if="getError('picture.initiative_zoom')"
-              >{{ getError('picture.initiative_zoom').message }}</span
+              v-if="getError('picture.small_zoom')"
+              >{{ getError('picture.small_zoom').message }}</span
             >
           </div>
         </div>

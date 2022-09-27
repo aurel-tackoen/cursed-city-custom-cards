@@ -42,9 +42,9 @@
           alt="Hero Picture"
           class="max-w-max"
           :style="`
-            transform: scale(${hero.picture.initiative_zoom});
-            margin-top: ${hero.picture.initiative_offsetY}px;
-            margin-left: ${hero.picture.initiative_offsetX}px;
+            transform: scale(${hero.picture.small_zoom});
+            margin-top: ${hero.picture.small_offsetY}px;
+            margin-left: ${hero.picture.small_offsetX}px;
             height: 40.7mm
           `"
         />
