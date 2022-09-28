@@ -42,7 +42,7 @@ const villains = [
           rule: 'Each time this hostile ends their activation, remove 3 wounds counter from the acting hostile.',
         },
       ],
-      behaviour: [
+      behaviours: [
         {
           roll: '1-2',
           title: 'Summon Imperial Guard',
@@ -93,7 +93,7 @@ const villains = [
           rule: 'Each time this hostile ends their activation, remove 2 wounds counter from the acting hostile.',
         },
       ],
-      behaviour: [
+      behaviours: [
         {
           roll: '1-3',
           title: 'Summon Imperial Guard',
@@ -137,14 +137,14 @@ const defaultVillain = {
     weapons: [],
     notes: [],
     special: [],
-    behaviour: {},
+    behaviours: [],
   },
   empowered: {
     stats: {},
     weapons: [],
     notes: [],
     special: [],
-    behaviour: {},
+    behaviours: [],
   },
   user: {},
 };

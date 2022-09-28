@@ -48,7 +48,7 @@ const schema = object({
         rule: string().required(),
       })
     ).required(),
-    behaviour: object({
+    behaviours: object({
       name: string(),
       rule: string(),
     }).required(),
@@ -85,7 +85,7 @@ const schema = object({
         rule: string().required(),
       })
     ).required(),
-    behaviour: object({
+    behaviours: object({
       name: string(),
       rule: string(),
     }).required(),

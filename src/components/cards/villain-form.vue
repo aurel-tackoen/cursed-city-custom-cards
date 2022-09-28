@@ -49,7 +49,8 @@
     name: '',
     rule: '',
   };
-  const defaultBehaviour = {
+  const defaultBehaviours = {
+    roll: '',
     name: '',
     rule: '',
   };
@@ -643,6 +644,84 @@
           v-if="status === 'empowered'"
           @click="villain.empowered.special = clone(villain.normal.special)"
           title="Copy special from normal"
+        >
+          <fa-icon
+            class="fa-fw text-gray-300 hover:text-red-700"
+            :icon="['fas', 'copy']"
+          />
+        </button>
+      </div>
+    </FormCard>
+    <FormCard id="user-behaviours" title="Behaviours">
+      <draggable
+        v-model="villain[status].behaviours"
+        :item-key="uuidv4()"
+        handle=".handle"
+      >
+        <template #item="{ element: ability, index }">
+          <div class="mb-2 flex w-full border-b-2 border-dashed bg-white pb-2">
+            <div class="grow space-y-3">
+              <div class="grid grid-cols-5">
+                <span class="flex items-center">Roll: </span>
+                <input
+                  v-model="ability.roll"
+                  type="text"
+                  class="col-span-4 rounded border border-slate-300 bg-white outline-none"
+                />
+              </div>
+              <div class="grid grid-cols-5">
+                <span class="flex items-center">Name: </span>
+                <input
+                  v-model="ability.name"
+                  type="text"
+                  class="col-span-4 rounded border border-slate-300 bg-white outline-none"
+                />
+              </div>
+              <div class="grid grid-cols-5">
+                <span class="flex items-center">Rule: </span>
+                <textarea
+                  v-model="ability.rule"
+                  type="text"
+                  class="col-span-4 rounded border border-slate-300 bg-white outline-none"
+                />
+              </div>
+            </div>
+            <div
+              class="-mr-4 w-12 flex-row items-center justify-center text-center"
+            >
+              <DocMarkdown />
+              <div class="handle cursor-move">
+                <fa-icon
+                  class="fa-fw text-slate-500 hover:text-red-700"
+                  :icon="['fas', 'line-height']"
+                  title="Drag to reorder"
+                />
+              </div>
+              <button @click="remove('behaviours', index)">
+                <fa-icon
+                  class="fa-fw text-slate-500 hover:text-red-700"
+                  :icon="['fas', 'trash']"
+                  title="Delete an ability"
+                />
+              </button>
+            </div>
+          </div>
+        </template>
+      </draggable>
+      <div class="flex items-center justify-center">
+        <button
+          class="fa-fw text-slate-300 hover:text-red-700"
+          @click="villain[status].behaviours.push(copy(defaultBehaviours))"
+          title="Add a new ability"
+        >
+          <fa-icon class="fa-fw" :icon="['fas', 'plus-large']" />
+        </button>
+        <button
+          v-if="status === 'empowered'"
+          @click="
+            villain.empowered.behaviours = clone(villain.normal.behaviours)
+          "
+          title="Copy behaviours from normal"
         >
           <fa-icon
             class="fa-fw text-gray-300 hover:text-red-700"
