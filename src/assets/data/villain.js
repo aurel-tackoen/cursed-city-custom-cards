@@ -96,21 +96,21 @@ const villains = [
       behaviours: [
         {
           roll: '1-3',
-          title: 'Summon Imperial Guard',
+          name: 'Summon Imperial Guard',
           rule: 'Each hostile in the acting hostile group makes an **Advance** action. Then, Deploy any slain Crypt Ghouls from this hostile group as reinforcements and add 1 available Crypt Ghoul to this hostile group and deploy it as reinforcements.',
         },
         {
           roll: '4',
-          title: 'Advance',
+          name: 'Advance',
         },
         {
           roll: '5-9',
-          title: 'Terrifying Power',
+          name: 'Terrifying Power',
           rule: 'The acting hostile makes an **Assault** action. Remove 2 wound from the acting hostile for every damage it inflicts upon its target during that action.',
         },
         {
           roll: '10-12',
-          title: 'Ferocious Hunger',
+          name: 'Ferocious Hunger',
           rule: 'Each other visible *Flesh-Eater* hostile one the battlefield makes a **Charge** action. If there are no other visible *Flesh-Eater* hostiles, treat this as a result of **Terrifying Power**.',
         },
       ],

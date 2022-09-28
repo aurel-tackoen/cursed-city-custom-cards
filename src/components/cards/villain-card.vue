@@ -175,9 +175,8 @@
             <div
               class="h-full w-full border-l border-gray-200 py-2 pl-2 text-sm"
             >
-              <span v-if="behaviour.title" class="font-semibold"
-                >{{ behaviour.title
-                }}<span v-if="behaviour.rule">: </span></span
+              <span v-if="behaviour.name" class="font-semibold"
+                >{{ behaviour.name }}<span v-if="behaviour.rule">: </span></span
               >
               <span v-if="behaviour.rule">
                 <span v-html="generateHtml(behaviour.rule)"></span>
