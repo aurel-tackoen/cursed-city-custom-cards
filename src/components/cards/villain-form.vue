@@ -583,9 +583,9 @@
         </button>
       </div>
     </FormCard>
-    <!-- <FormCard id="user-abilities" title="Unique Abilities">
+    <FormCard id="user-special" title="Unique Special">
       <draggable
-        v-model="villain[status].abilities"
+        v-model="villain[status].special"
         :item-key="uuidv4()"
         handle=".handle"
       >
@@ -597,14 +597,6 @@
                 <input
                   v-model="ability.name"
                   type="text"
-                  class="col-span-4 rounded border border-slate-300 bg-white outline-none"
-                />
-              </div>
-              <div class="grid grid-cols-5">
-                <span class="flex items-center">Activation</span>
-                <input
-                  v-model="ability.activation"
-                  type="number"
                   class="col-span-4 rounded border border-slate-300 bg-white outline-none"
                 />
               </div>
@@ -628,7 +620,7 @@
                   title="Drag to reorder"
                 />
               </div>
-              <button @click="remove('abilities', index)">
+              <button @click="remove('special', index)">
                 <fa-icon
                   class="fa-fw text-slate-500 hover:text-red-700"
                   :icon="['fas', 'trash']"
@@ -642,15 +634,15 @@
       <div class="flex items-center justify-center">
         <button
           class="fa-fw text-slate-300 hover:text-red-700"
-          @click="villain[status].abilities.push(clone(defaultAbilities))"
+          @click="villain[status].special.push(copy(defaultSpecial))"
           title="Add a new ability"
         >
           <fa-icon class="fa-fw" :icon="['fas', 'plus-large']" />
         </button>
         <button
           v-if="status === 'empowered'"
-          @click="villain.empowered.abilities = clone(villain.normal.abilities)"
-          title="Copy abilities from normal"
+          @click="villain.empowered.special = clone(villain.normal.special)"
+          title="Copy special from normal"
         >
           <fa-icon
             class="fa-fw text-gray-300 hover:text-red-700"
@@ -658,50 +650,7 @@
           />
         </button>
       </div>
-    </FormCard> -->
-    <!-- <FormCard v-if="status === 'normal'" id="user-path" title="Path to Glory">
-      <div class="flex w-full bg-white">
-        <div class="grow space-y-3">
-          <div class="grid grid-cols-5">
-            <span class="flex items-center">Name: </span>
-            <input
-              v-model="villain[status].path.name"
-              type="text"
-              class="col-span-4 rounded border border-slate-300 bg-white outline-none"
-              :class="{
-                'border-red-800': getError(`${status}.path.name`),
-              }"
-            />
-            <span
-              class="col-span-4 col-start-2 text-xs uppercase text-red-800"
-              v-if="getError(`${status}.path.name`)"
-              >{{ getError(`${status}.path.name`).message }}</span
-            >
-          </div>
-          <div class="grid grid-cols-5">
-            <span class="flex items-center">Rule: </span>
-            <textarea
-              v-model="villain[status].path.rule"
-              type="text"
-              class="col-span-4 rounded border border-slate-300 bg-white outline-none"
-              :class="{
-                'border-red-800': getError(`${status}.path.rule`),
-              }"
-            />
-            <span
-              class="col-span-4 col-start-2 text-xs uppercase text-red-800"
-              v-if="getError(`${status}.path.rule`)"
-              >{{ getError(`${status}.path.rule`).message }}</span
-            >
-          </div>
-        </div>
-        <div
-          class="-mr-4 w-12 flex-row items-center justify-center text-center"
-        >
-          <DocMarkdown />
-        </div>
-      </div>
-    </FormCard> -->
+    </FormCard>
   </div>
 </template>
 

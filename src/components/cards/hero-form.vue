@@ -666,7 +666,7 @@
       <div class="flex items-center justify-center">
         <button
           class="fa-fw text-slate-300 hover:text-red-700"
-          @click="hero[status].abilities.push(clone(defaultAbilities))"
+          @click="hero[status].abilities.push(copy(defaultAbilities))"
           title="Add a new ability"
         >
           <fa-icon class="fa-fw" :icon="['fas', 'plus-large']" />
