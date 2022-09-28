@@ -32,7 +32,7 @@ const villains = [
           },
         },
       ],
-      special: [
+      specials: [
         {
           name: 'Supreme Ghoul King',
           rule: 'Increase the Damage values of all other *Flesh-Eater* hostiles weapon actions by +1/+1 while this hostile is on the battlefield.',
@@ -83,7 +83,7 @@ const villains = [
           },
         },
       ],
-      special: [
+      specials: [
         {
           name: 'Supreme Ghoul King',
           rule: 'Increase the Damage values of all other *Flesh-Eater* hostiles weapon actions by +0/+1 while this hostile is on the battlefield',
@@ -136,14 +136,14 @@ const defaultVillain = {
     },
     weapons: [],
     notes: [],
-    special: [],
+    specials: [],
     behaviours: [],
   },
   empowered: {
     stats: {},
     weapons: [],
     notes: [],
-    special: [],
+    specials: [],
     behaviours: [],
   },
   user: {},

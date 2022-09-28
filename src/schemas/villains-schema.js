@@ -42,7 +42,7 @@ const schema = object({
         rule: string().required(),
       })
     ).required(),
-    special: array(
+    specials: array(
       object({
         name: string().required(),
         rule: string().required(),
@@ -79,7 +79,7 @@ const schema = object({
         rule: string().required(),
       })
     ).required(),
-    special: array(
+    specials: array(
       object({
         name: string().required(),
         rule: string().required(),

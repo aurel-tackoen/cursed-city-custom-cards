@@ -11,11 +11,11 @@ async function sanitize(villain) {
   villain?.empowered?.notes.map((note) => {
     note.rule = DOMPurify.sanitize(note.rule, options);
   });
-  villain?.normal?.special.map((special) => {
-    special.rule = DOMPurify.sanitize(special.rule, options);
+  villain?.normal?.specials.map((specials) => {
+    specials.rule = DOMPurify.sanitize(specials.rule, options);
   });
-  villain?.empowered?.special.map((special) => {
-    special.rule = DOMPurify.sanitize(special.rule, options);
+  villain?.empowered?.specials.map((specials) => {
+    specials.rule = DOMPurify.sanitize(specials.rule, options);
   });
   return villain;
 }

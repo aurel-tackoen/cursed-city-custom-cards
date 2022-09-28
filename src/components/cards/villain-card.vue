@@ -131,16 +131,16 @@
         <div
           class="mt-5 mb-1 w-full text-center text-lg font-semibold uppercase leading-none"
         >
-          Special Rules
+          specials Rules
         </div>
         <div class="space-y-1 text-sm">
           <div
-            v-for="special in villain[status].special"
-            :key="special.name"
+            v-for="specials in villain[status].specials"
+            :key="specials.name"
             class="leading-tight"
           >
-            <strong v-if="special.name">{{ special.name }}: </strong>
-            <span v-html="generateHtml(special.rule)"></span>
+            <strong v-if="specials.name">{{ specials.name }}: </strong>
+            <span v-html="generateHtml(specials.rule)"></span>
           </div>
         </div>
         <div>
@@ -162,7 +162,7 @@
             </div>
           </div>
           <div
-            v-for="(behaviour, index) in villain[status].behaviour"
+            v-for="(behaviour, index) in villain[status].behaviours"
             :key="behaviour.roll"
             class="min-h-12 flex items-center justify-start text-black"
             :class="{

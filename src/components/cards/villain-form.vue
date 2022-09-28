@@ -45,7 +45,7 @@
     name: '',
     rule: '',
   };
-  const defaultSpecial = {
+  const defaultspecials = {
     name: '',
     rule: '',
   };
@@ -584,9 +584,9 @@
         </button>
       </div>
     </FormCard>
-    <FormCard id="user-special" title="Unique Special">
+    <FormCard id="user-specials" title="Unique specials">
       <draggable
-        v-model="villain[status].special"
+        v-model="villain[status].specials"
         :item-key="uuidv4()"
         handle=".handle"
       >
@@ -621,7 +621,7 @@
                   title="Drag to reorder"
                 />
               </div>
-              <button @click="remove('special', index)">
+              <button @click="remove('specials', index)">
                 <fa-icon
                   class="fa-fw text-slate-500 hover:text-red-700"
                   :icon="['fas', 'trash']"
@@ -635,15 +635,15 @@
       <div class="flex items-center justify-center">
         <button
           class="fa-fw text-slate-300 hover:text-red-700"
-          @click="villain[status].special.push(copy(defaultSpecial))"
+          @click="villain[status].specials.push(copy(defaultspecials))"
           title="Add a new ability"
         >
           <fa-icon class="fa-fw" :icon="['fas', 'plus-large']" />
         </button>
         <button
           v-if="status === 'empowered'"
-          @click="villain.empowered.special = clone(villain.normal.special)"
-          title="Copy special from normal"
+          @click="villain.empowered.specials = clone(villain.normal.specials)"
+          title="Copy specials from normal"
         >
           <fa-icon
             class="fa-fw text-gray-300 hover:text-red-700"
