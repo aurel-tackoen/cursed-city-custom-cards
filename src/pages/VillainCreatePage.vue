@@ -30,7 +30,7 @@
   newVillain.date = dayjs().unix();
 
   async function createVillain() {
-    const result = await villainsStore.createHero(newVillain);
+    const result = await villainsStore.createVillain(newVillain);
     if (result) {
       router.push({ name: 'villains-update', params: { id: result._id } });
       Object.assign(newVillain, defaultVillain);
