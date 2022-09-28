@@ -395,7 +395,7 @@
     </FormCard>
     <FormCard id="user-weapons" title="Weapons">
       <draggable
-        v-model="hero[status].weapons"
+        v-model="villain[status].weapons"
         :item-key="uuidv4()"
         handle=".handle"
       >
@@ -412,14 +412,9 @@
               </div>
               <div class="grid grid-cols-5">
                 <span class="flex items-center">Activation / Type: </span>
-                <input
-                  v-model="weapon.activation"
-                  type="number"
-                  class="col-span-2 mr-1 rounded border border-slate-300 bg-white outline-none"
-                />
                 <select
                   v-model="weapon.type"
-                  class="col-span-2 ml-1 rounded border border-slate-300 bg-white outline-none"
+                  class="col-span-4 ml-1 rounded border border-slate-300 bg-white outline-none"
                 >
                   <option value="melee">Melee</option>
                   <option value="ranged">Ranged</option>
@@ -468,7 +463,7 @@
                   v-model="weapon.notes"
                 >
                   <option
-                    v-for="(note, index) in hero[status].notes"
+                    v-for="(note, index) in villain[status].notes"
                     :key="index"
                     :value="index + 1"
                   >
@@ -502,14 +497,14 @@
       <div class="flex items-center justify-center">
         <button
           class="fa-fw text-slate-300 hover:text-red-700"
-          @click="hero[status].weapons.push(copy(defaultWeapon))"
+          @click="villain[status].weapons.push(copy(defaultWeapon))"
           title="Add a weapon"
         >
           <fa-icon class="fa-fw" :icon="['fas', 'plus-large']" />
         </button>
         <button
-          v-if="status === 'inspired'"
-          @click="hero.inspired.weapons = clone(hero.normal.weapons)"
+          v-if="status === 'empowered'"
+          @click="villain.empowered.weapons = clone(villain.normal.weapons)"
           title="Copy weapons from normal"
         >
           <fa-icon
@@ -521,7 +516,7 @@
     </FormCard>
     <FormCard id="user-weapons-notes" title="Weapons Notes">
       <draggable
-        v-model="hero[status].notes"
+        v-model="villain[status].notes"
         :item-key="uuidv4()"
         handle=".handle"
       >
@@ -571,14 +566,14 @@
       <div class="flex items-center justify-center">
         <button
           class="fa-fw text-slate-300 hover:text-red-700"
-          @click="hero[status].notes.push(copy(defaultNotes))"
+          @click="villain[status].notes.push(copy(defaultNotes))"
           title="Add a new note"
         >
           <fa-icon class="fa-fw" :icon="['fas', 'plus-large']" />
         </button>
         <button
-          v-if="status === 'inspired'"
-          @click="hero.inspired.notes = clone(hero.normal.notes)"
+          v-if="status === 'empowered'"
+          @click="villain.empowered.notes = clone(villain.normal.notes)"
           title="Copy notes from normal"
         >
           <fa-icon
@@ -590,7 +585,7 @@
     </FormCard>
     <!-- <FormCard id="user-abilities" title="Unique Abilities">
       <draggable
-        v-model="hero[status].abilities"
+        v-model="villain[status].abilities"
         :item-key="uuidv4()"
         handle=".handle"
       >
@@ -647,14 +642,14 @@
       <div class="flex items-center justify-center">
         <button
           class="fa-fw text-slate-300 hover:text-red-700"
-          @click="hero[status].abilities.push(clone(defaultAbilities))"
+          @click="villain[status].abilities.push(clone(defaultAbilities))"
           title="Add a new ability"
         >
           <fa-icon class="fa-fw" :icon="['fas', 'plus-large']" />
         </button>
         <button
-          v-if="status === 'inspired'"
-          @click="hero.inspired.abilities = clone(hero.normal.abilities)"
+          v-if="status === 'empowered'"
+          @click="villain.empowered.abilities = clone(villain.normal.abilities)"
           title="Copy abilities from normal"
         >
           <fa-icon
@@ -670,7 +665,7 @@
           <div class="grid grid-cols-5">
             <span class="flex items-center">Name: </span>
             <input
-              v-model="hero[status].path.name"
+              v-model="villain[status].path.name"
               type="text"
               class="col-span-4 rounded border border-slate-300 bg-white outline-none"
               :class="{
@@ -686,7 +681,7 @@
           <div class="grid grid-cols-5">
             <span class="flex items-center">Rule: </span>
             <textarea
-              v-model="hero[status].path.rule"
+              v-model="villain[status].path.rule"
               type="text"
               class="col-span-4 rounded border border-slate-300 bg-white outline-none"
               :class="{
