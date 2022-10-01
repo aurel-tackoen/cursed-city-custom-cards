@@ -48,11 +48,13 @@ const schema = object({
         rule: string().required(),
       })
     ).required(),
-    behaviours: object({
-      roll: string(),
-      name: string(),
-      rule: string(),
-    }).required(),
+    behaviours: array(
+      object({
+        roll: string().required(),
+        name: string().required(),
+        rule: string().required(),
+      })
+    ).required(),
   }),
   empowered: object({
     stats: object({
@@ -86,11 +88,13 @@ const schema = object({
         rule: string().required(),
       })
     ).required(),
-    behaviours: object({
-      roll: string(),
-      name: string(),
-      rule: string(),
-    }).required(),
+    behaviours: array(
+      object({
+        roll: string().required(),
+        name: string().required(),
+        rule: string().required(),
+      })
+    ).required(),
   }),
   user: object({
     email: string().email().required(),
