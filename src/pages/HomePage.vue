@@ -5,6 +5,7 @@
   import { useHeroesStore } from '@/stores/heroes-store.js';
   import { useVillainsStore } from '@/stores/villains-store.js';
   import ListHeroes from '@/components/lists/list-heroes.vue';
+  import ListVillains from '@/components/lists/list-villains.vue';
   import ListPagination from '@/components/lists/list-pagination.vue';
 
   const authStore = useAuthStore();
@@ -43,6 +44,7 @@
 
   if (User.value.authenticated) {
     await heroesStore.fetchUserHeroes();
+    await villainsStore.fetchUserVillains();
   }
   await heroesStore.fetchHeroes();
   await villainsStore.fetchVillains();
@@ -162,7 +164,7 @@
         <div v-if="UserVillains.length > 0">
           <ListVillains
             :params="UserVillainsParams"
-            :heroes="UserVillains"
+            :villains="UserVillains"
             target="update"
           />
           <ListPagination v-model:params="UserVillainsParams" />

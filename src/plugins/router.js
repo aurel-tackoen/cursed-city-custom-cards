@@ -5,6 +5,7 @@ import HeroCreatePage from '@/pages/HeroCreatePage.vue';
 import HeroUpdatePage from '@/pages/HeroUpdatePage.vue';
 import VillainSinglePage from '@/pages/VillainSinglePage.vue';
 import VillainCreatePage from '@/pages/VillainCreatePage.vue';
+import VillainUpdatePage from '@/pages/VillainUpdatePage.vue';
 import UserHomePage from '@/pages/UserHomePage.vue';
 
 const router = createRouter({
@@ -39,6 +40,11 @@ const router = createRouter({
       path: '/villains/:id',
       name: 'villains-single',
       component: VillainSinglePage,
+    },
+    {
+      path: '/villains/:id/update',
+      name: 'villains-update',
+      component: VillainUpdatePage,
     },
     {
       path: '/user/',

@@ -53,7 +53,7 @@ export const useVillainsStore = defineStore('villains', {
         this.VillainErrors = [];
         await authStore.refresh();
         const item = await validate(data);
-        const response = await fetch('/.netlify/functions/Villains-create', {
+        const response = await fetch('/.netlify/functions/villains-create', {
           headers: {
             Authorization: `Bearer ${User.value.access_token}`,
           },
@@ -84,7 +84,7 @@ export const useVillainsStore = defineStore('villains', {
         const item = await validate(this.Villain);
         const sanitized = await sanitize(this.Villain);
         console.log(sanitized);
-        const response = await fetch('/.netlify/functions/Villains-update', {
+        const response = await fetch('/.netlify/functions/villains-update', {
           headers: {
             Authorization: `Bearer ${User.value.access_token}`,
           },
@@ -109,7 +109,7 @@ export const useVillainsStore = defineStore('villains', {
     },
     async fetchVillain(id) {
       try {
-        const response = await fetch('/.netlify/functions/Villains-findone', {
+        const response = await fetch('/.netlify/functions/villains-findone', {
           method: 'POST',
           body: JSON.stringify({
             _id: id,
@@ -131,7 +131,7 @@ export const useVillainsStore = defineStore('villains', {
     async fetchVillains() {
       this.VillainsParams.loading = true;
       try {
-        const response = await fetch('/.netlify/functions/Villains-find', {
+        const response = await fetch('/.netlify/functions/villains-find', {
           method: 'POST',
           body: JSON.stringify({
             query: {},
@@ -159,7 +159,7 @@ export const useVillainsStore = defineStore('villains', {
         const authStore = useAuthStore();
         await authStore.refresh();
         const { User } = storeToRefs(authStore);
-        const response = await fetch('/.netlify/functions/Villains-find', {
+        const response = await fetch('/.netlify/functions/villains-find', {
           headers: {
             Authorization: `Bearer ${User.value.access_token}`,
           },
@@ -190,7 +190,7 @@ export const useVillainsStore = defineStore('villains', {
         await authStore.refresh();
         const { User } = storeToRefs(authStore);
         const villain = await this.fetchVillain(id);
-        const response = await fetch('/.netlify/functions/Villains-remove', {
+        const response = await fetch('/.netlify/functions/villains-remove', {
           headers: {
             Authorization: `Bearer ${User.value.access_token}`,
           },
