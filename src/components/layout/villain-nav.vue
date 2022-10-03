@@ -58,9 +58,9 @@
               alt="Villain Picture"
               class="max-w-max"
               :style="`
-                  transform: scale(${villain.picture.zoom / 2});
-                  margin-top: ${villain.picture.offsetY / 2}px;
-                  margin-left: ${villain.picture.offsetX / 2}px;
+                  transform: scale(${villain.picture.small_zoom / 2});
+                  margin-top: ${villain.picture.small_offsetY / 2}px;
+                  margin-left: ${villain.picture.small_offsetX / 2}px;
                   height: 40.7mm
                 `"
             />

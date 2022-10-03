@@ -174,7 +174,7 @@
           </div>
           <hr class="border border-dashed border-slate-200" />
           <div class="grid grid-cols-5">
-            <span class="flex items-center">Initiative Offset X/Y: </span>
+            <span class="flex items-center">Small Picture Offset X/Y: </span>
             <div
               v-if="villain.picture.small_offsetX !== undefined"
               class="col-span-2 mt-8 pr-2"
