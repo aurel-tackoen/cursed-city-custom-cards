@@ -91,8 +91,8 @@ const schema = object({
     behaviours: array(
       object({
         roll: string().required(),
-        name: string().required(),
-        rule: string().required(),
+        name: string(),
+        rule: string(),
       })
     ).required(),
   }),

@@ -415,7 +415,7 @@
                 <span class="flex items-center">Activation / Type: </span>
                 <select
                   v-model="weapon.type"
-                  class="col-span-4 ml-1 rounded border border-slate-300 bg-white outline-none"
+                  class="col-span-4 rounded border border-slate-300 bg-white outline-none"
                 >
                   <option value="melee">Melee</option>
                   <option value="ranged">Ranged</option>

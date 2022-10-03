@@ -1,11 +1,14 @@
 <script setup>
   import { useAuthStore } from '@/stores/auth-store.js';
   import { useHeroesStore } from '@/stores/heroes-store.js';
+  import { useVillainsStore } from '@/stores/villains-store.js';
   import TopNav from '@/components/layout/top-nav.vue';
   const authStore = useAuthStore();
   const heroesStore = useHeroesStore();
+  const villainsStore = useVillainsStore();
   authStore.init();
   heroesStore.fetchHeroes();
+  villainsStore.fetchVillains();
 </script>
 <template>
   <div class="flex min-h-screen flex-col bg-slate-50 antialiased">
