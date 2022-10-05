@@ -15,6 +15,9 @@ const schema = object({
     offsetY: number(),
     offsetX: number(),
     zoom: number(),
+    small_offsetY: number(),
+    small_offsetX: number(),
+    small_zoom: number(),
   }),
   normal: object({
     stats: object({
