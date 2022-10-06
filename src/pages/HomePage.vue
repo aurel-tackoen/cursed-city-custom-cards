@@ -188,5 +188,26 @@
         </div>
       </div>
     </div>
+    <div class="rounded bg-white shadow">
+      <div class="mt-8">
+        <div
+          class="flex h-16 items-center justify-between bg-gradient-to-t from-slate-50 to-white px-4"
+        >
+          <div class="">
+            <h3 class="text-lg font-medium leading-6 text-slate-900">
+              All Villains
+            </h3>
+          </div>
+        </div>
+        <div>
+          <ListVillains
+            :params="VillainsParams"
+            :villains="Villains"
+            target="single"
+          />
+          <ListPagination v-model:params="VillainsParams" />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
