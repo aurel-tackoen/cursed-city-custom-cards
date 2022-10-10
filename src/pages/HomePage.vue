@@ -124,7 +124,7 @@
             </router-link>
           </div>
           <div v-if="UserVillains.length > 0" class="flex-shrink-0">
-            <router-link :to="{ name: 'heroes-create' }" class="btn-primary">
+            <router-link :to="{ name: 'villains-create' }" class="btn-primary">
               Create a new Villain
             </router-link>
           </div>
