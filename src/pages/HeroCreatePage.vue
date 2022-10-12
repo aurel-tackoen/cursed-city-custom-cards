@@ -43,7 +43,7 @@
 </script>
 
 <template>
-  <div class="mt-4 space-y-4">
+  <!-- <div class="mt-4 space-y-4">
     <HeroNav
       @create:hero="createHero()"
       :hero="newHero"
@@ -84,5 +84,53 @@
       :errors="HeroErrors"
       v-model:hero="newHero"
     />
+  </div> -->
+  <div class="mt-4 space-y-4">
+    <HeroNav
+      @create:hero="createHero()"
+      :hero="newHero"
+      v-model:tabs="tabs"
+      :create="true"
+    />
+    <ErrorsAlert :errors="HeroErrors" />
+    <div class="grid grid-cols-1 gap-4 xl:grid-cols-12">
+      <div class="col-span-12 xl:col-span-4">
+        <HeroForm
+          v-if="tabs[0].current"
+          status="normal"
+          :errors="HeroErrors"
+          v-model:hero="newHero"
+        />
+        <HeroForm
+          v-if="tabs[1].current"
+          status="inspired"
+          :errors="HeroErrors"
+          v-model:hero="newHero"
+        />
+      </div>
+      <div class="order-first col-span-12 xl:order-last xl:col-span-8">
+        <div
+          class="flex flex-col justify-center space-y-2 lg:flex-col lg:items-start lg:space-x-2 lg:space-y-0 xl:sticky xl:top-24"
+        >
+          <HeroCard
+            v-if="tabs[0].current"
+            status="normal"
+            v-model:hero="newHero"
+            class="hero-card-display"
+          />
+          <HeroCard
+            v-if="tabs[1].current"
+            status="inspired"
+            v-model:hero="newHero"
+            class="hero-card-display"
+          />
+          <HeroInitiativeCard
+            side="recto"
+            v-model:hero="newHero"
+            class="hero-initiative-card-display"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
