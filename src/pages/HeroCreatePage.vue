@@ -110,7 +110,7 @@
       </div>
       <div class="order-first col-span-12 xl:order-last xl:col-span-8">
         <div
-          class="flex flex-col justify-center space-y-2 lg:items-start xl:sticky xl:top-24"
+          class="flex flex-col justify-center space-y-2 xl:sticky xl:top-24 xl:items-start"
         >
           <HeroCard
             v-if="tabs[0].current"
