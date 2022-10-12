@@ -10,7 +10,7 @@
 
 <template>
   <div class="block min-w-full">
-    <div class="overflow-hidden border-t">
+    <div class="overflow-hidden border-b">
       <div
         v-if="params.loading === true"
         class="flex h-96 items-center justify-center"
@@ -50,32 +50,23 @@
               />
             </div>
           </div>
-          <div class="flex grow flex-col space-y-2">
+          <div class="flex grow flex-col space-y-1">
             <router-link
               :to="{
                 name: `villains-${target}`,
                 params: { id: villain._id },
               }"
-              class="text-lg font-bold leading-4 text-slate-900 hover:text-red-900"
+              class="text-lg font-bold leading-5 text-slate-900 hover:text-red-900"
             >
               {{ villain.name }}
             </router-link>
-            <div class="hidden text-sm italic leading-4 text-slate-600 sm:flex">
+            <div class="flex text-xs italic text-slate-600">
               <span v-for="(tag, index) in villain.tags" :key="tag.name">
                 {{ tag.label
                 }}<span v-if="index < villain.tags.length - 1">,&nbsp;</span>
               </span>
             </div>
-            <div
-              class="block text-sm italic leading-4 text-slate-600 sm:hidden"
-            >
-              Created by
-              <span class="font-bold">{{ villain.user.username }}</span>
-              {{ dayjs(villain.date * 1000).fromNow() }}
-            </div>
-          </div>
-          <div class="">
-            <div class="hidden text-sm leading-4 text-slate-600 sm:block">
+            <div class="block text-xs italic text-slate-600">
               Created by
               <span class="font-bold">{{ villain.user.username }}</span>
               {{ dayjs(villain.date * 1000).fromNow() }}

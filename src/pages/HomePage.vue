@@ -54,9 +54,9 @@
   <div>
     <div class="mt-8 grid gap-4 lg:grid-cols-2">
       <div class="rounded bg-white shadow">
-        <div class="">
+        <div class="flex h-full flex-col">
           <div
-            class="flex h-16 items-center justify-between bg-gradient-to-t from-slate-50 to-white px-4"
+            class="flex h-16 items-center justify-between border-b bg-gradient-to-t from-slate-50 to-white px-4"
           >
             <div class="">
               <router-link
@@ -104,20 +104,21 @@
               </div>
             </div>
           </div>
-          <div v-if="UserHeroes.length > 0">
+          <div v-if="UserHeroes.length > 0" class="flex grow flex-col">
             <ListHeroes
               :params="UserHeroesParams"
               :heroes="UserHeroes"
               target="update"
+              class="grow"
             />
             <ListPagination v-model:params="UserHeroesParams" />
           </div>
         </div>
       </div>
       <div class="rounded bg-white shadow">
-        <div class="">
+        <div class="flex h-full flex-col">
           <div
-            class="flex h-16 items-center justify-between bg-gradient-to-t from-slate-50 to-white px-4"
+            class="flex h-16 items-center justify-between border-b bg-gradient-to-t from-slate-50 to-white px-4"
           >
             <div class="">
               <router-link
@@ -168,13 +169,14 @@
               </div>
             </div>
           </div>
-          <div v-if="UserVillains.length > 0">
+          <div v-if="UserVillains.length > 0" class="flex grow flex-col">
             <ListVillains
               :params="UserVillainsParams"
               :villains="UserVillains"
               target="update"
+              class="grow"
             />
-            <ListPagination v-model:params="UserVillainsParams" />
+            <ListPagination v-model:params="UserVillainsParams" class="" />
           </div>
         </div>
       </div>
