@@ -43,48 +43,6 @@
 </script>
 
 <template>
-  <!-- <div class="mt-4 space-y-4">
-    <HeroNav
-      @create:hero="createHero()"
-      :hero="newHero"
-      v-model:tabs="tabs"
-      :create="true"
-    />
-    <ErrorsAlert :errors="HeroErrors" />
-    <div
-      class="flex flex-col justify-center space-y-2 lg:flex-row lg:space-x-2 lg:space-y-0"
-    >
-      <HeroCard
-        v-if="tabs[0].current"
-        status="normal"
-        v-model:hero="newHero"
-        class="hero-card-display"
-      />
-      <HeroCard
-        v-if="tabs[1].current"
-        status="inspired"
-        v-model:hero="newHero"
-        class="hero-card-display"
-      />
-      <HeroInitiativeCard
-        side="recto"
-        v-model:hero="newHero"
-        class="hero-initiative-card-display"
-      />
-    </div>
-    <HeroForm
-      v-if="tabs[0].current"
-      status="normal"
-      :errors="HeroErrors"
-      v-model:hero="newHero"
-    />
-    <HeroForm
-      v-if="tabs[1].current"
-      status="inspired"
-      :errors="HeroErrors"
-      v-model:hero="newHero"
-    />
-  </div> -->
   <div class="mt-4 space-y-4">
     <HeroNav
       @create:hero="createHero()"

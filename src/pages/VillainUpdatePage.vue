@@ -51,34 +51,40 @@
       :single="true"
     />
     <ErrorsAlert :errors="VillainErrors" />
-    <div
-      class="flex flex-col justify-center space-y-2 lg:flex-row lg:space-x-2 lg:space-y-0"
-    >
-      <VillainCard
-        v-if="tabs[0].current"
-        status="normal"
-        v-model:villain="Villain"
-        class="villain-card-display"
-      />
-      <VillainCard
-        v-if="tabs[1].current"
-        status="empowered"
-        v-model:villain="Villain"
-        class="villain-card-display"
-      />
+    <div class="grid grid-cols-1 gap-4 xl:grid-cols-12">
+      <div class="col-span-12 xl:col-span-5">
+        <VillainForm
+          v-if="User.email === Villain.user.email && tabs[0].current"
+          status="normal"
+          v-model:villain="Villain"
+          :errors="VillainErrors"
+        />
+        <VillainForm
+          v-if="User.email === Villain.user.email && tabs[1].current"
+          status="empowered"
+          v-model:villain="Villain"
+          :errors="VillainErrors"
+        />
+      </div>
+      <div class="order-first col-span-12 xl:order-last xl:col-span-7">
+        <div
+          class="flex flex-col justify-center space-y-2 xl:sticky xl:top-24 xl:items-start"
+        >
+          <VillainCard
+            v-if="tabs[0].current"
+            status="normal"
+            v-model:villain="Villain"
+            class="villain-card-display"
+          />
+          <VillainCard
+            v-if="tabs[1].current"
+            status="empowered"
+            v-model:villain="Villain"
+            class="villain-card-display"
+          />
+        </div>
+      </div>
     </div>
-    <VillainForm
-      v-if="User.email === Villain.user.email && tabs[0].current"
-      status="normal"
-      v-model:villain="Villain"
-      :errors="VillainErrors"
-    />
-    <VillainForm
-      v-if="User.email === Villain.user.email && tabs[1].current"
-      status="empowered"
-      v-model:villain="Villain"
-      :errors="VillainErrors"
-    />
     <div
       v-if="User.email === Villain.user.email"
       class="flex w-full items-center justify-start border-t pt-2"
