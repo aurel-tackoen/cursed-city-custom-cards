@@ -33,7 +33,7 @@
   });
 
   const tabs = reactive([
-    { name: 'Path to Glory', current: true },
+    { name: 'Normal', current: true },
     { name: 'Empowered', current: false },
   ]);
 </script>
