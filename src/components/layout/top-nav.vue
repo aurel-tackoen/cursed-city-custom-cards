@@ -69,19 +69,18 @@
         >
           Sign Up
         </button>
-        <router-link
+        <div
           v-if="User.authenticated"
-          to="/user"
           class="border-b border-transparent px-1 text-slate-800 hover:border-red-700 hover:text-red-800"
         >
           {{ User.username }}
-        </router-link>
-        <router-link v-if="User.authenticated" to="/user" class="">
+        </div>
+        <div v-if="User.authenticated" class="">
           <div
             class="mx-1 h-9 w-9 overflow-hidden rounded-full border border-white shadow"
             v-html="getAvatar(User.username)"
           ></div>
-        </router-link>
+        </div>
       </div>
     </div>
   </nav>

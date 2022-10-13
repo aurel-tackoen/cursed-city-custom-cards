@@ -188,7 +188,7 @@
                 :lazy="false"
                 v-model="villain.picture.offsetY"
                 :min="-200"
-                :max="400"
+                :max="500"
               />
             </div>
             <div v-else class="col-span-2">
@@ -271,7 +271,7 @@
                 :lazy="false"
                 v-model="villain.picture.small_offsetY"
                 :min="-200"
-                :max="400"
+                :max="500"
               />
             </div>
             <div v-else class="col-span-2">

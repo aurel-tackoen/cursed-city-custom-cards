@@ -6,7 +6,6 @@ import HeroUpdatePage from '@/pages/HeroUpdatePage.vue';
 import VillainSinglePage from '@/pages/VillainSinglePage.vue';
 import VillainCreatePage from '@/pages/VillainCreatePage.vue';
 import VillainUpdatePage from '@/pages/VillainUpdatePage.vue';
-import UserHomePage from '@/pages/UserHomePage.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -45,11 +44,6 @@ const router = createRouter({
       path: '/villains/:id/update',
       name: 'villains-update',
       component: VillainUpdatePage,
-    },
-    {
-      path: '/user/',
-      name: 'user-home',
-      component: UserHomePage,
     },
   ],
 });
