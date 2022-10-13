@@ -68,6 +68,76 @@
 </script>
 <template>
   <div class="mx-auto space-y-4">
+    <FormCard id="user-villain" title="Villain">
+      <div class="flex w-full bg-white">
+        <div class="grow space-y-3">
+          <div class="grid grid-cols-5">
+            <span class="flex items-center">Name: </span>
+            <input
+              v-model="villain.name"
+              type="text"
+              class="col-span-4 rounded border border-slate-300 bg-white outline-none"
+              :class="{
+                'border-red-800': getError('name'),
+              }"
+            />
+            <span
+              class="col-span-4 col-start-2 text-xs uppercase text-red-800"
+              v-if="getError('name')"
+              >{{ getError('name').message }}</span
+            >
+          </div>
+          <div class="grid grid-cols-5">
+            <span class="flex items-center">Tags: </span>
+            <div class="col-span-4">
+              <Multiselect
+                v-model="villain.tags"
+                mode="tags"
+                :object="true"
+                :close-on-select="false"
+                :create-option="true"
+                :caret="false"
+                :searchable="true"
+                :classes="{
+                  tag: `
+                    bg-red-500 text-white text-sm font-semibold py-0.5 pl-2 rounded mr-1 mb-1 flex items-center 
+                    whitespace-nowrap rtl:pl-0 rtl:pr-2 rtl:mr-0 rtl:ml-1
+                  `,
+                  tagRemoveIcon: `
+                    bg-multiselect-remove bg-center bg-no-repeat opacity-100 inline-block w-3 h-3 group-hover:opacity-60
+                  `,
+                  tagsSearch: `
+                    absolute inset-0 border-0 outline-none focus:ring-0 appearance-none p-0 text-base
+                    font-sans box-border w-full
+                  `,
+                }"
+              ></Multiselect>
+            </div>
+          </div>
+          <div class="grid grid-cols-5">
+            <span class="flex items-center">Size: </span>
+            <select
+              v-model="villain.size"
+              class="col-span-4 rounded border border-slate-300 bg-white outline-none"
+              :class="{
+                'border-red-800': getError('size'),
+              }"
+            >
+              <option value="small">Small</option>
+              <option value="large">Large</option>
+            </select>
+            <span
+              class="col-span-4 col-start-2 text-xs uppercase text-red-800"
+              v-if="getError('size')"
+              >{{ getError('size').message }}</span
+            >
+          </div>
+        </div>
+        <div
+          class="-mr-4 w-12 flex-row items-center justify-center text-center"
+        ></div>
+      </div>
+    </FormCard>
     <FormCard id="user-picture" title="Picture">
       <div class="flex w-full bg-white">
         <div class="grow space-y-3">
@@ -263,52 +333,9 @@
         </div>
       </div>
     </FormCard>
-    <FormCard id="user-villain" title="Villain">
+    <FormCard id="user-villain-stats" title="Stats">
       <div class="flex w-full bg-white">
         <div class="grow space-y-3">
-          <div class="grid grid-cols-5">
-            <span class="flex items-center">Name: </span>
-            <input
-              v-model="villain.name"
-              type="text"
-              class="col-span-4 rounded border border-slate-300 bg-white outline-none"
-              :class="{
-                'border-red-800': getError('name'),
-              }"
-            />
-            <span
-              class="col-span-4 col-start-2 text-xs uppercase text-red-800"
-              v-if="getError('name')"
-              >{{ getError('name').message }}</span
-            >
-          </div>
-          <div class="grid grid-cols-5">
-            <span class="flex items-center">Tags: </span>
-            <div class="col-span-4">
-              <Multiselect
-                v-model="villain.tags"
-                mode="tags"
-                :object="true"
-                :close-on-select="false"
-                :create-option="true"
-                :caret="false"
-                :searchable="true"
-                :classes="{
-                  tag: `
-                    bg-red-500 text-white text-sm font-semibold py-0.5 pl-2 rounded mr-1 mb-1 flex items-center 
-                    whitespace-nowrap rtl:pl-0 rtl:pr-2 rtl:mr-0 rtl:ml-1
-                  `,
-                  tagRemoveIcon: `
-                    bg-multiselect-remove bg-center bg-no-repeat opacity-100 inline-block w-3 h-3 group-hover:opacity-60
-                  `,
-                  tagsSearch: `
-                    absolute inset-0 border-0 outline-none focus:ring-0 appearance-none p-0 text-base
-                    font-sans box-border w-full
-                  `,
-                }"
-              ></Multiselect>
-            </div>
-          </div>
           <div class="grid grid-cols-5">
             <span class="flex items-center">Move / Run: </span>
             <input
@@ -352,24 +379,6 @@
               class="col-span-4 col-start-2 text-xs uppercase text-red-800"
               v-if="getError(`${status}.stats.agility`)"
               >{{ getError(`${status}.stats.agility`).message }}</span
-            >
-          </div>
-          <div class="grid grid-cols-5">
-            <span class="flex items-center">Size: </span>
-            <select
-              v-model="villain.size"
-              class="col-span-4 rounded border border-slate-300 bg-white outline-none"
-              :class="{
-                'border-red-800': getError('size'),
-              }"
-            >
-              <option value="small">Small</option>
-              <option value="large">Large</option>
-            </select>
-            <span
-              class="col-span-4 col-start-2 text-xs uppercase text-red-800"
-              v-if="getError('size')"
-              >{{ getError('size').message }}</span
             >
           </div>
           <div class="grid grid-cols-5">
