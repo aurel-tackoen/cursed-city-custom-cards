@@ -38,7 +38,7 @@
             </div>
           </router-link>
         </div>
-        <div class="ml-8 hidden space-x-8 sm:flex">
+        <!-- <div class="ml-8 hidden space-x-8 sm:flex">
           <router-link
             to="/"
             class="inline-flex items-center border-b-2 border-red-700 px-1 pt-1 text-base text-slate-900"
@@ -51,7 +51,7 @@
           >
             Villains
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="flex items-center text-sm">
         <button
