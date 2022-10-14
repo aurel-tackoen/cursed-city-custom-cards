@@ -5,6 +5,7 @@
     heroes: Array,
     params: Object,
     target: String,
+    size: String,
   });
 </script>
 
@@ -66,17 +67,20 @@
                 }}<span v-if="index < hero.tags.length - 1">,&nbsp;</span>
               </span>
             </div>
-            <div class="block text-xs italic text-slate-600">
+            <!-- <div
+              v-if="size === 'small'"
+              class="block text-xs italic text-slate-600"
+            >
               Created by <span class="font-bold">{{ hero.user.username }}</span>
               {{ dayjs(hero.date * 1000).fromNow() }}
-            </div>
+            </div> -->
           </div>
-          <!-- <div class="">
+          <div v-if="size === 'large'">
             <div class="hidden text-sm leading-4 text-slate-600 sm:block">
               Created by <span class="font-bold">{{ hero.user.username }}</span>
               {{ dayjs(hero.date * 1000).fromNow() }}
             </div>
-          </div> -->
+          </div>
         </div>
       </div>
     </div>

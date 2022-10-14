@@ -108,6 +108,7 @@
             <ListHeroes
               :params="UserHeroesParams"
               :heroes="UserHeroes"
+              size="small"
               target="update"
               class="grow"
             />
@@ -173,6 +174,7 @@
             <ListVillains
               :params="UserVillainsParams"
               :villains="UserVillains"
+              size="small"
               target="update"
               class="grow"
             />
@@ -193,7 +195,12 @@
           </div>
         </div>
         <div>
-          <ListHeroes :params="HeroesParams" :heroes="Heroes" target="single" />
+          <ListHeroes
+            :params="HeroesParams"
+            :heroes="Heroes"
+            target="single"
+            size="large"
+          />
           <ListPagination v-model:params="HeroesParams" />
         </div>
       </div>
@@ -214,6 +221,7 @@
             :params="VillainsParams"
             :villains="Villains"
             target="single"
+            size="large"
           />
           <ListPagination v-model:params="VillainsParams" />
         </div>
