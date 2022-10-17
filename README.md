@@ -10,3 +10,6 @@ netlify env:set MONGODB_URI "YYY"
 **start with :** netlify dev
 
 ### Beta test started: 17/09/2022
+
+Todo: fix print offset on verso
+Todo: make a voting system
