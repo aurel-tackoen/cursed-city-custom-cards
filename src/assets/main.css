@@ -106,6 +106,9 @@ button.pagination-number.active:hover{
   height: 40.7mm;
   transform-origin: top left;
 }
+.print-verso-fix {
+  margin-left: 0.5cm;
+}
 @media screen(sm) {
   .hero-card-display > div {
     transform: scale(0.725);

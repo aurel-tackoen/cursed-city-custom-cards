@@ -37,7 +37,7 @@
       <HeroCard
         status="inspired"
         v-model:hero="Hero"
-        class="hero-card-display"
+        class="hero-card-display print-verso-fix"
       />
       <HeroInitiativeCard
         side="verso"
