@@ -593,7 +593,7 @@
         </button>
       </div>
     </FormCard>
-    <FormCard id="user-specials" title="Unique specials">
+    <FormCard id="user-specials" title="Special Rules">
       <draggable
         v-model="villain[status].specials"
         :item-key="uuidv4()"
