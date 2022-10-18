@@ -24,7 +24,7 @@ const schema = object({
       move: number().required(),
       run: number().required(),
       wounds: number(),
-      defence: number(),
+      defence: string(),
     }).required(),
     weapons: array(
       object({
@@ -64,7 +64,7 @@ const schema = object({
       move: number(),
       run: number(),
       wounds: number(),
-      defence: number(),
+      defence: string(),
     }).required(),
     weapons: array(
       object({
@@ -94,7 +94,7 @@ const schema = object({
     behaviours: array(
       object({
         roll: string().required(),
-        name: string(),
+        name: string().required(),
         rule: string(),
       })
     ).required(),

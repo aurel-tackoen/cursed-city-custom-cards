@@ -385,7 +385,7 @@
             <span class="flex items-center">Defence: </span>
             <input
               v-model="villain[status].stats.defence"
-              type="number"
+              type="text"
               class="col-span-4 rounded border border-slate-300 bg-white outline-none"
               :class="{
                 'border-red-800': getError(`${status}.stats.defence`),
