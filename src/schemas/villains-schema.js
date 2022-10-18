@@ -55,7 +55,7 @@ const schema = object({
       object({
         roll: string().required(),
         name: string().required(),
-        rule: string().required(),
+        rule: string(),
       })
     ).required(),
   }),

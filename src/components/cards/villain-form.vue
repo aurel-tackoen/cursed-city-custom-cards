@@ -421,7 +421,7 @@
                 />
               </div>
               <div class="grid grid-cols-5">
-                <span class="flex items-center">Activation / Type: </span>
+                <span class="flex items-center">Type: </span>
                 <select
                   v-model="weapon.type"
                   class="col-span-4 rounded border border-slate-300 bg-white outline-none"
