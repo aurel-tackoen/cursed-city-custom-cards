@@ -91,7 +91,13 @@
         class="absolute flex justify-center text-center font-semibold italic leading-none"
         style="top: 220px; left: 250px; width: 355px; height: 24px"
       >
-        <div>
+        <div
+          v-if="
+            villain[status] &&
+            villain[status].stats &&
+            villain[status].stats.defence
+          "
+        >
           <span class="uppercase">Defence: </span
           >{{ villain[status].stats.defence }}
         </div>

@@ -71,7 +71,7 @@
         </button>
         <div
           v-if="User.authenticated"
-          class="border-b border-transparent px-1 text-slate-800 hover:border-red-700 hover:text-red-800"
+          class="border-b border-transparent px-1 text-slate-800"
         >
           {{ User.username }}
         </div>
