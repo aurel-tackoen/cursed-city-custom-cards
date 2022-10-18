@@ -67,14 +67,6 @@
                 }}<span v-if="index < villain.tags.length - 1">,&nbsp;</span>
               </span>
             </div>
-            <!-- <div
-              v-if="size === 'small'"
-              class="block text-xs italic text-slate-600"
-            >
-              Created by
-              <span class="font-bold">{{ villain.user.username }}</span>
-              {{ dayjs(villain.date * 1000).fromNow() }}
-            </div> -->
           </div>
           <div v-if="size === 'large'">
             <div class="hidden text-sm leading-4 text-slate-600 sm:block">
