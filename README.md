@@ -11,5 +11,10 @@ netlify env:set MONGODB_URI "YYY"
 
 ### Beta test started: 17/09/2022
 
+### Public test started: 18/10/2022
+
+Todo: card language and filters
+
 Todo: fix print offset on verso
+
 Todo: make a voting system
