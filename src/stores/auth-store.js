@@ -1,6 +1,5 @@
 import { defineStore } from 'pinia';
 import netlifyIdentity from 'netlify-identity-widget';
-import { useHeroesStore } from '@/stores/heroes-store.js';
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
@@ -22,7 +21,6 @@ export const useAuthStore = defineStore('auth', {
       netlifyIdentity.on(action, async (response) => {
         this.setUser(netlifyIdentity);
         netlifyIdentity.close();
-        await useHeroesStore().fetchUserHeroes();
       });
     },
     logout() {

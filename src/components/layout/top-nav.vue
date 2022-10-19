@@ -1,7 +1,6 @@
 <script setup>
   import { storeToRefs } from 'pinia';
   import { useAuthStore } from '@/stores/auth-store.js';
-  import { useHeroesStore } from '@/stores/heroes-store.js';
   import { createAvatar } from '@dicebear/avatars';
   import * as style from '@dicebear/avatars-initials-sprites';
   function getAvatar(username) {
@@ -11,16 +10,13 @@
     return avatar;
   }
   const authStore = useAuthStore();
-  const heroesStore = useHeroesStore();
   const { User } = storeToRefs(authStore);
-  const { UserHeroes } = storeToRefs(heroesStore);
 
   function login(action) {
     authStore.login(action);
   }
   function logout() {
     authStore.logout();
-    UserHeroes.value = [];
   }
 </script>
 
@@ -55,19 +51,26 @@
       </div>
       <div class="flex items-center text-sm">
         <button
-          class="border-b border-transparent px-1 hover:border-red-700 hover:text-red-800"
           v-if="!User.authenticated"
           @click="login('login')"
+          class="border-b border-transparent px-1 hover:border-red-700 hover:text-red-800"
         >
           Log In
         </button>
         <div class="px-1" v-if="!User.authenticated">or</div>
         <button
-          class="border-b border-transparent px-1 hover:border-red-700 hover:text-red-800"
           v-if="!User.authenticated"
           @click="login('signup')"
+          class="border-b border-transparent px-1 hover:border-red-700 hover:text-red-800"
         >
           Sign Up
+        </button>
+        <button
+          v-if="User.authenticated"
+          @click="logout()"
+          class="border-b border-transparent px-1 hover:border-red-700 hover:text-red-800"
+        >
+          Logout
         </button>
         <div
           v-if="User.authenticated"
