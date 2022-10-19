@@ -75,11 +75,20 @@
               {{ dayjs(hero.date * 1000).fromNow() }}
             </div> -->
           </div>
-          <div v-if="size === 'large'">
+          <span
+            v-if="size === 'small'"
+            class="fi fis ml-2 rounded-full"
+            :class="'fi-' + hero.language"
+          ></span>
+          <div v-if="size === 'large'" class="flex">
             <div class="hidden text-sm leading-4 text-slate-600 sm:block">
               Created by <span class="font-bold">{{ hero.user.username }}</span>
               {{ dayjs(hero.date * 1000).fromNow() }}
             </div>
+            <span
+              class="fi fis ml-2 rounded-full"
+              :class="'fi-' + hero.language"
+            ></span>
           </div>
         </div>
       </div>

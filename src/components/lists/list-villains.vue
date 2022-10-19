@@ -68,12 +68,21 @@
               </span>
             </div>
           </div>
-          <div v-if="size === 'large'">
+          <span
+            v-if="size === 'small'"
+            class="fi fis ml-2 rounded-full"
+            :class="'fi-' + villain.language"
+          ></span>
+          <div v-if="size === 'large'" class="flex">
             <div class="hidden text-sm leading-4 text-slate-600 sm:block">
               Created by
               <span class="font-bold">{{ villain.user.username }}</span>
               {{ dayjs(villain.date * 1000).fromNow() }}
             </div>
+            <span
+              class="fi fis ml-2 rounded-full"
+              :class="'fi-' + villain.language"
+            ></span>
           </div>
         </div>
       </div>

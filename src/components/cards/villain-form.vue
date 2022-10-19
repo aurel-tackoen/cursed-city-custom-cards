@@ -4,6 +4,7 @@
   import draggable from 'vuedraggable';
   import Multiselect from '@vueform/multiselect';
   import { v4 as uuidv4 } from 'uuid';
+  import { languages } from '@/assets/data/languages.js';
   import FormCard from '@/components/layout/form-card.vue';
   import DocMarkdown from '@/components/layout/doc-markdown.vue';
   import DocPicture from '@/components/layout/doc-picture.vue';
@@ -71,6 +72,29 @@
     <FormCard id="user-villain" title="Villain">
       <div class="flex w-full bg-white">
         <div class="grow space-y-3">
+          <div class="grid grid-cols-5">
+            <span class="flex items-center">Language: </span>
+            <select
+              v-model="villain.language"
+              class="col-span-4 rounded border border-slate-300 bg-white outline-none"
+              :class="{
+                'border-red-800': getError('size'),
+              }"
+            >
+              <option
+                v-for="language in languages"
+                :key="language.key"
+                :value="language.key"
+              >
+                {{ language.name }}
+              </option>
+            </select>
+            <span
+              class="col-span-4 col-start-2 text-xs uppercase text-red-800"
+              v-if="getError('language')"
+              >{{ getError('language').message }}</span
+            >
+          </div>
           <div class="grid grid-cols-5">
             <span class="flex items-center">Name: </span>
             <input

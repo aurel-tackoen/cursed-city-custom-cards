@@ -1,4 +1,5 @@
 @import '../../node_modules/@vueform/multiselect/themes/tailwind.css';
+@import '../../node_modules/flag-icons/css/flag-icons.min.css';
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap');
 @import '@vueform/slider/themes/default.css';

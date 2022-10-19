@@ -3,6 +3,7 @@ import { object, string, number, array } from 'yup';
 const schema = object({
   _id: string(),
   name: string().required(),
+  language: string().required(),
   size: string().required(),
   tags: array(
     object({
