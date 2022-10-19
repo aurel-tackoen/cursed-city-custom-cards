@@ -145,6 +145,8 @@
             >
               <option value="small">Small</option>
               <option value="large">Large</option>
+              <option value="huge">Huge</option>
+              <option value="oval">Oval</option>
             </select>
             <span
               class="col-span-4 col-start-2 text-xs uppercase text-red-800"
