@@ -42,10 +42,19 @@
     }
   );
 
-  if (User.value.authenticated) {
-    await heroesStore.fetchUserHeroes();
-    await villainsStore.fetchUserVillains();
-  }
+  watch(
+    () => User.value.authenticated,
+    async () => {
+      if (User.value.authenticated) {
+        await heroesStore.fetchUserHeroes();
+        await villainsStore.fetchUserVillains();
+      } else {
+        UserHeroes.value = [];
+        UserVillains.value = [];
+      }
+    }
+  );
+
   await heroesStore.fetchHeroes();
   await villainsStore.fetchVillains();
 </script>
