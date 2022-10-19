@@ -24,14 +24,16 @@
   const authStore = useAuthStore();
   const { User } = storeToRefs(authStore);
   const heroesStore = useHeroesStore();
-  const { HeroErrors } = storeToRefs(heroesStore);
+  const { HeroLoading, HeroErrors } = storeToRefs(heroesStore);
 
   newHero.user.email = User.value.email;
   newHero.user.username = User.value.username;
   newHero.date = dayjs().unix();
 
   async function createHero() {
+    heroesStore.setLoading(true);
     const result = await heroesStore.createHero(newHero);
+    heroesStore.setLoading(false);
     if (result) {
       router.push({ name: 'heroes-update', params: { id: result._id } });
       Object.assign(newHero, defaultHero);
@@ -49,6 +51,7 @@
       :hero="newHero"
       v-model:tabs="tabs"
       :create="true"
+      :loading="HeroLoading"
     />
     <ErrorsAlert :errors="HeroErrors" />
     <div class="grid grid-cols-1 gap-4 xl:grid-cols-12">

@@ -23,6 +23,7 @@ async function sanitize(villain) {
 export const useVillainsStore = defineStore('villains', {
   state: () => ({
     Villain: null,
+    VillainLoading: false,
     VillainErrors: [],
     Villains: [],
     VillainsParams: {
@@ -46,6 +47,9 @@ export const useVillainsStore = defineStore('villains', {
     },
   }),
   actions: {
+    setLoading(loading) {
+      this.VillainLoading = loading;
+    },
     async createVillain(data) {
       const authStore = useAuthStore();
       const { User } = storeToRefs(authStore);

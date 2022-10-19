@@ -26,6 +26,7 @@ async function sanitize(hero) {
 export const useHeroesStore = defineStore('heroes', {
   state: () => ({
     Hero: null,
+    HeroLoading: false,
     HeroErrors: [],
     Heroes: [],
     HeroesParams: {
@@ -49,6 +50,9 @@ export const useHeroesStore = defineStore('heroes', {
     },
   }),
   actions: {
+    setLoading(loading) {
+      this.HeroLoading = loading;
+    },
     async createHero(data) {
       const authStore = useAuthStore();
       const { User } = storeToRefs(authStore);

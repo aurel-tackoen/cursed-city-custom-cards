@@ -54,6 +54,8 @@
       }
     }
   );
+  await heroesStore.fetchUserHeroes();
+  await villainsStore.fetchUserVillains();
 
   await heroesStore.fetchHeroes();
   await villainsStore.fetchVillains();

@@ -8,6 +8,10 @@
       type: Boolean,
       default: true,
     },
+    loading: {
+      type: Boolean,
+      default: false,
+    },
     save: {
       type: Boolean,
       default: false,
@@ -116,7 +120,7 @@
           Save
         </button>
         <button
-          v-if="create === true"
+          v-if="create === true && loading === false"
           @click="emit('create:villain')"
           class="btn-primary"
         >

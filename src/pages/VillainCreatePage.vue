@@ -23,14 +23,17 @@
   const authStore = useAuthStore();
   const { User } = storeToRefs(authStore);
   const villainsStore = useVillainsStore();
-  const { VillainErrors } = storeToRefs(villainsStore);
+  const { VillainLoading, VillainErrors } = storeToRefs(villainsStore);
 
   newVillain.user.email = User.value.email;
   newVillain.user.username = User.value.username;
   newVillain.date = dayjs().unix();
 
   async function createVillain() {
+    villainsStore.setLoading(true);
+    console.log('create');
     const result = await villainsStore.createVillain(newVillain);
+    villainsStore.setLoading(false);
     if (result) {
       router.push({ name: 'villains-update', params: { id: result._id } });
       Object.assign(newVillain, defaultVillain);
@@ -48,6 +51,7 @@
       :villain="newVillain"
       v-model:tabs="tabs"
       :create="true"
+      :loading="VillainLoading"
     />
     <ErrorsAlert :errors="VillainErrors" />
     <div class="grid grid-cols-1 gap-4 xl:grid-cols-12">
