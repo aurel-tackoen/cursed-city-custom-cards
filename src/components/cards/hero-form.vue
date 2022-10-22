@@ -74,7 +74,7 @@
               v-model="hero.language"
               class="col-span-4 rounded border border-slate-300 bg-white outline-none"
               :class="{
-                'border-red-800': getError('size'),
+                'border-red-800': getError('language'),
               }"
             >
               <option
@@ -477,7 +477,7 @@
                 >
                   <option value="melee">Melee</option>
                   <option value="ranged">Ranged</option>
-                  <option value="ranged">Dual</option>
+                  <option value="Dual">Dual</option>
                   <option value="area">Area</option>
                 </select>
               </div>

@@ -78,7 +78,7 @@
               v-model="villain.language"
               class="col-span-4 rounded border border-slate-300 bg-white outline-none"
               :class="{
-                'border-red-800': getError('size'),
+                'border-red-800': getError('language'),
               }"
             >
               <option
