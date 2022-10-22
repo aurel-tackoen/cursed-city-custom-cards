@@ -118,7 +118,7 @@
         <div
           v-for="weapon in villain[status].weapons"
           :key="weapon.name"
-          class="flex pl-10 text-center font-semibold italic leading-none"
+          class="flex pl-10 pb-1 text-center font-semibold italic leading-none"
         >
           <div class="" style="width: 270px">{{ weapon.name }}</div>
           <div class="capitalize" style="width: 80px">{{ weapon.type }}</div>
