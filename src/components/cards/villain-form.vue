@@ -454,7 +454,7 @@
                 >
                   <option value="melee">Melee</option>
                   <option value="ranged">Ranged</option>
-                  <option value="ranged">Dual</option>
+                  <option value="dual">Dual</option>
                   <option value="area">Area</option>
                 </select>
               </div>
