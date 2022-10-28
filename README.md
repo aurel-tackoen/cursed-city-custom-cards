@@ -17,3 +17,4 @@ netlify env:set MONGODB_URI "YYY"
 - [ ] cards filters
 - [ ] fix print offset on verso
 - [ ] make a voting system
+- [ ] release on reddit
