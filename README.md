@@ -18,3 +18,4 @@ netlify env:set MONGODB_URI "YYY"
 - [ ] fix print offset on verso
 - [ ] make a voting system
 - [ ] release on reddit
+- [ ] release on bgg
