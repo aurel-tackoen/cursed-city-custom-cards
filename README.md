@@ -14,7 +14,7 @@ netlify env:set MONGODB_URI "YYY"
 ### Public test started: 18/10/2022
 
 - [x] card language
-- [ ] approved (tested) badges
+- [ ] approved (tested) badges + a tested checkbox in form
 - [ ] cards filters
 - [ ] fix print offset on verso
 - [ ] make a voting system
