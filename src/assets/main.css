@@ -54,7 +54,7 @@ sub { bottom: -0.25em; vertical-align: sub;}
 
 button.pagination-number {
   display: inline-flex;
-  ialign-items: center;
+  align-items: center;
   border-top-width: theme('borderWidth.2');
   border-color: theme('colors.transparent');
   padding-left: theme('spacing.4');
