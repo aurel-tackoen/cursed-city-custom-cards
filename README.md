@@ -21,4 +21,4 @@ netlify env:set MONGODB_URI "YYY"
 - [ ] make a voting system
 - [ ] release on reddit
 - [ ] release on bgg
-- [ ] expand to new game
+- [ ] expand to new game (warhammer quest)
